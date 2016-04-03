@@ -20,6 +20,7 @@ class WPSEO_Customizer {
 		add_action( 'customize_register', array( $this, 'wpseo_customize_register' ) );
 	}
 
+
 	/**
 	 * Function to support WordPress Customizer
 	 *
@@ -42,6 +43,7 @@ class WPSEO_Customizer {
 		$this->breadcrumbs_404_setting();
 	}
 
+
 	/**
 	 * Add the breadcrumbs section to the customizer
 	 */
@@ -54,8 +56,8 @@ class WPSEO_Customizer {
 				'active_callback' => array( $this, 'breadcrumbs_active_callback' ),
 			)
 		);
-
 	}
+
 
 	/**
 	 * Returns whether or not the breadcrumbs are active
@@ -67,6 +69,7 @@ class WPSEO_Customizer {
 
 		return true === ( current_theme_supports( 'yoast-seo-breadcrumbs' ) || $options['breadcrumbs-enable'] );
 	}
+
 
 	/**
 	 * Adds the breadcrumbs remove blog checkbox
@@ -94,6 +97,7 @@ class WPSEO_Customizer {
 		);
 	}
 
+
 	/**
 	 * Returns whether or not to show the breadcrumbs blog remove option
 	 *
@@ -102,6 +106,7 @@ class WPSEO_Customizer {
 	public function breadcrumbs_blog_remove_active_cb() {
 		return 'page' === get_option( 'show_on_front' );
 	}
+
 
 	/**
 	 * Adds the breadcrumbs separator text field
@@ -128,6 +133,7 @@ class WPSEO_Customizer {
 		);
 	}
 
+
 	/**
 	 * Adds the breadcrumbs home anchor text field
 	 */
@@ -152,6 +158,7 @@ class WPSEO_Customizer {
 			)
 		);
 	}
+
 
 	/**
 	 * Adds the breadcrumbs prefix text field
@@ -178,6 +185,7 @@ class WPSEO_Customizer {
 		);
 	}
 
+
 	/**
 	 * Adds the breadcrumbs archive prefix text field
 	 */
@@ -202,6 +210,7 @@ class WPSEO_Customizer {
 			)
 		);
 	}
+
 
 	/**
 	 * Adds the breadcrumbs search prefix text field
@@ -228,6 +237,7 @@ class WPSEO_Customizer {
 		);
 	}
 
+
 	/**
 	 * Adds the breadcrumb 404 prefix text field
 	 */
@@ -252,4 +262,6 @@ class WPSEO_Customizer {
 			)
 		);
 	}
+
+
 }
