@@ -19,6 +19,7 @@ class WPSEO_Taxonomy_Social_Fields extends WPSEO_Taxonomy_Fields {
 		$this->networks = $this->get_social_networks();
 	}
 
+
 	/**
 	 * When this method returns false, the social tab in the meta box will be hidden
 	 *
@@ -27,6 +28,7 @@ class WPSEO_Taxonomy_Social_Fields extends WPSEO_Taxonomy_Fields {
 	public function show_social() {
 		return ( $this->options['opengraph'] === true || $this->options['twitter'] === true || $this->options['googleplus'] === true );
 	}
+
 
 	/**
 	 * Gets the social meta fields by social network for the taxonomy.
@@ -66,6 +68,7 @@ class WPSEO_Taxonomy_Social_Fields extends WPSEO_Taxonomy_Fields {
 		);
 	}
 
+
 	/**
 	 * Returning the fields for the social media tab
 	 *
@@ -81,6 +84,7 @@ class WPSEO_Taxonomy_Social_Fields extends WPSEO_Taxonomy_Fields {
 
 		return $this->filter_hidden_fields( $fields );
 	}
+
 
 	/**
 	 * Getting array with the social networks
@@ -98,11 +102,12 @@ class WPSEO_Taxonomy_Social_Fields extends WPSEO_Taxonomy_Fields {
 		return $social_networks;
 	}
 
+
 	/**
 	 * Returns array with the config fields for the social network
 	 *
 	 * @param string $network    The name of the social network.
-	 * @param string $label		 The label for the social network.
+	 * @param string $label      The label for the social network.
 	 * @param string $image_size The image dimensions.
 	 *
 	 * @return array
@@ -114,6 +119,7 @@ class WPSEO_Taxonomy_Social_Fields extends WPSEO_Taxonomy_Fields {
 			'size'    => $image_size,
 		);
 	}
+
 
 	/**
 	 * Filter the social networks which are disabled in the configuration
@@ -131,5 +137,6 @@ class WPSEO_Taxonomy_Social_Fields extends WPSEO_Taxonomy_Fields {
 
 		return $social_networks;
 	}
+
 
 }
