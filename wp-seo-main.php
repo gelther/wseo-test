@@ -55,6 +55,7 @@ function wpseo_auto_load( $class ) {
 	}
 }
 
+
 if ( file_exists( WPSEO_PATH . '/vendor/autoload_52.php' ) ) {
 	require WPSEO_PATH . '/vendor/autoload_52.php';
 }
@@ -86,6 +87,7 @@ function wpseo_activate( $networkwide = false ) {
 	}
 }
 
+
 /**
  * Run single site / network-wide de-activation of the plugin.
  *
@@ -100,6 +102,7 @@ function wpseo_deactivate( $networkwide = false ) {
 		wpseo_network_activate_deactivate( false );
 	}
 }
+
 
 /**
  * Run network-wide (de-)activation of the plugin
@@ -126,6 +129,7 @@ function wpseo_network_activate_deactivate( $activate = true ) {
 		}
 	}
 }
+
 
 /**
  * Runs on activation of the plugin.
@@ -158,6 +162,7 @@ function _wpseo_activate() {
 	do_action( 'wpseo_activate' );
 }
 
+
 /**
  * On deactivation, flush the rewrite rules so XML sitemaps stop working.
  */
@@ -178,6 +183,7 @@ function _wpseo_deactivate() {
 
 	do_action( 'wpseo_deactivate' );
 }
+
 
 /**
  * Run wpseo activation routine on creation / activation of a multisite blog if WPSEO is activated
@@ -256,6 +262,7 @@ function wpseo_init() {
 	new WPSEO_Customizer();
 }
 
+
 /**
  * Used to load the required files on the plugins_loaded hook, instead of immediately.
  */
@@ -277,6 +284,7 @@ function wpseo_frontend_init() {
 	add_action( 'template_redirect', 'wpseo_frontend_head_init', 999 );
 }
 
+
 /**
  * Instantiate the different social classes on the frontend
  */
@@ -294,6 +302,7 @@ function wpseo_frontend_head_init() {
 		add_action( 'wpseo_head', array( 'WPSEO_GooglePlus', 'get_instance' ), 35 );
 	}
 }
+
 
 /**
  * Used to load the required files on the plugins_loaded hook, instead of immediately.
@@ -377,6 +386,7 @@ function yoast_wpseo_missing_spl() {
 	}
 }
 
+
 /**
  * Returns the notice in case of missing spl extension
  */
@@ -384,6 +394,7 @@ function yoast_wpseo_missing_spl_notice() {
 	$message = esc_html__( 'The Standard PHP Library (SPL) extension seem to be unavailable. Please ask your web host to enable it.', 'wordpress-seo' );
 	yoast_wpseo_activation_failed_notice( $message );
 }
+
 
 /**
  * Throw an error if the Composer autoload is missing and self-deactivate plugin
@@ -398,6 +409,7 @@ function yoast_wpseo_missing_autoload() {
 	}
 }
 
+
 /**
  * Returns the notice in case of missing Composer autoload
  */
@@ -407,6 +419,7 @@ function yoast_wpseo_missing_autoload_notice() {
 	$message = sprintf( $message, 'Yoast SEO', '<a href="https://github.com/Yoast/wordpress-seo#installation">', '</a>' );
 	yoast_wpseo_activation_failed_notice( $message );
 }
+
 
 /**
  * Throw an error if the filter extension is disabled (prevent white screens) and self-deactivate plugin
@@ -423,6 +436,7 @@ function yoast_wpseo_missing_filter() {
 	}
 }
 
+
 /**
  * Returns the notice in case of missing filter extension
  */
@@ -430,6 +444,7 @@ function yoast_wpseo_missing_filter_notice() {
 	$message = esc_html__( 'The filter extension seem to be unavailable. Please ask your web host to enable it.', 'wordpress-seo' );
 	yoast_wpseo_activation_failed_notice( $message );
 }
+
 
 /**
  * Echo's the Activation failed notice with any given message.
@@ -439,6 +454,7 @@ function yoast_wpseo_missing_filter_notice() {
 function yoast_wpseo_activation_failed_notice( $message ) {
 	echo '<div class="error"><p>' . __( 'Activation failed:', 'wordpress-seo' ) . ' ' . $message . '</p></div>';
 }
+
 
 /**
  * The method will deactivate the plugin, but only once, done by the static $is_deactivated
@@ -454,5 +470,3 @@ function yoast_wpseo_self_deactivate() {
 		}
 	}
 }
-
-
