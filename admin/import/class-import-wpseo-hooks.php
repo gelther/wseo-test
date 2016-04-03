@@ -28,6 +28,7 @@ class WPSEO_Import_WPSEO_Hooks extends  WPSEO_Import_Hooks {
 		echo '<div class="error"><p>', sprintf( esc_html__( 'The plugin wpSEO has been detected. Do you want to %simport its settings%s?', 'wordpress-seo' ), sprintf( '<a href="%s">', esc_url( $url ) ), '</a>' ), '</p></div>';
 	}
 
+
 	/**
 	 * Throw a notice to inform the user wpSEO has been deactivated
 	 *
@@ -36,5 +37,6 @@ class WPSEO_Import_WPSEO_Hooks extends  WPSEO_Import_Hooks {
 	public function show_deactivate_notice() {
 		echo '<div class="updated"><p>', esc_html__( 'wpSEO has been deactivated', 'wordpress-seo' ), '</p></div>';
 	}
+
 
 }
