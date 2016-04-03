@@ -18,6 +18,7 @@ class WPSEO_OnPage_Email_Presenter {
 		_deprecated_constructor( 'WPSEO_OnPage_Email_Presenter', 'WPSEO 3.0.7' );
 	}
 
+
 	/**
 	 * @deprecated 3.0.7
 	 */
@@ -30,6 +31,7 @@ class WPSEO_OnPage_Email_Presenter {
 		);
 	}
 
+
 	/**
 	 * @deprecated 3.0.7
 	 */
@@ -38,4 +40,6 @@ class WPSEO_OnPage_Email_Presenter {
 
 		return '';
 	}
+
+
 }
