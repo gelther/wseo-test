@@ -129,7 +129,6 @@ class WPSEO_Twitter {
 	 * @param bool   $escaped Force escape flag.
 	 */
 	private function output_metatag( $name, $value, $escaped = false ) {
-
 		// Escape the value if not escaped.
 		if ( false === $escaped ) {
 			$value = esc_attr( $value );
@@ -198,7 +197,6 @@ class WPSEO_Twitter {
 		return strip_tags( get_the_excerpt() );
 	}
 
-
 	/**
 	 * Getting the description for the taxonomy
 	 *
@@ -216,7 +214,6 @@ class WPSEO_Twitter {
 		}
 
 		return trim( strip_tags( term_description() ) );
-
 	}
 
 	/**
@@ -321,7 +318,7 @@ class WPSEO_Twitter {
 	 * Solves issues with filters returning urls and theme's/other plugins also adding a user meta
 	 * twitter field which expects url rather than an id (which is what we expect).
 	 *
-	 * @param  string $id Twitter ID or url.
+	 * @param string $id Twitter ID or url.
 	 *
 	 * @return string|bool Twitter ID or false if it failed to get a valid Twitter ID.
 	 */
@@ -340,7 +337,6 @@ class WPSEO_Twitter {
 	 * Only used when OpenGraph is inactive or Summary Large Image card is chosen.
 	 */
 	protected function image() {
-
 		if ( is_category() || is_tax() || is_tag() ) {
 			$this->taxonomy_image_output();
 		}
@@ -357,7 +353,6 @@ class WPSEO_Twitter {
 	 * Outputs the first image of a gallery.
 	 */
 	private function gallery_images_output() {
-
 		$this->image_output( reset( $this->images ) );
 	}
 
@@ -427,7 +422,6 @@ class WPSEO_Twitter {
 	 * @return bool
 	 */
 	protected function image_output( $img, $tag = false ) {
-
 		if ( $tag ) {
 			_deprecated_argument( __METHOD__, 'WPSEO 2.4' );
 		}
@@ -570,4 +564,5 @@ class WPSEO_Twitter {
 	protected function site_domain() {
 		_deprecated_function( __METHOD__, 'WPSEO 3.0' );
 	}
+
 } /* End of class */
