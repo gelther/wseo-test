@@ -45,7 +45,7 @@ class WPSEO_Taxonomy_Fields_Presenter {
 		$esc_field_name = esc_attr( $field_name );
 
 		$label = $this->get_label( $field_options['label'], $esc_field_name );
-		$field = $this->get_field( $field_options['type'], $esc_field_name, $this->get_field_value( $field_name ) , (array) $field_options['options'] );
+		$field = $this->get_field( $field_options['type'], $esc_field_name, $this->get_field_value( $field_name ), (array) $field_options['options'] );
 		$help  = $this->get_help( $field, $field_options['description'], $esc_field_name );
 
 		return $this->parse_row( $label, $help, $field );
@@ -61,8 +61,7 @@ class WPSEO_Taxonomy_Fields_Presenter {
 	 *
 	 * @return string
 	 */
-	private function get_field($field_type, $field_name, $field_value, array $options) {
-
+	private function get_field( $field_type, $field_name, $field_value, array $options ) {
 		$class = $this->get_class( $options );
 		$field = '';
 
@@ -94,8 +93,8 @@ class WPSEO_Taxonomy_Fields_Presenter {
 					$select_options = ( array_key_exists( 'options', $options ) ) ? $options['options'] : $options;
 
 					foreach ( $select_options as $option => $option_label ) {
-						$selected = selected( $option, $field_value, false );
-						$field .= '<option ' . $selected . ' value="' . esc_attr( $option ) . '">' . esc_html( $option_label ) . '</option>';
+						$selected  = selected( $option, $field_value, false );
+						$field    .= '<option ' . $selected . ' value="' . esc_attr( $option ) . '">' . esc_html( $option_label ) . '</option>';
 					}
 					unset( $option, $option_label, $selected );
 
@@ -147,7 +146,7 @@ class WPSEO_Taxonomy_Fields_Presenter {
 	/**
 	 * Getting the label HTML
 	 *
-	 * @param string $label	     The label value.
+	 * @param string $label      The label value.
 	 * @param string $field_name The target field.
 	 *
 	 * @return string
@@ -216,4 +215,5 @@ class WPSEO_Taxonomy_Fields_Presenter {
 
 		return $field;
 	}
+
 }
