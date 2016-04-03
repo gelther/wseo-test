@@ -54,6 +54,7 @@ class WPSEO_Export {
 		$this->success          = $this->export_settings();
 	}
 
+
 	/**
 	 * Returns an array with status and output message.
 	 *
@@ -68,11 +69,12 @@ class WPSEO_Export {
 		else {
 			$results['status'] = 'failure';
 			/* translators: %1$s expands to Yoast SEO */
-			$results['msg']    = sprintf( __( 'Error creating %1$s export: ', 'wordpress-seo' ), 'Yoast SEO' ) . $this->error;
+			$results['msg'] = sprintf( __( 'Error creating %1$s export: ', 'wordpress-seo' ), 'Yoast SEO' ) . $this->error;
 		}
 
 		return $results;
 	}
+
 
 	/**
 	 * Exports the current site's WP SEO settings.
@@ -80,7 +82,6 @@ class WPSEO_Export {
 	 * @return boolean|string $return true when success, error when failed.
 	 */
 	private function export_settings() {
-
 		$this->export_header();
 
 		foreach ( WPSEO_Options::get_option_names() as $opt_group ) {
@@ -104,6 +105,7 @@ class WPSEO_Export {
 		return false;
 	}
 
+
 	/**
 	 * Writes the header of the export file.
 	 */
@@ -114,6 +116,7 @@ class WPSEO_Export {
 			$this->write_line( '; ' . __( 'This export includes taxonomy metadata', 'wordpress-seo' ) );
 		}
 	}
+
 
 	/**
 	 * Writes a line to the export
@@ -127,6 +130,7 @@ class WPSEO_Export {
 		}
 		$this->export .= $line . PHP_EOL;
 	}
+
 
 	/**
 	 * Writes an entire option group to the export
@@ -154,6 +158,7 @@ class WPSEO_Export {
 		}
 	}
 
+
 	/**
 	 * Writes a settings line to the export
 	 *
@@ -166,6 +171,7 @@ class WPSEO_Export {
 		}
 		$this->write_line( $key . ' = ' . $val );
 	}
+
 
 	/**
 	 * Adds the taxonomy meta data if there is any
@@ -182,6 +188,7 @@ class WPSEO_Export {
 			}
 		}
 	}
+
 
 	/**
 	 * Writes the settings to our temporary settings.ini file
@@ -204,6 +211,7 @@ class WPSEO_Export {
 		return true;
 	}
 
+
 	/**
 	 * Zips the settings ini file
 	 *
@@ -220,4 +228,6 @@ class WPSEO_Export {
 
 		return true;
 	}
+
+
 }
