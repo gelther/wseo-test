@@ -15,6 +15,7 @@ class WPSEO_Frontend_Primary_Category {
 		add_filter( 'post_link_category', array( $this, 'post_link_category' ) );
 	}
 
+
 	/**
 	 * Filters post_link_category to change the category to the chosen category by the user
 	 *
@@ -32,6 +33,7 @@ class WPSEO_Frontend_Primary_Category {
 		return $category;
 	}
 
+
 	/**
 	 * /**
 	 * Get the id of the primary category
@@ -43,6 +45,7 @@ class WPSEO_Frontend_Primary_Category {
 
 		return $primary_term->get_primary_term();
 	}
+
 
 	/**
 	 * Wrapper for get category to make mocking easier
@@ -56,4 +59,6 @@ class WPSEO_Frontend_Primary_Category {
 
 		return $category;
 	}
+
+
 }
