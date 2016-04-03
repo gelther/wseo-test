@@ -29,6 +29,7 @@ class WPSEO_Admin_Stop_Words {
 		return $new_slug;
 	}
 
+
 	/**
 	 * Returns a translated, filtered list of stop words
 	 *
@@ -48,4 +49,6 @@ class WPSEO_Admin_Stop_Words {
 
 		return $stopwords;
 	}
+
+
 }
