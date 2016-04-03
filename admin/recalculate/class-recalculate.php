@@ -54,7 +54,7 @@ abstract class WPSEO_Recalculate {
 	public function get_items_to_recalculate( $paged ) {
 		$return = array();
 
-		$paged = abs( $paged );
+		$paged         = abs( $paged );
 		$this->options = WPSEO_Options::get_all();
 
 		$items = $this->get_items( $paged );
@@ -68,6 +68,7 @@ abstract class WPSEO_Recalculate {
 
 		return $return;
 	}
+
 
 	/**
 	 * Parse the posts|terms with the value we need
@@ -88,6 +89,7 @@ abstract class WPSEO_Recalculate {
 		return $return;
 	}
 
+
 	/**
 	 * Get default from the options for given field
 	 *
@@ -104,5 +106,6 @@ abstract class WPSEO_Recalculate {
 
 		return false;
 	}
+
 
 }
