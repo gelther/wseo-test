@@ -17,6 +17,7 @@ class WPSEO_GSC_Bulk_Action {
 		}
 	}
 
+
 	/**
 	 * Handles the bulk action when there is an action posted
 	 */
@@ -28,6 +29,7 @@ class WPSEO_GSC_Bulk_Action {
 			exit;
 		}
 	}
+
 
 	/**
 	 * Determine which bulk action is selected and return that value
@@ -48,6 +50,7 @@ class WPSEO_GSC_Bulk_Action {
 		return false;
 	}
 
+
 	/**
 	 * Get the posted issues and return them
 	 *
@@ -61,6 +64,7 @@ class WPSEO_GSC_Bulk_Action {
 		// Fallback if issues are empty.
 		return array();
 	}
+
 
 	/**
 	 * Runs the bulk action
@@ -77,6 +81,7 @@ class WPSEO_GSC_Bulk_Action {
 		}
 	}
 
+
 	/**
 	 * Marks the issue as fixed
 	 *
@@ -89,4 +94,6 @@ class WPSEO_GSC_Bulk_Action {
 
 		return $issue;
 	}
+
+
 }
