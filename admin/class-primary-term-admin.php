@@ -22,6 +22,7 @@ class WPSEO_Primary_Term_Admin {
 		$primary_term->register_hooks();
 	}
 
+
 	/**
 	 * Add primary term templates
 	 */
@@ -32,6 +33,7 @@ class WPSEO_Primary_Term_Admin {
 			$this->include_js_templates();
 		}
 	}
+
 
 	/**
 	 * Enqueues all the assets needed for the primary term interface
@@ -64,6 +66,7 @@ class WPSEO_Primary_Term_Admin {
 		wp_localize_script( 'wpseo-primary-category', 'wpseoPrimaryCategoryL10n', $data );
 	}
 
+
 	/**
 	 * Saves all selected primary terms
 	 *
@@ -76,6 +79,7 @@ class WPSEO_Primary_Term_Admin {
 			$this->save_primary_term( $post_ID, $taxonomy );
 		}
 	}
+
 
 	/**
 	 * /**
@@ -91,14 +95,14 @@ class WPSEO_Primary_Term_Admin {
 		return $primary_term->get_primary_term();
 	}
 
+
 	/**
 	 * Returns all the taxonomies for which the primary term selection is enabled
 	 *
-	 * @param int $post_ID Default current post ID.
+	 * @param  int   $post_ID Default current post ID.
 	 * @return array
 	 */
 	protected function get_primary_term_taxonomies( $post_ID = null ) {
-
 		if ( null === $post_ID ) {
 			$post_ID = get_the_ID();
 		}
@@ -114,12 +118,14 @@ class WPSEO_Primary_Term_Admin {
 		return $taxonomies;
 	}
 
+
 	/**
 	 * Include templates file
 	 */
 	protected function include_js_templates() {
 		include_once WPSEO_PATH . '/admin/views/js-templates-primary-term.php';
 	}
+
 
 	/**
 	 * Save the primary term for a specific taxonomy
@@ -136,6 +142,7 @@ class WPSEO_Primary_Term_Admin {
 			$primary_term_object->set_primary_term( $primary_term );
 		}
 	}
+
 
 	/**
 	 * Generate the primary term taxonomies.
@@ -164,6 +171,7 @@ class WPSEO_Primary_Term_Admin {
 		return $taxonomies;
 	}
 
+
 	/**
 	 * Returns an array suitable for use in the javascript
 	 *
@@ -186,6 +194,7 @@ class WPSEO_Primary_Term_Admin {
 		);
 	}
 
+
 	/**
 	 * Returns an array suitable for use in the javascript
 	 *
@@ -200,6 +209,7 @@ class WPSEO_Primary_Term_Admin {
 		);
 	}
 
+
 	/**
 	 * Returns whether or not a taxonomy is hierarchical
 	 *
@@ -211,6 +221,7 @@ class WPSEO_Primary_Term_Admin {
 		return true === $taxonomy->hierarchical;
 	}
 
+
 	/**
 	 * Returns whether or not the taxonomy is the category taxonomy
 	 *
@@ -221,4 +232,6 @@ class WPSEO_Primary_Term_Admin {
 	private function filter_category_taxonomy( $taxonomy ) {
 		return 'category' === $taxonomy->name;
 	}
+
+
 }
