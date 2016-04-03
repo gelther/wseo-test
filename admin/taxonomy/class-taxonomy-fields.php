@@ -44,6 +44,7 @@ abstract class WPSEO_Taxonomy_Fields {
 		}
 	}
 
+
 	/**
 	 * This method should return the fields
 	 *
@@ -72,6 +73,7 @@ abstract class WPSEO_Taxonomy_Fields {
 		);
 	}
 
+
 	/**
 	 * Filter the hidden fields.
 	 *
@@ -88,5 +90,6 @@ abstract class WPSEO_Taxonomy_Fields {
 
 		return $fields;
 	}
+
 
 }
