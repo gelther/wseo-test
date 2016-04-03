@@ -52,6 +52,7 @@ class WPSEO_GSC_Mapper {
 		exit;
 	}
 
+
 	/**
 	 * Mapping the platform
 	 *
@@ -64,6 +65,7 @@ class WPSEO_GSC_Mapper {
 			return self::$platforms[ $platform ];
 		}
 	}
+
 
 	/**
 	 * Mapping the given platform by value and return its key
@@ -80,6 +82,7 @@ class WPSEO_GSC_Mapper {
 		return $platform;
 	}
 
+
 	/**
 	 * Mapping the given category by searching for its key.
 	 *
@@ -95,6 +98,7 @@ class WPSEO_GSC_Mapper {
 		return $category;
 	}
 
+
 	/**
 	 * Mapping the given category by value and return its key
 	 *
@@ -109,4 +113,6 @@ class WPSEO_GSC_Mapper {
 
 		return $category;
 	}
+
+
 }
