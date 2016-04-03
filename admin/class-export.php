@@ -68,7 +68,7 @@ class WPSEO_Export {
 		else {
 			$results['status'] = 'failure';
 			/* translators: %1$s expands to Yoast SEO */
-			$results['msg']    = sprintf( __( 'Error creating %1$s export: ', 'wordpress-seo' ), 'Yoast SEO' ) . $this->error;
+			$results['msg'] = sprintf( __( 'Error creating %1$s export: ', 'wordpress-seo' ), 'Yoast SEO' ) . $this->error;
 		}
 
 		return $results;
@@ -80,7 +80,6 @@ class WPSEO_Export {
 	 * @return boolean|string $return true when success, error when failed.
 	 */
 	private function export_settings() {
-
 		$this->export_header();
 
 		foreach ( WPSEO_Options::get_option_names() as $opt_group ) {
@@ -220,4 +219,5 @@ class WPSEO_Export {
 
 		return true;
 	}
+
 }
