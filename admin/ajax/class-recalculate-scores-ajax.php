@@ -19,6 +19,7 @@ class WPSEO_Recalculate_Scores_Ajax {
 		add_action( 'wp_ajax_wpseo_recalculate_total', array( $this, 'get_total' ) );
 	}
 
+
 	/**
 	 * Get the totals for the posts and the terms.
 	 */
@@ -34,6 +35,7 @@ class WPSEO_Recalculate_Scores_Ajax {
 			)
 		);
 	}
+
 
 	/**
 	 * Start recalculation
@@ -54,6 +56,7 @@ class WPSEO_Recalculate_Scores_Ajax {
 		wp_die( '' );
 	}
 
+
 	/**
 	 * Saves the new linkdex score for given post
 	 */
@@ -68,6 +71,7 @@ class WPSEO_Recalculate_Scores_Ajax {
 
 		wp_die();
 	}
+
 
 	/**
 	 * Returns the needed object for recalculating scores.
@@ -84,6 +88,7 @@ class WPSEO_Recalculate_Scores_Ajax {
 
 		return null;
 	}
+
 
 	/**
 	 * Gets the total number of posts
@@ -103,6 +108,7 @@ class WPSEO_Recalculate_Scores_Ajax {
 		return $count_posts_query->found_posts;
 	}
 
+
 	/**
 	 * Get the total number of terms
 	 *
@@ -116,5 +122,6 @@ class WPSEO_Recalculate_Scores_Ajax {
 
 		return $total;
 	}
+
 
 }
