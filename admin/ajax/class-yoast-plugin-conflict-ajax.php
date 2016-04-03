@@ -25,6 +25,7 @@ class Yoast_Plugin_Conflict_Ajax {
 		add_action( 'wp_ajax_wpseo_dismiss_plugin_conflict', array( $this, 'dismiss_notice' ) );
 	}
 
+
 	/**
 	 * Handles the dismiss notice request
 	 */
@@ -42,6 +43,7 @@ class Yoast_Plugin_Conflict_Ajax {
 		wp_die( 'true' );
 	}
 
+
 	/**
 	 * Getting the user option from the database
 	 *
@@ -50,6 +52,7 @@ class Yoast_Plugin_Conflict_Ajax {
 	private function get_dismissed_option() {
 		return get_user_meta( get_current_user_id(), $this->option_name, true );
 	}
+
 
 	/**
 	 * Getting the dismissed conflicts from the database
@@ -68,6 +71,7 @@ class Yoast_Plugin_Conflict_Ajax {
 		return array();
 	}
 
+
 	/**
 	 * Storing the conflicting plugins as an user option in the database
 	 *
@@ -81,6 +85,7 @@ class Yoast_Plugin_Conflict_Ajax {
 		update_user_meta( get_current_user_id(), $this->option_name, $dismissed_conflicts );
 	}
 
+
 	/**
 	 * Loop through the plugins to compare them with the already stored dismissed plugin conflicts
 	 *
@@ -92,6 +97,7 @@ class Yoast_Plugin_Conflict_Ajax {
 		}
 	}
 
+
 	/**
 	 * Check if plugin is already dismissed, if not store it in the array that will be saved later
 	 *
@@ -102,4 +108,6 @@ class Yoast_Plugin_Conflict_Ajax {
 			$this->dismissed_conflicts[] = $posted_plugin;
 		}
 	}
+
+
 }
