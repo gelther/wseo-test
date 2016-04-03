@@ -26,7 +26,6 @@ class WPSEO_Sitemap_Timezone {
 	 * @return DateTime|null in site's time zone
 	 */
 	public function get_datetime_with_timezone( $datetime_string, $format = 'c' ) {
-
 		static $utc_timezone, $local_timezone;
 
 		if ( ! isset( $utc_timezone ) ) {
@@ -44,6 +43,7 @@ class WPSEO_Sitemap_Timezone {
 		return null;
 	}
 
+
 	/**
 	 * Returns the timezone string for a site, even if it's set to a UTC offset
 	 *
@@ -52,7 +52,6 @@ class WPSEO_Sitemap_Timezone {
 	 * @return string valid PHP timezone string
 	 */
 	private function determine_timezone_string() {
-
 		// If site timezone string exists, return it.
 		if ( $timezone = get_option( 'timezone_string' ) ) {
 			return $timezone;
@@ -87,6 +86,7 @@ class WPSEO_Sitemap_Timezone {
 		return 'UTC';
 	}
 
+
 	/**
 	 * Returns the correct timezone string
 	 *
@@ -99,4 +99,6 @@ class WPSEO_Sitemap_Timezone {
 
 		return $this->timezone_string;
 	}
+
+
 }
