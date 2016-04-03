@@ -18,6 +18,7 @@ class WPSEO_Recalculate_Scores {
 		add_action( 'admin_footer', array( $this, 'modal_box' ), 20 );
 	}
 
+
 	/**
 	 * Run the localize script.
 	 */
@@ -29,6 +30,7 @@ class WPSEO_Recalculate_Scores {
 			'yoast-seo',
 		), WPSEO_VERSION, true );
 	}
+
 
 	/**
 	 * Initialize the modal box to be displayed when needed.
@@ -53,5 +55,6 @@ class WPSEO_Recalculate_Scores {
 		</div>
 		<?php
 	}
+
 
 }
