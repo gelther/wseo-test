@@ -37,7 +37,7 @@ class WPSEO_Recalculate_Posts extends WPSEO_Recalculate {
 	 */
 	protected function get_items( $paged ) {
 		$items_per_page = max( 1, $this->items_per_page );
-		$post_query = new WP_Query(
+		$post_query     = new WP_Query(
 			array(
 				'post_type'      => 'any',
 				'meta_key'       => '_yoast_wpseo_focuskw',
@@ -64,8 +64,8 @@ class WPSEO_Recalculate_Posts extends WPSEO_Recalculate {
 		/**
 		 * Filter the post content for use in the SEO score recalculation.
 		 *
-		 * @param string $content Content of the post. Modify to reflect front-end content.
-		 * @param WP_Post $item The Post object the content comes from.
+		 * @param string  $content Content of the post. Modify to reflect front-end content.
+		 * @param WP_Post $item    The Post object the content comes from.
 		 */
 		$content = apply_filters( 'wpseo_post_content_for_recalculation', $content, $item );
 
