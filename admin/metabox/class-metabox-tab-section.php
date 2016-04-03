@@ -51,6 +51,7 @@ class WPSEO_Metabox_Tab_Section implements WPSEO_Metabox_Section {
 		$this->link_title   = isset( $options['link_title'] ) ? $options['link_title'] : '';
 	}
 
+
 	/**
 	 * Outputs the section link if any tab has been added.
 	 */
@@ -66,12 +67,13 @@ class WPSEO_Metabox_Tab_Section implements WPSEO_Metabox_Section {
 		}
 	}
 
+
 	/**
 	 * Outputs the section content if any tab has been added.
 	 */
 	public function display_content() {
 		if ( $this->has_tabs() ) {
-			$html = '<div id="wpseo-meta-section-%1$s" class="wpseo-meta-section">';
+			$html  = '<div id="wpseo-meta-section-%1$s" class="wpseo-meta-section">';
 			$html .= '<div class="wpseo-metabox-tabs-div" >';
 			$html .= '<ul class="wpseo-metabox-tabs" id="wpseo-metabox-tabs">%2$s</ul>%3$s';
 			$html .= '</div></div>';
@@ -79,6 +81,7 @@ class WPSEO_Metabox_Tab_Section implements WPSEO_Metabox_Section {
 			printf( $html, esc_attr( $this->name ), $this->tab_links(), $this->tab_content() );
 		}
 	}
+
 
 	/**
 	 * Add a `WPSEO_Metabox_Tab` object to the tabs.
@@ -89,6 +92,7 @@ class WPSEO_Metabox_Tab_Section implements WPSEO_Metabox_Section {
 		$this->tabs[] = $tab;
 	}
 
+
 	/**
 	 * Checks if any tabs have been added to the section.
 	 *
@@ -97,6 +101,7 @@ class WPSEO_Metabox_Tab_Section implements WPSEO_Metabox_Section {
 	protected function has_tabs() {
 		return ! empty( $this->tabs );
 	}
+
 
 	/**
 	 * Concatenates all tabs' links into one html string.
@@ -111,6 +116,7 @@ class WPSEO_Metabox_Tab_Section implements WPSEO_Metabox_Section {
 		return $links;
 	}
 
+
 	/**
 	 * Concatenates all tabs' content into one html string.
 	 *
@@ -123,4 +129,6 @@ class WPSEO_Metabox_Tab_Section implements WPSEO_Metabox_Section {
 		}
 		return $content;
 	}
+
+
 }
