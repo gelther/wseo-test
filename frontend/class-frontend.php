@@ -77,7 +77,6 @@ class WPSEO_Frontend {
 	 * Adds and removes a lot of filters.
 	 */
 	protected function __construct() {
-
 		$this->options = WPSEO_Options::get_options( $this->required_options );
 
 		add_action( 'wp_head', array( $this, 'front_page_specific_init' ), 0 );
@@ -132,8 +131,8 @@ class WPSEO_Frontend {
 		}
 
 		if ( ( $this->options['disable-date'] === true ||
-		       $this->options['disable-author'] === true ) ||
-		     ( isset( $this->options['disable-post_formats'] ) && $this->options['disable-post_formats'] )
+				$this->options['disable-author'] === true ) ||
+			( isset( $this->options['disable-post_formats'] ) && $this->options['disable-post_formats'] )
 		) {
 			add_action( 'wp', array( $this, 'archive_redirect' ) );
 		}
@@ -141,7 +140,7 @@ class WPSEO_Frontend {
 			add_action( 'template_redirect', array( $this, 'attachment_redirect' ), 1 );
 		}
 
-		/*
+		/**
 		 * The setting to get here has been deprecated, but don't remove the code as that would break
 		 * the functionality for those that still have it!
 		 */
@@ -174,6 +173,7 @@ class WPSEO_Frontend {
 		$this->hooks = array( $primary_category );
 	}
 
+
 	/**
 	 * Initialize the functions that only need to run on the frontpage
 	 */
@@ -185,6 +185,7 @@ class WPSEO_Frontend {
 		new WPSEO_JSON_LD;
 		add_action( 'wpseo_head', array( $this, 'webmaster_tools_authentication' ), 90 );
 	}
+
 
 	/**
 	 * Resets the entire class so canonicals, titles etc can be regenerated.
@@ -201,6 +202,7 @@ class WPSEO_Frontend {
 		$this->options = WPSEO_Options::get_options( $this->required_options );
 	}
 
+
 	/**
 	 * Get the singleton instance of this class
 	 *
@@ -214,6 +216,7 @@ class WPSEO_Frontend {
 		return self::$instance;
 	}
 
+
 	/**
 	 * Override Woo's title with our own.
 	 *
@@ -225,6 +228,7 @@ class WPSEO_Frontend {
 		return $this->title( $title );
 	}
 
+
 	/**
 	 * Determine whether this is the homepage and shows posts.
 	 *
@@ -233,6 +237,7 @@ class WPSEO_Frontend {
 	public function is_home_posts_page() {
 		return ( is_home() && 'posts' == get_option( 'show_on_front' ) );
 	}
+
 
 	/**
 	 * Determine whether the this is the static frontpage.
@@ -243,6 +248,7 @@ class WPSEO_Frontend {
 		return ( is_front_page() && 'page' == get_option( 'show_on_front' ) && is_page( get_option( 'page_on_front' ) ) );
 	}
 
+
 	/**
 	 * Determine whether this is the posts page, when it's not the frontpage.
 	 *
@@ -251,6 +257,7 @@ class WPSEO_Frontend {
 	public function is_posts_page() {
 		return ( is_home() && 'page' == get_option( 'show_on_front' ) );
 	}
+
 
 	/**
 	 * Used for static home and posts pages as well as singular titles.
@@ -275,6 +282,7 @@ class WPSEO_Frontend {
 		return $this->get_title_from_options( 'title-' . $post_type, $object );
 	}
 
+
 	/**
 	 * Used for category, tag, and tax titles.
 	 *
@@ -293,6 +301,7 @@ class WPSEO_Frontend {
 		}
 	}
 
+
 	/**
 	 * Used for author titles.
 	 *
@@ -308,6 +317,7 @@ class WPSEO_Frontend {
 
 		return $this->get_title_from_options( 'title-author-wpseo' );
 	}
+
 
 	/**
 	 * Simple function to use to pull data from $options.
@@ -332,6 +342,7 @@ class WPSEO_Frontend {
 			return wpseo_replace_vars( $this->options[ $index ], $var_source );
 		}
 	}
+
 
 	/**
 	 * Get the default title for the current page.
@@ -370,6 +381,7 @@ class WPSEO_Frontend {
 		return $title;
 	}
 
+
 	/**
 	 * This function adds paging details to the title.
 	 *
@@ -389,6 +401,7 @@ class WPSEO_Frontend {
 		return $title;
 	}
 
+
 	/**
 	 * Add part to title, while ensuring that the $seplocation variable is respected.
 	 *
@@ -407,6 +420,7 @@ class WPSEO_Frontend {
 		return $title_part . $sep . $title;
 	}
 
+
 	/**
 	 * Main title function.
 	 *
@@ -424,6 +438,7 @@ class WPSEO_Frontend {
 		return $this->title;
 	}
 
+
 	/**
 	 * Main title generation function.
 	 *
@@ -433,7 +448,6 @@ class WPSEO_Frontend {
 	 * @return string
 	 */
 	private function generate_title( $title, $separator_location ) {
-
 		if ( is_feed() ) {
 			return $title;
 		}
@@ -608,6 +622,7 @@ class WPSEO_Frontend {
 		return esc_html( strip_tags( stripslashes( apply_filters( 'wpseo_title', $title ) ) ) );
 	}
 
+
 	/**
 	 * Function used when title needs to be force overridden.
 	 *
@@ -631,6 +646,7 @@ class WPSEO_Frontend {
 
 		return $title;
 	}
+
 
 	/**
 	 * Outputs or returns the debug marker, which is also used for title replacement when force rewrite is active.
@@ -657,6 +673,7 @@ class WPSEO_Frontend {
 			echo "\n${marker}\n";
 		}
 	}
+
 
 	/**
 	 * Output Webmaster Tools authentication strings
@@ -687,6 +704,7 @@ class WPSEO_Frontend {
 			echo '<meta name="yandex-verification" content="' . esc_attr( $this->options['yandexverify'] ) . "\" />\n";
 		}
 	}
+
 
 	/**
 	 * Main wrapper function attached to wp_head. This combines all the output on the frontend of the Yoast SEO plugin.
@@ -809,8 +827,8 @@ class WPSEO_Frontend {
 		$robotsstr = $robots['index'] . ',' . $robots['follow'];
 
 		if ( $robots['other'] !== array() ) {
-			$robots['other'] = array_unique( $robots['other'] ); // TODO Most likely no longer needed, needs testing.
-			$robotsstr .= ',' . implode( ',', $robots['other'] );
+			$robots['other']  = array_unique( $robots['other'] ); // TODO Most likely no longer needed, needs testing.
+			$robotsstr       .= ',' . implode( ',', $robots['other'] );
 		}
 
 		$robotsstr = preg_replace( '`^index,follow,?`', '', $robotsstr );
@@ -829,13 +847,14 @@ class WPSEO_Frontend {
 		return $robotsstr;
 	}
 
+
 	/**
 	 * Determine $robots values for a single post
 	 *
 	 * @param array $robots  Robots data array.
 	 * @param int   $post_id The post ID for which to determine the $robots values, defaults to current post.
 	 *
-	 * @return    array
+	 * @return array
 	 */
 	public function robots_for_single_post( $robots, $post_id = 0 ) {
 		$noindex = WPSEO_Meta::get_value( 'meta-robots-noindex', $post_id );
@@ -869,6 +888,7 @@ class WPSEO_Frontend {
 		return $robots;
 	}
 
+
 	/**
 	 * This function normally outputs the canonical but is also used in other places to retrieve
 	 * the canonical URL for the current page.
@@ -901,6 +921,7 @@ class WPSEO_Frontend {
 			echo '<link rel="canonical" href="' . esc_url( $canonical, null, 'other' ) . '" />' . "\n";
 		}
 	}
+
 
 	/**
 	 * This function normally outputs the canonical but is also used in other places to retrieve
@@ -1015,6 +1036,7 @@ class WPSEO_Frontend {
 		$this->canonical = apply_filters( 'wpseo_canonical', $canonical );
 	}
 
+
 	/**
 	 * Parse the home URL setting to find the base URL for relative URLs.
 	 *
@@ -1035,6 +1057,7 @@ class WPSEO_Frontend {
 
 		return $base_url;
 	}
+
 
 	/**
 	 * Adds 'prev' and 'next' links to archives.
@@ -1114,6 +1137,7 @@ class WPSEO_Frontend {
 		}
 	}
 
+
 	/**
 	 * Get adjacent pages link for archives
 	 *
@@ -1154,13 +1178,13 @@ class WPSEO_Frontend {
 		}
 	}
 
+
 	/**
 	 * Output the rel=publisher code on every page of the site.
 	 *
 	 * @return boolean Boolean indicating whether the publisher link was printed
 	 */
 	public function publisher() {
-
 		if ( $this->options['plus-publisher'] !== '' ) {
 			echo '<link rel="publisher" href="', esc_url( $this->options['plus-publisher'] ), '"/>', "\n";
 
@@ -1169,6 +1193,7 @@ class WPSEO_Frontend {
 
 		return false;
 	}
+
 
 	/**
 	 * Outputs the meta keywords element.
@@ -1245,6 +1270,7 @@ class WPSEO_Frontend {
 		}
 	}
 
+
 	/**
 	 * Outputs the meta description element or returns the description text.
 	 *
@@ -1270,6 +1296,7 @@ class WPSEO_Frontend {
 			return $this->metadesc;
 		}
 	}
+
 
 	/**
 	 * Generates the meta description text.
@@ -1362,7 +1389,7 @@ class WPSEO_Frontend {
 				$post_data = $term;
 			}
 		}
-		else if ( ( ! is_string( $metadesc ) || '' === $metadesc ) && '' !== $template ) {
+		elseif ( ( ! is_string( $metadesc ) || '' === $metadesc ) && '' !== $template ) {
 			if ( ! isset( $term ) ) {
 				$term = $wp_query->get_queried_object();
 			}
@@ -1380,6 +1407,7 @@ class WPSEO_Frontend {
 		 */
 		$this->metadesc = apply_filters( 'wpseo_metadesc', trim( $metadesc ) );
 	}
+
 
 	/**
 	 * Based on the redirect meta value, this function determines whether it should redirect the current post / page.
@@ -1403,12 +1431,14 @@ class WPSEO_Frontend {
 		return false;
 	}
 
+
 	/**
 	 * Outputs noindex values for the current page.
 	 */
 	public function noindex_page() {
 		echo '<meta name="robots" content="noindex" />', "\n";
 	}
+
 
 	/**
 	 * Send a Robots HTTP header preventing URL from being indexed in the search results while allowing search engines
@@ -1418,7 +1448,6 @@ class WPSEO_Frontend {
 	 * @return boolean Boolean indicating whether the noindex header was sent
 	 */
 	public function noindex_feed() {
-
 		if ( ( is_feed() || is_robots() ) && headers_sent() === false ) {
 			header( 'X-Robots-Tag: noindex, follow', true );
 
@@ -1427,6 +1456,7 @@ class WPSEO_Frontend {
 
 		return false;
 	}
+
 
 	/**
 	 * Adds rel="nofollow" to a link, only used for login / registration links.
@@ -1438,6 +1468,7 @@ class WPSEO_Frontend {
 	public function nofollow_link( $input ) {
 		return str_replace( '<a ', '<a rel="nofollow" ', $input );
 	}
+
 
 	/**
 	 * When certain archives are disabled, this redirects those to the homepage.
@@ -1458,6 +1489,7 @@ class WPSEO_Frontend {
 		return false;
 	}
 
+
 	/**
 	 * If the option to redirect attachments to their parent is checked, this performs the redirect.
 	 *
@@ -1474,6 +1506,7 @@ class WPSEO_Frontend {
 
 		return false;
 	}
+
 
 	/**
 	 * Trailing slashes for everything except is_single().
@@ -1494,6 +1527,7 @@ class WPSEO_Frontend {
 		}
 	}
 
+
 	/**
 	 * Removes the ?replytocom variable from the link, replacing it with a #comment-<number> anchor.
 	 *
@@ -1507,6 +1541,7 @@ class WPSEO_Frontend {
 		return preg_replace( '`href=(["\'])(?:.*(?:\?|&|&#038;)replytocom=(\d+)#respond)`', 'href=$1#comment-$2', $link );
 	}
 
+
 	/**
 	 * Redirect out the ?replytocom variables when cleanreplytocom is enabled
 	 *
@@ -1514,7 +1549,6 @@ class WPSEO_Frontend {
 	 * @return boolean
 	 */
 	function replytocom_redirect() {
-
 		if ( isset( $_GET['replytocom'] ) && is_singular() ) {
 			$url          = get_permalink( $GLOBALS['post']->ID );
 			$hash         = sanitize_text_field( $_GET['replytocom'] );
@@ -1529,6 +1563,7 @@ class WPSEO_Frontend {
 
 		return false;
 	}
+
 
 	/**
 	 * Removes unneeded query variables from the URL.
@@ -1687,6 +1722,7 @@ class WPSEO_Frontend {
 		}
 	}
 
+
 	/**
 	 * Replaces the possible RSS variables with their actual values.
 	 *
@@ -1728,6 +1764,7 @@ class WPSEO_Frontend {
 		return $content;
 	}
 
+
 	/**
 	 * Adds the RSS footer (or header) to the full RSS feed item.
 	 *
@@ -1738,6 +1775,7 @@ class WPSEO_Frontend {
 	function embed_rssfooter( $content ) {
 		return $this->embed_rss( $content, 'full' );
 	}
+
 
 	/**
 	 * Adds the RSS footer (or header) to the excerpt RSS feed item.
@@ -1750,6 +1788,7 @@ class WPSEO_Frontend {
 		return $this->embed_rss( $content, 'excerpt' );
 	}
 
+
 	/**
 	 * Adds the RSS footer and/or header to an RSS feed item.
 	 *
@@ -1761,7 +1800,6 @@ class WPSEO_Frontend {
 	 * @return string
 	 */
 	function embed_rss( $content, $context = 'full' ) {
-
 		/**
 		 * Filter: 'wpseo_include_rss_footer' - Allow the the RSS footer to be dynamically shown/hidden
 		 *
@@ -1800,7 +1838,6 @@ class WPSEO_Frontend {
 	 * title and then flushes the output.
 	 */
 	function flush_cache() {
-
 		global $wp_query;
 
 		if ( $this->ob_started !== true ) {
@@ -1826,6 +1863,7 @@ class WPSEO_Frontend {
 		return true;
 	}
 
+
 	/**
 	 * Starts the output buffer so it can later be fixed by flush_cache()
 	 */
@@ -1833,6 +1871,7 @@ class WPSEO_Frontend {
 		$this->ob_started = true;
 		ob_start();
 	}
+
 
 	/**
 	 * Function used in testing whether the title should be force rewritten or not.
@@ -1874,6 +1913,7 @@ class WPSEO_Frontend {
 		return $title;
 	}
 
+
 	/**
 	 * Get the product name in the head section
 	 *
@@ -1888,6 +1928,7 @@ class WPSEO_Frontend {
 		}
 	}
 
+
 	/**
 	 * Check if this plugin is the premium version of WPSEO
 	 *
@@ -1896,6 +1937,7 @@ class WPSEO_Frontend {
 	private function is_premium() {
 		return file_exists( WPSEO_PATH . 'premium/' );
 	}
+
 
 	/**
 	 * Checks whether the user has written a meta-description. If written,  makes sure meta robots content is noodp.
@@ -1907,6 +1949,7 @@ class WPSEO_Frontend {
 			$this->options['noodp'] = true;
 		}
 	}
+
 
 	/**
 	 * Getting the keywords
@@ -1925,4 +1968,6 @@ class WPSEO_Frontend {
 
 		return $keywords;
 	}
+
+
 } /* End of class */
