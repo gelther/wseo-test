@@ -29,8 +29,8 @@ class WPSEO_Import_WPSEO extends WPSEO_Import_External {
 				'wordpress-seo'
 			)
 		);
-
 	}
+
 
 	/**
 	 * Import the post meta values to Yoast SEO by replacing the wpSEO fields by Yoast SEO fields
@@ -44,11 +44,12 @@ class WPSEO_Import_WPSEO extends WPSEO_Import_External {
 		$this->import_post_robots();
 	}
 
+
 	/**
 	 * Importing the robot values from WPSEO plugin. These have to be converted to the Yoast format.
 	 */
 	private function import_post_robots() {
-		$query_posts  = new WP_Query( 'post_type=any&meta_key=_wpseo_edit_robots&order=ASC' );
+		$query_posts = new WP_Query( 'post_type=any&meta_key=_wpseo_edit_robots&order=ASC' );
 
 		if ( ! empty( $query_posts->posts ) ) {
 			foreach ( $query_posts->posts as $post ) {
@@ -56,6 +57,7 @@ class WPSEO_Import_WPSEO extends WPSEO_Import_External {
 			}
 		}
 	}
+
 
 	/**
 	 * Getting the wpSEO robot value and map this to Yoast SEO values.
@@ -75,6 +77,7 @@ class WPSEO_Import_WPSEO extends WPSEO_Import_External {
 		$this->delete_post_robot( $post_id );
 	}
 
+
 	/**
 	 * Delete the wpSEO robot values, because they aren't needed anymore.
 	 *
@@ -85,6 +88,7 @@ class WPSEO_Import_WPSEO extends WPSEO_Import_External {
 			delete_post_meta( $post_id, '_wpseo_edit_robots' );
 		}
 	}
+
 
 	/**
 	 * Import the taxonomy metas from wpSEO
@@ -102,6 +106,7 @@ class WPSEO_Import_WPSEO extends WPSEO_Import_External {
 		update_option( 'wpseo_taxonomy_meta', $tax_meta );
 	}
 
+
 	/**
 	 * Import the meta description to Yoast SEO
 	 *
@@ -116,6 +121,7 @@ class WPSEO_Import_WPSEO extends WPSEO_Import_External {
 			$tax_meta[ $taxonomy ][ $term_id ]['wpseo_desc'] = $description;
 		}
 	}
+
 
 	/**
 	 * Import the robot value to Yoast SEO
@@ -134,6 +140,7 @@ class WPSEO_Import_WPSEO extends WPSEO_Import_External {
 		}
 	}
 
+
 	/**
 	 * Delete the wpSEO taxonomy meta data.
 	 *
@@ -146,6 +153,7 @@ class WPSEO_Import_WPSEO extends WPSEO_Import_External {
 			delete_option( 'wpseo_' . $taxonomy . '_' . $term_id . '_robots' );
 		}
 	}
+
 
 	/**
 	 * Getting the robot config by given wpSEO robots value.
@@ -182,5 +190,6 @@ class WPSEO_Import_WPSEO extends WPSEO_Import_External {
 
 		return array( 'index' => 2, 'follow' => 0 );
 	}
+
 
 }
