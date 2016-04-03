@@ -24,6 +24,7 @@ class WPSEO_Rewrite {
 		add_action( 'init', array( $this, 'flush' ), 999 );
 	}
 
+
 	/**
 	 * Save an option that triggers a flush on the next init.
 	 *
@@ -32,6 +33,7 @@ class WPSEO_Rewrite {
 	function schedule_flush() {
 		update_option( 'wpseo_flush_rewrite', 1 );
 	}
+
 
 	/**
 	 * If the flush option is set, flush the rewrite rules.
@@ -50,6 +52,7 @@ class WPSEO_Rewrite {
 
 		return false;
 	}
+
 
 	/**
 	 * Override the category link to remove the category base.
@@ -75,6 +78,7 @@ class WPSEO_Rewrite {
 		return preg_replace( '`' . preg_quote( $category_base, '`' ) . '`u', '', $link, 1 );
 	}
 
+
 	/**
 	 * Update the query vars with the redirect var when stripcategorybase is active
 	 *
@@ -91,6 +95,7 @@ class WPSEO_Rewrite {
 
 		return $query_vars;
 	}
+
 
 	/**
 	 * Redirect the "old" category URL to the new one.
@@ -109,6 +114,7 @@ class WPSEO_Rewrite {
 
 		return $query_vars;
 	}
+
 
 	/**
 	 * This function taken and only slightly adapted from WP No Category Base plugin by Saurabh Gupta
@@ -151,11 +157,13 @@ class WPSEO_Rewrite {
 		}
 
 		// Redirect support from Old Category Base.
-		$old_base                            = $wp_rewrite->get_category_permastruct();
-		$old_base                            = str_replace( '%category%', '(.+)', $old_base );
-		$old_base                            = trim( $old_base, '/' );
+		$old_base = $wp_rewrite->get_category_permastruct();
+		$old_base = str_replace( '%category%', '(.+)', $old_base );
+		$old_base = trim( $old_base, '/' );
 		$category_rewrite[ $old_base . '$' ] = 'index.php?wpseo_category_redirect=$matches[1]';
 
 		return $category_rewrite;
 	}
+
+
 } /* End of class */
