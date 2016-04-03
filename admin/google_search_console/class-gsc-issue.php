@@ -43,6 +43,7 @@ class WPSEO_GSC_Issue {
 		$this->response_code  = $response_code;
 	}
 
+
 	/**
 	 * Put the class properties in array
 	 *
@@ -59,6 +60,7 @@ class WPSEO_GSC_Issue {
 		);
 	}
 
+
 	/**
 	 * Converting the date to a date format
 	 *
@@ -68,13 +70,13 @@ class WPSEO_GSC_Issue {
 	 * @return string
 	 */
 	private function to_date_format( DateTime $date_to_convert, $format = '' ) {
-
 		if ( empty( $format ) ) {
 			$format = get_option( 'date_format' );
 		}
 
 		return date_i18n( $format, $date_to_convert->format( 'U' ) );
 	}
+
 
 	/**
 	 * Converting the date to a timestamp
@@ -86,4 +88,6 @@ class WPSEO_GSC_Issue {
 	private function to_timestamp( DateTime $date_to_convert ) {
 		return $date_to_convert->format( 'U' );
 	}
+
+
 }
