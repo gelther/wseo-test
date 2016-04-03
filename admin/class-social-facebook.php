@@ -30,12 +30,14 @@ class Yoast_Social_Facebook {
 		$this->form = new Yoast_Social_Facebook_Form();
 	}
 
+
 	/**
 	 * Returns the output from the form class
 	 */
 	public function show_form() {
 		$this->form->show_form();
 	}
+
 
 	/**
 	 * Adding a new admin
@@ -85,6 +87,7 @@ class Yoast_Social_Facebook {
 		);
 	}
 
+
 	/**
 	 * Fetches the id if the full meta tag or a full url was given
 	 *
@@ -99,6 +102,7 @@ class Yoast_Social_Facebook {
 
 		return trim( parse_url( $admin_id, PHP_URL_PATH ), '/' );
 	}
+
 
 	/**
 	 * Returns a different response body depending on the response type
@@ -126,6 +130,7 @@ class Yoast_Social_Facebook {
 		return $return;
 	}
 
+
 	/**
 	 * This method will hook into the defined get params
 	 */
@@ -137,6 +142,7 @@ class Yoast_Social_Facebook {
 			$this->clear_all();
 		}
 	}
+
 
 	/**
 	 * Deletes the admin from the options
@@ -165,6 +171,7 @@ class Yoast_Social_Facebook {
 		}
 	}
 
+
 	/**
 	 * Clear all the facebook that has been set already
 	 */
@@ -183,6 +190,7 @@ class Yoast_Social_Facebook {
 		}
 	}
 
+
 	/**
 	 * Clean up the request_uri. The given params are the params that will be removed from the URL
 	 */
@@ -195,6 +203,7 @@ class Yoast_Social_Facebook {
 		);
 	}
 
+
 	/**
 	 * When something is going well, show a success notice
 	 *
@@ -203,6 +212,7 @@ class Yoast_Social_Facebook {
 	private function success_notice( $notice_text ) {
 		add_settings_error( 'yoast_wpseo_social_options', 'success', $notice_text, 'updated' );
 	}
+
 
 	/**
 	 * Verify the nonce from the URL with the saved nonce
@@ -215,12 +225,15 @@ class Yoast_Social_Facebook {
 		}
 	}
 
+
 	/**
 	 * Saving the options
 	 */
 	private function save_options() {
 		update_option( 'wpseo_social', $this->options );
 	}
+
+
 }
 
 /**
@@ -250,6 +263,7 @@ class Yoast_Social_Facebook_Form {
 		$this->options = get_option( 'wpseo_social' );
 	}
 
+
 	/**
 	 * Returns the output-property
 	 */
@@ -261,6 +275,7 @@ class Yoast_Social_Facebook_Form {
 			->show_buttons()
 			->manage_app_as_admin();
 	}
+
 
 	/**
 	 * Parses the admin_link
@@ -276,11 +291,12 @@ class Yoast_Social_Facebook_Form {
 			$nonce = $this->get_delete_nonce();
 		}
 
-		$return = '<li><a target="_blank" href="' . esc_url( $admin['link'] ) . '">' . esc_html( $admin['name'] ) . '</a>';
+		$return  = '<li><a target="_blank" href="' . esc_url( $admin['link'] ) . '">' . esc_html( $admin['name'] ) . '</a>';
 		$return .= ' - <strong><a href="' . $this->admin_delete_link( $admin_id, $nonce ) . '">X</a></strong></li>';
 
 		return $return;
 	}
+
 
 	/**
 	 * SHow the top of the social insights part of the page
@@ -302,6 +318,7 @@ class Yoast_Social_Facebook_Form {
 
 		return $this;
 	}
+
 
 	/**
 	 * Show the form inside the thickbox
@@ -337,6 +354,7 @@ class Yoast_Social_Facebook_Form {
 
 		return $this;
 	}
+
 
 	/**
 	 * Display the buttons to add an admin or add another admin from Facebook and display the admin that has been added already.
@@ -375,6 +393,7 @@ class Yoast_Social_Facebook_Form {
 		return $this;
 	}
 
+
 	/**
 	 * Show input field to set a facebook apps as an admin
 	 *
@@ -387,6 +406,7 @@ class Yoast_Social_Facebook_Form {
 		return $this;
 	}
 
+
 	/**
 	 * Loop through the fb-admins to parse the output for them
 	 *
@@ -397,6 +417,7 @@ class Yoast_Social_Facebook_Form {
 			echo $this->get_admin_link( $admin_id, $admin, $nonce );
 		}
 	}
+
 
 	/**
 	 * Parsing the link that directs to the admin removal
@@ -418,6 +439,7 @@ class Yoast_Social_Facebook_Form {
 		);
 	}
 
+
 	/**
 	 * Adding a button to the button property
 	 *
@@ -438,6 +460,7 @@ class Yoast_Social_Facebook_Form {
 
 		$this->buttons[] = '<a title="' . esc_attr( $args['title'] ) . '" id="' . esc_attr( $args['id'] ) . '" class="button' . ' ' . esc_attr( $args['class'] ) . '" href="' . esc_url( $args['url'] ) . '">' . esc_html( $args['value'] ) . '</a>';
 	}
+
 
 	/**
 	 * Showing the buttons
@@ -462,6 +485,7 @@ class Yoast_Social_Facebook_Form {
 		return $this;
 	}
 
+
 	/**
 	 * Check if the clear button should be displayed. This is based on the the set options
 	 *
@@ -471,6 +495,7 @@ class Yoast_Social_Facebook_Form {
 		return is_array( $this->options['fb_admins'] ) && $this->options['fb_admins'] !== array();
 	}
 
+
 	/**
 	 * Creates nonce for removal link
 	 *
@@ -479,4 +504,6 @@ class Yoast_Social_Facebook_Form {
 	private function get_delete_nonce() {
 		return wp_create_nonce( 'delfbadmin' );
 	}
+
+
 }
