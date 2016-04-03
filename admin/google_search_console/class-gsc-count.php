@@ -35,6 +35,7 @@ class WPSEO_GSC_Count {
 		$this->service = $service;
 	}
 
+
 	/**
 	 * Getting the counts for given platform and return them as an array
 	 *
@@ -51,6 +52,7 @@ class WPSEO_GSC_Count {
 		return array();
 	}
 
+
 	/**
 	 * Return the fetched issues
 	 *
@@ -59,6 +61,7 @@ class WPSEO_GSC_Count {
 	public function get_issues() {
 		return $this->issues;
 	}
+
 
 	/**
 	 * Listing the issues an gives them back as fetched issues
@@ -76,6 +79,7 @@ class WPSEO_GSC_Count {
 			$this->set_counts( $counts );
 		}
 	}
+
 
 	/**
 	 * Getting the counts for given platform and category.
@@ -95,6 +99,7 @@ class WPSEO_GSC_Count {
 		return 0;
 	}
 
+
 	/**
 	 * Update the count of the issues
 	 *
@@ -111,6 +116,7 @@ class WPSEO_GSC_Count {
 
 		$this->set_counts( $counts );
 	}
+
 
 	/**
 	 * Fetching the counts from the GSC API
@@ -131,6 +137,7 @@ class WPSEO_GSC_Count {
 		}
 	}
 
+
 	/**
 	 * Parsing the received counts from the API and map the keys to plugin friendly values
 	 *
@@ -144,13 +151,14 @@ class WPSEO_GSC_Count {
 			$new_platform = WPSEO_GSC_Mapper::platform_from_api( $platform_name );
 
 			foreach ( $categories as $category_name => $category ) {
-				$new_category = WPSEO_GSC_Mapper::category_from_api( $category_name );
+				$new_category                             = WPSEO_GSC_Mapper::category_from_api( $category_name );
 				$counts[ $new_platform ][ $new_category ] = $category;
 			}
 		}
 
 		return $counts;
 	}
+
 
 	/**
 	 * Listing the issues for current category.
@@ -178,6 +186,7 @@ class WPSEO_GSC_Count {
 		return $counts;
 	}
 
+
 	/**
 	 * Getting the counts from the options
 	 *
@@ -186,6 +195,7 @@ class WPSEO_GSC_Count {
 	private function get_counts() {
 		return get_option( self::OPTION_CI_COUNTS, array() );
 	}
+
 
 	/**
 	 * Fetching the counts from the service and store them in an option
@@ -196,6 +206,7 @@ class WPSEO_GSC_Count {
 		update_option( self::OPTION_CI_COUNTS, $counts );
 	}
 
+
 	/**
 	 * Store the timestamp of when crawl errors were saved the last time.
 	 */
@@ -203,12 +214,14 @@ class WPSEO_GSC_Count {
 		add_option( self::OPTION_CI_LAST_FETCH, time(), '', 'no' );
 	}
 
+
 	/**
 	 * Remove the last checked option
 	 */
 	private function remove_last_fetch() {
 		delete_option( self::OPTION_CI_LAST_FETCH );
 	}
+
 
 	/**
 	 * Get the timestamp of when the crawl errors were last saved
@@ -218,4 +231,6 @@ class WPSEO_GSC_Count {
 	private function get_last_fetch() {
 		return get_option( self::OPTION_CI_LAST_FETCH, 0 );
 	}
+
+
 }
