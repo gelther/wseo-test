@@ -46,6 +46,7 @@ class Metabox_Add_Keyword_Tab implements WPSEO_Metabox_Tab {
 		return ob_get_clean();
 	}
 
+
 	/**
 	 * Returns an empty string because this tab has no content
 	 *
@@ -54,4 +55,6 @@ class Metabox_Add_Keyword_Tab implements WPSEO_Metabox_Tab {
 	public function content() {
 		return '';
 	}
+
+
 }
