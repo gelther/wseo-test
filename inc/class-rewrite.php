@@ -151,11 +151,12 @@ class WPSEO_Rewrite {
 		}
 
 		// Redirect support from Old Category Base.
-		$old_base                            = $wp_rewrite->get_category_permastruct();
-		$old_base                            = str_replace( '%category%', '(.+)', $old_base );
-		$old_base                            = trim( $old_base, '/' );
+		$old_base = $wp_rewrite->get_category_permastruct();
+		$old_base = str_replace( '%category%', '(.+)', $old_base );
+		$old_base = trim( $old_base, '/' );
 		$category_rewrite[ $old_base . '$' ] = 'index.php?wpseo_category_redirect=$matches[1]';
 
 		return $category_rewrite;
 	}
+
 } /* End of class */
