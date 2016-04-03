@@ -45,11 +45,11 @@ class WPSEO_GSC {
 		add_action( 'init', array( $this, 'init' ) );
 	}
 
+
 	/**
 	 * Run init logic.
 	 */
 	public function init() {
-
 		// Setting the screen option.
 		if ( filter_input( INPUT_GET, 'page' ) === 'wpseo_search_console' ) {
 
@@ -69,6 +69,7 @@ class WPSEO_GSC {
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 	}
 
+
 	/**
 	 * If the Google Search Console has no credentials, add a notification for the user to give him a heads up. This message is dismissable.
 	 */
@@ -81,13 +82,14 @@ class WPSEO_GSC {
 					'</a>'
 				),
 				array(
-					'type'      => 'updated yoast-dismissible',
-					'id'        => 'wpseo-dismiss-gsc',
-					'nonce'     => wp_create_nonce( 'dismiss-gsc-notice' ),
+					'type'  => 'updated yoast-dismissible',
+					'id'    => 'wpseo-dismiss-gsc',
+					'nonce' => wp_create_nonce( 'dismiss-gsc-notice' ),
 				)
 			)
 		);
 	}
+
 
 	/**
 	 * Be sure the settings will be registered, so data can be stored
@@ -96,12 +98,14 @@ class WPSEO_GSC {
 		register_setting( 'yoast_wpseo_gsc_options', self::OPTION_WPSEO_GSC );
 	}
 
+
 	/**
 	 * Function that outputs the redirect page
 	 */
 	public function display() {
 		require_once WPSEO_PATH . '/admin/google_search_console/views/gsc-display.php';
 	}
+
 
 	/**
 	 * Display the table
@@ -119,6 +123,7 @@ class WPSEO_GSC {
 		$list_table->display();
 	}
 
+
 	/**
 	 * Load the admin redirects scripts
 	 */
@@ -135,6 +140,7 @@ class WPSEO_GSC {
 		wp_enqueue_script( 'jquery-qtip', plugins_url( 'js/jquery.qtip.min.js', WPSEO_FILE ), array( 'jquery' ), WPSEO_VERSION, true );
 	}
 
+
 	/**
 	 * Set the screen options
 	 *
@@ -150,6 +156,7 @@ class WPSEO_GSC {
 		}
 	}
 
+
 	/**
 	 * Setting the hooks to be load on page request
 	 */
@@ -158,11 +165,11 @@ class WPSEO_GSC {
 		add_filter( 'set-screen-option', array( $this, 'set_screen_option' ), 11, 3 );
 	}
 
+
 	/**
 	 * Handles the POST and GET requests
 	 */
 	private function request_handler() {
-
 		// List the table search post to a get.
 		$this->list_table_search_post_to_get();
 
@@ -199,6 +206,7 @@ class WPSEO_GSC {
 		new WPSEO_GSC_Bulk_Action();
 	}
 
+
 	/**
 	 * Catch the redirects search post and redirect it to a search get
 	 */
@@ -211,6 +219,7 @@ class WPSEO_GSC {
 			exit;
 		}
 	}
+
 
 	/**
 	 * Catch the authentication post
@@ -229,6 +238,7 @@ class WPSEO_GSC {
 		}
 	}
 
+
 	/**
 	 * Adding notification to the yoast notification center
 	 *
@@ -241,25 +251,26 @@ class WPSEO_GSC {
 		);
 	}
 
+
 	/**
 	 * Setting dependencies which will be used one this page
 	 */
 	private function set_dependencies() {
 		// Setting the service object.
-		$this->service         = new WPSEO_GSC_Service( WPSEO_GSC_Settings::get_profile() );
+		$this->service = new WPSEO_GSC_Service( WPSEO_GSC_Settings::get_profile() );
 
 		// Setting the platform.
-		$this->platform        = WPSEO_GSC_Mapper::get_current_platform( 'tab' );
+		$this->platform = WPSEO_GSC_Mapper::get_current_platform( 'tab' );
 
 		// Loading the issue counter.
-		$issue_count           = new WPSEO_GSC_Count( $this->service );
+		$issue_count = new WPSEO_GSC_Count( $this->service );
 		$issue_count->fetch_counts();
 
 		// Loading the category filters.
 		$this->category_filter = new WPSEO_GSC_Category_Filters( $issue_count->get_platform_counts( $this->platform ) );
 
 		// Setting the current category.
-		$this->category        = $this->category_filter->get_category();
+		$this->category = $this->category_filter->get_category();
 
 		// Listing the issues.
 		$issue_count->list_issues( $this->platform, $this->category );
@@ -267,6 +278,7 @@ class WPSEO_GSC {
 		// Fetching the issues.
 		$this->issue_fetch = new WPSEO_GSC_Issues( $this->platform, $this->category, $issue_count->get_issues() );
 	}
+
 
 	/**
 	 * Setting the tab help on top of the screen
@@ -278,10 +290,12 @@ class WPSEO_GSC {
 			array(
 				'id'      => 'basic-help',
 				'title'   => __( 'Issue categories', 'wordpress-seo' ),
-				'content' => '<p><strong>' .__( 'Desktop', 'wordpress-seo' ) . '</strong><br />' . __( 'Errors that occurred when your site was crawled by Googlebot.', 'wordpress-seo' ) . '</p>'
-							. '<p><strong>' .__( 'Smartphone', 'wordpress-seo' ) . '</strong><br />' . __( 'Errors that occurred only when your site was crawled by Googlebot-Mobile (errors didn\'t appear for desktop).', 'wordpress-seo' ) . '</p>'
-							. '<p><strong>' .__( 'Feature phone', 'wordpress-seo' ) . '</strong><br />' . __( 'Errors that only occurred when your site was crawled by Googlebot for feature phones (errors didn\'t appear for desktop).', 'wordpress-seo' ) . '</p>',
+				'content' => '<p><strong>' . __( 'Desktop', 'wordpress-seo' ) . '</strong><br />' . __( 'Errors that occurred when your site was crawled by Googlebot.', 'wordpress-seo' ) . '</p>'
+							. '<p><strong>' . __( 'Smartphone', 'wordpress-seo' ) . '</strong><br />' . __( 'Errors that occurred only when your site was crawled by Googlebot-Mobile (errors didn\'t appear for desktop).', 'wordpress-seo' ) . '</p>'
+							. '<p><strong>' . __( 'Feature phone', 'wordpress-seo' ) . '</strong><br />' . __( 'Errors that only occurred when your site was crawled by Googlebot for feature phones (errors didn\'t appear for desktop).', 'wordpress-seo' ) . '</p>',
 			)
 		);
 	}
+
+
 }
