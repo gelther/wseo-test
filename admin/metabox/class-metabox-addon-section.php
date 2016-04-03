@@ -25,6 +25,7 @@ class WPSEO_Metabox_Addon_Tab_Section extends WPSEO_Metabox_Tab_Section {
 	<?php
 	}
 
+
 	/**
 	 * `WPSEO_Metabox_Addon_Section` always has "tabs", represented by registered actions. If this is not the case,
 	 * it should not be instantiated.
@@ -34,4 +35,6 @@ class WPSEO_Metabox_Addon_Tab_Section extends WPSEO_Metabox_Tab_Section {
 	protected function has_tabs() {
 		return true;
 	}
+
+
 }
