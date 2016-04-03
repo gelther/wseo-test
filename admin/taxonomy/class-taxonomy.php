@@ -34,8 +34,8 @@ class WPSEO_Taxonomy {
 		if ( self::is_term_overview( $GLOBALS['pagenow'] ) ) {
 			new WPSEO_Taxonomy_Columns();
 		}
-
 	}
+
 
 	/**
 	 * Show the SEO inputs for term.
@@ -46,6 +46,7 @@ class WPSEO_Taxonomy {
 		$metabox = new WPSEO_Taxonomy_Metabox( $this->taxonomy, $term );
 		$metabox->display();
 	}
+
 
 	/**
 	 * Translate options text strings for use in the select fields
@@ -65,6 +66,7 @@ class WPSEO_Taxonomy {
 		$this->sitemap_include_options['always'] = __( 'Always include', 'wordpress-seo' );
 		$this->sitemap_include_options['never']  = __( 'Never include', 'wordpress-seo' );
 	}
+
 
 	/**
 	 * Test whether we are on a public taxonomy - no metabox actions needed if we are not
@@ -120,6 +122,7 @@ class WPSEO_Taxonomy {
 		}
 	}
 
+
 	/**
 	 * Update the taxonomy meta data on save.
 	 *
@@ -141,6 +144,7 @@ class WPSEO_Taxonomy {
 		WPSEO_Taxonomy_Meta::set_values( $term_id, $taxonomy, $new_meta_data );
 	}
 
+
 	/**
 	 * Allows HTML in descriptions
 	 */
@@ -158,6 +162,7 @@ class WPSEO_Taxonomy {
 		remove_filter( 'term_description', 'wp_kses_data' );
 	}
 
+
 	/**
 	 * Adds shortcode support to category descriptions.
 	 *
@@ -174,6 +179,7 @@ class WPSEO_Taxonomy {
 		return $desc;
 	}
 
+
 	/**
 	 * Check if metabox for current taxonomy should be displayed.
 	 *
@@ -186,6 +192,7 @@ class WPSEO_Taxonomy {
 		return ( empty( $options[ $option_key ] ) );
 	}
 
+
 	/**
 	 * Getting the taxonomy from the URL
 	 *
@@ -194,6 +201,7 @@ class WPSEO_Taxonomy {
 	private function get_taxonomy() {
 		return filter_input( INPUT_GET, 'taxonomy', FILTER_DEFAULT, array( 'options' => array( 'default' => '' ) ) );
 	}
+
 
 	/**
 	 * Pass variables to js for use with the term-scraper
@@ -229,6 +237,7 @@ class WPSEO_Taxonomy {
 		);
 	}
 
+
 	/**
 	 * Retrieves the title template.
 	 *
@@ -245,6 +254,7 @@ class WPSEO_Taxonomy {
 
 		return '';
 	}
+
 
 	/**
 	 * Retrieves the metadesc template.
@@ -263,6 +273,7 @@ class WPSEO_Taxonomy {
 		return '';
 	}
 
+
 	/**
 	 * Pass some variables to js for replacing variables.
 	 */
@@ -273,6 +284,7 @@ class WPSEO_Taxonomy {
 		);
 	}
 
+
 	/**
 	 * @param string $page The string to check for the term overview page.
 	 *
@@ -282,6 +294,7 @@ class WPSEO_Taxonomy {
 		return 'edit-tags.php' === $page;
 	}
 
+
 	/**
 	 * @param string $page The string to check for the term edit page.
 	 *
@@ -289,8 +302,9 @@ class WPSEO_Taxonomy {
 	 */
 	public static function is_term_edit( $page ) {
 		return 'term.php' === $page
-		       || 'edit-tags.php' === $page; // After we drop support for <4.5 this can be removed.
+				|| 'edit-tags.php' === $page; // After we drop support for <4.5 this can be removed.
 	}
+
 
 	/**
 	 * Retrieves a template.
@@ -308,6 +322,7 @@ class WPSEO_Taxonomy {
 
 		return $template;
 	}
+
 
 	/**
 	 * Prepares the replace vars for localization.
@@ -345,6 +360,7 @@ class WPSEO_Taxonomy {
 		return $cached_replacement_vars;
 	}
 
+
 	/**
 	 * Returns Jed compatible YoastSEO.js translations.
 	 *
@@ -358,5 +374,6 @@ class WPSEO_Taxonomy {
 
 		return array();
 	}
+
 
 } /* End of class */
