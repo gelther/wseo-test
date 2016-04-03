@@ -68,7 +68,6 @@ class WPSEO_GSC_Issue {
 	 * @return string
 	 */
 	private function to_date_format( DateTime $date_to_convert, $format = '' ) {
-
 		if ( empty( $format ) ) {
 			$format = get_option( 'date_format' );
 		}
@@ -86,4 +85,5 @@ class WPSEO_GSC_Issue {
 	private function to_timestamp( DateTime $date_to_convert ) {
 		return $date_to_convert->format( 'U' );
 	}
+
 }
