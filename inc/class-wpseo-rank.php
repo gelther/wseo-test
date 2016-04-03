@@ -35,7 +35,7 @@ class WPSEO_Rank {
 			'start' => 0,
 			'end'   => 0,
 		),
-		self::BAD  => array(
+		self::BAD => array(
 			'start' => 1,
 			'end'   => 40,
 		),
@@ -80,7 +80,7 @@ class WPSEO_Rank {
 	 * @return string
 	 */
 	public function get_css_class() {
-		$labels = array(
+		$labels        = array(
 			self::NO_FOCUS => 'na',
 			self::NO_INDEX => 'noindex',
 			self::BAD      => 'bad',
@@ -97,7 +97,7 @@ class WPSEO_Rank {
 	 * @return string
 	 */
 	public function get_label() {
-		$labels = array(
+		$labels        = array(
 			self::NO_FOCUS => __( 'N/A', 'wordpress-seo' ),
 			self::NO_INDEX => __( 'No index', 'wordpress-seo' ),
 			self::BAD      => __( 'Bad', 'wordpress-seo' ),
@@ -114,7 +114,7 @@ class WPSEO_Rank {
 	 * @return mixed
 	 */
 	public function get_drop_down_label() {
-		$labels = array(
+		$labels        = array(
 			self::NO_FOCUS => __( 'SEO: No Focus Keyword', 'wordpress-seo' ),
 			self::BAD      => __( 'SEO: Bad', 'wordpress-seo' ),
 			self::OK       => __( 'SEO: OK', 'wordpress-seo' ),
@@ -189,4 +189,5 @@ class WPSEO_Rank {
 	private static function create_rank( $rank ) {
 		return new self( $rank );
 	}
+
 }
