@@ -222,7 +222,7 @@ class WPSEO_Admin_Init {
 	/**
 	 * Check if the user has dismissed the given notice (by $notice_name)
 	 *
-	 * @param string $notice_name The name of the notice that might be dismissed.
+	 * @param  string $notice_name The name of the notice that might be dismissed.
 	 *
 	 * @return bool
 	 */
@@ -403,7 +403,7 @@ class WPSEO_Admin_Init {
 	/**
 	 * Check if there is a dismiss notice action.
 	 *
-	 * @param string $notice_name The name of the notice to dismiss.
+	 * @param  string $notice_name The name of the notice to dismiss.
 	 *
 	 * @return bool
 	 */
