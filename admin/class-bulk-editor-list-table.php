@@ -489,9 +489,9 @@ class WPSEO_Bulk_List_Table extends WP_List_Table {
 	/**
 	 * Counting total items
 	 *
-	 * @param string $subquery         SQL FROM part.
-	 * @param string $all_states       SQL IN part.
-	 * @param string $post_type_clause SQL post type part.
+	 * @param  string $subquery         SQL FROM part.
+	 * @param  string $all_states       SQL IN part.
+	 * @param  string $post_type_clause SQL post type part.
 	 *
 	 * @return mixed
 	 */
@@ -565,9 +565,9 @@ class WPSEO_Bulk_List_Table extends WP_List_Table {
 	 * Based on given parameters there will be parse a query which will get all the pages/posts and other post_types
 	 * from the database.
 	 *
-	 * @param string $subquery         SQL FROM part.
-	 * @param string $all_states       SQL IN part.
-	 * @param string $post_type_clause SQL post type part.
+	 * @param  string $subquery         SQL FROM part.
+	 * @param  string $all_states       SQL IN part.
+	 * @param  string $post_type_clause SQL post type part.
 	 *
 	 * @return string
 	 */
@@ -598,7 +598,7 @@ class WPSEO_Bulk_List_Table extends WP_List_Table {
 	/**
 	 * Heavily restricts the possible columns by which a user can order the table in the bulk editor, thereby preventing a possible CSRF vulnerability.
 	 *
-	 * @param string $orderby The column by which we want to order.
+	 * @param  string $orderby The column by which we want to order.
 	 *
 	 * @return string $orderby
 	 */
@@ -619,7 +619,7 @@ class WPSEO_Bulk_List_Table extends WP_List_Table {
 	/**
 	 * Makes sure the order clause is always ASC or DESC for the bulk editor table, thereby preventing a possible CSRF vulnerability.
 	 *
-	 * @param string $order Whether we want to sort ascending or descending.
+	 * @param  string $order Whether we want to sort ascending or descending.
 	 *
 	 * @return string $order SQL order string (ASC, DESC).
 	 */
@@ -709,8 +709,8 @@ class WPSEO_Bulk_List_Table extends WP_List_Table {
 	/**
 	 * Getting the attributes for each table cell.
 	 *
-	 * @param string $column_name Column name string.
-	 * @param array  $hidden      Set of hidden columns.
+	 * @param  string $column_name Column name string.
+	 * @param  array  $hidden      Set of hidden columns.
 	 *
 	 * @return string
 	 */
@@ -731,7 +731,7 @@ class WPSEO_Bulk_List_Table extends WP_List_Table {
 	/**
 	 * Parsing the title.
 	 *
-	 * @param WP_Post $rec Post object.
+	 * @param  WP_Post $rec Post object.
 	 *
 	 * @return string
 	 */
@@ -768,8 +768,8 @@ class WPSEO_Bulk_List_Table extends WP_List_Table {
 	/**
 	 * Parsing the column based on the $column_name.
 	 *
-	 * @param string  $column_name Column name.
-	 * @param WP_Post $rec         Post object.
+	 * @param  string  $column_name Column name.
+	 * @param  WP_Post $rec         Post object.
 	 *
 	 * @return string
 	 */
@@ -819,9 +819,9 @@ class WPSEO_Bulk_List_Table extends WP_List_Table {
 	/**
 	 * Parse the field where the existing meta-data value is displayed.
 	 *
-	 * @param integer    $record_id  Record ID.
-	 * @param string     $attributes HTML attributes.
-	 * @param bool|array $values     Optional values data array.
+	 * @param  integer    $record_id  Record ID.
+	 * @param  string     $attributes HTML attributes.
+	 * @param  bool|array $values     Optional values data array.
 	 *
 	 * @return string
 	 */
@@ -876,7 +876,7 @@ class WPSEO_Bulk_List_Table extends WP_List_Table {
 	/**
 	 * Getting the meta_data from database.
 	 *
-	 * @param string $post_ids Post IDs string for SQL IN part.
+	 * @param  string $post_ids Post IDs string for SQL IN part.
 	 *
 	 * @return mixed
 	 */
@@ -910,7 +910,7 @@ class WPSEO_Bulk_List_Table extends WP_List_Table {
 	/**
 	 * This method will merge general array with given parameter $columns.
 	 *
-	 * @param array $columns Optional columns set.
+	 * @param  array $columns Optional columns set.
 	 *
 	 * @return array
 	 */
