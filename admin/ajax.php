@@ -56,7 +56,7 @@ function wpseo_set_ignore() {
 
 	$ignore_key = sanitize_text_field( filter_input( INPUT_POST, 'option' ) );
 
-	$options                          = get_option( 'wpseo' );
+	$options                            = get_option( 'wpseo' );
 	$options[ 'ignore_' . $ignore_key ] = true;
 	update_option( 'wpseo', $options );
 
@@ -125,9 +125,9 @@ function wpseo_ajax_replace_vars() {
 
 	$post = get_post( intval( filter_input( INPUT_POST, 'post_id' ) ) );
 	global $wp_query;
-	$wp_query->queried_object = $post;
+	$wp_query->queried_object    = $post;
 	$wp_query->queried_object_id = $post->ID;
-	$omit = array( 'excerpt', 'excerpt_only', 'title' );
+	$omit                        = array( 'excerpt', 'excerpt_only', 'title' );
 	echo wpseo_replace_vars( stripslashes( filter_input( INPUT_POST, 'string' ) ), $post, $omit );
 	die;
 }
@@ -349,8 +349,8 @@ add_action( 'wp_ajax_get_focus_keyword_usage',  'ajax_get_keyword_usage' );
  * Retrieves the keyword for the keyword doubles of the termpages.
  */
 function ajax_get_term_keyword_usage() {
-	$post_id = filter_input( INPUT_POST, 'post_id' );
-	$keyword = filter_input( INPUT_POST, 'keyword' );
+	$post_id  = filter_input( INPUT_POST, 'post_id' );
+	$keyword  = filter_input( INPUT_POST, 'keyword' );
 	$taxonomy = filter_input( INPUT_POST, 'taxonomy' );
 
 	wp_die(
