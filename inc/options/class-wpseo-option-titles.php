@@ -257,17 +257,17 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 			$switch_key = $this->get_switch_key( $key );
 
 			switch ( $switch_key ) {
-				/*
+				/**
 				Text fields
 				*/
 
-				/*
+				/**
 				Covers:
-					   'title-home-wpseo', 'title-author-wpseo', 'title-archive-wpseo',
-					   'title-search-wpseo', 'title-404-wpseo'
-					   'title-' . $pt->name
-					   'title-ptarchive-' . $pt->name
-					   'title-tax-' . $tax->name
+						'title-home-wpseo', 'title-author-wpseo', 'title-archive-wpseo',
+						'title-search-wpseo', 'title-404-wpseo'
+						'title-' . $pt->name
+						'title-ptarchive-' . $pt->name
+						'title-tax-' . $tax->name
 				*/
 				case 'title-':
 					if ( isset( $dirty[ $key ] ) ) {
@@ -275,25 +275,25 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 					}
 					break;
 
-				/*
+				/**
 				Covers:
-					   'metadesc-home-wpseo', 'metadesc-author-wpseo', 'metadesc-archive-wpseo'
-					   'metadesc-' . $pt->name
-					   'metadesc-ptarchive-' . $pt->name
-					   'metadesc-tax-' . $tax->name
+						'metadesc-home-wpseo', 'metadesc-author-wpseo', 'metadesc-archive-wpseo'
+						'metadesc-' . $pt->name
+						'metadesc-ptarchive-' . $pt->name
+						'metadesc-tax-' . $tax->name
 				*/
 				case 'metadesc-':
-					/*
+					/**
 					Covers:
-							 'metakey-home-wpseo', 'metakey-author-wpseo'
-							 'metakey-' . $pt->name
-							 'metakey-ptarchive-' . $pt->name
-							 'metakey-tax-' . $tax->name
+							'metakey-home-wpseo', 'metakey-author-wpseo'
+							'metakey-' . $pt->name
+							'metakey-ptarchive-' . $pt->name
+							'metakey-tax-' . $tax->name
 					*/
 				case 'metakey-':
-					/*
+					/**
 					Covers:
-							 ''bctitle-ptarchive-' . $pt->name
+							''bctitle-ptarchive-' . $pt->name
 					*/
 				case 'bctitle-ptarchive-':
 					if ( isset( $dirty[ $key ] ) && $dirty[ $key ] !== '' ) {
@@ -332,11 +332,11 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 					}
 					break;
 
-				/*
+				/**
 				Boolean fields
 				*/
 
-				/*
+				/**
 				Covers:
 				 *		'noindex-subpages-wpseo', 'noindex-author-wpseo', 'noindex-archive-wpseo'
 				 *		'noindex-' . $pt->name
@@ -390,11 +390,11 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 			$original = $option_value;
 		}
 
-		/*
+		/**
 		Move options from very old option to this one
-			   @internal Don't rename to the 'current' names straight away as that would prevent
-			   the rename/unset combi below from working
-			   @todo [JRF] maybe figure out a smarter way to deal with this
+				@internal Don't rename to the 'current' names straight away as that would prevent
+				the rename/unset combi below from working
+				@todo [JRF] maybe figure out a smarter way to deal with this
 		*/
 		$old_option = null;
 		if ( isset( $all_old_option_values ) ) {
@@ -438,11 +438,11 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 
 		/*
 		Renaming these options to avoid ever overwritting these if a (bloody stupid) user /
-			   programmer would use any of the following as a custom post type or custom taxonomy:
-			   'home', 'author', 'archive', 'search', '404', 'subpages'
+				programmer would use any of the following as a custom post type or custom taxonomy:
+				'home', 'author', 'archive', 'search', '404', 'subpages'
 
-			   Similarly, renaming the tax options to avoid a custom post type and a taxonomy
-			   with the same name occupying the same option
+				Similarly, renaming the tax options to avoid a custom post type and a taxonomy
+				with the same name occupying the same option
 		*/
 		$rename = array(
 			'title-home'       => 'title-home-wpseo',
@@ -490,14 +490,14 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 						if (
 							( isset( $original[ $old_prefix . $tax ] ) && ! isset( $original[ $new_prefix . $tax ] ) )
 							&& ( ! isset( $option_value[ $new_prefix . $tax ] )
-							     || ( isset( $option_value[ $new_prefix . $tax ] )
-							          && $option_value[ $new_prefix . $tax ] === $defaults[ $new_prefix . $tax ] ) )
+								|| ( isset( $option_value[ $new_prefix . $tax ] )
+										&& $option_value[ $new_prefix . $tax ] === $defaults[ $new_prefix . $tax ] ) )
 						) {
 							$option_value[ $new_prefix . $tax ] = $original[ $old_prefix . $tax ];
 
-							/*
+							/**
 							Check if there is a cpt with the same name as the tax,
-								   if so, we should make sure that the old setting hasn't been removed
+									if so, we should make sure that the old setting hasn't been removed
 							*/
 							if ( ! isset( $post_type_names[ $tax ] ) && isset( $option_value[ $old_prefix . $tax ] ) ) {
 								unset( $option_value[ $old_prefix . $tax ] );
@@ -519,9 +519,9 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		}
 
 
-		/*
+		/**
 		Make sure the values of the variable option key options are cleaned as they
-			   may be retained and would not be cleaned/validated then
+				may be retained and would not be cleaned/validated then
 		*/
 		if ( is_array( $option_value ) && $option_value !== array() ) {
 			foreach ( $option_value as $key => $value ) {
@@ -543,11 +543,11 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 						}
 						break;
 
-					/*
+					/**
 					Boolean fields
 					*/
 
-					/*
+					/**
 					Covers:
 					 * 		'noindex-'
 					 * 		'showdate-'
