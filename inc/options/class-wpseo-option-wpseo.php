@@ -279,7 +279,7 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 			if ( isset( $option_value[ $key ] ) && in_array( $option_value[ $key ], array(
 					'ignore',
 					'done',
-				), true )
+				), true ) 
 			) {
 				$option_value[ $key ] = true;
 			}
