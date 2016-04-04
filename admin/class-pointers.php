@@ -94,7 +94,7 @@ class WPSEO_Pointers {
 				'function' => '',
 			),
 		);
-		$this->button_array = wp_parse_args( $this->button_array, $button_array_defaults );
+		$this->button_array    = wp_parse_args( $this->button_array, $button_array_defaults );
 		?>
 		<script type="text/javascript">
 			//<![CDATA[
