@@ -258,7 +258,7 @@ class WPSEO_Admin_Init {
 				'edit.php',
 				'post.php',
 				'post-new.php',
-			) ) || apply_filters( 'wpseo_always_register_metaboxes_on_admin', false )
+			) ) || apply_filters( 'wpseo_always_register_metaboxes_on_admin', false ) 
 		) {
 			$GLOBALS['wpseo_metabox']      = new WPSEO_Metabox;
 			$GLOBALS['wpseo_meta_columns'] = new WPSEO_Meta_Columns();
@@ -269,9 +269,9 @@ class WPSEO_Admin_Init {
 	 * Determine if we should load our taxonomy edit class and if so, load it.
 	 */
 	private function load_taxonomy_class() {
-		if (
+		if ( 
 			WPSEO_Taxonomy::is_term_edit( $this->pagenow )
-			|| WPSEO_Taxonomy::is_term_overview( $this->pagenow )
+			|| WPSEO_Taxonomy::is_term_overview( $this->pagenow ) 
 		) {
 			new WPSEO_Taxonomy;
 		}
