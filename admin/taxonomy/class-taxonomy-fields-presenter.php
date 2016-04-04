@@ -94,8 +94,8 @@ class WPSEO_Taxonomy_Fields_Presenter {
 					$select_options = ( array_key_exists( 'options', $options ) ) ? $options['options'] : $options;
 
 					foreach ( $select_options as $option => $option_label ) {
-						$selected = selected( $option, $field_value, false );
-						$field .= '<option ' . $selected . ' value="' . esc_attr( $option ) . '">' . esc_html( $option_label ) . '</option>';
+						$selected  = selected( $option, $field_value, false );
+						$field    .= '<option ' . $selected . ' value="' . esc_attr( $option ) . '">' . esc_html( $option_label ) . '</option>';
 					}
 					unset( $option, $option_label, $selected );
 
