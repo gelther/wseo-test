@@ -36,7 +36,7 @@ class WPSEO_Recalculate_Terms extends WPSEO_Recalculate {
 	/**
 	 * Get the terms from the database by doing a WP_Query.
 	 *
-	 * @param integer $paged The page.
+	 * @param  integer $paged The page.
 	 *
 	 * @return array
 	 */
@@ -56,7 +56,7 @@ class WPSEO_Recalculate_Terms extends WPSEO_Recalculate {
 	/**
 	 * Convert the given term into a analyzable object.
 	 *
-	 * @param mixed $item The term for which to build the analyzer data.
+	 * @param  mixed $item The term for which to build the analyzer data.
 	 *
 	 * @return array
 	 */
@@ -92,7 +92,7 @@ class WPSEO_Recalculate_Terms extends WPSEO_Recalculate {
 	/**
 	 * Gets the focus keyword for the term
 	 *
-	 * @param stdClass|WP_Term $term Term to determine the keyword for.
+	 * @param  stdClass|WP_Term $term Term to determine the keyword for.
 	 *
 	 * @return bool|string
 	 */
@@ -108,7 +108,7 @@ class WPSEO_Recalculate_Terms extends WPSEO_Recalculate {
 	/**
 	 * Get the title for given term
 	 *
-	 * @param stdClass|WP_Term $term The term object.
+	 * @param  stdClass|WP_Term $term The term object.
 	 *
 	 * @return mixed|string
 	 */
@@ -129,7 +129,7 @@ class WPSEO_Recalculate_Terms extends WPSEO_Recalculate {
 	/**
 	 * Get the meta description for given post
 	 *
-	 * @param stdClass|WP_Term $term The term object.
+	 * @param  stdClass|WP_Term $term The term object.
 	 *
 	 * @return bool|string
 	 */
