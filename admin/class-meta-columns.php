@@ -129,7 +129,7 @@ class WPSEO_Meta_Columns {
 			return;
 		}
 
-		$ranks = WPSEO_Rank::get_all_ranks();
+		$ranks              = WPSEO_Rank::get_all_ranks();
 		$current_seo_filter = filter_input( INPUT_GET, 'seo_filter' );
 
 		echo '
