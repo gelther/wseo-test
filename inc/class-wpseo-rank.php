@@ -35,15 +35,15 @@ class WPSEO_Rank {
 			'start' => 0,
 			'end'   => 0,
 		),
-		self::BAD  => array(
+		self::BAD      => array(
 			'start' => 1,
 			'end'   => 40,
 		),
-		self::OK => array(
+		self::OK       => array(
 			'start' => 41,
 			'end'   => 70,
 		),
-		self::GOOD => array(
+		self::GOOD     => array(
 			'start' => 71,
 			'end'   => 100,
 		),

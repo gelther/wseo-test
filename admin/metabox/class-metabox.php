@@ -56,9 +56,9 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		self::$meta_fields['general']['focuskw_text_input']['title'] = __( 'Focus Keyword', 'wordpress-seo' );
 		self::$meta_fields['general']['focuskw_text_input']['help']  = sprintf( __( 'Pick the main keyword or keyphrase that this post/page is about.<br/><br/>Read %sthis post%s for more info.', 'wordpress-seo' ), '<a href="https://yoast.com/focus-keyword/#utm_source=wordpress-seo-metabox&amp;utm_medium=inline-help&amp;utm_campaign=focus-keyword">', '</a>' );
 
-		self::$meta_fields['general']['title']['title']       = __( 'SEO Title', 'wordpress-seo' );
+		self::$meta_fields['general']['title']['title'] = __( 'SEO Title', 'wordpress-seo' );
 
-		self::$meta_fields['general']['metadesc']['title']       = __( 'Meta description', 'wordpress-seo' );
+		self::$meta_fields['general']['metadesc']['title'] = __( 'Meta description', 'wordpress-seo' );
 
 		self::$meta_fields['general']['metakeywords']['title']       = __( 'Meta keywords', 'wordpress-seo' );
 		self::$meta_fields['general']['metakeywords']['description'] = __( 'If you type something above it will override your %smeta keywords template%s.', 'wordpress-seo' );
@@ -258,7 +258,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 
 		if ( is_a( $post, 'WP_Post' ) ) {
 			$needed_option = 'title-' . $post->post_type;
-			$options = get_option( 'wpseo_titles' );
+			$options       = get_option( 'wpseo_titles' );
 			if ( isset( $options[ $needed_option ] ) && $options[ $needed_option ] !== '' ) {
 				$title_template = $options[ $needed_option ];
 			}
@@ -278,7 +278,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 
 		if ( is_a( $post, 'WP_Post' ) ) {
 			$needed_option = 'metadesc-' . $post->post_type;
-			$options = get_option( 'wpseo_titles' );
+			$options       = get_option( 'wpseo_titles' );
 			if ( isset( $options[ $needed_option ] ) && $options[ $needed_option ] !== '' ) {
 				$metadesc_template = $options[ $needed_option ];
 			}
@@ -412,7 +412,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			'<span class="yst-traffic-light-container">' . $this->traffic_light_svg() . '</span>',
 			$tabs,
 			array(
-				'link_alt' => __( 'Content', 'wordpress-seo' ),
+				'link_alt'   => __( 'Content', 'wordpress-seo' ),
 				'link_title' => __( 'Content', 'wordpress-seo' ),
 			)
 		);
@@ -440,7 +440,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			'<span class="dashicons dashicons-admin-generic"></span>',
 			array( $tab ),
 			array(
-				'link_alt' => __( 'Advanced', 'wordpress-seo' ),
+				'link_alt'   => __( 'Advanced', 'wordpress-seo' ),
 				'link_title' => __( 'Advanced', 'wordpress-seo' ),
 			)
 		);
@@ -458,7 +458,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			'<span class="dashicons dashicons-admin-plugins"></span>',
 			array(),
 			array(
-				'link_alt' => __( 'Add-ons', 'wordpress-seo' ),
+				'link_alt'   => __( 'Add-ons', 'wordpress-seo' ),
 				'link_title' => __( 'Add-ons', 'wordpress-seo' ),
 			)
 		);
@@ -540,8 +540,8 @@ class WPSEO_Metabox extends WPSEO_Meta {
 				if ( isset( $meta_field_def['options'] ) && is_array( $meta_field_def['options'] ) && $meta_field_def['options'] !== array() ) {
 					$content .= '<select name="' . $esc_form_key . '" id="' . $esc_form_key . '" class="yoast' . $class . '">';
 					foreach ( $meta_field_def['options'] as $val => $option ) {
-						$selected = selected( $meta_value, $val, false );
-						$content .= '<option ' . $selected . ' value="' . esc_attr( $val ) . '">' . esc_html( $option ) . '</option>';
+						$selected  = selected( $meta_value, $val, false );
+						$content  .= '<option ' . $selected . ' value="' . esc_attr( $val ) . '">' . esc_html( $option ) . '</option>';
 					}
 					unset( $val, $option, $selected );
 					$content .= '</select>';
@@ -580,8 +580,8 @@ class WPSEO_Metabox extends WPSEO_Meta {
 				break;
 
 			case 'checkbox':
-				$checked = checked( $meta_value, 'on', false );
-				$expl    = ( isset( $meta_field_def['expl'] ) ) ? esc_html( $meta_field_def['expl'] ) : '';
+				$checked  = checked( $meta_value, 'on', false );
+				$expl     = ( isset( $meta_field_def['expl'] ) ) ? esc_html( $meta_field_def['expl'] ) : '';
 				$content .= '<label for="' . $esc_form_key . '"><input type="checkbox" id="' . $esc_form_key . '" name="' . $esc_form_key . '" ' . $checked . ' value="on" class="yoast' . $class . '"/> ' . $expl . '</label><br />';
 				unset( $checked, $expl );
 				break;
@@ -589,7 +589,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			case 'radio':
 				if ( isset( $meta_field_def['options'] ) && is_array( $meta_field_def['options'] ) && $meta_field_def['options'] !== array() ) {
 					foreach ( $meta_field_def['options'] as $val => $option ) {
-						$checked = checked( $meta_value, $val, false );
+						$checked  = checked( $meta_value, $val, false );
 						$content .= '<input type="radio" ' . $checked . ' id="' . $esc_form_key . '_' . esc_attr( $val ) . '" name="' . $esc_form_key . '" value="' . esc_attr( $val ) . '"/> <label for="' . $esc_form_key . '_' . esc_attr( $val ) . '">' . esc_html( $option ) . '</label> ';
 					}
 					unset( $val, $option, $checked );
@@ -975,7 +975,7 @@ SVG;
 		$post_type = $post->post_type;
 
 		$options = WPSEO_Options::get_option( 'wpseo_titles' );
-		$key = sprintf( 'showdate-%s', $post_type );
+		$key     = sprintf( 'showdate-%s', $post_type );
 
 		return isset( $options[ $key ] ) && true === $options[ $key ];
 	}

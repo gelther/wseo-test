@@ -99,7 +99,7 @@ class WPSEO_Meta {
 	 */
 	public static $meta_fields = array(
 		'general'  => array(
-			'snippetpreview' => array(
+			'snippetpreview'     => array(
 				'type'  => 'snippetpreview',
 				'title' => '', // Translation added later.
 				'help'  => '', // Translation added later.
@@ -112,18 +112,18 @@ class WPSEO_Meta {
 				'help'          => '', // Translation added later.
 				'description'   => '<div id="focuskwresults"></div>',
 			),
-			'focuskw' => array(
+			'focuskw'            => array(
 				'type'  => 'hidden',
 				'title' => '',
 			),
-			'title'          => array(
+			'title'              => array(
 				'type'          => 'hidden',
 				'title'         => '', // Translation added later.
 				'default_value' => '',
 				'description'   => '', // Translation added later.
 				'help'          => '', // Translation added later.
 			),
-			'metadesc'       => array(
+			'metadesc'           => array(
 				'type'          => 'hidden',
 				'title'         => '', // Translation added later.
 				'default_value' => '',
@@ -132,20 +132,20 @@ class WPSEO_Meta {
 				'description'   => '', // Translation added later.
 				'help'          => '', // Translation added later.
 			),
-			'linkdex'        => array(
+			'linkdex'            => array(
 				'type'          => 'hidden',
 				'title'         => 'linkdex',
 				'default_value' => '0',
 				'description'   => '',
 			),
-			'metakeywords'   => array(
+			'metakeywords'       => array(
 				'type'          => 'text',
 				'title'         => '', // Translation added later.
 				'default_value' => '',
 				'class'         => 'metakeywords',
 				'description'   => '', // Translation added later.
 			),
-			'pageanalysis'   => array(
+			'pageanalysis'       => array(
 				'type'  => 'pageanalysis',
 				'title' => '', // Translation added later.
 				'help'  => '', // Translation added later.

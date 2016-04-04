@@ -78,7 +78,7 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 	 * @return WPSEO_Metabox_Tab_Section
 	 */
 	public function get_meta_section() {
-		$tabs = array();
+		$tabs               = array();
 		$social_meta_fields = $this->get_meta_field_defs( 'social' );
 
 		if ( $this->options['opengraph'] === true ) {
@@ -87,7 +87,7 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 				$this->get_social_tab_content( 'opengraph', $social_meta_fields ),
 				'<span class="dashicons dashicons-facebook-alt"></span>',
 				array(
-					'link_alt' => __( 'Facebook / Open Graph metadata', 'wordpress-seo' ),
+					'link_alt'   => __( 'Facebook / Open Graph metadata', 'wordpress-seo' ),
 					'link_title' => __( 'Facebook / Open Graph metadata', 'wordpress-seo' ),
 				)
 			);
@@ -99,7 +99,7 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 				$this->get_social_tab_content( 'twitter', $social_meta_fields ),
 				'<span class="dashicons dashicons-twitter"></span>',
 				array(
-					'link_alt' => __( 'Twitter metadata', 'wordpress-seo' ),
+					'link_alt'   => __( 'Twitter metadata', 'wordpress-seo' ),
 					'link_title' => __( 'Twitter metadata', 'wordpress-seo' ),
 				)
 			);
@@ -111,7 +111,7 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 				$this->get_social_tab_content( 'google-plus', $social_meta_fields ),
 				'<span class="dashicons dashicons-googleplus"></span>',
 				array(
-					'link_alt' => __( 'Google+ metadata', 'wordpress-seo' ),
+					'link_alt'   => __( 'Google+ metadata', 'wordpress-seo' ),
 					'link_title' => __( 'Google+ metadata', 'wordpress-seo' ),
 				)
 			);
@@ -122,7 +122,7 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 			'<span class="dashicons dashicons-share"></span>',
 			$tabs,
 			array(
-				'link_alt' => __( 'Social', 'wordpress-seo' ),
+				'link_alt'   => __( 'Social', 'wordpress-seo' ),
 				'link_title' => __( 'Social', 'wordpress-seo' ),
 			)
 		);

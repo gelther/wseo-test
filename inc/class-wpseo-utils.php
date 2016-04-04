@@ -605,7 +605,7 @@ class WPSEO_Utils {
 		$global_cache_validator = self::get_sitemap_cache_validator();
 		$type_cache_validator   = self::get_sitemap_cache_validator( $type );
 
-		$prefix = self::$sitemap_cache_key_prefix;
+		$prefix  = self::$sitemap_cache_key_prefix;
 		$postfix = sprintf( '_%d:%s_%s', $page, $global_cache_validator, $type_cache_validator );
 
 		$type = self::get_safe_sitemap_cache_type( $type, $prefix, $postfix );
@@ -632,7 +632,7 @@ class WPSEO_Utils {
 	 */
 	private static function get_safe_sitemap_cache_type( $type, $prefix = '', $postfix = '' ) {
 		// Length of key should not be over 53.
-		$max_length = 53;
+		$max_length  = 53;
 		$max_length -= strlen( 'timeout_' );
 		$max_length -= strlen( $prefix );
 		$max_length -= strlen( $postfix );
@@ -757,13 +757,13 @@ class WPSEO_Utils {
 		$characters = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$length     = strlen( $characters );
 
-		$index    = ( $input % $length );
-		$output   = $characters[ $index ];
+		$index  = ( $input % $length );
+		$output = $characters[ $index ];
 
 		$position = floor( $input / $length );
 		while ( $position ) {
-			$index    = ( $position % $length );
-			$output   = $characters[ $index ] . $output;
+			$index  = ( $position % $length );
+			$output = $characters[ $index ] . $output;
 
 			$position = floor( $position / $length );
 		}

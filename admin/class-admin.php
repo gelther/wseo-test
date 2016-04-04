@@ -516,9 +516,9 @@ class WPSEO_Admin {
 		// Add Google+.
 		$contactmethods['googleplus'] = __( 'Google+', 'wordpress-seo' );
 		// Add Twitter.
-		$contactmethods['twitter'] = __( 'Twitter username (without @)', 'wordpress-seo' );
+		$contactmethods['twitter']    = __( 'Twitter username (without @)', 'wordpress-seo' );
 		// Add Facebook.
-		$contactmethods['facebook'] = __( 'Facebook profile URL', 'wordpress-seo' );
+		$contactmethods['facebook']   = __( 'Facebook profile URL', 'wordpress-seo' );
 
 		return $contactmethods;
 	}

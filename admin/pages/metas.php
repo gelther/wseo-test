@@ -72,7 +72,7 @@ $yform->admin_header( true, 'wpseo_titles' );
 		</div>
 		<div id="post_types" class="wpseotab">
 			<?php
-			$post_types = get_post_types( array( 'public' => true ), 'objects' );
+			$post_types          = get_post_types( array( 'public' => true ), 'objects' );
 			$index_switch_values = array(
 				'off' => '<code>index</code>',
 				'on'  => '<code>noindex</code>',
