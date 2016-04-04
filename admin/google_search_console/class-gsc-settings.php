@@ -35,8 +35,8 @@ class WPSEO_GSC_Settings {
 	/**
 	 * When authorization is successful return true, otherwise false
 	 *
-	 * @param string                  $authorization_code Code to validate.
-	 * @param Yoast_Api_Google_Client $client             Client object instance.
+	 * @param  string                  $authorization_code Code to validate.
+	 * @param  Yoast_Api_Google_Client $client             Client object instance.
 	 *
 	 * @return bool
 	 */
