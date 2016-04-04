@@ -100,7 +100,7 @@ class WPSEO_Pointers {
 			//<![CDATA[
 			(function ($) {
 				// Don't show the tour on screens with an effective width smaller than 1024px or an effective height smaller than 768px.
-				if (jQuery(window).width() < 1024 || jQuery(window).availWidth < 1024) {
+				if ( jQuery(window).width() < 1024 || jQuery(window).availWidth < 1024 ) {
 					return;
 				}
 
@@ -127,7 +127,7 @@ class WPSEO_Pointers {
 					?>
 				};
 
-				if (wpseo_pointer_options.position && wpseo_pointer_options.position.defer_loading)
+				if ( wpseo_pointer_options.position && wpseo_pointer_options.position.defer_loading )
 					$(window).bind('load.wp-pointers', setup);
 				else
 					$(document).ready(setup);
