@@ -98,7 +98,7 @@ class Yoast_Dashboard_Widget {
 	/**
 	 * Set the cache for a specific user
 	 *
-	 * @param array|boolean $transient The current stored transient with the cached data.
+	 * @param  array|boolean $transient The current stored transient with the cached data.
 	 *
 	 * @return mixed
 	 */
@@ -129,7 +129,7 @@ class Yoast_Dashboard_Widget {
 	/**
 	 * Converts a rank to data usable in the dashboard widget
 	 *
-	 * @param WPSEO_Rank $rank The rank to map.
+	 * @param  WPSEO_Rank $rank The rank to map.
 	 *
 	 * @return array
 	 */
@@ -146,7 +146,7 @@ class Yoast_Dashboard_Widget {
 	/**
 	 * Returns a dashboard widget label to use for a certain rank
 	 *
-	 * @param WPSEO_Rank $rank The rank to return a label for.
+	 * @param  WPSEO_Rank $rank The rank to return a label for.
 	 *
 	 * @return string
 	 */
@@ -166,7 +166,7 @@ class Yoast_Dashboard_Widget {
 	/**
 	 * Filter items if they have a count of zero
 	 *
-	 * @param array $item Data array.
+	 * @param  array $item Data array.
 	 *
 	 * @return bool
 	 */
