@@ -108,7 +108,7 @@ class WPSEO_Sitemaps {
 		$this->home_url    = home_url();
 		$this->charset     = get_bloginfo( 'charset' );
 
-		$this->timezone    = new WPSEO_Sitemap_Timezone();
+		$this->timezone = new WPSEO_Sitemap_Timezone();
 
 	}
 
@@ -269,7 +269,7 @@ class WPSEO_Sitemaps {
 			do_action( 'wpseo_sitemap_stylesheet_cache_' . $type, $this );
 
 			$sitemap_cache_key = WPSEO_Utils::get_sitemap_cache_key( $type, $this->n );
-			$this->sitemap = get_transient( $sitemap_cache_key );
+			$this->sitemap     = get_transient( $sitemap_cache_key );
 		}
 
 		if ( ! $this->sitemap || '' == $this->sitemap ) {
@@ -631,8 +631,8 @@ class WPSEO_Sitemaps {
 			elseif ( $front_id && $post_type == 'post' ) {
 				$page_for_posts = get_option( 'page_for_posts' );
 				if ( $page_for_posts ) {
-					$page_for_posts_url = get_permalink( $page_for_posts );
-					$output            .= $this->sitemap_url(
+					$page_for_posts_url  = get_permalink( $page_for_posts );
+					$output             .= $this->sitemap_url(
 						array(
 							'loc' => $page_for_posts_url,
 							'pri' => 1,
@@ -826,8 +826,8 @@ class WPSEO_Sitemaps {
 						// Use this filter to adjust the entry before it gets added to the sitemap.
 						$url = apply_filters( 'wpseo_sitemap_entry', $url, 'post', $p );
 						if ( is_array( $url ) && $url !== array() ) {
-							$output       .= $this->sitemap_url( $url );
-							$stackedurls[] = $url['loc'];
+							$output        .= $this->sitemap_url( $url );
+							$stackedurls[]  = $url['loc'];
 						}
 					}
 
@@ -846,7 +846,7 @@ class WPSEO_Sitemaps {
 			return;
 		}
 
-		$this->sitemap = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" ';
+		$this->sitemap  = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" ';
 		$this->sitemap .= 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" ';
 		$this->sitemap .= 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 		$this->sitemap .= $output;
@@ -1030,7 +1030,7 @@ class WPSEO_Sitemaps {
 			return;
 		}
 
-		$this->sitemap = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
+		$this->sitemap  = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
 		$this->sitemap .= 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" ';
 		$this->sitemap .= 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 		if ( is_string( $output ) && trim( $output ) !== '' ) {
@@ -1127,7 +1127,7 @@ class WPSEO_Sitemaps {
 			return;
 		}
 
-		$this->sitemap = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" ';
+		$this->sitemap  = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" ';
 		$this->sitemap .= 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" ';
 		$this->sitemap .= 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 		$this->sitemap .= $output;
@@ -1219,7 +1219,7 @@ class WPSEO_Sitemaps {
 
 		$url['loc'] = htmlspecialchars( $url['loc'] );
 
-		$output = "\t<url>\n";
+		$output  = "\t<url>\n";
 		$output .= "\t\t<loc>" . $url['loc'] . "</loc>\n";
 		$output .= empty( $date ) ? '' : "\t\t<lastmod>" . $date . "</lastmod>\n";
 		$output .= "\t\t<changefreq>" . $url['chf'] . "</changefreq>\n";
@@ -1375,7 +1375,7 @@ class WPSEO_Sitemaps {
 				 */
 				if ( ! $exclude_user ) {
 					$is_exclude_on = get_the_author_meta( 'wpseo_excludeauthorsitemap', $user->ID );
-					$exclude_user = ( $is_exclude_on === 'on' );
+					$exclude_user  = ( $is_exclude_on === 'on' );
 				}
 
 				/**
