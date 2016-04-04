@@ -64,8 +64,8 @@ class WPSEO_Recalculate_Posts extends WPSEO_Recalculate {
 		/**
 		 * Filter the post content for use in the SEO score recalculation.
 		 *
-		 * @param string $content Content of the post. Modify to reflect front-end content.
-		 * @param WP_Post $item The Post object the content comes from.
+		 * @param string  $content Content of the post. Modify to reflect front-end content.
+		 * @param WP_Post $item    The Post object the content comes from.
 		 */
 		$content = apply_filters( 'wpseo_post_content_for_recalculation', $content, $item );
 
