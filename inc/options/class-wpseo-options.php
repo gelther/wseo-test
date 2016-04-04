@@ -72,9 +72,9 @@ class WPSEO_Options {
 	/**
 	 * Get the group name of an option for use in the settings form
 	 *
-	 * @param  string $option_name the option for which you want to retrieve the option group name.
+	 * @param  string      $option_name the option for which you want to retrieve the option group name.
 	 *
-	 * @return  string|bool
+	 * @return string|bool
 	 */
 	public static function get_group_name( $option_name ) {
 		if ( isset( self::$option_instances[ $option_name ] ) ) {
@@ -91,7 +91,7 @@ class WPSEO_Options {
 	 * @param  string $option_name The option for which you want to retrieve a default.
 	 * @param  string $key         The key within the option who's default you want.
 	 *
-	 * @return  mixed
+	 * @return mixed
 	 */
 	public static function get_default( $option_name, $key ) {
 		if ( isset( self::$option_instances[ $option_name ] ) ) {
@@ -126,9 +126,9 @@ class WPSEO_Options {
 	/**
 	 * Get the instantiated option instance
 	 *
-	 * @param  string $option_name The option for which you want to retrieve the instance.
+	 * @param  string      $option_name The option for which you want to retrieve the instance.
 	 *
-	 * @return  object|bool
+	 * @return object|bool
 	 */
 	public static function get_option_instance( $option_name ) {
 		if ( isset( self::$option_instances[ $option_name ] ) ) {
@@ -143,7 +143,7 @@ class WPSEO_Options {
 	 * Retrieve an array of the options which should be included in get_all() and reset().
 	 *
 	 * @static
-	 * @return  array  Array of option names
+	 * @return array Array of option names
 	 */
 	public static function get_option_names() {
 		static $option_names = array();
@@ -168,7 +168,7 @@ class WPSEO_Options {
 	 * well change between calls (enriched defaults and such)
 	 *
 	 * @static
-	 * @return  array  Array combining the values of all the options
+	 * @return array Array combining the values of all the options
 	 */
 	public static function get_all() {
 		return self::get_options( self::get_option_names() );
@@ -179,9 +179,9 @@ class WPSEO_Options {
 	 *
 	 * @static
 	 *
-	 * @param array $option_names An array of option names of the options you want to get.
+	 * @param  array $option_names An array of option names of the options you want to get.
 	 *
-	 * @return  array  Array combining the values of the requested options
+	 * @return array               Array combining the values of the requested options
 	 */
 	public static function get_options( array $option_names ) {
 		$options      = array();
@@ -201,9 +201,9 @@ class WPSEO_Options {
 	 *
 	 * @static
 	 *
-	 * @param string $option_name the name of the option you want to get.
+	 * @param  string $option_name the name of the option you want to get.
 	 *
-	 * @return array Array containing the requested option
+	 * @return array               Array containing the requested option
 	 */
 	public static function get_option( $option_name ) {
 		$option = null;
@@ -225,13 +225,13 @@ class WPSEO_Options {
 	/**
 	 * Run the clean up routine for one or all options
 	 *
-	 * @param  array|string $option_name     (optional) the option you want to clean or an array of
+	 * @param array|string $option_name (optional) the option you want to clean or an array of
 	 *                                       option names for the options you want to clean.
 	 *                                       If not set, all options will be cleaned.
-	 * @param  string       $current_version (optional) Version from which to upgrade, if not set,
+	 * @param string $current_version (optional) Version from which to upgrade, if not set,
 	 *                                       version specific upgrades will be disregarded.
 	 *
-	 * @return  void
+	 * @return void
 	 */
 	public static function clean_up( $option_name = null, $current_version = null ) {
 		if ( isset( $option_name ) && is_string( $option_name ) && $option_name !== '' ) {
@@ -262,7 +262,7 @@ class WPSEO_Options {
 	/**
 	 * Check that all options exist in the database and add any which don't
 	 *
-	 * @return  void
+	 * @return void
 	 */
 	public static function ensure_options_exist() {
 		foreach ( self::$option_instances as $instance ) {
@@ -364,7 +364,7 @@ class WPSEO_Options {
 	 *
 	 * @param  int|string $blog_id Blog id of the blog for which to reset the options.
 	 *
-	 * @return  void
+	 * @return void
 	 */
 	public static function reset_ms_blog( $blog_id ) {
 		if ( is_multisite() ) {
