@@ -173,11 +173,11 @@ function wpseo_save_what( $what ) {
  * Helper function to update a post's meta data, returning relevant information
  * about the information updated and the results or the meta update.
  *
- * @param int    $post_id         Post ID.
- * @param string $new_meta_value  New meta value to record.
- * @param string $orig_meta_value Original meta value.
- * @param string $meta_key        Meta key string.
- * @param string $return_key      Return key string to use in results.
+ * @param  int    $post_id         Post ID.
+ * @param  string $new_meta_value  New meta value to record.
+ * @param  string $orig_meta_value Original meta value.
+ * @param  string $meta_key        Meta key string.
+ * @param  string $return_key      Return key string to use in results.
  *
  * @return string
  */
@@ -288,10 +288,10 @@ function wpseo_save_all( $what ) {
 /**
  * Insert a new value
  *
- * @param string $what     Item type (such as title).
- * @param int    $post_id  Post ID.
- * @param string $new      New value to record.
- * @param string $original Original value.
+ * @param  string $what     Item type (such as title).
+ * @param  int    $post_id  Post ID.
+ * @param  string $new      New value to record.
+ * @param  string $original Original value.
  *
  * @return string
  */
@@ -363,10 +363,10 @@ add_action( 'wp_ajax_get_term_keyword_usage',  'ajax_get_term_keyword_usage' );
 /**
  * Removes stopword from the sample permalink that is generated in an AJAX request
  *
- * @param array  $permalink The permalink generated for this post by WordPress.
- * @param int    $post_ID The ID of the post.
- * @param string $title The title for the post that the user used.
- * @param string $name The name for the post that the user used.
+ * @param  array  $permalink The permalink generated for this post by WordPress.
+ * @param  int    $post_ID   The ID of the post.
+ * @param  string $title     The title for the post that the user used.
+ * @param  string $name      The name for the post that the user used.
  *
  * @return array
  */
