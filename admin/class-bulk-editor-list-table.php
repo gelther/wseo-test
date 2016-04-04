@@ -378,7 +378,7 @@ class WPSEO_Bulk_List_Table extends WP_List_Table {
 
 				if ( is_array( $post_types ) && $post_types !== array() ) {
 					foreach ( $post_types as $post_type ) {
-						$obj = get_post_type_object( $post_type->post_type );
+						$obj      = get_post_type_object( $post_type->post_type );
 						$options .= sprintf( '<option value="%2$s" %3$s>%1$s</option>', $obj->labels->name, $post_type->post_type, selected( $selected, $post_type->post_type, false ) );
 					}
 				}
