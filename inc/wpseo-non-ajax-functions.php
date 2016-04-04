@@ -136,11 +136,11 @@ else {
  *
  * @since    1.4.14
  *
- * @param WP_Upgrader $upgrader_object Upgrader object instance.
- * @param array       $context_array   Context data array.
- * @param mixed       $themes          Optional themes set.
+ * @param  WP_Upgrader $upgrader_object Upgrader object instance.
+ * @param  array       $context_array   Context data array.
+ * @param  mixed       $themes          Optional themes set.
  *
- * @return  void
+ * @return void
  */
 function wpseo_upgrader_process_complete( $upgrader_object, $context_array, $themes = null ) {
 	$options = get_option( 'wpseo' );
@@ -187,10 +187,10 @@ function wpseo_upgrader_process_complete( $upgrader_object, $context_array, $the
  *
  * @since 1.4.14
  *
- * @param   array           $update_actions Updated actions set.
- * @param   WP_Theme|string $updated_theme  Theme object instance or stylesheet name.
+ * @param  array           $update_actions Updated actions set.
+ * @param  WP_Theme|string $updated_theme  Theme object instance or stylesheet name.
  *
- * @return  array  $update_actions    Unchanged array
+ * @return array           $update_actions Unchanged array
  */
 function wpseo_update_theme_complete_actions( $update_actions, $updated_theme ) {
 	$options = get_option( 'wpseo' );
@@ -463,9 +463,9 @@ add_action( 'wp_enqueue_scripts', 'wpseo_admin_bar_css' );
 /**
  * Allows editing of the meta fields through weblog editors like Marsedit.
  *
- * @param array $allcaps Capabilities that must all be true to allow action.
- * @param array $cap     Array of capabilities to be checked, unused here.
- * @param array $args    List of arguments for the specific cap to be checked.
+ * @param  array $allcaps Capabilities that must all be true to allow action.
+ * @param  array $cap     Array of capabilities to be checked, unused here.
+ * @param  array $args    List of arguments for the specific cap to be checked.
  *
  * @return array $allcaps
  */
@@ -510,8 +510,8 @@ function wpseo_defaults() {
  * @deprecated use WPSEO_Utils::translate_score()
  * @see        WPSEO_Utils::translate_score()
  *
- * @param int  $val       The decimal score to translate.
- * @param bool $css_value Whether to return the i18n translated score or the CSS class value.
+ * @param  int    $val       The decimal score to translate.
+ * @param  bool   $css_value Whether to return the i18n translated score or the CSS class value.
  *
  * @return string
  */
