@@ -110,7 +110,7 @@ class WPSEO_Utils {
 	/**
 	 * Check whether a url is relative
 	 *
-	 * @param string $url URL string to check.
+	 * @param  string $url URL string to check.
 	 *
 	 * @return bool
 	 */
@@ -142,7 +142,7 @@ class WPSEO_Utils {
 	 *
 	 * Replace line breaks, carriage returns, tabs with a space, then remove double spaces.
 	 *
-	 * @param string $string String input to standardize.
+	 * @param  string $string String input to standardize.
 	 *
 	 * @return string
 	 */
@@ -155,7 +155,7 @@ class WPSEO_Utils {
 	 *
 	 * @static
 	 *
-	 * @param string $text Input string that might contain shortcodes.
+	 * @param  string $text Input string that might contain shortcodes.
 	 *
 	 * @return string $text string without shortcodes
 	 */
@@ -169,9 +169,9 @@ class WPSEO_Utils {
 	 *
 	 * @static
 	 *
-	 * @param mixed $value Value to trim or array of values to trim.
+	 * @param  mixed $value Value to trim or array of values to trim.
 	 *
-	 * @return mixed Trimmed value or array of trimmed values
+	 * @return mixed        Trimmed value or array of trimmed values
 	 */
 	public static function trim_recursive( $value ) {
 		if ( is_string( $value ) ) {
@@ -189,8 +189,8 @@ class WPSEO_Utils {
 	 *
 	 * @static
 	 *
-	 * @param int  $val       The decimal score to translate.
-	 * @param bool $css_value Whether to return the i18n translated score or the CSS class value.
+	 * @param  int    $val       The decimal score to translate.
+	 * @param  bool   $css_value Whether to return the i18n translated score or the CSS class value.
 	 *
 	 * @return string
 	 */
@@ -217,7 +217,7 @@ class WPSEO_Utils {
 	 * remove line breaks, tabs and extra white space,
 	 * strip octets - BUT DO NOT REMOVE (part of) VARIABLES WHICH WILL BE REPLACED.
 	 *
-	 * @param string $value String value to sanitize.
+	 * @param  string $value String value to sanitize.
 	 *
 	 * @return string
 	 */
@@ -263,8 +263,8 @@ class WPSEO_Utils {
 	 *
 	 * @todo [JRF => whomever] check/improve url verification
 	 *
-	 * @param string $value             String URL value to sanitize.
-	 * @param array  $allowed_protocols Optional set of allowed protocols.
+	 * @param  string $value             String URL value to sanitize.
+	 * @param  array  $allowed_protocols Optional set of allowed protocols.
 	 *
 	 * @return string
 	 */
@@ -277,7 +277,7 @@ class WPSEO_Utils {
 	 *
 	 * @static
 	 *
-	 * @param mixed $value Value to validate.
+	 * @param  mixed $value Value to validate.
 	 *
 	 * @return bool
 	 */
@@ -299,7 +299,7 @@ class WPSEO_Utils {
 	 *
 	 * @static
 	 *
-	 * @param mixed $value Value to cast.
+	 * @param  mixed $value Value to cast.
 	 *
 	 * @return bool
 	 */
@@ -364,9 +364,9 @@ class WPSEO_Utils {
 	 *
 	 * @static
 	 *
-	 * @param mixed $value Value to validate.
+	 * @param  mixed    $value Value to validate.
 	 *
-	 * @return int|bool int or false in case of failure to convert to int
+	 * @return int|bool        int or false in case of failure to convert to int
 	 */
 	public static function validate_int( $value ) {
 		if ( ! isset( self::$has_filters ) ) {
@@ -386,7 +386,7 @@ class WPSEO_Utils {
 	 *
 	 * @static
 	 *
-	 * @param mixed $value Value to cast.
+	 * @param  mixed    $value Value to cast.
 	 *
 	 * @return int|bool
 	 */
@@ -545,8 +545,8 @@ class WPSEO_Utils {
 	/**
 	 * Cleanup invalidated database cache
 	 *
-	 * @param null|string $type      The type of sitemap to clear cache for.
-	 * @param null|string $validator The validator to clear cache of.
+	 * @param  null|string $type      The type of sitemap to clear cache for.
+	 * @param  null|string $validator The validator to clear cache of.
 	 *
 	 * @return void
 	 */
@@ -593,10 +593,10 @@ class WPSEO_Utils {
 	 *
 	 * Example key format for type "post", page 1: wpseo_sitemap_post_1:akfw3e_23azBa
 	 *
-	 * @param null|string $type The type to get the key for. Null or self::SITEMAP_INDEX_TYPE for index cache.
-	 * @param int         $page The page of cache to get the key for.
+	 * @param  null|string $type The type to get the key for. Null or self::SITEMAP_INDEX_TYPE for index cache.
+	 * @param  int         $page The page of cache to get the key for.
 	 *
-	 * @return string The key where the cache is stored on.
+	 * @return string            The key where the cache is stored on.
 	 */
 	public static function get_sitemap_cache_key( $type = null, $page = 1 ) {
 		// Using SITEMAP_INDEX_TYPE for sitemap index cache.
@@ -622,11 +622,11 @@ class WPSEO_Utils {
 	 * When there are more 'extremely long' post types, changes are they have variations in either the start or ending.
 	 * Because of this, we cut out the excess in the middle which should result in less chance of collision.
 	 *
-	 * @param string $type The type of sitemap to be used.
-	 * @param string $prefix The part before the type in the cache key. Only the length is used.
-	 * @param string $postfix The part after the type in the cache key. Only the length is used.
+	 * @param  string $type    The type of sitemap to be used.
+	 * @param  string $prefix  The part before the type in the cache key. Only the length is used.
+	 * @param  string $postfix The part after the type in the cache key. Only the length is used.
 	 *
-	 * @return string The type with a safe length to use
+	 * @return string          The type with a safe length to use
 	 *
 	 * @throws OutOfRangeException When there is less than 15 characters of space for a key that is originally longer.
 	 */
@@ -669,9 +669,9 @@ class WPSEO_Utils {
 	/**
 	 * Get the cache validator for the specified type
 	 *
-	 * @param string|null $type Provide a type for a specific type validator, null for global validator.
+	 * @param  string|null $type Provide a type for a specific type validator, null for global validator.
 	 *
-	 * @return string Validator to be used to generate the cache key.
+	 * @return string            Validator to be used to generate the cache key.
 	 */
 	public static function get_sitemap_cache_validator_key( $type = null ) {
 		if ( is_null( $type ) ) {
@@ -690,9 +690,9 @@ class WPSEO_Utils {
 	 * With the type parameter the validator for that specific
 	 *  type can be invalidated
 	 *
-	 * @param string|null $type Provide a type for a specific type validator, null for global validator.
+	 * @param  string|null $type Provide a type for a specific type validator, null for global validator.
 	 *
-	 * @return null|string The validator for the supplied type.
+	 * @return null|string       The validator for the supplied type.
 	 */
 	private static function get_sitemap_cache_validator( $type = null ) {
 		$key = self::get_sitemap_cache_validator_key( $type );
@@ -712,9 +712,9 @@ class WPSEO_Utils {
 	/**
 	 * Refresh the cache validator value
 	 *
-	 * @param string|null $type Provide a type for a specific type validator, null for global validator.
+	 * @param  string|null $type Provide a type for a specific type validator, null for global validator.
 	 *
-	 * @return bool True if validator key has been saved as option.
+	 * @return bool              True if validator key has been saved as option.
 	 */
 	private static function new_sitemap_cache_validator( $type = null ) {
 		$key = self::get_sitemap_cache_validator_key( $type );
@@ -743,9 +743,9 @@ class WPSEO_Utils {
 	 *
 	 * This is base64 (numeric + alpha + alpha upper case) without the 0.
 	 *
-	 * @param int $input The number that has to be converted to base 61.
+	 * @param  int    $input The number that has to be converted to base 61.
 	 *
-	 * @return string Base 61 converted string.
+	 * @return string        Base 61 converted string.
 	 *
 	 * @throws InvalidArgumentException When the input is not an integer.
 	 */
@@ -783,19 +783,19 @@ class WPSEO_Utils {
 	 *
 	 * @since 1.5.0
 	 *
-	 * @param mixed  $number1   Scalar (string/int/float/bool).
-	 * @param string $action    Calculation action to execute. Valid input:
+	 * @param mixed  $number1 Scalar (string/int/float/bool).
+	 * @param string $action  Calculation action to execute. Valid input:
 	 *                            '+' or 'add' or 'addition',
 	 *                            '-' or 'sub' or 'subtract',
 	 *                            '*' or 'mul' or 'multiply',
 	 *                            '/' or 'div' or 'divide',
 	 *                            '%' or 'mod' or 'modulus'
 	 *                            '=' or 'comp' or 'compare'.
-	 * @param mixed  $number2   Scalar (string/int/float/bool).
-	 * @param bool   $round     Whether or not to round the result. Defaults to false.
+	 * @param mixed $number2 Scalar (string/int/float/bool).
+	 * @param bool  $round   Whether or not to round the result. Defaults to false.
 	 *                          Will be disregarded for a compare operation.
-	 * @param int    $decimals  Decimals for rounding operation. Defaults to 0.
-	 * @param int    $precision Calculation precision. Defaults to 10.
+	 * @param  int   $decimals  Decimals for rounding operation. Defaults to 0.
+	 * @param  int   $precision Calculation precision. Defaults to 10.
 	 *
 	 * @return mixed            Calculation Result or false if either or the numbers isn't scalar or
 	 *                          an invalid operation was passed
@@ -910,9 +910,9 @@ class WPSEO_Utils {
 	 *
 	 * @deprecated Passes through to PHP call, no longer used in code.
 	 *
-	 * @param int    $type          Input type constant.
-	 * @param string $variable_name Variable name to get.
-	 * @param int    $filter        Filter to apply.
+	 * @param  int    $type          Input type constant.
+	 * @param  string $variable_name Variable name to get.
+	 * @param  int    $filter        Filter to apply.
 	 *
 	 * @return mixed
 	 */
@@ -923,7 +923,7 @@ class WPSEO_Utils {
 	/**
 	 * Trim whitespace and NBSP (Non-breaking space) from string
 	 *
-	 * @param string $string String input to trim.
+	 * @param  string $string String input to trim.
 	 *
 	 * @return string
 	 */
@@ -938,7 +938,7 @@ class WPSEO_Utils {
 	/**
 	 * Check if a string is a valid datetime
 	 *
-	 * @param string $datetime String input to check as valid input for DateTime class.
+	 * @param  string $datetime String input to check as valid input for DateTime class.
 	 *
 	 * @return bool
 	 */
@@ -963,7 +963,7 @@ class WPSEO_Utils {
 	 *
 	 * This method will parse the URL and combine them in one string.
 	 *
-	 * @param string $url URL string.
+	 * @param  string $url URL string.
 	 *
 	 * @return mixed
 	 */
@@ -992,7 +992,7 @@ class WPSEO_Utils {
 	/**
 	 * Get plugin name from file
 	 *
-	 * @param string $plugin Plugin path relative to plugins directory.
+	 * @param  string      $plugin Plugin path relative to plugins directory.
 	 *
 	 * @return string|bool
 	 */
@@ -1044,9 +1044,9 @@ class WPSEO_Utils {
 	/**
 	 * Wrapper for encoding the array as a json string. Includes a fallback if wp_json_encode doesn't exists
 	 *
-	 * @param array $array_to_encode The array which will be encoded.
-	 * @param int   $options		 Optional. Array with options which will be passed in to the encoding methods.
-	 * @param int   $depth    		 Optional. Maximum depth to walk through $data. Must be greater than 0. Default 512.
+	 * @param  array        $array_to_encode The array which will be encoded.
+	 * @param  int          $options         Optional. Array with options which will be passed in to the encoding methods.
+	 * @param  int          $depth           Optional. Maximum depth to walk through $data. Must be greater than 0. Default 512.
 	 *
 	 * @return false|string
 	 */
