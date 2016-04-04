@@ -150,7 +150,7 @@ class WPSEO_Import_WPSEO extends WPSEO_Import_External {
 	/**
 	 * Getting the robot config by given wpSEO robots value.
 	 *
-	 * @param string $wpseo_robots The value in wpSEO that needs to be converted to the Yoast format.
+	 * @param  string $wpseo_robots The value in wpSEO that needs to be converted to the Yoast format.
 	 *
 	 * @return array
 	 */
