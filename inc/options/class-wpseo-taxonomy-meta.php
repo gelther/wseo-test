@@ -40,15 +40,15 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	 * @static
 	 */
 	public static $defaults_per_term = array(
-		'wpseo_title'           => '',
-		'wpseo_desc'            => '',
-		'wpseo_metakey'         => '',
-		'wpseo_canonical'       => '',
-		'wpseo_bctitle'         => '',
-		'wpseo_noindex'         => 'default',
-		'wpseo_sitemap_include' => '-',
-		'wpseo_focuskw'         => '',
-		'wpseo_linkdex'         => '',
+		'wpseo_title'                   => '',
+		'wpseo_desc'                    => '',
+		'wpseo_metakey'                 => '',
+		'wpseo_canonical'               => '',
+		'wpseo_bctitle'                 => '',
+		'wpseo_noindex'                 => 'default',
+		'wpseo_sitemap_include'         => '-',
+		'wpseo_focuskw'                 => '',
+		'wpseo_linkdex'                 => '',
 
 		// Social fields.
 		'wpseo_opengraph-title'         => '',
@@ -474,8 +474,8 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	 */
 	public static function set_values( $term_id, $taxonomy, array $meta_values ) {
 		/* Validate the post values */
-		$old      = self::get_term_meta( $term_id, $taxonomy );
-		$clean    = self::validate_term_meta_data( $meta_values, $old );
+		$old   = self::get_term_meta( $term_id, $taxonomy );
+		$clean = self::validate_term_meta_data( $meta_values, $old );
 
 		self::save_clean_values( $term_id, $taxonomy, $clean );
 	}
@@ -510,7 +510,7 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 		$tax_meta = self::get_tax_meta();
 
 
-		$found    = array();
+		$found = array();
 		// Todo check for terms of all taxonomies, not only the current taxonomy.
 		foreach ( $tax_meta as $taxonomy_name => $terms ) {
 			foreach ( $terms as $term_id => $meta_values ) {
