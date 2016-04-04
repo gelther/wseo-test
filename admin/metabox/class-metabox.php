@@ -105,7 +105,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	 *
 	 * @param  string $post_type (optional) The post type to test, defaults to the current post post_type.
 	 *
-	 * @return  bool        Whether or not the meta box (and associated columns etc) should be hidden
+	 * @return bool              Whether or not the meta box (and associated columns etc) should be hidden
 	 */
 	function is_metabox_hidden( $post_type = null ) {
 		if ( ! isset( $post_type ) && ( isset( $GLOBALS['post'] ) && ( is_object( $GLOBALS['post'] ) && isset( $GLOBALS['post']->post_type ) ) ) ) {
@@ -249,7 +249,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	/**
 	 * Retrieves the title template.
 	 *
-	 * @param object $post metabox post.
+	 * @param  object $post metabox post.
 	 *
 	 * @return string
 	 */
@@ -269,7 +269,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	/**
 	 * Retrieves the metadesc template.
 	 *
-	 * @param object $post metabox post.
+	 * @param  object $post metabox post.
 	 *
 	 * @return string
 	 */
@@ -289,7 +289,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	/**
 	 * Determines the date to be displayed in the snippet preview
 	 *
-	 * @param WP_Post $post The metabox post.
+	 * @param  WP_Post $post The metabox post.
 	 *
 	 * @return string
 	 */
@@ -316,7 +316,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	/**
 	 * Pass some variables to js for the edit / post page overview, snippet preview, etc.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function localize_shortcode_plugin_script() {
 		return array(
@@ -467,7 +467,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	/**
 	 * Gets the table contents for the metabox tab.
 	 *
-	 * @param string $tab_name Tab for which to retrieve the field definitions.
+	 * @param  string $tab_name Tab for which to retrieve the field definitions.
 	 *
 	 * @return string
 	 */
@@ -486,10 +486,10 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	 *
 	 * @todo [JRF] check if $class is added appropriately everywhere
 	 *
-	 * @param   array  $meta_field_def Contains the vars based on which output is generated.
-	 * @param   string $key            Internal key (without prefix).
+	 * @param  array  $meta_field_def Contains the vars based on which output is generated.
+	 * @param  string $key            Internal key (without prefix).
 	 *
-	 * @return  string
+	 * @return string
 	 */
 	function do_meta_box( $meta_field_def, $key = '' ) {
 		$content      = '';
@@ -655,9 +655,9 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	 *
 	 * @internal $_POST parameters are validated via sanitize_post_meta()
 	 *
-	 * @param int $post_id Post ID.
+	 * @param  int       $post_id Post ID.
 	 *
-	 * @return  bool|void   Boolean false if invalid save post request
+	 * @return bool|void          Boolean false if invalid save post request
 	 */
 	function save_postdata( $post_id ) {
 		if ( $post_id === null ) {
@@ -766,7 +766,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	/**
 	 * Pass some variables to js for upload module.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function localize_media_script() {
 		return array(
@@ -777,7 +777,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	/**
 	 * Retrieve a post date when post is published, or return current date when it's not.
 	 *
-	 * @param WP_Post $post The post for which to retrieve the post date.
+	 * @param  WP_Post $post The post for which to retrieve the post date.
 	 *
 	 * @return string
 	 */
@@ -795,7 +795,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	/**
 	 * Returns post in metabox context
 	 *
-	 * @returns WP_Post|array
+	 * @return s WP_Post|array
 	 */
 	protected function get_metabox_post() {
 		if ( $post = filter_input( INPUT_GET, 'post' ) ) {
@@ -968,7 +968,7 @@ SVG;
 	/**
 	 * Returns whether or not showing the date in the snippet preview is enabled.
 	 *
-	 * @param WP_Post $post The post to retrieve this for.
+	 * @param  WP_Post $post The post to retrieve this for.
 	 * @return bool
 	 */
 	private function is_show_date_enabled( $post ) {
@@ -1003,7 +1003,7 @@ SVG;
 	 *
 	 * @param  string $post_type The post type for which to get the meta fields.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function get_meta_boxes( $post_type = 'post' ) {
 		_deprecated_function( __METHOD__, 'WPSEO 1.5.0', 'WPSEO_Meta::get_meta_field_defs()' );
@@ -1027,7 +1027,7 @@ SVG;
 	/**
 	 * @deprecated 3.0 Removed, use javascript functions instead
 	 *
-	 * @param string $string Deprecated.
+	 * @param  string $string Deprecated.
 	 *
 	 * @return string
 	 */
@@ -1073,7 +1073,7 @@ SVG;
 	/**
 	 * @deprecated 3.0 Use WPSEO_Meta_Columns::column_heading instead.
 	 *
-	 * @param array $columns Already existing columns.
+	 * @param  array $columns Already existing columns.
 	 *
 	 * @return array
 	 */
@@ -1102,7 +1102,7 @@ SVG;
 	/**
 	 * @deprecated 3.0 Use WPSEO_Meta_Columns::column_sort instead.
 	 *
-	 * @param array $columns appended with their orderby variable.
+	 * @param  array $columns appended with their orderby variable.
 	 *
 	 * @return array
 	 */
@@ -1117,7 +1117,7 @@ SVG;
 	/**
 	 * @deprecated 3.0 Use WPSEO_Meta_Columns::column_sort_orderby instead.
 	 *
-	 * @param array $vars Query variables.
+	 * @param  array $vars Query variables.
 	 *
 	 * @return array
 	 */
@@ -1132,9 +1132,9 @@ SVG;
 	/**
 	 * @deprecated 3.0 Use WPSEO_Meta_Columns::column_hidden instead.
 	 *
-	 * @param array|false $result The hidden columns.
-	 * @param string      $option The option name used to set which columns should be hidden.
-	 * @param WP_User     $user The User.
+	 * @param  array|false $result The hidden columns.
+	 * @param  string      $option The option name used to set which columns should be hidden.
+	 * @param  WP_User     $user   The User.
 	 *
 	 * @return array|false $result
 	 */
@@ -1149,7 +1149,7 @@ SVG;
 	/**
 	 * @deprecated 3.0 Use WPSEO_Meta_Columns::seo_score_posts_where instead.
 	 *
-	 * @param string $where  Where clause.
+	 * @param  string $where Where clause.
 	 *
 	 * @return string
 	 */
@@ -1164,7 +1164,7 @@ SVG;
 	/**
 	 * @deprecated 3.0 Removed.
 	 *
-	 * @param int $post_id Post to retrieve the title for.
+	 * @param  int    $post_id Post to retrieve the title for.
 	 *
 	 * @return string
 	 */
@@ -1188,7 +1188,7 @@ SVG;
 	/**
 	 * @deprecated 3.0
 	 *
-	 * @param object $post Post to output the page analysis results for.
+	 * @param  object $post Post to output the page analysis results for.
 	 *
 	 * @return string
 	 */
@@ -1202,9 +1202,9 @@ SVG;
 	/**
 	 * @deprecated 3.0
 	 *
-	 * @param  object $post Post to calculate the results for.
+	 * @param  object         $post Post to calculate the results for.
 	 *
-	 * @return  array|WP_Error
+	 * @return array|WP_Error
 	 */
 	public function calculate_results( $post ) {
 		_deprecated_function( 'WPSEO_Metabox::calculate_results', 'WPSEO 3.0' );
@@ -1216,9 +1216,9 @@ SVG;
 	/**
 	 * @deprecated 3.0
 	 *
-	 * @param WP_Post $post Post object instance.
+	 * @param  WP_Post $post Post object instance.
 	 *
-	 * @return    array
+	 * @return array
 	 */
 	public function get_sample_permalink( $post ) {
 		_deprecated_function( 'WPSEO_Metabox::get_sample_permalink', 'WPSEO 3.0' );
@@ -1242,8 +1242,8 @@ SVG;
 	/**
 	 * @deprecated 3.0
 	 *
-	 * @param string $inputString              String to clean up.
-	 * @param bool   $removeOptionalCharacters Whether or not to do a cleanup of optional chars too.
+	 * @param  string $inputString              String to clean up.
+	 * @param  bool   $removeOptionalCharacters Whether or not to do a cleanup of optional chars too.
 	 *
 	 * @return string
 	 */
@@ -1309,7 +1309,7 @@ SVG;
 	/**
 	 * @deprecated 3.0
 	 *
-	 * @param object $xpath An XPATH object of the current document.
+	 * @param  object $xpath An XPATH object of the current document.
 	 *
 	 * @return array
 	 */
@@ -1322,7 +1322,7 @@ SVG;
 	/**
 	 * @deprecated 3.0
 	 *
-	 * @param object $xpath An XPATH object of the current document.
+	 * @param  object $xpath An XPATH object of the current document.
 	 *
 	 * @return array
 	 */
@@ -1346,11 +1346,11 @@ SVG;
 	/**
 	 * @deprecated 3.0
 	 *
-	 * @param int    $post_id The post to find images in.
-	 * @param string $body    The post content to find images in.
-	 * @param array  $imgs    The array holding the image information.
+	 * @param  int    $post_id The post to find images in.
+	 * @param  string $body    The post content to find images in.
+	 * @param  array  $imgs    The array holding the image information.
 	 *
-	 * @return array The updated images array.
+	 * @return array           The updated images array.
 	 */
 	public function get_images_alt_text( $post_id, $body, $imgs ) {
 		_deprecated_function( 'WPSEO_Metabox::get_images_alt_text', 'WPSEO 3.0' );
@@ -1372,9 +1372,9 @@ SVG;
 	/**
 	 * @deprecated 3.0
 	 *
-	 * @param string $postcontent Post content to find headings in.
+	 * @param  string $postcontent Post content to find headings in.
 	 *
-	 * @return array Array of heading texts.
+	 * @return array               Array of heading texts.
 	 */
 	public function get_headings( $postcontent ) {
 		_deprecated_function( 'WPSEO_Metabox::get_headings', 'WPSEO 3.0' );
@@ -1409,9 +1409,9 @@ SVG;
 	/**
 	 * @deprecated 3.0
 	 *
-	 * @param object $post The post object.
+	 * @param  object $post The post object.
 	 *
-	 * @return string The post content.
+	 * @return string       The post content.
 	 */
 	public function get_body( $post ) {
 		_deprecated_function( 'WPSEO_Metabox::get_body', 'WPSEO 3.0' );
@@ -1422,7 +1422,7 @@ SVG;
 	/**
 	 * @deprecated 3.0
 	 *
-	 * @param string $body The post content to retrieve the first paragraph from.
+	 * @param  string $body The post content to retrieve the first paragraph from.
 	 *
 	 * @return string
 	 */
