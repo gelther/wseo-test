@@ -30,7 +30,7 @@ class WPSEO_Meta_Columns {
 	/**
 	 * Adds the column headings for the SEO plugin for edit posts / pages overview
 	 *
-	 * @param array $columns Already existing columns.
+	 * @param  array $columns Already existing columns.
 	 *
 	 * @return array
 	 */
@@ -78,7 +78,7 @@ class WPSEO_Meta_Columns {
 	/**
 	 * Indicate which of the SEO columns are sortable.
 	 *
-	 * @param array $columns appended with their orderby variable.
+	 * @param  array $columns appended with their orderby variable.
 	 *
 	 * @return array
 	 */
@@ -97,9 +97,9 @@ class WPSEO_Meta_Columns {
 	/**
 	 * Hide the SEO Title, Meta Desc and Focus KW columns if the user hasn't chosen which columns to hide
 	 *
-	 * @param array|false $result The hidden columns.
-	 * @param string      $option The option name used to set which columns should be hidden.
-	 * @param WP_User     $user The User.
+	 * @param  array|false $result The hidden columns.
+	 * @param  string      $option The option name used to set which columns should be hidden.
+	 * @param  WP_User     $user   The User.
 	 *
 	 * @return array|false $result
 	 */
@@ -148,9 +148,9 @@ class WPSEO_Meta_Columns {
 	 * Hacky way to get round the limitation that you can only have AND *or* OR relationship between
 	 * meta key clauses and not a combination - which is what we need.
 	 *
-	 * @param    string $where Where clause.
+	 * @param  string $where Where clause.
 	 *
-	 * @return    string
+	 * @return string
 	 */
 	public function seo_score_posts_where( $where ) {
 		global $wpdb;
@@ -171,7 +171,7 @@ class WPSEO_Meta_Columns {
 	/**
 	 * Modify the query based on the seo_filter variable in $_GET
 	 *
-	 * @param array $vars Query variables.
+	 * @param  array $vars Query variables.
 	 *
 	 * @return array
 	 */
@@ -209,8 +209,8 @@ class WPSEO_Meta_Columns {
 	/**
 	 * When there is a score just return this meta query array
 	 *
-	 * @param string $low The lowest number in the score range.
-	 * @param string $high The highest number in the score range.
+	 * @param  string $low  The lowest number in the score range.
+	 * @param  string $high The highest number in the score range.
 	 *
 	 * @return array
 	 */
@@ -244,8 +244,8 @@ class WPSEO_Meta_Columns {
 	/**
 	 * Get vars for noindex or na filters
 	 *
-	 * @param array  $vars The unmerged vars.
-	 * @param string $seo_filter The SEO filter.
+	 * @param  array  $vars       The unmerged vars.
+	 * @param  string $seo_filter The SEO filter.
 	 *
 	 * @return array
 	 */
@@ -288,7 +288,7 @@ class WPSEO_Meta_Columns {
 	/**
 	 * Returning filters when $order_by is matched in the if-statement
 	 *
-	 * @param string $order_by The ID of the column by which to order the posts.
+	 * @param  string $order_by The ID of the column by which to order the posts.
 	 *
 	 * @return array
 	 */
@@ -320,7 +320,7 @@ class WPSEO_Meta_Columns {
 	/**
 	 * Parsing the score column
 	 *
-	 * @param integer $post_id The ID of the post for which to show the score.
+	 * @param  integer $post_id The ID of the post for which to show the score.
 	 *
 	 * @return string
 	 */
@@ -384,7 +384,7 @@ class WPSEO_Meta_Columns {
 	 *
 	 * @param  string $post_type (optional) The post type to test, defaults to the current post post_type.
 	 *
-	 * @return  bool        Whether or not the meta box (and associated columns etc) should be hidden
+	 * @return bool              Whether or not the meta box (and associated columns etc) should be hidden
 	 */
 	private function is_metabox_hidden( $post_type = null ) {
 		if ( ! isset( $post_type ) &&  $get_post_type = filter_input( INPUT_GET, 'post_type' ) ) {
@@ -405,7 +405,7 @@ class WPSEO_Meta_Columns {
 	/**
 	 * Retrieve the page title.
 	 *
-	 * @param int $post_id Post to retrieve the title for.
+	 * @param  int    $post_id Post to retrieve the title for.
 	 *
 	 * @return string
 	 */
