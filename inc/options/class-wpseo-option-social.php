@@ -148,7 +148,7 @@ class WPSEO_Option_Social extends WPSEO_Option {
 						}
 						else {
 							foreach ( $dirty[ $key ] as $user_id => $fb_array ) {
-								/*
+								/**
 								 * @todo [JRF/JRF => Yoast/whomever] add user_id validation -
 								 * are these WP user-ids or FB user-ids ? Probably FB user-ids,
 								 * if so, find out the rules for FB user-ids

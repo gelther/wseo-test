@@ -343,7 +343,7 @@ function ajax_get_keyword_usage() {
 	);
 }
 
-add_action( 'wp_ajax_get_focus_keyword_usage',  'ajax_get_keyword_usage' );
+add_action( 'wp_ajax_get_focus_keyword_usage', 'ajax_get_keyword_usage' );
 
 /**
  * Retrieves the keyword for the keyword doubles of the termpages.
@@ -358,7 +358,7 @@ function ajax_get_term_keyword_usage() {
 	);
 }
 
-add_action( 'wp_ajax_get_term_keyword_usage',  'ajax_get_term_keyword_usage' );
+add_action( 'wp_ajax_get_term_keyword_usage', 'ajax_get_term_keyword_usage' );
 
 /**
  * Removes stopword from the sample permalink that is generated in an AJAX request
@@ -377,7 +377,7 @@ function wpseo_remove_stopwords_sample_permalink( $permalink, $post_ID, $title, 
 		return $permalink;
 	}
 
-	/*
+	/**
 	 * If the name is empty and the title is not, WordPress will generate a slug. In that case we want to remove stop
 	 * words from the slug.
 	 */

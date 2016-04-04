@@ -200,7 +200,7 @@ class WPSEO_Meta_Columns {
 		}
 
 		if ( isset( $vars['orderby'] ) ) {
-			$vars = array_merge( $vars,  $this->filter_order_by( $vars['orderby'] ) );
+			$vars = array_merge( $vars, $this->filter_order_by( $vars['orderby'] ) );
 		}
 
 		return $vars;
@@ -363,7 +363,7 @@ class WPSEO_Meta_Columns {
 						'column_sort',
 					), 10, 2 );
 
-					/*
+					/**
 					 * Use the `get_user_option_{$option}` filter to change the output of the get_user_option
 					 * function for the `manage{$screen}columnshidden` option, which is based on the current
 					 * admin screen. The admin screen we want to target is the `edit-{$post_type}` screen.

@@ -132,8 +132,8 @@ class WPSEO_Frontend {
 		}
 
 		if ( ( $this->options['disable-date'] === true ||
-		       $this->options['disable-author'] === true ) ||
-		     ( isset( $this->options['disable-post_formats'] ) && $this->options['disable-post_formats'] )
+				$this->options['disable-author'] === true ) ||
+			( isset( $this->options['disable-post_formats'] ) && $this->options['disable-post_formats'] )
 		) {
 			add_action( 'wp', array( $this, 'archive_redirect' ) );
 		}
@@ -141,7 +141,7 @@ class WPSEO_Frontend {
 			add_action( 'template_redirect', array( $this, 'attachment_redirect' ), 1 );
 		}
 
-		/*
+		/**
 		 * The setting to get here has been deprecated, but don't remove the code as that would break
 		 * the functionality for those that still have it!
 		 */

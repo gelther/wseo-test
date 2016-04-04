@@ -336,8 +336,8 @@ class Yoast_Form {
 			<span>', esc_html( $off_button ) ,'</span>
 			<span>', esc_html( $on_button ) ,'</span>
 			<a></a>
-		 </span>
-		 </label><div class="clear"></div></div>';
+		</span>
+		</label><div class="clear"></div></div>';
 	}
 
 	/**

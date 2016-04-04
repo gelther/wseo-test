@@ -202,16 +202,16 @@ function wpseo_update_theme_complete_actions( $update_actions, $updated_theme ) 
 
 	$theme = get_stylesheet();
 	if ( is_object( $updated_theme ) ) {
-		/*
+		/**
 		Bulk update and $updated_theme only contains info on which theme was last in the list
-		   of updated themes, so go & test
+			of updated themes, so go & test
 		*/
 
 		// Commented out? wpseo_title_test(); R.
 		wpseo_description_test();
 	}
 	elseif ( $updated_theme === $theme ) {
-		/*
+		/**
 		Single theme update for the active theme
 		*/
 

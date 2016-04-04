@@ -205,9 +205,9 @@ class WPSEO_Breadcrumbs {
 	 * @return object
 	 */
 	private function find_deepest_term( $terms ) {
-		/*
+		/**
 		Let's find the deepest term in this array, by looping through and then
-		   unsetting every term that is used as a parent by another one in the array.
+			unsetting every term that is used as a parent by another one in the array.
 		*/
 		$terms_by_id = array();
 		foreach ( $terms as $term ) {
@@ -218,9 +218,9 @@ class WPSEO_Breadcrumbs {
 		}
 		unset( $term );
 
-		/*
+		/**
 		As we could still have two subcategories, from different parent categories,
-		   let's pick the one with the lowest ordered ancestor.
+			let's pick the one with the lowest ordered ancestor.
 		*/
 		$parents_count = 0;
 		$term_order    = 9999; // Because ASC.
@@ -784,7 +784,7 @@ class WPSEO_Breadcrumbs {
 			}
 
 			if ( ( isset( $link['url'] ) && ( is_string( $link['url'] ) && $link['url'] !== '' ) ) &&
-			     ( $i < ( $this->crumb_count - 1 ) )
+				( $i < ( $this->crumb_count - 1 ) )
 			) {
 				if ( $i === 0 ) {
 					$link_output .= '<' . $this->element . ' typeof="v:Breadcrumb">';

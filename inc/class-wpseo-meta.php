@@ -700,9 +700,9 @@ class WPSEO_Meta {
 			return self::$defaults[ self::$meta_prefix . $key ];
 		}
 		else {
-			/*
+			/**
 			Shouldn't ever happen, means not one of our keys as there will always be a default available
-			   for all our keys
+				for all our keys
 			*/
 			return '';
 		}
@@ -741,10 +741,10 @@ class WPSEO_Meta {
 	public static function replace_meta( $old_metakey, $new_metakey, $delete_old = false ) {
 		global $wpdb;
 
-		/*
+		/**
 		Get only those rows where no wpseo meta values exist for the same post
-		   (with the exception of linkdex as that will be set independently of whether the post has been edited)
-		   @internal Query is pretty well optimized this way
+			(with the exception of linkdex as that will be set independently of whether the post has been edited)
+			@internal Query is pretty well optimized this way
 		*/
 		$query  = $wpdb->prepare(
 			"
@@ -1030,7 +1030,7 @@ class WPSEO_Meta {
 				'fields'         => 'ids',
 				'post_type'      => 'any',
 
-				/*
+				/**
 				 * We only need to return zero, one or two results:
 				 * - Zero: keyword hasn't been used before
 				 * - One: Keyword has been used once before

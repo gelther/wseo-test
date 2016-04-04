@@ -214,11 +214,11 @@ class WPSEO_Option_InternalLinks extends WPSEO_Option {
 					break;
 
 
-				/*
+				/**
 				Boolean fields
 				*/
 
-				/*
+				/**
 				Covers:
 				 * 		'breadcrumbs-blog-remove'
 				 * 		'breadcrumbs-boldlast'
@@ -284,9 +284,9 @@ class WPSEO_Option_InternalLinks extends WPSEO_Option {
 			}
 		}
 
-		/*
+		/**
 		Make sure the values of the variable option key options are cleaned as they
-			   may be retained and would not be cleaned/validated then
+				may be retained and would not be cleaned/validated then
 		*/
 		if ( is_array( $option_value ) && $option_value !== array() ) {
 

@@ -290,9 +290,9 @@ class WPSEO_Options {
 	 * @return void
 	 */
 	public static function initialize() {
-		/*
+		/**
 		Make sure title_test and description_test function are available even when called
-			   from the isolated activation
+				from the isolated activation
 		*/
 		require_once( WPSEO_PATH . 'inc/wpseo-non-ajax-functions.php' );
 
