@@ -221,6 +221,7 @@ class Yoast_Social_Facebook {
 	private function save_options() {
 		update_option( 'wpseo_social', $this->options );
 	}
+
 }
 
 /**
@@ -276,7 +277,7 @@ class Yoast_Social_Facebook_Form {
 			$nonce = $this->get_delete_nonce();
 		}
 
-		$return = '<li><a target="_blank" href="' . esc_url( $admin['link'] ) . '">' . esc_html( $admin['name'] ) . '</a>';
+		$return  = '<li><a target="_blank" href="' . esc_url( $admin['link'] ) . '">' . esc_html( $admin['name'] ) . '</a>';
 		$return .= ' - <strong><a href="' . $this->admin_delete_link( $admin_id, $nonce ) . '">X</a></strong></li>';
 
 		return $return;
@@ -479,4 +480,5 @@ class Yoast_Social_Facebook_Form {
 	private function get_delete_nonce() {
 		return wp_create_nonce( 'delfbadmin' );
 	}
+
 }

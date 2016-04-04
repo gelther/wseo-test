@@ -125,7 +125,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		add_action( 'init', array( $this, 'end_of_init' ), 999 );
 	}
 
-
 	/**
 	 * Make sure we can recognize the right action for the double cleaning
 	 */
@@ -178,14 +177,12 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		$this->defaults['title-404-wpseo']    = __( 'Page not found', 'wordpress-seo' ) . ' %%sep%% %%sitename%%';
 	}
 
-
 	/**
 	 * Add dynamically created default options based on available post types and taxonomies
 	 *
-	 * @return  void
+	 * @return void
 	 */
 	public function enrich_defaults() {
-
 		// Retrieve all the relevant post type and taxonomy arrays.
 		$post_type_names = get_post_types( array( 'public' => true ), 'names' );
 
@@ -241,60 +238,58 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		}
 	}
 
-
 	/**
 	 * Validate the option
 	 *
-	 * @param  array $dirty New value for the option.
-	 * @param  array $clean Clean value for the option, normally the defaults.
-	 * @param  array $old   Old value of the option.
+	 * @param array $dirty New value for the option.
+	 * @param array $clean Clean value for the option, normally the defaults.
+	 * @param array $old   Old value of the option.
 	 *
-	 * @return  array      Validated clean value for the option to be saved to the database
+	 * @return array Validated clean value for the option to be saved to the database
 	 */
 	protected function validate_option( $dirty, $clean, $old ) {
-
 		foreach ( $clean as $key => $value ) {
 			$switch_key = $this->get_switch_key( $key );
 
 			switch ( $switch_key ) {
-				/*
+				/**
 				Text fields
-				*/
+				 */
 
-				/*
+				/**
 				Covers:
-					   'title-home-wpseo', 'title-author-wpseo', 'title-archive-wpseo',
-					   'title-search-wpseo', 'title-404-wpseo'
-					   'title-' . $pt->name
-					   'title-ptarchive-' . $pt->name
-					   'title-tax-' . $tax->name
-				*/
+						'title-home-wpseo', 'title-author-wpseo', 'title-archive-wpseo',
+						'title-search-wpseo', 'title-404-wpseo'
+						'title-' . $pt->name
+						'title-ptarchive-' . $pt->name
+						'title-tax-' . $tax->name
+				 */
 				case 'title-':
 					if ( isset( $dirty[ $key ] ) ) {
 						$clean[ $key ] = WPSEO_Utils::sanitize_text_field( $dirty[ $key ] );
 					}
 					break;
 
-				/*
+				/**
 				Covers:
-					   'metadesc-home-wpseo', 'metadesc-author-wpseo', 'metadesc-archive-wpseo'
-					   'metadesc-' . $pt->name
-					   'metadesc-ptarchive-' . $pt->name
-					   'metadesc-tax-' . $tax->name
-				*/
+						'metadesc-home-wpseo', 'metadesc-author-wpseo', 'metadesc-archive-wpseo'
+						'metadesc-' . $pt->name
+						'metadesc-ptarchive-' . $pt->name
+						'metadesc-tax-' . $tax->name
+				 */
 				case 'metadesc-':
-					/*
+					/**
 					Covers:
-							 'metakey-home-wpseo', 'metakey-author-wpseo'
-							 'metakey-' . $pt->name
-							 'metakey-ptarchive-' . $pt->name
-							 'metakey-tax-' . $tax->name
-					*/
+							'metakey-home-wpseo', 'metakey-author-wpseo'
+							'metakey-' . $pt->name
+							'metakey-ptarchive-' . $pt->name
+							'metakey-tax-' . $tax->name
+					 */
 				case 'metakey-':
-					/*
+					/**
 					Covers:
-							 ''bctitle-ptarchive-' . $pt->name
-					*/
+							''bctitle-ptarchive-' . $pt->name
+					 */
 				case 'bctitle-ptarchive-':
 					if ( isset( $dirty[ $key ] ) && $dirty[ $key ] !== '' ) {
 						$clean[ $key ] = WPSEO_Utils::sanitize_text_field( $dirty[ $key ] );
@@ -332,11 +327,11 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 					}
 					break;
 
-				/*
+				/**
 				Boolean fields
-				*/
+				 */
 
-				/*
+				/**
 				Covers:
 				 *		'noindex-subpages-wpseo', 'noindex-author-wpseo', 'noindex-archive-wpseo'
 				 *		'noindex-' . $pt->name
@@ -352,7 +347,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 				 *		'showdate-'
 				 *		'showdate-'. $pt->name
 				 *		'hideeditbox-'
-				 *	 	'hideeditbox-'. $pt->name
+				 * 'hideeditbox-'. $pt->name
 				 *		'hideeditbox-tax-' . $tax->name
 				 */
 				default:
@@ -364,18 +359,17 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		return $clean;
 	}
 
-
 	/**
 	 * Clean a given option value
 	 *
-	 * @param  array  $option_value          Old (not merged with defaults or filtered) option value to
+	 * @param array $option_value Old (not merged with defaults or filtered) option value to
 	 *                                       clean according to the rules for this option.
-	 * @param  string $current_version       (optional) Version from which to upgrade, if not set,
+	 * @param string $current_version (optional) Version from which to upgrade, if not set,
 	 *                                       version specific upgrades will be disregarded.
-	 * @param  array  $all_old_option_values (optional) Only used when importing old options to have
+	 * @param array $all_old_option_values (optional) Only used when importing old options to have
 	 *                                       access to the real old values, in contrast to the saved ones.
 	 *
-	 * @return  array            Cleaned option
+	 * @return array Cleaned option
 	 */
 	protected function clean_option( $option_value, $current_version = null, $all_old_option_values = null ) {
 		static $original = null;
@@ -390,12 +384,12 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 			$original = $option_value;
 		}
 
-		/*
+		/**
 		Move options from very old option to this one
-			   @internal Don't rename to the 'current' names straight away as that would prevent
-			   the rename/unset combi below from working
-			   @todo [JRF] maybe figure out a smarter way to deal with this
-		*/
+				@internal Don't rename to the 'current' names straight away as that would prevent
+				the rename/unset combi below from working
+				@todo [JRF] maybe figure out a smarter way to deal with this
+		 */
 		$old_option = null;
 		if ( isset( $all_old_option_values ) ) {
 			// Ok, we have an import.
@@ -438,11 +432,11 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 
 		/*
 		Renaming these options to avoid ever overwritting these if a (bloody stupid) user /
-			   programmer would use any of the following as a custom post type or custom taxonomy:
-			   'home', 'author', 'archive', 'search', '404', 'subpages'
+				programmer would use any of the following as a custom post type or custom taxonomy:
+				'home', 'author', 'archive', 'search', '404', 'subpages'
 
-			   Similarly, renaming the tax options to avoid a custom post type and a taxonomy
-			   with the same name occupying the same option
+				Similarly, renaming the tax options to avoid a custom post type and a taxonomy
+				with the same name occupying the same option
 		*/
 		$rename = array(
 			'title-home'       => 'title-home-wpseo',
@@ -473,7 +467,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		 * have been registered, i.e. at the end of the init action.
 		 */
 		if ( isset( $original ) && current_filter() === 'wpseo_double_clean_titles' || did_action( 'wpseo_double_clean_titles' ) > 0 ) {
-			$rename          = array(
+			$rename = array(
 				'title-'           => 'title-tax-',
 				'metadesc-'        => 'metadesc-tax-',
 				'metakey-'         => 'metakey-tax-',
@@ -490,15 +484,15 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 						if (
 							( isset( $original[ $old_prefix . $tax ] ) && ! isset( $original[ $new_prefix . $tax ] ) )
 							&& ( ! isset( $option_value[ $new_prefix . $tax ] )
-							     || ( isset( $option_value[ $new_prefix . $tax ] )
-							          && $option_value[ $new_prefix . $tax ] === $defaults[ $new_prefix . $tax ] ) )
+								|| ( isset( $option_value[ $new_prefix . $tax ] )
+										&& $option_value[ $new_prefix . $tax ] === $defaults[ $new_prefix . $tax ] ) )
 						) {
 							$option_value[ $new_prefix . $tax ] = $original[ $old_prefix . $tax ];
 
-							/*
+							/**
 							Check if there is a cpt with the same name as the tax,
-								   if so, we should make sure that the old setting hasn't been removed
-							*/
+									if so, we should make sure that the old setting hasn't been removed
+							 */
 							if ( ! isset( $post_type_names[ $tax ] ) && isset( $option_value[ $old_prefix . $tax ] ) ) {
 								unset( $option_value[ $old_prefix . $tax ] );
 							}
@@ -519,10 +513,10 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		}
 
 
-		/*
+		/**
 		Make sure the values of the variable option key options are cleaned as they
-			   may be retained and would not be cleaned/validated then
-		*/
+				may be retained and would not be cleaned/validated then
+		 */
 		if ( is_array( $option_value ) && $option_value !== array() ) {
 			foreach ( $option_value as $key => $value ) {
 				$switch_key = $this->get_switch_key( $key );
@@ -543,15 +537,15 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 						}
 						break;
 
-					/*
+					/**
 					Boolean fields
-					*/
+					 */
 
-					/*
+					/**
 					Covers:
-					 * 		'noindex-'
-					 * 		'showdate-'
-					 * 		'hideeditbox-'
+					 * 'noindex-'
+					 * 'showdate-'
+					 * 'hideeditbox-'
 					 */
 					default:
 						$option_value[ $key ] = WPSEO_Utils::validate_bool( $value );
@@ -564,7 +558,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		return $option_value;
 	}
 
-
 	/**
 	 * Make sure that any set option values relating to post_types and/or taxonomies are retained,
 	 * even when that post_type or taxonomy may not yet have been registered.
@@ -572,12 +565,12 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 	 * @internal Overrule the abstract class version of this to make sure one extra renamed variable key
 	 * does not get removed. IMPORTANT: keep this method in line with the parent on which it is based!
 	 *
-	 * @param  array $dirty Original option as retrieved from the database.
-	 * @param  array $clean Filtered option where any options which shouldn't be in our option
+	 * @param array $dirty Original option as retrieved from the database.
+	 * @param array $clean Filtered option where any options which shouldn't be in our option
 	 *                      have already been removed and any options which weren't set
 	 *                      have been set to their defaults.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	protected function retain_variable_keys( $dirty, $clean ) {
 		if ( ( is_array( $this->variable_array_key_patterns ) && $this->variable_array_key_patterns !== array() ) && ( is_array( $dirty ) && $dirty !== array() ) ) {
@@ -610,4 +603,5 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 
 		return $clean;
 	}
+
 }

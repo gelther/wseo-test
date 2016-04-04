@@ -112,18 +112,18 @@ class WPSEO_Meta {
 				'help'          => '', // Translation added later.
 				'description'   => '<div id="focuskwresults"></div>',
 			),
-			'focuskw' => array(
+			'focuskw'            => array(
 				'type'  => 'hidden',
 				'title' => '',
 			),
-			'title'          => array(
+			'title'              => array(
 				'type'          => 'hidden',
 				'title'         => '', // Translation added later.
 				'default_value' => '',
 				'description'   => '', // Translation added later.
 				'help'          => '', // Translation added later.
 			),
-			'metadesc'       => array(
+			'metadesc'           => array(
 				'type'          => 'hidden',
 				'title'         => '', // Translation added later.
 				'default_value' => '',
@@ -132,27 +132,27 @@ class WPSEO_Meta {
 				'description'   => '', // Translation added later.
 				'help'          => '', // Translation added later.
 			),
-			'linkdex'        => array(
+			'linkdex'            => array(
 				'type'          => 'hidden',
 				'title'         => 'linkdex',
 				'default_value' => '0',
 				'description'   => '',
 			),
-			'metakeywords'   => array(
+			'metakeywords'       => array(
 				'type'          => 'text',
 				'title'         => '', // Translation added later.
 				'default_value' => '',
 				'class'         => 'metakeywords',
 				'description'   => '', // Translation added later.
 			),
-			'pageanalysis'   => array(
+			'pageanalysis'       => array(
 				'type'  => 'pageanalysis',
 				'title' => '', // Translation added later.
 				'help'  => '', // Translation added later.
 			),
 		),
 		'advanced' => array(
-			'meta-robots-noindex'  => array(
+			'meta-robots-noindex' => array(
 				'type'          => 'select',
 				'title'         => '', // Translation added later.
 				'default_value' => '0', // = post-type default.
@@ -207,7 +207,7 @@ class WPSEO_Meta {
 		'social'   => array(),
 		/* Fields we should validate & save, but not show on any form */
 		'non_form' => array(
-			'linkdex' => array(
+			'linkdex'  => array(
 				'type'          => null,
 				'default_value' => '0',
 			),
@@ -260,7 +260,6 @@ class WPSEO_Meta {
 	 * @return void
 	 */
 	public static function init() {
-
 		$options = WPSEO_Options::get_option( 'wpseo_social' );
 		foreach ( self::$social_networks as $option => $network ) {
 			if ( true === $options[ $option ] ) {
@@ -325,16 +324,15 @@ class WPSEO_Meta {
 		add_filter( 'add_post_metadata', array( __CLASS__, 'dont_save_meta_if_default' ), 10, 4 );
 	}
 
-
 	/**
 	 * Retrieve the meta box form field definitions for the given tab and post type.
 	 *
 	 * @static
 	 *
-	 * @param  string $tab       Tab for which to retrieve the field definitions.
-	 * @param  string $post_type Post type of the current post.
+	 * @param string $tab       Tab for which to retrieve the field definitions.
+	 * @param string $post_type Post type of the current post.
 	 *
-	 * @return array             Array containing the meta box field definitions
+	 * @return array Array containing the meta box field definitions
 	 */
 	public static function get_meta_field_defs( $tab, $post_type = 'post' ) {
 		if ( ! isset( self::$meta_fields[ $tab ] ) ) {
@@ -367,9 +365,9 @@ class WPSEO_Meta {
 				 * @deprecated use the 'wpseo_metabox_entries_general' filter instead
 				 * @see        WPSEO_Meta::get_meta_field_defs()
 				 *
-				 * @param      array $field_defs Metabox orm definitions.
+				 * @param array $field_defs Metabox orm definitions.
 				 *
-				 * @return     array
+				 * @return array
 				 */
 				$field_defs = apply_filters( 'wpseo_metabox_entries', $field_defs );
 				break;
@@ -428,8 +426,8 @@ class WPSEO_Meta {
 		 * Filter the WPSEO metabox form field definitions for a tab
 		 * {tab} can be 'general', 'advanced' or 'social'
 		 *
-		 * @param  array  $field_defs Metabox form definitions.
-		 * @param  string $post_type  Post type of the post the metabox is for, defaults to 'post'.
+		 * @param array  $field_defs Metabox form definitions.
+		 * @param string $post_type  Post type of the post the metabox is for, defaults to 'post'.
 		 *
 		 * @return array
 		 */
@@ -437,16 +435,15 @@ class WPSEO_Meta {
 		return apply_filters( 'wpseo_metabox_entries_' . $tab, $field_defs, $post_type );
 	}
 
-
 	/**
 	 * Validate the post meta values
 	 *
 	 * @static
 	 *
-	 * @param  mixed  $meta_value The new value.
-	 * @param  string $meta_key   The full meta key (including prefix).
+	 * @param mixed  $meta_value The new value.
+	 * @param string $meta_key   The full meta key (including prefix).
 	 *
-	 * @return string             Validated meta value
+	 * @return string Validated meta value
 	 */
 	public static function sanitize_post_meta( $meta_value, $meta_key ) {
 		$field_def = self::$meta_fields[ self::$fields_index[ $meta_key ]['subset'] ][ self::$fields_index[ $meta_key ]['key'] ];
@@ -505,7 +502,7 @@ class WPSEO_Meta {
 				if ( is_string( $meta_value ) ) {
 					// Remove line breaks and tabs.
 					// @todo [JRF => Yoast] verify that line breaks and the likes aren't allowed/recommended in meta header fields.
-					$meta_value = str_replace( array( "\n", "\r", "\t", '  ' ), ' ', $meta_value );
+					$meta_value = str_replace( array( "\n", "\r", '\t', '  ' ), ' ', $meta_value );
 					$clean      = WPSEO_Utils::sanitize_text_field( trim( $meta_value ) );
 				}
 				break;
@@ -528,7 +525,6 @@ class WPSEO_Meta {
 		return $clean;
 	}
 
-
 	/**
 	 * Validate a meta-robots-adv meta value
 	 *
@@ -536,9 +532,9 @@ class WPSEO_Meta {
 	 *
 	 * @static
 	 *
-	 * @param  array|string $meta_value The value to validate.
+	 * @param array|string $meta_value The value to validate.
 	 *
-	 * @return string       Clean value
+	 * @return string Clean value
 	 */
 	public static function validate_meta_robots_adv( $meta_value ) {
 		$clean   = self::$meta_fields['advanced']['meta-robots-adv']['default_value'];
@@ -578,19 +574,18 @@ class WPSEO_Meta {
 		return $clean;
 	}
 
-
 	/**
 	 * Prevent saving of default values and remove potential old value from the database if replaced by a default
 	 *
 	 * @static
 	 *
-	 * @param  null   $null       Old, disregard.
-	 * @param  int    $object_id  ID of the current object for which the meta is being updated.
-	 * @param  string $meta_key   The full meta key (including prefix).
-	 * @param  string $meta_value New meta value.
-	 * @param  string $prev_value The old meta value.
+	 * @param null   $null       Old, disregard.
+	 * @param int    $object_id  ID of the current object for which the meta is being updated.
+	 * @param string $meta_key   The full meta key (including prefix).
+	 * @param string $meta_value New meta value.
+	 * @param string $prev_value The old meta value.
 	 *
-	 * @return null|bool          true = stop saving, null = continue saving
+	 * @return null|bool true = stop saving, null = continue saving
 	 */
 	public static function remove_meta_if_default( $null, $object_id, $meta_key, $meta_value, $prev_value = '' ) {
 		/* If it's one of our meta fields, check against default */
@@ -608,18 +603,17 @@ class WPSEO_Meta {
 		return null; // Go on with the normal execution (update) in meta.php.
 	}
 
-
 	/**
 	 * Prevent adding of default values to the database
 	 *
 	 * @static
 	 *
-	 * @param  null   $null       Old, disregard.
-	 * @param  int    $object_id  ID of the current object for which the meta is being added.
-	 * @param  string $meta_key   The full meta key (including prefix).
-	 * @param  string $meta_value New meta value.
+	 * @param null   $null       Old, disregard.
+	 * @param int    $object_id  ID of the current object for which the meta is being added.
+	 * @param string $meta_key   The full meta key (including prefix).
+	 * @param string $meta_value New meta value.
 	 *
-	 * @return null|bool          true = stop saving, null = continue saving
+	 * @return null|bool true = stop saving, null = continue saving
 	 */
 	public static function dont_save_meta_if_default( $null, $object_id, $meta_key, $meta_value ) {
 		/* If it's one of our meta fields, check against default */
@@ -630,21 +624,19 @@ class WPSEO_Meta {
 		return null; // Go on with the normal execution (add) in meta.php.
 	}
 
-
 	/**
 	 * Is the given meta value the same as the default value ?
 	 *
 	 * @static
 	 *
-	 * @param  string $meta_key   The full meta key (including prefix).
-	 * @param  mixed  $meta_value The value to check.
+	 * @param string $meta_key   The full meta key (including prefix).
+	 * @param mixed  $meta_value The value to check.
 	 *
 	 * @return bool
 	 */
 	public static function meta_value_is_default( $meta_key, $meta_value ) {
 		return ( isset( self::$defaults[ $meta_key ] ) && $meta_value === self::$defaults[ $meta_key ] );
 	}
-
 
 	/**
 	 * Get a custom post meta value
@@ -655,10 +647,10 @@ class WPSEO_Meta {
 	 *
 	 * @static
 	 *
-	 * @param  string $key    Internal key of the value to get (without prefix).
-	 * @param  int    $postid Post ID of the post to get the value for.
+	 * @param string $key    Internal key of the value to get (without prefix).
+	 * @param int    $postid Post ID of the post to get the value for.
 	 *
-	 * @return string         All 'normal' values returned from get_post_meta() are strings.
+	 * @return string All 'normal' values returned from get_post_meta() are strings.
 	 *                        Objects and arrays are possible, but not used by this plugin
 	 *                        and therefore discarted (except when the special 'serialized' field def
 	 *                        value is set to true - only used by add-on plugins for now).
@@ -700,30 +692,28 @@ class WPSEO_Meta {
 			return self::$defaults[ self::$meta_prefix . $key ];
 		}
 		else {
-			/*
+			/**
 			Shouldn't ever happen, means not one of our keys as there will always be a default available
-			   for all our keys
-			*/
+				for all our keys
+			 */
 			return '';
 		}
 	}
-
 
 	/**
 	 * Update a meta value for a post
 	 *
 	 * @static
 	 *
-	 * @param  string $key        The internal key of the meta value to change (without prefix).
-	 * @param  mixed  $meta_value The value to set the meta to.
-	 * @param  int    $post_id    The ID of the post to change the meta for.
+	 * @param string $key        The internal key of the meta value to change (without prefix).
+	 * @param mixed  $meta_value The value to set the meta to.
+	 * @param int    $post_id    The ID of the post to change the meta for.
 	 *
-	 * @return bool   whether the value was changed
+	 * @return bool whether the value was changed
 	 */
 	public static function set_value( $key, $meta_value, $post_id ) {
 		return update_post_meta( $post_id, self::$meta_prefix . $key, $meta_value );
 	}
-
 
 	/**
 	 * Used for imports, this functions imports the value of $old_metakey into $new_metakey for those post
@@ -732,21 +722,21 @@ class WPSEO_Meta {
 	 *
 	 * @static
 	 *
-	 * @param  string $old_metakey The old key of the meta value.
-	 * @param  string $new_metakey The new key, usually the WPSEO meta key (including prefix).
-	 * @param  bool   $delete_old  Whether to delete the old meta key/value-sets.
+	 * @param string $old_metakey The old key of the meta value.
+	 * @param string $new_metakey The new key, usually the WPSEO meta key (including prefix).
+	 * @param bool   $delete_old  Whether to delete the old meta key/value-sets.
 	 *
 	 * @return void
 	 */
 	public static function replace_meta( $old_metakey, $new_metakey, $delete_old = false ) {
 		global $wpdb;
 
-		/*
+		/**
 		Get only those rows where no wpseo meta values exist for the same post
-		   (with the exception of linkdex as that will be set independently of whether the post has been edited)
-		   @internal Query is pretty well optimized this way
-		*/
-		$query  = $wpdb->prepare(
+			(with the exception of linkdex as that will be set independently of whether the post has been edited)
+			@internal Query is pretty well optimized this way
+		 */
+		$query = $wpdb->prepare(
 			"
 				SELECT `a`.*
 				FROM {$wpdb->postmeta} AS a
@@ -778,7 +768,6 @@ class WPSEO_Meta {
 		}
 	}
 
-
 	/**
 	 * General clean-up of the saved meta values
 	 * - Remove potentially lingering old meta keys
@@ -800,7 +789,7 @@ class WPSEO_Meta {
 		 * @todo [JRF => Yoast] find out all possible values which the old '_yoast_wpseo_meta-robots' could contain
 		 * to convert the data correctly
 		 */
-		$query  = $wpdb->prepare(
+		$query = $wpdb->prepare(
 			"
 				SELECT `a`.*
 				FROM {$wpdb->postmeta} AS a
@@ -925,7 +914,7 @@ class WPSEO_Meta {
 		 * Default values have already been removed, so we should have a small result set and
 		 * (hopefully) even smaller set of invalid results.
 		 */
-		$query  = $wpdb->prepare(
+		$query = $wpdb->prepare(
 			"SELECT meta_id, meta_value FROM {$wpdb->postmeta} WHERE meta_key = %s",
 			self::$meta_prefix . 'meta-robots-adv'
 		);
@@ -950,7 +939,6 @@ class WPSEO_Meta {
 		do_action( 'wpseo_meta_clean_up' );
 	}
 
-
 	/**
 	 * Recursively merge a variable number of arrays, using the left array as base,
 	 * giving priority to the right array.
@@ -970,7 +958,6 @@ class WPSEO_Meta {
 	 * @return array
 	 */
 	public static function array_merge_recursive_distinct() {
-
 		$arrays = func_get_args();
 		if ( count( $arrays ) < 2 ) {
 			if ( $arrays === array() ) {
@@ -1004,9 +991,9 @@ class WPSEO_Meta {
 	 *
 	 * @static
 	 *
-	 * @param  string $key Key of the value to get from $_POST.
+	 * @param string $key Key of the value to get from $_POST.
 	 *
-	 * @return string      Returns $_POST value, which will be a string the majority of the time
+	 * @return string Returns $_POST value, which will be a string the majority of the time
 	 *                     Will return empty string if key does not exists in $_POST
 	 */
 	public static function get_post_value( $key ) {
@@ -1030,7 +1017,7 @@ class WPSEO_Meta {
 				'fields'         => 'ids',
 				'post_type'      => 'any',
 
-				/*
+				/**
 				 * We only need to return zero, one or two results:
 				 * - Zero: keyword hasn't been used before
 				 * - One: Keyword has been used once before
@@ -1042,4 +1029,5 @@ class WPSEO_Meta {
 
 		return $get_posts->posts;
 	}
+
 } /* End of class */

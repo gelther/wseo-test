@@ -140,7 +140,7 @@ else {
  * @param array       $context_array   Context data array.
  * @param mixed       $themes          Optional themes set.
  *
- * @return  void
+ * @return void
  */
 function wpseo_upgrader_process_complete( $upgrader_object, $context_array, $themes = null ) {
 	$options = get_option( 'wpseo' );
@@ -187,10 +187,10 @@ function wpseo_upgrader_process_complete( $upgrader_object, $context_array, $the
  *
  * @since 1.4.14
  *
- * @param   array           $update_actions Updated actions set.
- * @param   WP_Theme|string $updated_theme  Theme object instance or stylesheet name.
+ * @param array           $update_actions Updated actions set.
+ * @param WP_Theme|string $updated_theme  Theme object instance or stylesheet name.
  *
- * @return  array  $update_actions    Unchanged array
+ * @return array $update_actions Unchanged array
  */
 function wpseo_update_theme_complete_actions( $update_actions, $updated_theme ) {
 	$options = get_option( 'wpseo' );
@@ -202,18 +202,18 @@ function wpseo_update_theme_complete_actions( $update_actions, $updated_theme ) 
 
 	$theme = get_stylesheet();
 	if ( is_object( $updated_theme ) ) {
-		/*
+		/**
 		Bulk update and $updated_theme only contains info on which theme was last in the list
-		   of updated themes, so go & test
-		*/
+			of updated themes, so go & test
+		 */
 
 		// Commented out? wpseo_title_test(); R.
 		wpseo_description_test();
 	}
 	elseif ( $updated_theme === $theme ) {
-		/*
+		/**
 		Single theme update for the active theme
-		*/
+		 */
 
 		// Commented out? wpseo_title_test(); R.
 		wpseo_description_test();
@@ -221,7 +221,6 @@ function wpseo_update_theme_complete_actions( $update_actions, $updated_theme ) 
 
 	return $update_actions;
 }
-
 
 /**
  * Adds an SEO admin bar menu with several options. If the current user is an admin he can also go straight to several settings menu's from here.
@@ -385,7 +384,7 @@ function wpseo_admin_bar_menu() {
 	$admin_menu = current_user_can( 'manage_options' );
 
 	if ( ! $admin_menu && is_multisite() ) {
-		$options = get_site_option( 'wpseo_ms' );
+		$options    = get_site_option( 'wpseo_ms' );
 		$admin_menu = ( $options['access'] === 'superadmin' && is_super_admin() );
 	}
 
@@ -488,7 +487,6 @@ function allow_custom_field_edits( $allcaps, $cap, $args ) {
 
 add_filter( 'user_has_cap', 'allow_custom_field_edits', 0, 3 );
 
-
 /********************** DEPRECATED FUNCTIONS **********************/
 
 /**
@@ -520,7 +518,6 @@ function wpseo_translate_score( $val, $css_value = true ) {
 
 	return WPSEO_Utils::translate_score();
 }
-
 
 /**
  * Check whether file editing is allowed for the .htaccess and robots.txt files

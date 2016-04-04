@@ -147,7 +147,6 @@ class Yoast_Form {
 	 * Generates the sidebar for admin pages.
 	 */
 	public function admin_sidebar() {
-
 		// No banners in Premium.
 		if ( class_exists( 'WPSEO_Product_Premium' ) ) {
 			$license_manager = new Yoast_Plugin_License_Manager( new WPSEO_Product_Premium() );
@@ -301,13 +300,12 @@ class Yoast_Form {
 	/**
 	 * Create a light switch input field.
 	 *
-	 * @param string  $var        The variable within the option to create the checkbox for.
-	 * @param string  $label      The label to show for the variable.
-	 * @param array   $buttons    Array of two labels for the buttons (defaults Off/On).
-	 * @param boolean $reverse    Reverse order of buttons (default true).
+	 * @param string  $var     The variable within the option to create the checkbox for.
+	 * @param string  $label   The label to show for the variable.
+	 * @param array   $buttons Array of two labels for the buttons (defaults Off/On).
+	 * @param boolean $reverse Reverse order of buttons (default true).
 	 */
 	public function light_switch( $var, $label, $buttons = array(), $reverse = true ) {
-
 		if ( ! isset( $this->options[ $var ] ) ) {
 			$this->options[ $var ] = false;
 		}
@@ -336,8 +334,8 @@ class Yoast_Form {
 			<span>', esc_html( $off_button ) ,'</span>
 			<span>', esc_html( $on_button ) ,'</span>
 			<a></a>
-		 </span>
-		 </label><div class="clear"></div></div>';
+		</span>
+		</label><div class="clear"></div></div>';
 	}
 
 	/**
@@ -357,7 +355,7 @@ class Yoast_Form {
 			'placeholder' => '',
 			'class'       => '',
 		) );
-		$val  = ( isset( $this->options[ $var ] ) ) ? $this->options[ $var ] : '';
+		$val = ( isset( $this->options[ $var ] ) ) ? $this->options[ $var ] : '';
 
 		$this->label( $label . ':', array( 'for' => $var ) );
 		echo '<input class="textinput ' . esc_attr( $attr['class'] ) . ' " placeholder="' . esc_attr( $attr['placeholder'] ) . '" type="text" id="', esc_attr( $var ), '" name="', esc_attr( $this->option_name ), '[', esc_attr( $var ), ']" value="', esc_attr( $val ), '"/>', '<br class="clear" />';
@@ -381,7 +379,7 @@ class Yoast_Form {
 			'rows'  => '',
 			'class' => '',
 		) );
-		$val  = ( isset( $this->options[ $var ] ) ) ? $this->options[ $var ] : '';
+		$val = ( isset( $this->options[ $var ] ) ) ? $this->options[ $var ] : '';
 
 		$this->label( $label . ':', array( 'for' => $var, 'class' => 'textinput' ) );
 		echo '<textarea cols="' . esc_attr( $attr['cols'] ) . '" rows="' . esc_attr( $attr['rows'] ) . '" class="textinput ' . esc_attr( $attr['class'] ) . '" id="' . esc_attr( $var ) . '" name="' . esc_attr( $this->option_name ) . '[' . esc_attr( $var ) . ']">' . esc_textarea( $val ) . '</textarea>' . '<br class="clear" />';
@@ -508,7 +506,6 @@ class Yoast_Form {
 		echo '</div><br/>';
 	}
 
-
 	/**
 	 * Create a toggle switch input field.
 	 *
@@ -545,4 +542,5 @@ class Yoast_Form {
 
 		echo '<a></a></div></fieldset><div class="clear"></div></div>' . "\n\n";
 	}
+
 }

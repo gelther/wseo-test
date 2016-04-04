@@ -77,7 +77,6 @@ class WPSEO_Frontend {
 	 * Adds and removes a lot of filters.
 	 */
 	protected function __construct() {
-
 		$this->options = WPSEO_Options::get_options( $this->required_options );
 
 		add_action( 'wp_head', array( $this, 'front_page_specific_init' ), 0 );
@@ -132,8 +131,8 @@ class WPSEO_Frontend {
 		}
 
 		if ( ( $this->options['disable-date'] === true ||
-		       $this->options['disable-author'] === true ) ||
-		     ( isset( $this->options['disable-post_formats'] ) && $this->options['disable-post_formats'] )
+				$this->options['disable-author'] === true ) ||
+			( isset( $this->options['disable-post_formats'] ) && $this->options['disable-post_formats'] )
 		) {
 			add_action( 'wp', array( $this, 'archive_redirect' ) );
 		}
@@ -141,7 +140,7 @@ class WPSEO_Frontend {
 			add_action( 'template_redirect', array( $this, 'attachment_redirect' ), 1 );
 		}
 
-		/*
+		/**
 		 * The setting to get here has been deprecated, but don't remove the code as that would break
 		 * the functionality for those that still have it!
 		 */
@@ -433,7 +432,6 @@ class WPSEO_Frontend {
 	 * @return string
 	 */
 	private function generate_title( $title, $separator_location ) {
-
 		if ( is_feed() ) {
 			return $title;
 		}
@@ -716,7 +714,6 @@ class WPSEO_Frontend {
 		return;
 	}
 
-
 	/**
 	 * Output the meta robots value.
 	 *
@@ -809,8 +806,8 @@ class WPSEO_Frontend {
 		$robotsstr = $robots['index'] . ',' . $robots['follow'];
 
 		if ( $robots['other'] !== array() ) {
-			$robots['other'] = array_unique( $robots['other'] ); // TODO Most likely no longer needed, needs testing.
-			$robotsstr .= ',' . implode( ',', $robots['other'] );
+			$robots['other']  = array_unique( $robots['other'] ); // TODO Most likely no longer needed, needs testing.
+			$robotsstr       .= ',' . implode( ',', $robots['other'] );
 		}
 
 		$robotsstr = preg_replace( '`^index,follow,?`', '', $robotsstr );
@@ -835,7 +832,7 @@ class WPSEO_Frontend {
 	 * @param array $robots  Robots data array.
 	 * @param int   $post_id The post ID for which to determine the $robots values, defaults to current post.
 	 *
-	 * @return    array
+	 * @return array
 	 */
 	public function robots_for_single_post( $robots, $post_id = 0 ) {
 		$noindex = WPSEO_Meta::get_value( 'meta-robots-noindex', $post_id );
@@ -1160,7 +1157,6 @@ class WPSEO_Frontend {
 	 * @return boolean Boolean indicating whether the publisher link was printed
 	 */
 	public function publisher() {
-
 		if ( $this->options['plus-publisher'] !== '' ) {
 			echo '<link rel="publisher" href="', esc_url( $this->options['plus-publisher'] ), '"/>', "\n";
 
@@ -1362,7 +1358,7 @@ class WPSEO_Frontend {
 				$post_data = $term;
 			}
 		}
-		else if ( ( ! is_string( $metadesc ) || '' === $metadesc ) && '' !== $template ) {
+		elseif ( ( ! is_string( $metadesc ) || '' === $metadesc ) && '' !== $template ) {
 			if ( ! isset( $term ) ) {
 				$term = $wp_query->get_queried_object();
 			}
@@ -1418,7 +1414,6 @@ class WPSEO_Frontend {
 	 * @return boolean Boolean indicating whether the noindex header was sent
 	 */
 	public function noindex_feed() {
-
 		if ( ( is_feed() || is_robots() ) && headers_sent() === false ) {
 			header( 'X-Robots-Tag: noindex, follow', true );
 
@@ -1514,7 +1509,6 @@ class WPSEO_Frontend {
 	 * @return boolean
 	 */
 	function replytocom_redirect() {
-
 		if ( isset( $_GET['replytocom'] ) && is_singular() ) {
 			$url          = get_permalink( $GLOBALS['post']->ID );
 			$hash         = sanitize_text_field( $_GET['replytocom'] );
@@ -1761,7 +1755,6 @@ class WPSEO_Frontend {
 	 * @return string
 	 */
 	function embed_rss( $content, $context = 'full' ) {
-
 		/**
 		 * Filter: 'wpseo_include_rss_footer' - Allow the the RSS footer to be dynamically shown/hidden
 		 *
@@ -1794,13 +1787,11 @@ class WPSEO_Frontend {
 		return $content;
 	}
 
-
 	/**
 	 * Used in the force rewrite functionality this retrieves the output, replaces the title with the proper SEO
 	 * title and then flushes the output.
 	 */
 	function flush_cache() {
-
 		global $wp_query;
 
 		if ( $this->ob_started !== true ) {
@@ -1925,4 +1916,5 @@ class WPSEO_Frontend {
 
 		return $keywords;
 	}
+
 } /* End of class */

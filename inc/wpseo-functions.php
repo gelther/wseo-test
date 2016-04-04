@@ -61,7 +61,6 @@ function wpseo_add_capabilities() {
 	}
 }
 
-
 /**
  * Remove the bulk edit capability from the proper default roles.
  *
@@ -84,7 +83,6 @@ function wpseo_remove_capabilities() {
 		}
 	}
 }
-
 
 /**
  * Replace `%%variable_placeholders%%` with their real value based on the current requested page/post/cpt
@@ -134,15 +132,15 @@ function wpseo_replace_vars( $string, $args, $omit = array() ) {
  *
  * @since 1.5.4
  *
- * @param  string $var              The name of the variable to replace, i.e. '%%var%%'
+ * @param string $var The name of the variable to replace, i.e. '%%var%%'
  *                                  - the surrounding %% are optional, name can only contain [A-Za-z0-9_-].
- * @param  mixed  $replace_function Function or method to call to retrieve the replacement value for the variable
+ * @param mixed $replace_function Function or method to call to retrieve the replacement value for the variable
  *                                  Uses the same format as add_filter/add_action function parameter and
  *                                  should *return* the replacement value. DON'T echo it.
- * @param  string $type             Type of variable: 'basic' or 'advanced', defaults to 'advanced'.
- * @param  string $help_text        Help text to be added to the help tab for this variable.
+ * @param string $type      Type of variable: 'basic' or 'advanced', defaults to 'advanced'.
+ * @param string $help_text Help text to be added to the help tab for this variable.
  *
- * @return bool  Whether the replacement function was succesfully registered
+ * @return bool Whether the replacement function was succesfully registered
  */
 function wpseo_register_var_replacement( $var, $replace_function, $type = 'advanced', $help_text = '' ) {
 	return WPSEO_Replace_Vars::register_replacement( $var, $replace_function, $type, $help_text );
@@ -152,7 +150,7 @@ function wpseo_register_var_replacement( $var, $replace_function, $type = 'advan
  * Redirect /sitemap.xml to /sitemap_index.xml
  */
 function wpseo_xml_redirect_sitemap() {
-	$current_url = ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == 'on' ) ? 'https://' : 'http://';
+	$current_url  = ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] == 'on' ) ? 'https://' : 'http://';
 	$current_url .= sanitize_text_field( $_SERVER['SERVER_NAME'] ) . sanitize_text_field( $_SERVER['REQUEST_URI'] );
 
 	// Must be 'sitemap.xml' and must be 404.
@@ -303,7 +301,6 @@ function wpseo_shortcode_yoast_breadcrumb() {
 
 add_shortcode( 'wpseo_breadcrumb', 'wpseo_shortcode_yoast_breadcrumb' );
 
-
 /**
  * This invalidates our XML Sitemaps cache.
  *
@@ -339,7 +336,6 @@ add_action( 'clean_object_term_cache', 'wpseo_invalidate_sitemap_cache_terms', 1
  * @param int $post_id Post ID to determine post type for invalidation.
  */
 function wpseo_invalidate_sitemap_cache_on_save_post( $post_id ) {
-
 	// If this is just a revision, don't invalidate the sitemap cache yet.
 	if ( wp_is_post_revision( $post_id ) ) {
 		return;
@@ -354,9 +350,9 @@ add_action( 'save_post', 'wpseo_invalidate_sitemap_cache_on_save_post' );
  * Emulate PHP native ctype_digit() function for when the ctype extension would be disabled *sigh*
  * Only emulates the behaviour for when the input is a string, does not handle integer input as ascii value
  *
- * @param    string $string
+ * @param string $string
  *
- * @return    bool
+ * @return bool
  */
 if ( ! extension_loaded( 'ctype' ) || ! function_exists( 'ctype_digit' ) ) {
 
@@ -397,7 +393,6 @@ function wpseo_split_shared_term( $old_term_id, $new_term_id, $term_taxonomy_id,
 
 add_action( 'split_shared_term', 'wpseo_split_shared_term', 10, 4 );
 
-
 /********************** DEPRECATED FUNCTIONS **********************/
 
 
@@ -408,17 +403,16 @@ add_action( 'split_shared_term', 'wpseo_split_shared_term', 10, 4 );
  * @deprecated use WPSEO_Meta::get_value()
  * @see        WPSEO_Meta::get_value()
  *
- * @param    string $val    Internal name of the value to get.
- * @param    int    $postid Post ID of the post to get the value for.
+ * @param string $val    Internal name of the value to get.
+ * @param int    $postid Post ID of the post to get the value for.
  *
- * @return    string
+ * @return string
  */
 function wpseo_get_value( $val, $postid = 0 ) {
 	_deprecated_function( __FUNCTION__, 'WPSEO 1.5.0', 'WPSEO_Meta::get_value()' );
 
 	return WPSEO_Meta::get_value( $val, $postid );
 }
-
 
 /**
  * Save a custom meta value
@@ -427,18 +421,17 @@ function wpseo_get_value( $val, $postid = 0 ) {
  * @deprecated use WPSEO_Meta::set_value() or just use update_post_meta()
  * @see        WPSEO_Meta::set_value()
  *
- * @param    string $meta_key   The meta to change.
- * @param    mixed  $meta_value The value to set the meta to.
- * @param    int    $post_id    The ID of the post to change the meta for.
+ * @param string $meta_key   The meta to change.
+ * @param mixed  $meta_value The value to set the meta to.
+ * @param int    $post_id    The ID of the post to change the meta for.
  *
- * @return    bool    whether the value was changed
+ * @return bool whether the value was changed
  */
 function wpseo_set_value( $meta_key, $meta_value, $post_id ) {
 	_deprecated_function( __FUNCTION__, 'WPSEO 1.5.0', 'WPSEO_Meta::set_value()' );
 
 	return WPSEO_Meta::set_value( $meta_key, $meta_value, $post_id );
 }
-
 
 /**
  * Retrieve an array of all the options the plugin uses. It can't use only one due to limitations of the options API.
@@ -454,7 +447,6 @@ function get_wpseo_options_arr() {
 
 	return WPSEO_Options::get_option_names();
 }
-
 
 /**
  * Retrieve all the options for the SEO plugin in one go.
@@ -487,7 +479,6 @@ function replace_meta( $old_metakey, $new_metakey, $replace = false ) {
 	_deprecated_function( __FUNCTION__, 'WPSEO 1.5.0', 'WPSEO_Meta::replace_meta()' );
 	WPSEO_Meta::replace_meta( $old_metakey, $new_metakey, $replace );
 }
-
 
 /**
  * Retrieve a taxonomy term's meta value.
@@ -587,14 +578,14 @@ function wpseo_strip_shortcode( $text ) {
  *
  * @since      1.5.0
  *
- * @param    mixed  $number1   Scalar (string/int/float/bool).
- * @param    string $action    Calculation action to execute.
- * @param    mixed  $number2   Scalar (string/int/float/bool).
- * @param    bool   $round     Whether or not to round the result. Defaults to false.
- * @param    int    $decimals  Decimals for rounding operation. Defaults to 0.
- * @param    int    $precision Calculation precision. Defaults to 10.
+ * @param mixed  $number1   Scalar (string/int/float/bool).
+ * @param string $action    Calculation action to execute.
+ * @param mixed  $number2   Scalar (string/int/float/bool).
+ * @param bool   $round     Whether or not to round the result. Defaults to false.
+ * @param int    $decimals  Decimals for rounding operation. Defaults to 0.
+ * @param int    $precision Calculation precision. Defaults to 10.
  *
- * @return    mixed                Calculation Result or false if either or the numbers isn't scalar or
+ * @return mixed Calculation Result or false if either or the numbers isn't scalar or
  *                                an invalid operation was passed
  */
 function wpseo_calc( $number1, $action, $number2, $round = false, $decimals = 0, $precision = 10 ) {
@@ -683,4 +674,3 @@ function wpseo_standardize_whitespace( $string ) {
 
 	return WPSEO_Utils::standardize_whitespace( $string );
 }
-

@@ -107,7 +107,7 @@ class Yoast_Dashboard_Widget {
 			$transient = array();
 		}
 
-		$user_id                  = get_current_user_id();
+		$user_id                    = get_current_user_id();
 		$filtered_items[ $user_id ] = array_filter( $this->get_seo_scores_with_post_count(), array( $this, 'filter_items' ) );
 
 		set_transient( self::CACHE_TRANSIENT_KEY, array_merge( $filtered_items, $transient ), DAY_IN_SECONDS );
@@ -151,7 +151,7 @@ class Yoast_Dashboard_Widget {
 	 * @return string
 	 */
 	private function get_title_for_rank( WPSEO_Rank $rank ) {
-		$labels = array(
+		$labels              = array(
 			WPSEO_Rank::NO_FOCUS => __( 'Posts without focus keyword', 'wordpress-seo' ),
 			WPSEO_Rank::BAD      => __( 'Posts with bad SEO score', 'wordpress-seo' ),
 			WPSEO_Rank::OK       => __( 'Posts with OK SEO score', 'wordpress-seo' ),
@@ -173,4 +173,5 @@ class Yoast_Dashboard_Widget {
 	private function filter_items( $item ) {
 		return 0 !== $item['count'];
 	}
+
 }

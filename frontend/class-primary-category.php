@@ -56,4 +56,5 @@ class WPSEO_Frontend_Primary_Category {
 
 		return $category;
 	}
+
 }

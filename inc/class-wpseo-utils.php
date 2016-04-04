@@ -147,7 +147,7 @@ class WPSEO_Utils {
 	 * @return string
 	 */
 	public static function standardize_whitespace( $string ) {
-		return trim( str_replace( '  ', ' ', str_replace( array( "\t", "\n", "\r", "\f" ), ' ', $string ) ) );
+		return trim( str_replace( '  ', ' ', str_replace( array( '\t', "\n", "\r", '\f' ), ' ', $string ) ) );
 	}
 
 	/**
@@ -304,7 +304,7 @@ class WPSEO_Utils {
 	 * @return bool
 	 */
 	public static function emulate_filter_bool( $value ) {
-		$true  = array(
+		$true = array(
 			'1',
 			'true',
 			'True',
@@ -337,18 +337,18 @@ class WPSEO_Utils {
 		if ( is_bool( $value ) ) {
 			return $value;
 		}
-		else if ( is_int( $value ) && ( $value === 0 || $value === 1 ) ) {
+		elseif ( is_int( $value ) && ( $value === 0 || $value === 1 ) ) {
 			return (bool) $value;
 		}
-		else if ( ( is_float( $value ) && ! is_nan( $value ) ) && ( $value === (float) 0 || $value === (float) 1 ) ) {
+		elseif ( ( is_float( $value ) && ! is_nan( $value ) ) && ( $value === (float) 0 || $value === (float) 1 ) ) {
 			return (bool) $value;
 		}
-		else if ( is_string( $value ) ) {
+		elseif ( is_string( $value ) ) {
 			$value = trim( $value );
 			if ( in_array( $value, $true, true ) ) {
 				return true;
 			}
-			else if ( in_array( $value, $false, true ) ) {
+			elseif ( in_array( $value, $false, true ) ) {
 				return false;
 			}
 			else {
@@ -394,7 +394,7 @@ class WPSEO_Utils {
 		if ( is_int( $value ) ) {
 			return $value;
 		}
-		else if ( is_float( $value ) ) {
+		elseif ( is_float( $value ) ) {
 			if ( (int) $value == $value && ! is_nan( $value ) ) {
 				return (int) $value;
 			}
@@ -402,15 +402,15 @@ class WPSEO_Utils {
 				return false;
 			}
 		}
-		else if ( is_string( $value ) ) {
+		elseif ( is_string( $value ) ) {
 			$value = trim( $value );
 			if ( $value === '' ) {
 				return false;
 			}
-			else if ( ctype_digit( $value ) ) {
+			elseif ( ctype_digit( $value ) ) {
 				return (int) $value;
 			}
-			else if ( strpos( $value, '-' ) === 0 && ctype_digit( substr( $value, 1 ) ) ) {
+			elseif ( strpos( $value, '-' ) === 0 && ctype_digit( substr( $value, 1 ) ) ) {
 				return (int) $value;
 			}
 			else {
@@ -605,7 +605,7 @@ class WPSEO_Utils {
 		$global_cache_validator = self::get_sitemap_cache_validator();
 		$type_cache_validator   = self::get_sitemap_cache_validator( $type );
 
-		$prefix = self::$sitemap_cache_key_prefix;
+		$prefix  = self::$sitemap_cache_key_prefix;
 		$postfix = sprintf( '_%d:%s_%s', $page, $global_cache_validator, $type_cache_validator );
 
 		$type = self::get_safe_sitemap_cache_type( $type, $prefix, $postfix );
@@ -622,8 +622,8 @@ class WPSEO_Utils {
 	 * When there are more 'extremely long' post types, changes are they have variations in either the start or ending.
 	 * Because of this, we cut out the excess in the middle which should result in less chance of collision.
 	 *
-	 * @param string $type The type of sitemap to be used.
-	 * @param string $prefix The part before the type in the cache key. Only the length is used.
+	 * @param string $type    The type of sitemap to be used.
+	 * @param string $prefix  The part before the type in the cache key. Only the length is used.
 	 * @param string $postfix The part after the type in the cache key. Only the length is used.
 	 *
 	 * @return string The type with a safe length to use
@@ -632,7 +632,7 @@ class WPSEO_Utils {
 	 */
 	private static function get_safe_sitemap_cache_type( $type, $prefix = '', $postfix = '' ) {
 		// Length of key should not be over 53.
-		$max_length = 53;
+		$max_length  = 53;
 		$max_length -= strlen( 'timeout_' );
 		$max_length -= strlen( $prefix );
 		$max_length -= strlen( $postfix );
@@ -685,10 +685,10 @@ class WPSEO_Utils {
 	 * Get the current cache validator
 	 *
 	 * Without the type the global validator is returned.
-	 *  This can invalidate -all- keys in cache at once
+	 * This can invalidate -all- keys in cache at once
 	 *
 	 * With the type parameter the validator for that specific
-	 *  type can be invalidated
+	 * type can be invalidated
 	 *
 	 * @param string|null $type Provide a type for a specific type validator, null for global validator.
 	 *
@@ -757,13 +757,13 @@ class WPSEO_Utils {
 		$characters = '123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$length     = strlen( $characters );
 
-		$index    = ( $input % $length );
-		$output   = $characters[ $index ];
+		$index  = ( $input % $length );
+		$output = $characters[ $index ];
 
 		$position = floor( $input / $length );
 		while ( $position ) {
-			$index    = ( $position % $length );
-			$output   = $characters[ $index ] . $output;
+			$index  = ( $position % $length );
+			$output = $characters[ $index ] . $output;
 
 			$position = floor( $position / $length );
 		}
@@ -783,21 +783,21 @@ class WPSEO_Utils {
 	 *
 	 * @since 1.5.0
 	 *
-	 * @param mixed  $number1   Scalar (string/int/float/bool).
-	 * @param string $action    Calculation action to execute. Valid input:
+	 * @param mixed  $number1 Scalar (string/int/float/bool).
+	 * @param string $action  Calculation action to execute. Valid input:
 	 *                            '+' or 'add' or 'addition',
 	 *                            '-' or 'sub' or 'subtract',
 	 *                            '*' or 'mul' or 'multiply',
 	 *                            '/' or 'div' or 'divide',
 	 *                            '%' or 'mod' or 'modulus'
 	 *                            '=' or 'comp' or 'compare'.
-	 * @param mixed  $number2   Scalar (string/int/float/bool).
-	 * @param bool   $round     Whether or not to round the result. Defaults to false.
+	 * @param mixed $number2 Scalar (string/int/float/bool).
+	 * @param bool  $round   Whether or not to round the result. Defaults to false.
 	 *                          Will be disregarded for a compare operation.
-	 * @param int    $decimals  Decimals for rounding operation. Defaults to 0.
-	 * @param int    $precision Calculation precision. Defaults to 10.
+	 * @param int $decimals  Decimals for rounding operation. Defaults to 0.
+	 * @param int $precision Calculation precision. Defaults to 10.
 	 *
-	 * @return mixed            Calculation Result or false if either or the numbers isn't scalar or
+	 * @return mixed Calculation Result or false if either or the numbers isn't scalar or
 	 *                          an invalid operation was passed
 	 *                          - for compare the result will always be an integer
 	 *                          - for all other operations, the result will either be an integer (preferred)
@@ -988,7 +988,6 @@ class WPSEO_Utils {
 		return apply_filters( 'wpseo_format_admin_url', $formatted_url );
 	}
 
-
 	/**
 	 * Get plugin name from file
 	 *
@@ -1045,8 +1044,8 @@ class WPSEO_Utils {
 	 * Wrapper for encoding the array as a json string. Includes a fallback if wp_json_encode doesn't exists
 	 *
 	 * @param array $array_to_encode The array which will be encoded.
-	 * @param int   $options		 Optional. Array with options which will be passed in to the encoding methods.
-	 * @param int   $depth    		 Optional. Maximum depth to walk through $data. Must be greater than 0. Default 512.
+	 * @param int   $options         Optional. Array with options which will be passed in to the encoding methods.
+	 * @param int   $depth           Optional. Maximum depth to walk through $data. Must be greater than 0. Default 512.
 	 *
 	 * @return false|string
 	 */

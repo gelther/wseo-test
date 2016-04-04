@@ -91,4 +91,5 @@ class WPSEO_GSC_Platform_Tabs {
 
 		return '<a class="nav-tab ' . $active . '" id="' . $platform_target . '-tab" href="' . $admin_link . $platform_target . '">' . $platform_value . '</a>';
 	}
+
 }

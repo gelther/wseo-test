@@ -65,7 +65,7 @@ class WPSEO_Admin {
 		}
 
 		if ( ( ( isset( $this->options['theme_has_description'] ) && $this->options['theme_has_description'] === true ) ||
-		       $this->options['theme_description_found'] !== '' ) && $this->options['ignore_meta_description_warning'] !== true
+				$this->options['theme_description_found'] !== '' ) && $this->options['ignore_meta_description_warning'] !== true
 		) {
 			add_action( 'admin_footer', array( $this, 'meta_description_warning' ) );
 		}
@@ -311,7 +311,6 @@ class WPSEO_Admin {
 		}
 	}
 
-
 	/**
 	 * Load the form for a WPSEO admin page
 	 */
@@ -354,14 +353,12 @@ class WPSEO_Admin {
 		}
 	}
 
-
 	/**
 	 * Loads the form for the network configuration page.
 	 */
 	function network_config_page() {
 		require_once( WPSEO_PATH . 'admin/pages/network.php' );
 	}
-
 
 	/**
 	 * Adds the ability to choose how many posts are displayed per page
@@ -581,7 +578,6 @@ class WPSEO_Admin {
 		return $stop_words->list_stop_words();
 	}
 
-
 	/**
 	 * Check whether the stopword appears in the string
 	 *
@@ -657,14 +653,13 @@ class WPSEO_Admin {
 	 * @return string
 	 */
 	private function get_dismiss_url( $dismiss_param ) {
-		$arr_params = array(
+		$arr_params    = array(
 			$dismiss_param => '1',
-			'nonce'        => wp_create_nonce( $dismiss_param ),
+			'nonce' => wp_create_nonce( $dismiss_param ),
 		);
 
 		return esc_url( add_query_arg( $arr_params ) );
 	}
-
 
 	/********************** DEPRECATED METHODS **********************/
 
