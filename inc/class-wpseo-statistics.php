@@ -58,6 +58,7 @@ class WPSEO_Statistics {
 		return $posts->found_posts;
 	}
 
+
 	/**
 	 * Returns the amount of posts that have no focus keyword
 	 *
@@ -70,6 +71,7 @@ class WPSEO_Statistics {
 
 		return $this->get_post_count( new WPSEO_Rank( WPSEO_Rank::NO_FOCUS ) );
 	}
+
 
 	/**
 	 * Returns the amount of posts that have a bad SEO ranking
@@ -84,6 +86,7 @@ class WPSEO_Statistics {
 		return $this->get_post_count( new WPSEO_Rank( WPSEO_Rank::BAD ) );
 	}
 
+
 	/**
 	 * Returns the amount of posts that have a poor SEO ranking
 	 *
@@ -96,6 +99,7 @@ class WPSEO_Statistics {
 
 		return $this->get_post_count( new WPSEO_Rank( 'poor' ) );
 	}
+
 
 	/**
 	 * Returns the amount of posts that have an ok SEO ranking
@@ -110,6 +114,7 @@ class WPSEO_Statistics {
 		return $this->get_post_count( new WPSEO_Rank( WPSEO_Rank::OK ) );
 	}
 
+
 	/**
 	 * Returns the amount of posts that have a good SEO ranking
 	 *
@@ -123,6 +128,7 @@ class WPSEO_Statistics {
 		return $this->get_post_count( new WPSEO_Rank( WPSEO_Rank::GOOD ) );
 	}
 
+
 	/**
 	 * Returns the amount of posts that have no SEO ranking
 	 *
@@ -135,4 +141,6 @@ class WPSEO_Statistics {
 
 		return $this->get_post_count( new WPSEO_Rank( WPSEO_Rank::NO_INDEX ) );
 	}
+
+
 }

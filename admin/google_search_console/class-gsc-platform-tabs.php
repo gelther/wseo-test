@@ -22,6 +22,7 @@ class WPSEO_GSC_Platform_Tabs {
 		return $this->platform_tabs();
 	}
 
+
 	/**
 	 * Getting the current_tab
 	 *
@@ -30,6 +31,7 @@ class WPSEO_GSC_Platform_Tabs {
 	public function current_tab() {
 		return $this->current_tab;
 	}
+
 
 	/**
 	 * Loops through the array with all the platforms and convert it into an array
@@ -62,6 +64,7 @@ class WPSEO_GSC_Platform_Tabs {
 		return $return;
 	}
 
+
 	/**
 	 * Setting the current tab
 	 *
@@ -73,6 +76,7 @@ class WPSEO_GSC_Platform_Tabs {
 			$this->current_tab = $current_platform;
 		}
 	}
+
 
 	/**
 	 * Parses the tab
@@ -91,4 +95,6 @@ class WPSEO_GSC_Platform_Tabs {
 
 		return '<a class="nav-tab ' . $active . '" id="' . $platform_target . '-tab" href="' . $admin_link . $platform_target . '">' . $platform_value . '</a>';
 	}
+
+
 }

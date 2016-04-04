@@ -24,6 +24,7 @@ class WPSEO_GooglePlus {
 		add_action( 'wpseo_head', array( $this, 'output' ), 40 );
 	}
 
+
 	/**
 	 * Get the singleton instance of this class
 	 *
@@ -37,6 +38,7 @@ class WPSEO_GooglePlus {
 		return self::$instance;
 	}
 
+
 	/**
 	 * Output the Google+ specific content
 	 */
@@ -46,6 +48,7 @@ class WPSEO_GooglePlus {
 		 */
 		do_action( 'wpseo_googleplus' );
 	}
+
 
 	/**
 	 * Output the Google+ specific description
@@ -66,6 +69,7 @@ class WPSEO_GooglePlus {
 			}
 		}
 	}
+
 
 	/**
 	 * Output the Google+ specific title
@@ -89,6 +93,7 @@ class WPSEO_GooglePlus {
 		}
 	}
 
+
 	/**
 	 * Output the Google+ specific image
 	 */
@@ -110,6 +115,7 @@ class WPSEO_GooglePlus {
 		}
 	}
 
+
 	/**
 	 * Returns the meta value for the given $meta_key.
 	 *
@@ -128,4 +134,6 @@ class WPSEO_GooglePlus {
 
 		return '';
 	}
+
+
 }

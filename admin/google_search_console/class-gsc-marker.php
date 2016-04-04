@@ -45,6 +45,7 @@ class WPSEO_GSC_Marker {
 		$this->result = $this->get_result();
 	}
 
+
 	/**
 	 * Getting the response for the AJAX request
 	 * @return string
@@ -52,6 +53,7 @@ class WPSEO_GSC_Marker {
 	public function get_response() {
 		return $this->result;
 	}
+
 
 	/**
 	 * Setting the result, this method will check if current
@@ -72,6 +74,7 @@ class WPSEO_GSC_Marker {
 		return 'false';
 	}
 
+
 	/**
 	 * Check if request is valid by verifying the posted nonce and return the URL if this one is set
 	 *
@@ -84,6 +87,7 @@ class WPSEO_GSC_Marker {
 
 		return false;
 	}
+
 
 	/**
 	 * Storing the data belonging to the current issue, this data is needed in the 'mark as fixed' flow
@@ -102,6 +106,7 @@ class WPSEO_GSC_Marker {
 		return false;
 	}
 
+
 	/**
 	 * Sending a request to the Google Search Console API to let them know we marked an issue as fixed.
 	 *
@@ -113,6 +118,7 @@ class WPSEO_GSC_Marker {
 		return $service->mark_as_fixed( $this->url, $this->platform, $this->category );
 	}
 
+
 	/**
 	 * Delete the crawl issue from the database
 	 *
@@ -122,13 +128,14 @@ class WPSEO_GSC_Marker {
 		return $this->crawl_issues->delete_issue( $this->url );
 	}
 
+
 	/**
 	 * Getting the counts for current platform - category combination and update the score of it.
 	 *
 	 * @param WPSEO_GSC_Service $service Service object instance.
 	 */
 	private function update_issue_count( WPSEO_GSC_Service $service ) {
-		$counts  = new WPSEO_GSC_Count( $service );
+		$counts = new WPSEO_GSC_Count( $service );
 
 		// Get the issues.
 		$total_issues = $counts->get_issue_count( $this->platform, $this->category );
@@ -139,4 +146,6 @@ class WPSEO_GSC_Marker {
 		// And update the count.
 		$counts->update_issue_count( $this->platform, $this->category, $total_issues );
 	}
+
+
 }

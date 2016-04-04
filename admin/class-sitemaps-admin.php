@@ -18,6 +18,7 @@ class WPSEO_Sitemaps_Admin {
 		WPSEO_Utils::register_cache_clear_option( 'wpseo_xml', '' );
 	}
 
+
 	/**
 	 * Find sitemaps residing on disk as they will block our rewrite.
 	 *
@@ -51,6 +52,7 @@ class WPSEO_Sitemaps_Admin {
 			}
 		}
 	}
+
 
 	/**
 	 * Hooked into transition_post_status. Will initiate search engine pings
@@ -100,4 +102,6 @@ class WPSEO_Sitemaps_Admin {
 			}
 		}
 	}
+
+
 } /* End of class */

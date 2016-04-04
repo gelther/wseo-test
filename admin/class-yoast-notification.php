@@ -38,9 +38,10 @@ class Yoast_Notification {
 	 * @param array  $options Set of options.
 	 */
 	public function __construct( $message, $options = array() ) {
-		$this->options         = wp_parse_args( $options, $this->defaults );
-		$this->message         = $message;
+		$this->options = wp_parse_args( $options, $this->defaults );
+		$this->message = $message;
 	}
+
 
 	/**
 	 * Retrieve notification ID string.
@@ -50,6 +51,7 @@ class Yoast_Notification {
 	public function get_id() {
 		return $this->options['id'];
 	}
+
 
 	/**
 	 * Return the object properties as an array
@@ -63,6 +65,7 @@ class Yoast_Notification {
 		);
 	}
 
+
 	/**
 	 * Adds string (view) behaviour to the Notification
 	 *
@@ -71,6 +74,7 @@ class Yoast_Notification {
 	public function __toString() {
 		return '<div class="yoast-notice notice is-dismissible ' . esc_attr( $this->options['type'] ) . '" id="' . esc_attr( $this->options['id'] ) . '"' . $this->parse_data_attributes() . '>' . wpautop( $this->message ) . '</div>' . PHP_EOL;
 	}
+
 
 	/**
 	 * Parsing the data attributes
@@ -81,6 +85,7 @@ class Yoast_Notification {
 		return $this->parse_nonce_attribute() . '' . $this->parse_data_json_attribute();
 	}
 
+
 	/**
 	 * Returns a data attribute containing the nonce if present
 	 *
@@ -89,6 +94,7 @@ class Yoast_Notification {
 	private function parse_nonce_attribute() {
 		return ( ! empty( $this->options['nonce'] ) ? ' data-nonce="' . $this->options['nonce'] . '"' : '' );
 	}
+
 
 	/**
 	 * Make it possible to pass some JSON data
@@ -102,4 +108,6 @@ class Yoast_Notification {
 
 		return " data-json='" . WPSEO_Utils::json_encode( $this->options['data_json'] ) . "'";
 	}
+
+
 }

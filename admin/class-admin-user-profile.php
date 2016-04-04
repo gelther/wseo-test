@@ -20,20 +20,22 @@ class WPSEO_Admin_User_Profile {
 		add_action( 'update_user_meta', array( $this, 'clear_author_sitemap_cache' ), 10, 3 );
 	}
 
+
 	/**
 	 * Clear author sitemap cache when settings are changed
 	 *
 	 * @since 3.1
 	 *
-	 * @param int    $meta_id The ID of the meta option changed.
+	 * @param int    $meta_id   The ID of the meta option changed.
 	 * @param int    $object_id The ID of the user.
-	 * @param string $meta_key The key of the meta field changed.
+	 * @param string $meta_key  The key of the meta field changed.
 	 */
 	public function clear_author_sitemap_cache( $meta_id, $object_id, $meta_key ) {
 		if ( '_yoast_wpseo_profile_updated' === $meta_key ) {
 			WPSEO_Utils::clear_sitemap_cache( array( 'author' ) );
 		}
 	}
+
 
 	/**
 	 * Filter POST variables.
@@ -50,10 +52,11 @@ class WPSEO_Admin_User_Profile {
 		return '';
 	}
 
+
 	/**
 	 * Updates the user metas that (might) have been set on the user profile page.
 	 *
-	 * @param    int $user_id of the updated user.
+	 * @param int $user_id of the updated user.
 	 */
 	public function process_user_option_update( $user_id ) {
 		update_user_meta( $user_id, '_yoast_wpseo_profile_updated', time() );
@@ -72,6 +75,7 @@ class WPSEO_Admin_User_Profile {
 		update_user_meta( $user_id, 'wpseo_excludeauthorsitemap', $this->filter_input_post( 'wpseo_author_exclude' ) );
 	}
 
+
 	/**
 	 * Add the inputs needed for SEO values to the User Profile page
 	 *
@@ -84,4 +88,6 @@ class WPSEO_Admin_User_Profile {
 
 		require_once( 'views/user-profile.php' );
 	}
+
+
 }

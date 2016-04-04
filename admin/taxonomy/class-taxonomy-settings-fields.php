@@ -26,6 +26,7 @@ class WPSEO_Taxonomy_Settings_Fields extends WPSEO_Taxonomy_Fields {
 		$this->translate_meta_options();
 	}
 
+
 	/**
 	 * Returns array with the fields for the general tab
 	 *
@@ -72,6 +73,7 @@ class WPSEO_Taxonomy_Settings_Fields extends WPSEO_Taxonomy_Fields {
 		return $this->filter_hidden_fields( $fields );
 	}
 
+
 	/**
 	 * Translate options text strings for use in the select fields
 	 *
@@ -92,6 +94,7 @@ class WPSEO_Taxonomy_Settings_Fields extends WPSEO_Taxonomy_Fields {
 		$this->sitemap_include_options['never']  = __( 'Never include', 'wordpress-seo' );
 	}
 
+
 	/**
 	 * Getting the data for the noindex fields
 	 *
@@ -108,6 +111,7 @@ class WPSEO_Taxonomy_Settings_Fields extends WPSEO_Taxonomy_Fields {
 		return $noindex_options;
 	}
 
+
 	/**
 	 * Returns the current robot index value for the taxonomy
 	 *
@@ -122,5 +126,6 @@ class WPSEO_Taxonomy_Settings_Fields extends WPSEO_Taxonomy_Fields {
 
 		return $robot_index;
 	}
+
 
 }

@@ -62,6 +62,7 @@ class WPSEO_Upgrade {
 		$this->finish_up();
 	}
 
+
 	/**
 	 * Run some functions that run when we first run or when we upgrade Yoast SEO from < 1.4.13
 	 */
@@ -74,6 +75,7 @@ class WPSEO_Upgrade {
 			add_action( 'init', 'wpseo_description_test' );
 		}
 	}
+
 
 	/**
 	 * Run the Yoast SEO 1.5 upgrade routine
@@ -89,6 +91,7 @@ class WPSEO_Upgrade {
 		wpseo_add_capabilities();
 	}
 
+
 	/**
 	 * Moves options that moved position in WPSEO 2.0
 	 */
@@ -102,6 +105,7 @@ class WPSEO_Upgrade {
 		$this->move_hide_links_options();
 		$this->move_pinterest_option();
 	}
+
 
 	/**
 	 * Detects if taxonomy terms were split and updates the corresponding taxonomy meta's accordingly.
@@ -123,6 +127,7 @@ class WPSEO_Upgrade {
 		}
 	}
 
+
 	/**
 	 * Performs upgrade functions to Yoast SEO 2.2
 	 */
@@ -136,6 +141,7 @@ class WPSEO_Upgrade {
 		update_option( 'wpseo', $options );
 	}
 
+
 	/**
 	 * Schedules upgrade function to Yoast SEO 2.3
 	 */
@@ -143,6 +149,7 @@ class WPSEO_Upgrade {
 		add_action( 'wp', array( $this, 'upgrade_23_query' ), 90 );
 		add_action( 'admin_head', array( $this, 'upgrade_23_query' ), 90 );
 	}
+
 
 	/**
 	 * Performs upgrade query to Yoast SEO 2.3
@@ -175,6 +182,7 @@ class WPSEO_Upgrade {
 		delete_post_meta_by_key( '_yoast_wpseo_sitemap-include' );
 	}
 
+
 	/**
 	 * Performs upgrade functions to Yoast SEO 3.0
 	 */
@@ -183,11 +191,12 @@ class WPSEO_Upgrade {
 		delete_post_meta_by_key( '_yoast_wpseo_sitemap-prio' );
 	}
 
+
 	/**
 	 * Moves the hide- links options from the permalinks option to the titles option
 	 */
 	private function move_hide_links_options() {
-		$options_titles = get_option( 'wpseo_titles' );
+		$options_titles     = get_option( 'wpseo_titles' );
 		$options_permalinks = get_option( 'wpseo_permalinks' );
 
 		foreach ( array( 'hide-feedlinks', 'hide-rsdlink', 'hide-shortlink', 'hide-wlwmanifest' ) as $hide ) {
@@ -199,6 +208,7 @@ class WPSEO_Upgrade {
 			}
 		}
 	}
+
 
 	/**
 	 * Move the pinterest verification option from the wpseo option to the wpseo_social option
@@ -214,6 +224,7 @@ class WPSEO_Upgrade {
 		}
 	}
 
+
 	/**
 	 * Runs the needed cleanup after an update, setting the DB version to latest version, flushing caches etc.
 	 */
@@ -226,4 +237,6 @@ class WPSEO_Upgrade {
 
 		WPSEO_Options::ensure_options_exist();                              // Make sure all our options always exist - issue #1245.
 	}
+
+
 }

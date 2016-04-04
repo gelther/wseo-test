@@ -23,6 +23,7 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 		add_action( 'wpseo_save_compare_data', array( $this, 'og_data_compare' ), 10, 1 );
 	}
 
+
 	/**
 	 * Translate text strings for use in the meta box
 	 *
@@ -31,13 +32,13 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 	 */
 	public static function translate_meta_boxes() {
 		/* translators: %s expands to the social network's name */
-		$title_text       = __( 'If you don\'t want to use the post title for sharing the post on %s but instead want another title there, write it here.', 'wordpress-seo' );
+		$title_text = __( 'If you don\'t want to use the post title for sharing the post on %s but instead want another title there, write it here.', 'wordpress-seo' );
 		/* translators: %s expands to the social network's name */
 		$description_text = __( 'If you don\'t want to use the meta description for sharing the post on %s but want another description there, write it here.', 'wordpress-seo' );
 		/* translators: %s expands to the social network's name */
-		$image_text       = __( 'If you want to override the image used on %s for this post, upload / choose an image or add the URL here.', 'wordpress-seo' );
+		$image_text = __( 'If you want to override the image used on %s for this post, upload / choose an image or add the URL here.', 'wordpress-seo' );
 		/* translators: %1$s expands to the social network, %2$s to the recommended image size */
-		$image_size_text  = __( 'The recommended image size for %1$s is %2$spx.', 'wordpress-seo' );
+		$image_size_text = __( 'The recommended image size for %1$s is %2$spx.', 'wordpress-seo' );
 
 		$options = WPSEO_Options::get_option( 'wpseo_social' );
 
@@ -72,13 +73,14 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 		}
 	}
 
+
 	/**
 	 * Returns the metabox section for the social settings.
 	 *
 	 * @return WPSEO_Metabox_Tab_Section
 	 */
 	public function get_meta_section() {
-		$tabs = array();
+		$tabs               = array();
 		$social_meta_fields = $this->get_meta_field_defs( 'social' );
 
 		if ( $this->options['opengraph'] === true ) {
@@ -87,7 +89,7 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 				$this->get_social_tab_content( 'opengraph', $social_meta_fields ),
 				'<span class="dashicons dashicons-facebook-alt"></span>',
 				array(
-					'link_alt' => __( 'Facebook / Open Graph metadata', 'wordpress-seo' ),
+					'link_alt'   => __( 'Facebook / Open Graph metadata', 'wordpress-seo' ),
 					'link_title' => __( 'Facebook / Open Graph metadata', 'wordpress-seo' ),
 				)
 			);
@@ -99,7 +101,7 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 				$this->get_social_tab_content( 'twitter', $social_meta_fields ),
 				'<span class="dashicons dashicons-twitter"></span>',
 				array(
-					'link_alt' => __( 'Twitter metadata', 'wordpress-seo' ),
+					'link_alt'   => __( 'Twitter metadata', 'wordpress-seo' ),
 					'link_title' => __( 'Twitter metadata', 'wordpress-seo' ),
 				)
 			);
@@ -111,7 +113,7 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 				$this->get_social_tab_content( 'google-plus', $social_meta_fields ),
 				'<span class="dashicons dashicons-googleplus"></span>',
 				array(
-					'link_alt' => __( 'Google+ metadata', 'wordpress-seo' ),
+					'link_alt'   => __( 'Google+ metadata', 'wordpress-seo' ),
 					'link_title' => __( 'Google+ metadata', 'wordpress-seo' ),
 				)
 			);
@@ -122,16 +124,17 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 			'<span class="dashicons dashicons-share"></span>',
 			$tabs,
 			array(
-				'link_alt' => __( 'Social', 'wordpress-seo' ),
+				'link_alt'   => __( 'Social', 'wordpress-seo' ),
 				'link_title' => __( 'Social', 'wordpress-seo' ),
 			)
 		);
 	}
 
+
 	/**
 	 * Generates the html for a social settings tab for one of the supported social media.
 	 *
-	 * @param string $medium can be 'opengraph', 'twitter' or 'googleplus'.
+	 * @param string $medium          can be 'opengraph', 'twitter' or 'googleplus'.
 	 * @param array  $meta_field_defs The social meta field definitions.
 	 *
 	 * @return string
@@ -152,16 +155,18 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 		return $tab_content;
 	}
 
+
 	/**
 	 * Filter over the meta boxes to save, this function adds the Social meta boxes.
 	 *
-	 * @param   array $field_defs Array of metaboxes to save.
+	 * @param array $field_defs Array of metaboxes to save.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function save_meta_boxes( $field_defs ) {
 		return array_merge( $field_defs, $this->get_meta_field_defs( 'social' ) );
 	}
+
 
 	/**
 	 * This method will compare opengraph fields with the posted values.
@@ -171,7 +176,6 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 	 * @param WP_Post $post Post instance.
 	 */
 	public function og_data_compare( $post ) {
-
 		// Check if post data is available, if post_id is set and if original post_status is publish.
 		if (
 			! empty( $_POST ) && ! empty( $post->ID ) && $post->post_status == 'publish' &&
@@ -217,13 +221,14 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 	 *
 	 * @param string $post_type Optional post type string.
 	 *
-	 * @return    array    Array containing the meta boxes
+	 * @return array Array containing the meta boxes
 	 */
 	public function get_meta_boxes( $post_type = 'post' ) {
 		_deprecated_function( __METHOD__, 'WPSEO 1.5.0', 'WPSEO_Meta::get_meta_field_defs()' );
 
 		return $this->get_meta_field_defs( 'social' );
 	}
+
 
 	/**
 	 * @deprecated 3.0 Removed.
@@ -236,6 +241,7 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 		return '';
 	}
 
+
 	/**
 	 * @deprecated 3.0 Removed.
 	 *
@@ -246,4 +252,6 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 
 		return '';
 	}
+
+
 } /* End of class */

@@ -29,6 +29,7 @@ class WPSEO_Import_WooThemes_SEO extends WPSEO_Import_External {
 		$this->set_msg( __( 'WooThemes SEO framework settings &amp; data successfully imported.', 'wordpress-seo' ) );
 	}
 
+
 	/**
 	 * Holds the WPSEO Title Options
 	 *
@@ -63,6 +64,7 @@ class WPSEO_Import_WooThemes_SEO extends WPSEO_Import_External {
 		$this->perhaps_delete( $option );
 	}
 
+
 	/**
 	 * Import the archive layout for all taxonomies
 	 */
@@ -84,6 +86,7 @@ class WPSEO_Import_WooThemes_SEO extends WPSEO_Import_External {
 		}
 	}
 
+
 	/**
 	 * Import custom descriptions and meta keys
 	 *
@@ -98,6 +101,7 @@ class WPSEO_Import_WooThemes_SEO extends WPSEO_Import_External {
 		$this->perhaps_delete( $option );
 		$this->perhaps_delete( $option . '_custom' );
 	}
+
 
 	/**
 	 * Imports the WooThemes SEO homepage settings
@@ -116,6 +120,7 @@ class WPSEO_Import_WooThemes_SEO extends WPSEO_Import_External {
 		}
 		$this->perhaps_delete( 'seo_woo_home_layout' );
 	}
+
 
 	/**
 	 * Import meta values if they're applicable
@@ -143,4 +148,6 @@ class WPSEO_Import_WooThemes_SEO extends WPSEO_Import_External {
 			$this->perhaps_delete( $option );
 		}
 	}
+
+
 }

@@ -29,6 +29,7 @@ class WPSEO_Import_AIOSEO extends WPSEO_Import_External {
 		$this->import_ga();
 	}
 
+
 	/**
 	 * Import All In One SEO meta values
 	 */
@@ -37,6 +38,7 @@ class WPSEO_Import_AIOSEO extends WPSEO_Import_External {
 		WPSEO_Meta::replace_meta( '_aioseop_keywords', WPSEO_Meta::$meta_prefix . 'metakeywords', $this->replace );
 		WPSEO_Meta::replace_meta( '_aioseop_title', WPSEO_Meta::$meta_prefix . 'title', $this->replace );
 	}
+
 
 	/**
 	 * Import the Google Analytics settings
@@ -62,6 +64,7 @@ class WPSEO_Import_AIOSEO extends WPSEO_Import_External {
 			$this->set_msg( __( sprintf( 'All in One SEO data successfully imported. Would you like to %sdisable the All in One SEO plugin%s.', '<a href="' . esc_url( admin_url( 'admin.php?page=wpseo_tools&tool=import-export&deactivate_aioseo=1#top#import-seo' ) ) . '">', '</a>' ), 'wordpress-seo' ) );
 		}
 	}
+
 
 	/**
 	 * Determine the appropriate GA settings for this site
@@ -95,4 +98,6 @@ class WPSEO_Import_AIOSEO extends WPSEO_Import_External {
 			),
 		);
 	}
+
+
 }

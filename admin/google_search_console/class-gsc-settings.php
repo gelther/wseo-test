@@ -24,6 +24,7 @@ class WPSEO_GSC_Settings {
 		$service->clear_data();
 	}
 
+
 	/**
 	 * Reloading all the issues
 	 */
@@ -31,6 +32,7 @@ class WPSEO_GSC_Settings {
 		// Remove issue and issue counts.
 		self::remove();
 	}
+
 
 	/**
 	 * When authorization is successful return true, otherwise false
@@ -43,6 +45,7 @@ class WPSEO_GSC_Settings {
 	public static function validate_authorization( $authorization_code, Yoast_Api_Google_Client $client ) {
 		return ( $authorization_code !== '' && $client->authenticate_client( $authorization_code ) );
 	}
+
 
 	/**
 	 * Get the GSC profile
@@ -63,6 +66,7 @@ class WPSEO_GSC_Settings {
 		return trim( $profile, '/' );
 	}
 
+
 	/**
 	 * Removes the issue counts and all the issues from the options
 	 */
@@ -74,6 +78,7 @@ class WPSEO_GSC_Settings {
 		self::remove_issues();
 	}
 
+
 	/**
 	 * Remove the issue counts
 	 */
@@ -82,6 +87,7 @@ class WPSEO_GSC_Settings {
 		delete_option( WPSEO_GSC_Count::OPTION_CI_COUNTS );
 		delete_option( WPSEO_GSC_Count::OPTION_CI_LAST_FETCH );
 	}
+
 
 	/**
 	 * Delete the issues and their meta data from the database
@@ -93,10 +99,13 @@ class WPSEO_GSC_Settings {
 		$wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE 'wpseo-gsc-issues-%'" );
 	}
 
+
 	/**
 	 * Removes the options for GSC
 	 */
 	private static function remove_gsc_option() {
 		delete_option( WPSEO_GSC::OPTION_WPSEO_GSC );
 	}
+
+
 }

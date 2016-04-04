@@ -35,6 +35,7 @@ class WPSEO_Import_External {
 		WPSEO_Options::initialize();
 	}
 
+
 	/**
 	 * Convenience function to set import message
 	 *
@@ -47,6 +48,7 @@ class WPSEO_Import_External {
 		$this->msg .= $msg;
 	}
 
+
 	/**
 	 * Deletes an option depending on the class replace state
 	 *
@@ -57,6 +59,7 @@ class WPSEO_Import_External {
 			delete_option( $option );
 		}
 	}
+
 
 	/**
 	 * Import HeadSpace SEO settings
@@ -75,7 +78,7 @@ class WPSEO_Import_External {
 		WPSEO_Meta::replace_meta( '_headspace_noindex', WPSEO_Meta::$meta_prefix . 'meta-robots-noindex', $this->replace );
 		WPSEO_Meta::replace_meta( '_headspace_nofollow', WPSEO_Meta::$meta_prefix . 'meta-robots-nofollow', $this->replace );
 
-		/*
+		/**
 		 * @todo - [JRF => whomever] check if this can be done more efficiently by querying only the meta table
 		 * possibly directly changing it using concat on the existing values
 		 */
@@ -105,6 +108,7 @@ class WPSEO_Import_External {
 		}
 		$this->set_msg( __( 'HeadSpace2 data successfully imported', 'wordpress-seo' ) );
 	}
+
 
 	/**
 	 * Import from Joost's old robots meta plugin
@@ -145,6 +149,7 @@ class WPSEO_Import_External {
 		$this->set_msg( __( sprintf( 'Robots Meta values imported. We recommend %sdisabling the Robots-Meta plugin%s to avoid any conflicts.', '<a href="' . esc_url( admin_url( 'admin.php?page=wpseo_tools&tool=import-export&deactivate_robots_meta=1#top#import-other' ) ) . '">', '</a>' ), 'wordpress-seo' ) );
 	}
 
+
 	/**
 	 * Import from old Yoast RSS Footer plugin
 	 */
@@ -165,6 +170,7 @@ class WPSEO_Import_External {
 		update_option( 'wpseo_rss', $optnew );
 		$this->set_msg( __( 'RSS Footer options imported successfully.', 'wordpress-seo' ) );
 	}
+
 
 	/**
 	 * Import from Yoast Breadcrumbs plugin
@@ -190,4 +196,6 @@ class WPSEO_Import_External {
 			$this->set_msg( __( 'Yoast Breadcrumbs options could not be found', 'wordpress-seo' ) );
 		}
 	}
+
+
 }

@@ -38,12 +38,14 @@ class WPSEO_OnPage {
 		}
 	}
 
+
 	/**
 	 * The hooks to run on plugin activation
 	 */
 	public function activate_hooks() {
 		$this->set_cron();
 	}
+
 
 	/**
 	 * Adding a weekly schedule to the schedules array
@@ -57,6 +59,7 @@ class WPSEO_OnPage {
 
 		return $schedules;
 	}
+
 
 	/**
 	 * Fetching the data from onpage.
@@ -89,11 +92,11 @@ class WPSEO_OnPage {
 		return false;
 	}
 
+
 	/**
 	 * Show a notice when the website is not indexable
 	 */
 	public function show_notice() {
-
 		// Just a return, because we want to temporary disable this notice (#3998).
 		return;
 
@@ -118,6 +121,7 @@ class WPSEO_OnPage {
 		}
 	}
 
+
 	/**
 	 * Send a request to OnPage.org to get the indexability
 	 *
@@ -139,6 +143,7 @@ class WPSEO_OnPage {
 		return WPSEO_OnPage_Option::CANNOT_FETCH;
 	}
 
+
 	/**
 	 * Should the notice being given?
 	 *
@@ -153,16 +158,18 @@ class WPSEO_OnPage {
 		return WPSEO_Utils::grant_access() && ! $this->user_has_dismissed() && $this->onpage_option->get_status() === WPSEO_OnPage_Option::IS_NOT_INDEXABLE;
 	}
 
+
 	/**
 	 * Notify the admins
 	 */
 	protected function notify_admins() {
-		/*
+		/**
 		 * Let's start showing the notices to all admins by removing the hide-notice meta data for each admin resulting
 		 * in popping up the notice again.
 		 */
 		delete_metadata( 'user', 0, WPSEO_OnPage::USER_META_KEY, '', true );
 	}
+
 
 	/**
 	 * Setting up the hooks.
@@ -181,6 +188,7 @@ class WPSEO_OnPage {
 		add_action( 'wpseo_onpage_fetch', array( $this, 'fetch_from_onpage' ) );
 	}
 
+
 	/**
 	 * Setting the cronjob to get the new indexibility status.
 	 */
@@ -190,6 +198,7 @@ class WPSEO_OnPage {
 		}
 	}
 
+
 	/**
 	 * Get the state from the user to check if the current user has dismissed
 	 *
@@ -198,6 +207,7 @@ class WPSEO_OnPage {
 	private function user_has_dismissed() {
 		return '1' === get_user_meta( get_current_user_id(), WPSEO_OnPage::USER_META_KEY, true );
 	}
+
 
 	/**
 	 * Redo the fetch request for onpage
@@ -209,6 +219,7 @@ class WPSEO_OnPage {
 			add_action( 'admin_init', array( $this, 'fetch_from_onpage' ) );
 		}
 	}
+
 
 	/**
 	 * Checks if WordFence protects the site against 'fake' Google crawlers.
@@ -226,5 +237,6 @@ class WPSEO_OnPage {
 
 		return (bool) wfConfig::get( 'blockFakeBots' );
 	}
+
 
 }

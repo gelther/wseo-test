@@ -48,7 +48,6 @@ class Yoast_Plugin_Conflict {
 	 * @return Yoast_Plugin_Conflict
 	 */
 	public static function get_instance( $class_name = '' ) {
-
 		if ( is_null( self::$instance ) ) {
 			if ( ! is_string( $class_name ) || $class_name === '' ) {
 				$class_name = __CLASS__;
@@ -59,6 +58,7 @@ class Yoast_Plugin_Conflict {
 
 		return self::$instance;
 	}
+
 
 	/**
 	 * Setting instance, all active plugins and search for active plugins
@@ -78,6 +78,7 @@ class Yoast_Plugin_Conflict {
 		$this->search_active_plugins();
 	}
 
+
 	/**
 	 * Check if there are conflicting plugins for given $plugin_section
 	 *
@@ -86,7 +87,6 @@ class Yoast_Plugin_Conflict {
 	 * @return bool
 	 */
 	public function check_for_conflicts( $plugin_section ) {
-
 		static $sections_checked;
 
 		if ( $sections_checked === null ) {
@@ -102,6 +102,7 @@ class Yoast_Plugin_Conflict {
 
 		return false;
 	}
+
 
 	/**
 	 * Getting all the conflicting plugins and return them as a string.
@@ -134,6 +135,7 @@ class Yoast_Plugin_Conflict {
 		}
 	}
 
+
 	/**
 	 * Checks for given $plugin_sections for conflicts
 	 *
@@ -148,6 +150,7 @@ class Yoast_Plugin_Conflict {
 		}
 	}
 
+
 	/**
 	 * Setting an error on the screen
 	 *
@@ -155,7 +158,6 @@ class Yoast_Plugin_Conflict {
 	 * @param string $readable_plugin_section This is the value for the translation.
 	 */
 	protected function set_error( $plugin_section, $readable_plugin_section ) {
-
 		$plugins_as_string = $this->get_conflicting_plugins_as_string( $plugin_section );
 		$error_message     = '<h3>' . __( 'Warning!', 'wordpress-seo' ) . '</h3>';
 
@@ -189,6 +191,7 @@ class Yoast_Plugin_Conflict {
 		);
 	}
 
+
 	/**
 	 * Loop through the $this->plugins to check if one of the plugins is active.
 	 *
@@ -199,6 +202,7 @@ class Yoast_Plugin_Conflict {
 			$this->check_plugins_active( $plugins, $plugin_section );
 		}
 	}
+
 
 	/**
 	 * Loop through plugins and check if each plugin is active
@@ -214,6 +218,7 @@ class Yoast_Plugin_Conflict {
 			}
 		}
 	}
+
 
 	/**
 	 * Filter the already dismissed plugins
@@ -237,6 +242,7 @@ class Yoast_Plugin_Conflict {
 		return $plugins;
 	}
 
+
 	/**
 	 * Check if given plugin exists in array with all_active_plugins
 	 *
@@ -248,6 +254,7 @@ class Yoast_Plugin_Conflict {
 		return in_array( $plugin, $this->all_active_plugins );
 	}
 
+
 	/**
 	 * Add plugin to the list of active plugins.
 	 *
@@ -258,7 +265,6 @@ class Yoast_Plugin_Conflict {
 	 * @param string $plugin         Plugin basename string.
 	 */
 	protected function add_active_plugin( $plugin_section, $plugin ) {
-
 		if ( ! array_key_exists( $plugin_section, $this->active_plugins ) ) {
 			$this->active_plugins[ $plugin_section ] = array();
 		}
@@ -267,6 +273,7 @@ class Yoast_Plugin_Conflict {
 			$this->active_plugins[ $plugin_section ][] = $plugin;
 		}
 	}
+
 
 	/**
 	 * Search in $this->plugins for the given $plugin
@@ -278,14 +285,13 @@ class Yoast_Plugin_Conflict {
 	 * @return int|string
 	 */
 	protected function find_plugin_category( $plugin ) {
-
 		foreach ( $this->plugins as $plugin_section => $plugins ) {
 			if ( in_array( $plugin, $plugins ) ) {
 				return $plugin_section;
 			}
 		}
-
 	}
+
 
 	/**
 	 * When being in the deactivation process the currently deactivated plugin has to be removed.
@@ -298,4 +304,6 @@ class Yoast_Plugin_Conflict {
 			unset( $this->all_active_plugins[ $key_to_remove ] );
 		}
 	}
+
+
 }

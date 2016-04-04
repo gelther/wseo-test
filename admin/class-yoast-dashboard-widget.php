@@ -31,6 +31,7 @@ class Yoast_Dashboard_Widget {
 		add_action( 'delete_post', array( $this, 'clear_cache' ) );
 	}
 
+
 	/**
 	 * Adds dashboard widget to WordPress
 	 */
@@ -42,6 +43,7 @@ class Yoast_Dashboard_Widget {
 			array( $this, 'display_dashboard_widget' )
 		);
 	}
+
 
 	/**
 	 * Display the dashboard widget
@@ -61,6 +63,7 @@ class Yoast_Dashboard_Widget {
 		include WPSEO_PATH . '/admin/views/dashboard-widget.php';
 	}
 
+
 	/**
 	 * Enqueue's stylesheet for the dashboard if the current page is the dashboard
 	 */
@@ -72,12 +75,14 @@ class Yoast_Dashboard_Widget {
 		}
 	}
 
+
 	/**
 	 * Clears the dashboard widget items cache
 	 */
 	public function clear_cache() {
 		delete_transient( self::CACHE_TRANSIENT_KEY );
 	}
+
 
 	/**
 	 * An array representing items to be added to the At a Glance dashboard widget
@@ -95,6 +100,7 @@ class Yoast_Dashboard_Widget {
 		return $this->set_statistic_items_for_this_user( $transient );
 	}
 
+
 	/**
 	 * Set the cache for a specific user
 	 *
@@ -107,13 +113,14 @@ class Yoast_Dashboard_Widget {
 			$transient = array();
 		}
 
-		$user_id                  = get_current_user_id();
+		$user_id                    = get_current_user_id();
 		$filtered_items[ $user_id ] = array_filter( $this->get_seo_scores_with_post_count(), array( $this, 'filter_items' ) );
 
 		set_transient( self::CACHE_TRANSIENT_KEY, array_merge( $filtered_items, $transient ), DAY_IN_SECONDS );
 
 		return $filtered_items[ $user_id ];
 	}
+
 
 	/**
 	 * Set the SEO scores belonging to their SEO score result
@@ -125,6 +132,7 @@ class Yoast_Dashboard_Widget {
 
 		return array_map( array( $this, 'map_rank_to_widget' ), $ranks );
 	}
+
 
 	/**
 	 * Converts a rank to data usable in the dashboard widget
@@ -143,6 +151,7 @@ class Yoast_Dashboard_Widget {
 		);
 	}
 
+
 	/**
 	 * Returns a dashboard widget label to use for a certain rank
 	 *
@@ -151,7 +160,7 @@ class Yoast_Dashboard_Widget {
 	 * @return string
 	 */
 	private function get_title_for_rank( WPSEO_Rank $rank ) {
-		$labels = array(
+		$labels              = array(
 			WPSEO_Rank::NO_FOCUS => __( 'Posts without focus keyword', 'wordpress-seo' ),
 			WPSEO_Rank::BAD      => __( 'Posts with bad SEO score', 'wordpress-seo' ),
 			WPSEO_Rank::OK       => __( 'Posts with OK SEO score', 'wordpress-seo' ),
@@ -163,6 +172,7 @@ class Yoast_Dashboard_Widget {
 		return $labels[ $rank->get_rank() ];
 	}
 
+
 	/**
 	 * Filter items if they have a count of zero
 	 *
@@ -173,4 +183,6 @@ class Yoast_Dashboard_Widget {
 	private function filter_items( $item ) {
 		return 0 !== $item['count'];
 	}
+
+
 }

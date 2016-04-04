@@ -40,6 +40,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		}
 	}
 
+
 	/**
 	 * Translate text strings for use in the meta box
 	 *
@@ -56,9 +57,9 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		self::$meta_fields['general']['focuskw_text_input']['title'] = __( 'Focus Keyword', 'wordpress-seo' );
 		self::$meta_fields['general']['focuskw_text_input']['help']  = sprintf( __( 'Pick the main keyword or keyphrase that this post/page is about.<br/><br/>Read %sthis post%s for more info.', 'wordpress-seo' ), '<a href="https://yoast.com/focus-keyword/#utm_source=wordpress-seo-metabox&amp;utm_medium=inline-help&amp;utm_campaign=focus-keyword">', '</a>' );
 
-		self::$meta_fields['general']['title']['title']       = __( 'SEO Title', 'wordpress-seo' );
+		self::$meta_fields['general']['title']['title'] = __( 'SEO Title', 'wordpress-seo' );
 
-		self::$meta_fields['general']['metadesc']['title']       = __( 'Meta description', 'wordpress-seo' );
+		self::$meta_fields['general']['metadesc']['title'] = __( 'Meta description', 'wordpress-seo' );
 
 		self::$meta_fields['general']['metakeywords']['title']       = __( 'Meta keywords', 'wordpress-seo' );
 		self::$meta_fields['general']['metakeywords']['description'] = __( 'If you type something above it will override your %smeta keywords template%s.', 'wordpress-seo' );
@@ -97,15 +98,16 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		do_action( 'wpseo_tab_translate' );
 	}
 
+
 	/**
 	 * Test whether the metabox should be hidden either by choice of the admin or because
 	 * the post type is not a public post type
 	 *
 	 * @since 1.5.0
 	 *
-	 * @param  string $post_type (optional) The post type to test, defaults to the current post post_type.
+	 * @param string $post_type (optional) The post type to test, defaults to the current post post_type.
 	 *
-	 * @return  bool        Whether or not the meta box (and associated columns etc) should be hidden
+	 * @return bool Whether or not the meta box (and associated columns etc) should be hidden
 	 */
 	function is_metabox_hidden( $post_type = null ) {
 		if ( ! isset( $post_type ) && ( isset( $GLOBALS['post'] ) && ( is_object( $GLOBALS['post'] ) && isset( $GLOBALS['post']->post_type ) ) ) ) {
@@ -122,6 +124,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		return false;
 	}
 
+
 	/**
 	 * Sets up all the functionality related to the prominence of the page analysis functionality.
 	 */
@@ -130,6 +133,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			add_action( 'post_submitbox_start', array( $this, 'publish_box' ) );
 		}
 	}
+
 
 	/**
 	 * Outputs the page analysis score in the Publish Box.
@@ -173,6 +177,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		);
 	}
 
+
 	/**
 	 * Adds the Yoast SEO meta box to the edit boxes in the edit post / page  / cpt pages.
 	 */
@@ -196,6 +201,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		}
 	}
 
+
 	/**
 	 * Pass variables to js for use with the post-scraper
 	 *
@@ -214,11 +220,12 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			'base_url'            => $this->get_base_url_for_js(),
 			'title_template'      => WPSEO_Metabox::get_title_template( $post ),
 			'metadesc_template'   => WPSEO_Metabox::get_metadesc_template( $post ),
-			'contentTab'          => __( 'Content:' , 'wordpress-seo' ),
+			'contentTab'          => __( 'Content:', 'wordpress-seo' ),
 			'metaDescriptionDate' => $this->get_metadesc_date( $post ),
 			'locale'              => get_locale(),
 		);
 	}
+
 
 	/**
 	 * Returns a base URL for use in the JS, takes permalink structure into account
@@ -246,6 +253,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		return $base_url;
 	}
 
+
 	/**
 	 * Retrieves the title template.
 	 *
@@ -258,13 +266,14 @@ class WPSEO_Metabox extends WPSEO_Meta {
 
 		if ( is_a( $post, 'WP_Post' ) ) {
 			$needed_option = 'title-' . $post->post_type;
-			$options = get_option( 'wpseo_titles' );
+			$options       = get_option( 'wpseo_titles' );
 			if ( isset( $options[ $needed_option ] ) && $options[ $needed_option ] !== '' ) {
 				$title_template = $options[ $needed_option ];
 			}
 		}
 		return $title_template;
 	}
+
 
 	/**
 	 * Retrieves the metadesc template.
@@ -278,13 +287,14 @@ class WPSEO_Metabox extends WPSEO_Meta {
 
 		if ( is_a( $post, 'WP_Post' ) ) {
 			$needed_option = 'metadesc-' . $post->post_type;
-			$options = get_option( 'wpseo_titles' );
+			$options       = get_option( 'wpseo_titles' );
 			if ( isset( $options[ $needed_option ] ) && $options[ $needed_option ] !== '' ) {
 				$metadesc_template = $options[ $needed_option ];
 			}
 		}
 		return $metadesc_template;
 	}
+
 
 	/**
 	 * Determines the date to be displayed in the snippet preview
@@ -303,6 +313,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		return $date;
 	}
 
+
 	/**
 	 * Pass some variables to js for replacing variables.
 	 */
@@ -313,10 +324,11 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		);
 	}
 
+
 	/**
 	 * Pass some variables to js for the edit / post page overview, snippet preview, etc.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function localize_shortcode_plugin_script() {
 		return array(
@@ -324,6 +336,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			'wpseo_shortcode_tags'          => $this->get_valid_shortcode_tags(),
 		);
 	}
+
 
 	/**
 	 * Output a tab in the Yoast SEO Metabox
@@ -334,14 +347,15 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	 */
 	public function do_tab( $id, $heading, $content ) {
 		?>
-		<div id="wpseo_<?php echo esc_attr( $id ) ?>" class="wpseotab <?php echo esc_attr( $id ) ?>">
+		<div id="wpseo_<?php echo esc_attr( $id ); ?>" class="wpseotab <?php echo esc_attr( $id ); ?>">
 			<h4 class="wpseo-heading"><?php echo esc_html( $heading ); ?></h4>
 			<table class="form-table">
-				<?php echo $content ?>
+				<?php echo $content; ?>
 			</table>
 		</div>
 	<?php
 	}
+
 
 	/**
 	 * Output the meta box
@@ -361,6 +375,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			$content_section->display_content();
 		}
 	}
+
 
 	/**
 	 * Returns the relevant metabox sections for the current view.
@@ -384,6 +399,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		}
 		return $content_sections;
 	}
+
 
 	/**
 	 * Returns the metabox section for the content analysis.
@@ -412,11 +428,12 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			'<span class="yst-traffic-light-container">' . $this->traffic_light_svg() . '</span>',
 			$tabs,
 			array(
-				'link_alt' => __( 'Content', 'wordpress-seo' ),
+				'link_alt'   => __( 'Content', 'wordpress-seo' ),
 				'link_title' => __( 'Content', 'wordpress-seo' ),
 			)
 		);
 	}
+
 
 	/**
 	 * Returns the metabox section for the advanced settings.
@@ -440,11 +457,12 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			'<span class="dashicons dashicons-admin-generic"></span>',
 			array( $tab ),
 			array(
-				'link_alt' => __( 'Advanced', 'wordpress-seo' ),
+				'link_alt'   => __( 'Advanced', 'wordpress-seo' ),
 				'link_title' => __( 'Advanced', 'wordpress-seo' ),
 			)
 		);
 	}
+
 
 	/**
 	 * Returns a metabox section dedicated to hosting metabox tabs that have been added by other plugins through the
@@ -458,11 +476,12 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			'<span class="dashicons dashicons-admin-plugins"></span>',
 			array(),
 			array(
-				'link_alt' => __( 'Add-ons', 'wordpress-seo' ),
+				'link_alt'   => __( 'Add-ons', 'wordpress-seo' ),
 				'link_title' => __( 'Add-ons', 'wordpress-seo' ),
 			)
 		);
 	}
+
 
 	/**
 	 * Gets the table contents for the metabox tab.
@@ -481,15 +500,16 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		return $content;
 	}
 
+
 	/**
 	 * Adds a line in the meta box
 	 *
 	 * @todo [JRF] check if $class is added appropriately everywhere
 	 *
-	 * @param   array  $meta_field_def Contains the vars based on which output is generated.
-	 * @param   string $key            Internal key (without prefix).
+	 * @param array  $meta_field_def Contains the vars based on which output is generated.
+	 * @param string $key            Internal key (without prefix).
 	 *
-	 * @return  string
+	 * @return string
 	 */
 	function do_meta_box( $meta_field_def, $key = '' ) {
 		$content      = '';
@@ -540,8 +560,8 @@ class WPSEO_Metabox extends WPSEO_Meta {
 				if ( isset( $meta_field_def['options'] ) && is_array( $meta_field_def['options'] ) && $meta_field_def['options'] !== array() ) {
 					$content .= '<select name="' . $esc_form_key . '" id="' . $esc_form_key . '" class="yoast' . $class . '">';
 					foreach ( $meta_field_def['options'] as $val => $option ) {
-						$selected = selected( $meta_value, $val, false );
-						$content .= '<option ' . $selected . ' value="' . esc_attr( $val ) . '">' . esc_html( $option ) . '</option>';
+						$selected  = selected( $meta_value, $val, false );
+						$content  .= '<option ' . $selected . ' value="' . esc_attr( $val ) . '">' . esc_html( $option ) . '</option>';
 					}
 					unset( $val, $option, $selected );
 					$content .= '</select>';
@@ -580,8 +600,8 @@ class WPSEO_Metabox extends WPSEO_Meta {
 				break;
 
 			case 'checkbox':
-				$checked = checked( $meta_value, 'on', false );
-				$expl    = ( isset( $meta_field_def['expl'] ) ) ? esc_html( $meta_field_def['expl'] ) : '';
+				$checked  = checked( $meta_value, 'on', false );
+				$expl     = ( isset( $meta_field_def['expl'] ) ) ? esc_html( $meta_field_def['expl'] ) : '';
 				$content .= '<label for="' . $esc_form_key . '"><input type="checkbox" id="' . $esc_form_key . '" name="' . $esc_form_key . '" ' . $checked . ' value="on" class="yoast' . $class . '"/> ' . $expl . '</label><br />';
 				unset( $checked, $expl );
 				break;
@@ -589,7 +609,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 			case 'radio':
 				if ( isset( $meta_field_def['options'] ) && is_array( $meta_field_def['options'] ) && $meta_field_def['options'] !== array() ) {
 					foreach ( $meta_field_def['options'] as $val => $option ) {
-						$checked = checked( $meta_value, $val, false );
+						$checked  = checked( $meta_value, $val, false );
 						$content .= '<input type="radio" ' . $checked . ' id="' . $esc_form_key . '_' . esc_attr( $val ) . '" name="' . $esc_form_key . '" value="' . esc_attr( $val ) . '"/> <label for="' . $esc_form_key . '_' . esc_attr( $val ) . '">' . esc_html( $option ) . '</label> ';
 					}
 					unset( $val, $option, $checked );
@@ -650,6 +670,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		return $html;
 	}
 
+
 	/**
 	 * Save the WP SEO metadata for posts.
 	 *
@@ -657,7 +678,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	 *
 	 * @param int $post_id Post ID.
 	 *
-	 * @return  bool|void   Boolean false if invalid save post request
+	 * @return bool|void Boolean false if invalid save post request
 	 */
 	function save_postdata( $post_id ) {
 		if ( $post_id === null ) {
@@ -698,6 +719,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 
 		do_action( 'wpseo_saved_postdata' );
 	}
+
 
 	/**
 	 * Enqueues all the needed JS and CSS.
@@ -763,16 +785,18 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		}
 	}
 
+
 	/**
 	 * Pass some variables to js for upload module.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function localize_media_script() {
 		return array(
 			'choose_image' => __( 'Use Image', 'wordpress-seo' ),
 		);
 	}
+
 
 	/**
 	 * Retrieve a post date when post is published, or return current date when it's not.
@@ -792,10 +816,11 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		return (string) $date;
 	}
 
+
 	/**
 	 * Returns post in metabox context
 	 *
-	 * @returns WP_Post|array
+	 * @return s WP_Post|array
 	 */
 	protected function get_metabox_post() {
 		if ( $post = filter_input( INPUT_GET, 'post' ) ) {
@@ -811,6 +836,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 
 		return array();
 	}
+
 
 	/**
 	 * Counting the number of given keyword used for other posts than given post_id
@@ -830,6 +856,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		return array();
 	}
 
+
 	/**
 	 * Returns an array with shortcode tags for all registered shortcodes.
 	 *
@@ -844,6 +871,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 
 		return $shortcode_tags;
 	}
+
 
 	/**
 	 * Prepares the replace vars for localization.
@@ -876,56 +904,57 @@ class WPSEO_Metabox extends WPSEO_Meta {
 		return $cached_replacement_vars;
 	}
 
+
 	/**
 	 * Return the SVG for the traffic light in the metabox.
 	 */
 	public function traffic_light_svg() {
 		return <<<SVG
-<svg class="yst-traffic-light init" version="1.1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
-	 x="0px" y="0px" viewBox="0 0 30 47" enable-background="new 0 0 30 47" xml:space="preserve">
+<svg class='yst-traffic-light init' version='1.1' xmlns:x='&ns_extend;' xmlns:i='&ns_ai;' xmlns:graph='&ns_graphs;'
+	xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:a='http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/'
+	x='0px' y='0px' viewBox='0 0 30 47' enable-background='new 0 0 30 47' xml:space='preserve'>
 <g id="BG_1_">
 </g>
 <g id="traffic_light">
 	<g>
 		<g>
 			<g>
-				<path fill="#5B2942" d="M22,0H8C3.6,0,0,3.6,0,7.9v31.1C0,43.4,3.6,47,8,47h14c4.4,0,8-3.6,8-7.9V7.9C30,3.6,26.4,0,22,0z
-					 M27.5,38.8c0,3.1-2.6,5.7-5.8,5.7H8.3c-3.2,0-5.8-2.5-5.8-5.7V8.3c0-1.5,0.6-2.9,1.7-4c1.1-1,2.5-1.6,4.1-1.6h13.4
-					c1.5,0,3,0.6,4.1,1.6c1.1,1.1,1.7,2.5,1.7,4V38.8z"/>
+				<path fill='#5B2942' d='M22,0H8C3.6,0,0,3.6,0,7.9v31.1C0,43.4,3.6,47,8,47h14c4.4,0,8-3.6,8-7.9V7.9C30,3.6,26.4,0,22,0z
+					M27.5,38.8c0,3.1-2.6,5.7-5.8,5.7H8.3c-3.2,0-5.8-2.5-5.8-5.7V8.3c0-1.5,0.6-2.9,1.7-4c1.1-1,2.5-1.6,4.1-1.6h13.4
+					c1.5,0,3,0.6,4.1,1.6c1.1,1.1,1.7,2.5,1.7,4V38.8z'/>
 			</g>
 			<g class="traffic-light-color traffic-light-red">
-				<ellipse fill="#C8C8C8" cx="15" cy="23.5" rx="5.7" ry="5.6"/>
-				<ellipse fill="#E31C15" cx="15" cy="10.9" rx="5.7" ry="5.6"/>
-				<ellipse fill="#C8C8C8" cx="15" cy="36.1" rx="5.7" ry="5.6"/>
+				<ellipse fill='#C8C8C8' cx='15' cy='23.5' rx='5.7' ry='5.6'/>
+				<ellipse fill='#E31C15' cx='15' cy='10.9' rx='5.7' ry='5.6'/>
+				<ellipse fill='#C8C8C8' cx='15' cy='36.1' rx='5.7' ry='5.6'/>
 			</g>
 			<g class="traffic-light-color traffic-light-orange">
-				<ellipse fill="#F49A00" cx="15" cy="23.5" rx="5.7" ry="5.6"/>
-				<ellipse fill="#C8C8C8" cx="15" cy="10.9" rx="5.7" ry="5.6"/>
-				<ellipse fill="#C8C8C8" cx="15" cy="36.1" rx="5.7" ry="5.6"/>
+				<ellipse fill='#F49A00' cx='15' cy='23.5' rx='5.7' ry='5.6'/>
+				<ellipse fill='#C8C8C8' cx='15' cy='10.9' rx='5.7' ry='5.6'/>
+				<ellipse fill='#C8C8C8' cx='15' cy='36.1' rx='5.7' ry='5.6'/>
 			</g>
 			<g class="traffic-light-color traffic-light-green">
-				<ellipse fill="#C8C8C8" cx="15" cy="23.5" rx="5.7" ry="5.6"/>
-				<ellipse fill="#C8C8C8" cx="15" cy="10.9" rx="5.7" ry="5.6"/>
-				<ellipse fill="#63B22B" cx="15" cy="36.1" rx="5.7" ry="5.6"/>
+				<ellipse fill='#C8C8C8' cx='15' cy='23.5' rx='5.7' ry='5.6'/>
+				<ellipse fill='#C8C8C8' cx='15' cy='10.9' rx='5.7' ry='5.6'/>
+				<ellipse fill='#63B22B' cx='15' cy='36.1' rx='5.7' ry='5.6'/>
 			</g>
 			<g class="traffic-light-color traffic-light-empty">
-				<ellipse fill="#C8C8C8" cx="15" cy="23.5" rx="5.7" ry="5.6"/>
-				<ellipse fill="#C8C8C8" cx="15" cy="10.9" rx="5.7" ry="5.6"/>
-				<ellipse fill="#C8C8C8" cx="15" cy="36.1" rx="5.7" ry="5.6"/>
+				<ellipse fill='#C8C8C8' cx='15' cy='23.5' rx='5.7' ry='5.6'/>
+				<ellipse fill='#C8C8C8' cx='15' cy='10.9' rx='5.7' ry='5.6'/>
+				<ellipse fill='#C8C8C8' cx='15' cy='36.1' rx='5.7' ry='5.6'/>
 			</g>
 			<g class="traffic-light-color traffic-light-init">
-				<ellipse fill="#5B2942" cx="15" cy="23.5" rx="5.7" ry="5.6"/>
-				<ellipse fill="#5B2942" cx="15" cy="10.9" rx="5.7" ry="5.6"/>
-				<ellipse fill="#5B2942" cx="15" cy="36.1" rx="5.7" ry="5.6"/>
+				<ellipse fill='#5B2942' cx='15' cy='23.5' rx='5.7' ry='5.6'/>
+				<ellipse fill='#5B2942' cx='15' cy='10.9' rx='5.7' ry='5.6'/>
+				<ellipse fill='#5B2942' cx='15' cy='36.1' rx='5.7' ry='5.6'/>
 			</g>
 		</g>
 	</g>
 </g>
 </svg>
 SVG;
-
 	}
+
 
 	/**
 	 * Keyword tab for enabling analysis of multiple keywords.
@@ -952,6 +981,7 @@ SVG;
 			</script>';
 	}
 
+
 	/**
 	 * Returns Jed compatible YoastSEO.js translations.
 	 *
@@ -965,20 +995,22 @@ SVG;
 		return array();
 	}
 
+
 	/**
 	 * Returns whether or not showing the date in the snippet preview is enabled.
 	 *
-	 * @param WP_Post $post The post to retrieve this for.
+	 * @param  WP_Post $post The post to retrieve this for.
 	 * @return bool
 	 */
 	private function is_show_date_enabled( $post ) {
 		$post_type = $post->post_type;
 
 		$options = WPSEO_Options::get_option( 'wpseo_titles' );
-		$key = sprintf( 'showdate-%s', $post_type );
+		$key     = sprintf( 'showdate-%s', $post_type );
 
 		return isset( $options[ $key ] ) && true === $options[ $key ];
 	}
+
 
 	/********************** DEPRECATED METHODS **********************/
 
@@ -994,6 +1026,7 @@ SVG;
 		$this->add_meta_box();
 	}
 
+
 	/**
 	 * Retrieve the meta boxes for the given post type.
 	 *
@@ -1001,15 +1034,16 @@ SVG;
 	 * @deprecated use WPSEO_Meta::get_meta_field_defs()
 	 * @see        WPSEO_Meta::get_meta_field_defs()
 	 *
-	 * @param  string $post_type The post type for which to get the meta fields.
+	 * @param string $post_type The post type for which to get the meta fields.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function get_meta_boxes( $post_type = 'post' ) {
 		_deprecated_function( __METHOD__, 'WPSEO 1.5.0', 'WPSEO_Meta::get_meta_field_defs()' );
 
 		return $this->get_meta_field_defs( 'general', $post_type );
 	}
+
 
 	/**
 	 * Pass some variables to js
@@ -1024,6 +1058,7 @@ SVG;
 		return $this->localize_script();
 	}
 
+
 	/**
 	 * @deprecated 3.0 Removed, use javascript functions instead
 	 *
@@ -1037,6 +1072,7 @@ SVG;
 		return $string;
 	}
 
+
 	/**
 	 * @deprecated 3.0 Removed.
 	 *
@@ -1047,6 +1083,7 @@ SVG;
 
 		return array();
 	}
+
 
 	/**
 	 * @deprecated 3.0 Removed, use javascript functions instead.
@@ -1059,6 +1096,7 @@ SVG;
 		return '';
 	}
 
+
 	/**
 	 * @deprecated 3.0 Use WPSEO_Meta_Columns::posts_filter_dropdown instead.
 	 */
@@ -1069,6 +1107,7 @@ SVG;
 		$meta_columns = $GLOBALS['wpseo_meta_columns'];
 		$meta_columns->posts_filter_dropdown();
 	}
+
 
 	/**
 	 * @deprecated 3.0 Use WPSEO_Meta_Columns::column_heading instead.
@@ -1085,6 +1124,7 @@ SVG;
 		return $meta_columns->column_heading( $columns );
 	}
 
+
 	/**
 	 * @deprecated 3.0 Use WPSEO_Meta_Columns::column_content instead.
 	 *
@@ -1098,6 +1138,7 @@ SVG;
 		$meta_columns = $GLOBALS['wpseo_meta_columns'];
 		$meta_columns->column_content( $column_name, $post_id );
 	}
+
 
 	/**
 	 * @deprecated 3.0 Use WPSEO_Meta_Columns::column_sort instead.
@@ -1114,6 +1155,7 @@ SVG;
 		return $meta_columns->column_sort( $columns );
 	}
 
+
 	/**
 	 * @deprecated 3.0 Use WPSEO_Meta_Columns::column_sort_orderby instead.
 	 *
@@ -1129,12 +1171,13 @@ SVG;
 		return $meta_columns->column_sort_orderby( $vars );
 	}
 
+
 	/**
 	 * @deprecated 3.0 Use WPSEO_Meta_Columns::column_hidden instead.
 	 *
 	 * @param array|false $result The hidden columns.
 	 * @param string      $option The option name used to set which columns should be hidden.
-	 * @param WP_User     $user The User.
+	 * @param WP_User     $user   The User.
 	 *
 	 * @return array|false $result
 	 */
@@ -1146,10 +1189,11 @@ SVG;
 		return $meta_columns->column_hidden( $result, $option, $user );
 	}
 
+
 	/**
 	 * @deprecated 3.0 Use WPSEO_Meta_Columns::seo_score_posts_where instead.
 	 *
-	 * @param string $where  Where clause.
+	 * @param string $where Where clause.
 	 *
 	 * @return string
 	 */
@@ -1160,6 +1204,7 @@ SVG;
 		$meta_columns = $GLOBALS['wpseo_meta_columns'];
 		return $meta_columns->seo_score_posts_where( $where );
 	}
+
 
 	/**
 	 * @deprecated 3.0 Removed.
@@ -1174,6 +1219,7 @@ SVG;
 		return '';
 	}
 
+
 	/**
 	 * @deprecated 3.0
 	 *
@@ -1182,8 +1228,8 @@ SVG;
 	 */
 	public function aasort( &$array, $key ) {
 		_deprecated_function( 'WPSEO_Metabox::aasort', 'WPSEO 3.0' );
-
 	}
+
 
 	/**
 	 * @deprecated 3.0
@@ -1196,35 +1242,36 @@ SVG;
 		_deprecated_function( 'WPSEO_Metabox::linkdex_output', 'WPSEO 3.0' );
 
 		return '';
-
 	}
+
 
 	/**
 	 * @deprecated 3.0
 	 *
-	 * @param  object $post Post to calculate the results for.
+	 * @param object $post Post to calculate the results for.
 	 *
-	 * @return  array|WP_Error
+	 * @return array|WP_Error
 	 */
 	public function calculate_results( $post ) {
 		_deprecated_function( 'WPSEO_Metabox::calculate_results', 'WPSEO 3.0' );
 
 		return array();
-
 	}
+
 
 	/**
 	 * @deprecated 3.0
 	 *
 	 * @param WP_Post $post Post object instance.
 	 *
-	 * @return    array
+	 * @return array
 	 */
 	public function get_sample_permalink( $post ) {
 		_deprecated_function( 'WPSEO_Metabox::get_sample_permalink', 'WPSEO 3.0' );
 
 		return array();
 	}
+
 
 	/**
 	 * @deprecated 3.0
@@ -1238,6 +1285,7 @@ SVG;
 	public function save_score_result( &$results, $scoreValue, $scoreMessage, $scoreLabel, $rawScore = null ) {
 		_deprecated_function( 'WPSEO_Metabox::save_score_result', 'WPSEO 3.0' );
 	}
+
 
 	/**
 	 * @deprecated 3.0
@@ -1253,6 +1301,7 @@ SVG;
 		return '';
 	}
 
+
 	/**
 	 * @deprecated 3.0
 	 *
@@ -1261,8 +1310,8 @@ SVG;
 	 */
 	public function check_double_focus_keyword( $job, &$results ) {
 		_deprecated_function( 'WPSEO_Metabox::check_double_focus_key', 'WPSEO 3.0' );
-
 	}
+
 
 	/**
 	 * @deprecated 3.0
@@ -1274,6 +1323,7 @@ SVG;
 		_deprecated_function( 'WPSEO_Metabox::score_keyword', 'WPSEO 3.0' );
 	}
 
+
 	/**
 	 * @deprecated 3.0
 	 *
@@ -1284,6 +1334,7 @@ SVG;
 		_deprecated_function( 'WPSEO_Metabox::score_url', 'WPSEO 3.0' );
 	}
 
+
 	/**
 	 * @deprecated 3.0
 	 *
@@ -1293,6 +1344,7 @@ SVG;
 	public function score_title( $job, &$results ) {
 		_deprecated_function( 'WPSEO_Metabox::score_title', 'WPSEO 3.0' );
 	}
+
 
 	/**
 	 * @deprecated 3.0
@@ -1305,6 +1357,7 @@ SVG;
 	public function score_anchor_texts( $job, &$results, $anchor_texts, $count ) {
 		_deprecated_function( 'WPSEO_Metabox::score_anchor_texts', 'WPSEO 3.0' );
 	}
+
 
 	/**
 	 * @deprecated 3.0
@@ -1319,6 +1372,7 @@ SVG;
 		return array();
 	}
 
+
 	/**
 	 * @deprecated 3.0
 	 *
@@ -1332,6 +1386,7 @@ SVG;
 		return array();
 	}
 
+
 	/**
 	 * @deprecated 3.0
 	 *
@@ -1342,6 +1397,7 @@ SVG;
 	public function score_images_alt_text( $job, &$results, $imgs ) {
 		_deprecated_function( 'WPSEO_Metabox::score_images_alt_text', 'WPSEO 3.0' );
 	}
+
 
 	/**
 	 * @deprecated 3.0
@@ -1358,6 +1414,7 @@ SVG;
 		return array();
 	}
 
+
 	/**
 	 * @deprecated 3.0
 	 *
@@ -1368,6 +1425,7 @@ SVG;
 	public function score_headings( $job, &$results, $headings ) {
 		_deprecated_function( 'WPSEO_Metabox::score_headings', 'WPSEO 3.0' );
 	}
+
 
 	/**
 	 * @deprecated 3.0
@@ -1382,6 +1440,7 @@ SVG;
 		return array();
 	}
 
+
 	/**
 	 * @deprecated 3.0
 	 *
@@ -1394,6 +1453,7 @@ SVG;
 		_deprecated_function( 'WPSEO_Metabox::score_description', 'WPSEO 3.0' );
 	}
 
+
 	/**
 	 * @deprecated 3.0
 	 *
@@ -1405,6 +1465,7 @@ SVG;
 	public function score_body( $job, &$results, $body, $firstp ) {
 		_deprecated_function( 'WPSEO_Metabox::score_body', 'WPSEO 3.0' );
 	}
+
 
 	/**
 	 * @deprecated 3.0
@@ -1419,6 +1480,7 @@ SVG;
 		return '';
 	}
 
+
 	/**
 	 * @deprecated 3.0
 	 *
@@ -1431,4 +1493,6 @@ SVG;
 
 		return '';
 	}
+
+
 } /* End of class */

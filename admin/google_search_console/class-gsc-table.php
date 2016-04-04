@@ -74,6 +74,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 		$this->items = $items;
 	}
 
+
 	/**
 	 * Getting the screen id from this table
 	 *
@@ -82,6 +83,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 	public function get_screen_id() {
 		return $this->screen->id;
 	}
+
 
 	/**
 	 * Setup the table variables, fetch the items from the database, search, sort and format the items.
@@ -95,6 +97,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 		$this->views();
 		$this->parse_items();
 	}
+
 
 	/**
 	 * Set the table columns
@@ -113,6 +116,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 		return $columns;
 	}
 
+
 	/**
 	 * Return the columns that are sortable
 	 *
@@ -129,6 +133,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 		return $sortable_columns;
 	}
 
+
 	/**
 	 * Return available bulk actions
 	 *
@@ -139,6 +144,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 			'mark_as_fixed' => __( 'Mark as fixed', 'wordpress-seo' ),
 		);
 	}
+
 
 	/**
 	 * Default method to display a column
@@ -151,6 +157,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 	protected function column_default( $item, $column_name ) {
 		return $item[ $column_name ];
 	}
+
 
 	/**
 	 * Checkbox column
@@ -165,6 +172,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 		);
 	}
 
+
 	/**
 	 * Formatting the output of the column last crawled into a dateformat
 	 *
@@ -176,6 +184,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 		return date_i18n( get_option( 'date_format' ), strtotime( $item['last_crawled'] ) );
 	}
 
+
 	/**
 	 * Formatting the output of the column first detected into a dateformat
 	 *
@@ -186,6 +195,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 	protected function column_first_detected( $item ) {
 		return date_i18n( get_option( 'date_format' ), strtotime( $item['first_detected'] ) );
 	}
+
 
 	/**
 	 * URL column
@@ -216,12 +226,14 @@ class WPSEO_GSC_Table extends WP_List_Table {
 		);
 	}
 
+
 	/**
 	 * Running the setup of the columns
 	 */
 	private function setup_columns() {
 		$this->_column_headers = array( $this->get_columns(), array(), $this->get_sortable_columns() );
 	}
+
 
 	/**
 	 * Check if the current category allow creating redirects
@@ -230,6 +242,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 	private function can_create_redirect() {
 		return in_array( $this->current_view, array( 'soft_404', 'not_found', 'access_denied' ) );
 	}
+
 
 	/**
 	 * Setting the table navigation
@@ -244,6 +257,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 			'per_page'    => $posts_per_page,
 		) );
 	}
+
 
 	/**
 	 * Setting the items
@@ -260,6 +274,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 			$this->paginate_items();
 		}
 	}
+
 
 	/**
 	 * Search through the items
@@ -279,6 +294,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 		$this->items = $results;
 	}
 
+
 	/**
 	 * Running the pagination
 	 */
@@ -293,6 +309,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 		$this->items = array_slice( $this->items, ( $slice_start * $this->per_page ), $this->per_page );
 	}
 
+
 	/**
 	 * Sort the items by callback
 	 */
@@ -300,6 +317,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 		// Sort the results.
 		usort( $this->items, array( $this, 'do_reorder' ) );
 	}
+
 
 	/**
 	 * Doing the sorting of the issues
@@ -328,6 +346,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 		return ( $order === 'asc' ) ? $result : ( - $result );
 	}
 
+
 	/**
 	 * Modal box
 	 *
@@ -343,6 +362,7 @@ class WPSEO_GSC_Table extends WP_List_Table {
 
 		return $view_type;
 	}
+
 
 	/**
 	 * Determine which model box type should be rendered
@@ -381,4 +401,6 @@ class WPSEO_GSC_Table extends WP_List_Table {
 		echo "<input id='field_platform' type='hidden' name='platform' value='{$platform}' />";
 		echo "<input id='field_category' type='hidden' name='category' value='{$this->current_view}' />";
 	}
+
+
 }

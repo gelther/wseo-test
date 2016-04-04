@@ -45,6 +45,7 @@ class WPSEO_Twitter {
 		$this->twitter();
 	}
 
+
 	/**
 	 * Outputs the Twitter Card code on singular pages.
 	 */
@@ -66,6 +67,7 @@ class WPSEO_Twitter {
 		do_action( 'wpseo_twitter' );
 	}
 
+
 	/**
 	 * Display the Twitter card type.
 	 *
@@ -79,6 +81,7 @@ class WPSEO_Twitter {
 
 		$this->output_metatag( 'card', $this->type );
 	}
+
 
 	/**
 	 * Determines the twitter card type for the current page
@@ -104,6 +107,7 @@ class WPSEO_Twitter {
 		$this->type = apply_filters( 'wpseo_twitter_card_type', $this->type );
 	}
 
+
 	/**
 	 * Determines whether the card type is of a type currently allowed by Twitter
 	 *
@@ -121,6 +125,7 @@ class WPSEO_Twitter {
 		}
 	}
 
+
 	/**
 	 * Output the metatag
 	 *
@@ -129,7 +134,6 @@ class WPSEO_Twitter {
 	 * @param bool   $escaped Force escape flag.
 	 */
 	private function output_metatag( $name, $value, $escaped = false ) {
-
 		// Escape the value if not escaped.
 		if ( false === $escaped ) {
 			$value = esc_attr( $value );
@@ -145,6 +149,7 @@ class WPSEO_Twitter {
 		// Output meta.
 		echo '<meta ', esc_attr( $metatag_key ), '="twitter:', esc_attr( $name ), '" content="', $value, '" />', "\n";
 	}
+
 
 	/**
 	 * Displays the description for Twitter.
@@ -175,6 +180,7 @@ class WPSEO_Twitter {
 			$this->output_metatag( 'description', $meta_desc );
 		}
 	}
+
 
 	/**
 	 * Returns the description for a singular page
@@ -216,8 +222,8 @@ class WPSEO_Twitter {
 		}
 
 		return trim( strip_tags( term_description() ) );
-
 	}
+
 
 	/**
 	 * Returns a fallback description
@@ -227,6 +233,7 @@ class WPSEO_Twitter {
 	private function fallback_description() {
 		return trim( WPSEO_Frontend::get_instance()->metadesc( false ) );
 	}
+
 
 	/**
 	 * Displays the title for Twitter.
@@ -258,6 +265,7 @@ class WPSEO_Twitter {
 		}
 	}
 
+
 	/**
 	 * Returns the Twitter title for a single post
 	 *
@@ -274,6 +282,7 @@ class WPSEO_Twitter {
 		return $title;
 	}
 
+
 	/**
 	 * Getting the title for the taxonomy
 	 *
@@ -289,6 +298,7 @@ class WPSEO_Twitter {
 		return $title;
 	}
 
+
 	/**
 	 * Returns the Twitter title for any page
 	 *
@@ -297,6 +307,7 @@ class WPSEO_Twitter {
 	private function fallback_title() {
 		return WPSEO_Frontend::get_instance()->title( '' );
 	}
+
 
 	/**
 	 * Displays the Twitter account for the site.
@@ -315,13 +326,14 @@ class WPSEO_Twitter {
 		}
 	}
 
+
 	/**
 	 * Checks if the given id is actually an id or a url and if url, distills the id from it.
 	 *
 	 * Solves issues with filters returning urls and theme's/other plugins also adding a user meta
 	 * twitter field which expects url rather than an id (which is what we expect).
 	 *
-	 * @param  string $id Twitter ID or url.
+	 * @param string $id Twitter ID or url.
 	 *
 	 * @return string|bool Twitter ID or false if it failed to get a valid Twitter ID.
 	 */
@@ -334,13 +346,13 @@ class WPSEO_Twitter {
 		}
 	}
 
+
 	/**
 	 * Displays the image for Twitter
 	 *
 	 * Only used when OpenGraph is inactive or Summary Large Image card is chosen.
 	 */
 	protected function image() {
-
 		if ( is_category() || is_tax() || is_tag() ) {
 			$this->taxonomy_image_output();
 		}
@@ -353,13 +365,14 @@ class WPSEO_Twitter {
 		}
 	}
 
+
 	/**
 	 * Outputs the first image of a gallery.
 	 */
 	private function gallery_images_output() {
-
 		$this->image_output( reset( $this->images ) );
 	}
+
 
 	/**
 	 * @return bool
@@ -376,6 +389,7 @@ class WPSEO_Twitter {
 
 		return false;
 	}
+
 
 	/**
 	 * Takes care of image output when we only need to display a single image.
@@ -401,6 +415,7 @@ class WPSEO_Twitter {
 		}
 	}
 
+
 	/**
 	 * Show the front page image
 	 *
@@ -418,6 +433,7 @@ class WPSEO_Twitter {
 		return false;
 	}
 
+
 	/**
 	 * Outputs a Twitter image tag for a given image
 	 *
@@ -427,7 +443,6 @@ class WPSEO_Twitter {
 	 * @return bool
 	 */
 	protected function image_output( $img, $tag = false ) {
-
 		if ( $tag ) {
 			_deprecated_argument( __METHOD__, 'WPSEO 2.4' );
 		}
@@ -455,6 +470,7 @@ class WPSEO_Twitter {
 		return false;
 	}
 
+
 	/**
 	 * Retrieve images from the post meta values
 	 *
@@ -472,6 +488,7 @@ class WPSEO_Twitter {
 
 		return false;
 	}
+
 
 	/**
 	 * Retrieve the featured image
@@ -496,6 +513,7 @@ class WPSEO_Twitter {
 
 		return false;
 	}
+
 
 	/**
 	 * Retrieve the image from the content
@@ -526,6 +544,7 @@ class WPSEO_Twitter {
 		return false;
 	}
 
+
 	/**
 	 * Displays the authors Twitter account.
 	 */
@@ -549,6 +568,7 @@ class WPSEO_Twitter {
 		}
 	}
 
+
 	/**
 	 * Get the singleton instance of this class
 	 *
@@ -562,6 +582,7 @@ class WPSEO_Twitter {
 		return self::$instance;
 	}
 
+
 	/**
 	 * Displays the domain tag for the site.
 	 *
@@ -570,4 +591,6 @@ class WPSEO_Twitter {
 	protected function site_domain() {
 		_deprecated_function( __METHOD__, 'WPSEO 3.0' );
 	}
+
+
 } /* End of class */

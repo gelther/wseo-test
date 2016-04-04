@@ -48,6 +48,7 @@ class WPSEO_Admin_Init {
 		$this->load_xml_sitemaps_admin();
 	}
 
+
 	/**
 	 * For WP versions older than 4.2, this includes styles and a script to make notices dismissible.
 	 */
@@ -57,17 +58,18 @@ class WPSEO_Admin_Init {
 			wp_enqueue_script( 'wpseo-dismissible', plugins_url( 'js/wp-seo-dismissible-' . '310' . WPSEO_CSSJS_SUFFIX . '.js', WPSEO_FILE ), array( 'jquery' ), WPSEO_VERSION, true );
 		}
 	}
+
+
 	/**
 	 * Redirect first time or just upgraded users to the about screen.
 	 */
 	public function after_update_notice() {
-
 		$can_access = is_multisite() ? WPSEO_Utils::grant_access() : current_user_can( 'manage_options' );
 
 		if ( $can_access && $this->has_ignored_tour() && ! $this->seen_about() ) {
 
 			if ( filter_input( INPUT_GET, 'intro' ) === '1' || $this->dismiss_notice( 'wpseo-dismiss-about' ) ) {
-				update_user_meta( get_current_user_id(), 'wpseo_seen_about_version' , WPSEO_VERSION );
+				update_user_meta( get_current_user_id(), 'wpseo_seen_about_version', WPSEO_VERSION );
 
 				return;
 			}
@@ -82,14 +84,15 @@ class WPSEO_Admin_Init {
 			);
 
 			$notification_options = array(
-				'type' => 'updated',
-				'id' => 'wpseo-dismiss-about',
+				'type'  => 'updated',
+				'id'    => 'wpseo-dismiss-about',
 				'nonce' => wp_create_nonce( 'wpseo-dismiss-about' ),
 			);
 
 			Yoast_Notification_Center::get()->add_notification( new Yoast_Notification( $info_message, $notification_options ) );
 		}
 	}
+
 
 	/**
 	 * Helper to verify if the current user has already seen the about page for the current version
@@ -103,11 +106,11 @@ class WPSEO_Admin_Init {
 		return version_compare( $seen_about_version, $last_minor_version, '>=' );
 	}
 
+
 	/**
 	 * Notify about the default tagline if the user hasn't changed it
 	 */
 	public function tagline_notice() {
-
 		// Just a return, because we want to temporary disable this notice (#3998).
 		return;
 
@@ -118,9 +121,9 @@ class WPSEO_Admin_Init {
 				return;
 			}
 
-			$current_url = ( is_ssl() ? 'https://' : 'http://' );
-			$current_url .= sanitize_text_field( $_SERVER['SERVER_NAME'] ) . sanitize_text_field( $_SERVER['REQUEST_URI'] );
-			$customize_url = add_query_arg( array(
+			$current_url    = ( is_ssl() ? 'https://' : 'http://' );
+			$current_url   .= sanitize_text_field( $_SERVER['SERVER_NAME'] ) . sanitize_text_field( $_SERVER['REQUEST_URI'] );
+			$customize_url  = add_query_arg( array(
 				'url' => urlencode( $current_url ),
 			), wp_customize_url() );
 
@@ -140,6 +143,7 @@ class WPSEO_Admin_Init {
 		}
 	}
 
+
 	/**
 	 * Returns whether or not the site has the default tagline
 	 *
@@ -148,6 +152,7 @@ class WPSEO_Admin_Init {
 	public function has_default_tagline() {
 		return __( 'Just another WordPress site' ) === get_bloginfo( 'description' );
 	}
+
 
 	/**
 	 * Returns whether or not the user has seen the tagline notice
@@ -162,6 +167,7 @@ class WPSEO_Admin_Init {
 
 		return 'seen' === get_user_meta( get_current_user_id(), 'wpseo_seen_tagline_notice', true );
 	}
+
 
 	/**
 	 * Shows a notice to the user if they have Google Analytics for WordPress 5.4.3 installed because it causes an error
@@ -186,11 +192,11 @@ class WPSEO_Admin_Init {
 		}
 	}
 
+
 	/**
 	 * Shows the notice for recalculating the post. the Notice will only be shown if the user hasn't dismissed it before.
 	 */
 	public function recalculate_notice() {
-
 		// Just a return, because we want to temporary disable this notice (#3998).
 		return;
 
@@ -219,6 +225,7 @@ class WPSEO_Admin_Init {
 		}
 	}
 
+
 	/**
 	 * Check if the user has dismissed the given notice (by $notice_name)
 	 *
@@ -230,6 +237,7 @@ class WPSEO_Admin_Init {
 		return '1' === get_option( $notice_name, true );
 	}
 
+
 	/**
 	 * Helper to verify if the user is currently visiting one of our admin pages.
 	 *
@@ -239,11 +247,11 @@ class WPSEO_Admin_Init {
 		return 'admin.php' === $this->pagenow && strpos( filter_input( INPUT_GET, 'page' ), 'wpseo' ) === 0;
 	}
 
+
 	/**
 	 * Determine whether we should load the meta box class and if so, load it.
 	 */
 	private function load_meta_boxes() {
-
 		$is_editor      = in_array( $this->pagenow, array( 'edit.php', 'post.php', 'post-new.php' ) );
 		$is_inline_save = filter_input( INPUT_POST, 'action' ) === 'inline-save';
 
@@ -265,6 +273,7 @@ class WPSEO_Admin_Init {
 		}
 	}
 
+
 	/**
 	 * Determine if we should load our taxonomy edit class and if so, load it.
 	 */
@@ -277,6 +286,7 @@ class WPSEO_Admin_Init {
 		}
 	}
 
+
 	/**
 	 * Determine if we should load our admin pages class and if so, load it.
 	 *
@@ -288,19 +298,20 @@ class WPSEO_Admin_Init {
 		}
 	}
 
+
 	/**
 	 * Determine if we should load our admin pages class and if so, load it.
 	 *
 	 * Loads admin page class for all admin pages starting with `wpseo_`.
 	 */
 	private function load_admin_page_class() {
-
 		if ( $this->on_wpseo_admin_page() ) {
 			// For backwards compatabilty, this still needs a global, for now...
 			$GLOBALS['wpseo_admin_pages'] = new WPSEO_Admin_Pages;
 			$this->register_i18n_promo_class();
 		}
 	}
+
 
 	/**
 	 * Register the promotion class for our GlotPress instance
@@ -322,6 +333,7 @@ class WPSEO_Admin_Init {
 		);
 	}
 
+
 	/**
 	 * See if we should start our tour.
 	 */
@@ -336,6 +348,7 @@ class WPSEO_Admin_Init {
 		}
 	}
 
+
 	/**
 	 * See if we should start our XML Sitemaps Admin class
 	 */
@@ -344,6 +357,7 @@ class WPSEO_Admin_Init {
 			new WPSEO_Sitemaps_Admin;
 		}
 	}
+
 
 	/**
 	 * Returns the value of the ignore tour.
@@ -356,6 +370,7 @@ class WPSEO_Admin_Init {
 		return ! empty( $user_meta );
 	}
 
+
 	/**
 	 * Listener for the ignore tour GET value. If this one is set, just set the user meta to true.
 	 */
@@ -364,6 +379,7 @@ class WPSEO_Admin_Init {
 			update_user_meta( get_current_user_id(), 'wpseo_ignore_tour', true );
 		}
 	}
+
 
 	/**
 	 * Shows deprecation warnings to the user if a plugin has registered a filter we have deprecated.
@@ -399,6 +415,7 @@ class WPSEO_Admin_Init {
 			);
 		}
 	}
+
 
 	/**
 	 * Check if there is a dismiss notice action.

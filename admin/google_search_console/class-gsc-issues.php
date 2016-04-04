@@ -42,6 +42,8 @@ class WPSEO_GSC_Issues {
 			$this->save_fetched_issues( $fetched_issues );
 		}
 	}
+
+
 	/**
 	 * Getting the issues from the options.
 	 *
@@ -50,6 +52,7 @@ class WPSEO_GSC_Issues {
 	public function get_issues() {
 		return get_option( $this->option_name, array() );
 	}
+
 
 	/**
 	 * Deleting the issue from the issues
@@ -70,6 +73,7 @@ class WPSEO_GSC_Issues {
 
 		return false;
 	}
+
 
 	/**
 	 * Fetching the issues for current category and compare them with the already existing issues.
@@ -92,6 +96,7 @@ class WPSEO_GSC_Issues {
 		$this->issues = $this->get_issues();
 	}
 
+
 	/**
 	 * Comparing the issue with the list of current existing issues
 	 *
@@ -108,6 +113,7 @@ class WPSEO_GSC_Issues {
 			);
 		}
 	}
+
 
 	/**
 	 * The fetched issue from the API will be parsed as an WPSEO_Crawl_Issue object. After initializing the issue as an
@@ -126,6 +132,7 @@ class WPSEO_GSC_Issues {
 		);
 	}
 
+
 	/**
 	 * Returns the crawl issue as an array.
 	 *
@@ -137,6 +144,7 @@ class WPSEO_GSC_Issues {
 		return $crawl_issue->to_array();
 	}
 
+
 	/**
 	 * Saving the issues to the options. The target option is base on current platform and category.
 	 *
@@ -145,6 +153,7 @@ class WPSEO_GSC_Issues {
 	private function save_issues( array $issues ) {
 		update_option( $this->option_name, $issues, false );
 	}
+
 
 	/**
 	 * Getting the issues from the options and get only the URL out of it. This is because there will be a comparison
@@ -155,6 +164,7 @@ class WPSEO_GSC_Issues {
 			$this->current_issues = wp_list_pluck( $this->issues, 'url' );
 		}
 	}
+
 
 	/**
 	 * Search in the issues for the given $url
@@ -172,4 +182,6 @@ class WPSEO_GSC_Issues {
 
 		return false;
 	}
+
+
 }

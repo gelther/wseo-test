@@ -22,6 +22,7 @@ class WPSEO_Admin_Pages {
 		add_action( 'init', array( $this, 'init' ), 20 );
 	}
 
+
 	/**
 	 * Make sure the needed scripts are loaded for admin pages
 	 */
@@ -36,6 +37,7 @@ class WPSEO_Admin_Pages {
 			add_action( 'admin_enqueue_scripts', array( $this, 'config_page_styles' ) );
 		}
 	}
+
 
 	/**
 	 * Loads the required styles for the config page.
@@ -54,6 +56,7 @@ class WPSEO_Admin_Pages {
 			wp_enqueue_style( 'wpseo-rtl', plugins_url( 'css/wpseo-rtl' . WPSEO_CSSJS_SUFFIX . '.css', WPSEO_FILE ), array(), WPSEO_VERSION );
 		}
 	}
+
 
 	/**
 	 * Loads the required scripts for the config page.
@@ -95,10 +98,11 @@ class WPSEO_Admin_Pages {
 		}
 	}
 
+
 	/**
 	 * Pass some variables to js for upload module.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function localize_media_script() {
 		return array(
@@ -106,20 +110,22 @@ class WPSEO_Admin_Pages {
 		);
 	}
 
+
 	/**
 	 * Pass some variables to js for the admin JS module.
 	 *
 	 * %s is replaced with <code>%s</code> and replaced again in the javascript with the actual variable.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function localize_admin_script() {
 		return array(
 			/* translators: %s: '%%term_title%%' variable used in titles and meta's template that's not compatible with the given template */
 			'variable_warning' => sprintf( __( 'Warning: the variable %s cannot be used in this template.', 'wordpress-seo' ), '<code>%s</code>' ) . ' ' . __( 'See the help tab for more info.', 'wordpress-seo' ),
-			'locale' => get_locale(),
+			'locale'           => get_locale(),
 		);
 	}
+
 
 	/********************** DEPRECATED METHODS **********************/
 
@@ -142,6 +148,7 @@ class WPSEO_Admin_Pages {
 		}
 	}
 
+
 	/**
 	 * Generates the header for admin pages
 	 *
@@ -158,6 +165,7 @@ class WPSEO_Admin_Pages {
 		Yoast_Form::get_instance()->admin_header( $form, $option, $contains_files, $option_long_name );
 	}
 
+
 	/**
 	 * Generates the footer for admin pages
 	 *
@@ -172,6 +180,7 @@ class WPSEO_Admin_Pages {
 		Yoast_Form::get_instance()->admin_footer( $submit, $show_sidebar );
 	}
 
+
 	/**
 	 * Generates the sidebar for admin pages.
 	 *
@@ -182,6 +191,7 @@ class WPSEO_Admin_Pages {
 
 		Yoast_Form::get_instance()->admin_sidebar();
 	}
+
 
 	/**
 	 * Create a Checkbox input field.
@@ -203,6 +213,7 @@ class WPSEO_Admin_Pages {
 		Yoast_Form::get_instance()->checkbox( $var, $label, $label_left );
 	}
 
+
 	/**
 	 * Create a Text input field.
 	 *
@@ -220,6 +231,7 @@ class WPSEO_Admin_Pages {
 		}
 		Yoast_Form::get_instance()->textinput( $var, $label );
 	}
+
 
 	/**
 	 * Create a textarea.
@@ -241,6 +253,7 @@ class WPSEO_Admin_Pages {
 		Yoast_Form::get_instance()->textarea( $var, $label, $attr );
 	}
 
+
 	/**
 	 * Create a hidden input field.
 	 *
@@ -258,6 +271,7 @@ class WPSEO_Admin_Pages {
 
 		Yoast_Form::get_instance()->hidden( $var );
 	}
+
 
 	/**
 	 * Create a Select Box.
@@ -279,6 +293,7 @@ class WPSEO_Admin_Pages {
 		Yoast_Form::get_instance()->select( $var, $label, $values );
 	}
 
+
 	/**
 	 * Create a File upload field.
 	 *
@@ -298,6 +313,7 @@ class WPSEO_Admin_Pages {
 		Yoast_Form::get_instance()->file_upload( $var, $label );
 	}
 
+
 	/**
 	 * Media input
 	 *
@@ -316,6 +332,7 @@ class WPSEO_Admin_Pages {
 
 		Yoast_Form::get_instance()->media_input( $var, $label );
 	}
+
 
 	/**
 	 * Create a Radio input field.
@@ -337,6 +354,7 @@ class WPSEO_Admin_Pages {
 		Yoast_Form::get_instance()->radio( $var, $values, $label );
 	}
 
+
 	/**
 	 * Create a postbox widget.
 	 *
@@ -356,6 +374,7 @@ class WPSEO_Admin_Pages {
 			</div>
 		<?php
 	}
+
 
 	/**
 	 * Create a form table from an array of rows.
@@ -394,6 +413,7 @@ class WPSEO_Admin_Pages {
 		return $content;
 	}
 
+
 	/**
 	 * Resets the site to the default Yoast SEO settings and runs a title test to check
 	 * whether force rewrite needs to be on.
@@ -406,4 +426,6 @@ class WPSEO_Admin_Pages {
 		_deprecated_function( __METHOD__, 'WPSEO 1.5.0', 'WPSEO_Options::reset()' );
 		WPSEO_Options::reset();
 	}
+
+
 } /* End of class */

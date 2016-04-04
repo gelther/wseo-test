@@ -47,6 +47,7 @@ abstract class WPSEO_Import_Hooks {
 		}
 	}
 
+
 	/**
 	 * Handle deactivation & import of the data data
 	 *
@@ -57,6 +58,7 @@ abstract class WPSEO_Import_Hooks {
 			add_action( 'admin_notices', array( $this, 'show_import_settings_notice' ) );
 		}
 	}
+
 
 	/**
 	 * Handle deactivation of the plugin
@@ -78,6 +80,7 @@ abstract class WPSEO_Import_Hooks {
 		}
 	}
 
+
 	/**
 	 * Check if the plugin is active.
 	 *
@@ -86,5 +89,6 @@ abstract class WPSEO_Import_Hooks {
 	protected function is_active() {
 		return is_plugin_active( $this->plugin_file );
 	}
+
 
 }

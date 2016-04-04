@@ -63,6 +63,7 @@ class WPSEO_Import {
 		$this->clean_up();
 	}
 
+
 	/**
 	 * Handle the file upload
 	 *
@@ -93,6 +94,7 @@ class WPSEO_Import {
 		return true;
 	}
 
+
 	/**
 	 * Determine the path to the import file
 	 */
@@ -108,6 +110,7 @@ class WPSEO_Import {
 			WP_Filesystem();
 		}
 	}
+
 
 	/**
 	 * Unzip the file
@@ -132,6 +135,7 @@ class WPSEO_Import {
 		return true;
 	}
 
+
 	/**
 	 * Parse the option file
 	 */
@@ -151,6 +155,7 @@ class WPSEO_Import {
 			$this->msg = __( 'Settings could not be imported:', 'wordpress-seo' ) . ' ' . __( 'No settings found in file.', 'wordpress-seo' );
 		}
 	}
+
 
 	/**
 	 * Parse the option group and import it
@@ -174,6 +179,7 @@ class WPSEO_Import {
 		}
 	}
 
+
 	/**
 	 * Remove the files
 	 */
@@ -189,5 +195,6 @@ class WPSEO_Import {
 			$wp_file->rmdir( $this->path, true );
 		}
 	}
+
 
 }

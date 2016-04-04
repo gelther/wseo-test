@@ -65,7 +65,7 @@ class WPSEO_Admin {
 		}
 
 		if ( ( ( isset( $this->options['theme_has_description'] ) && $this->options['theme_has_description'] === true ) ||
-		       $this->options['theme_description_found'] !== '' ) && $this->options['ignore_meta_description_warning'] !== true
+				$this->options['theme_description_found'] !== '' ) && $this->options['ignore_meta_description_warning'] !== true
 		) {
 			add_action( 'admin_footer', array( $this, 'meta_description_warning' ) );
 		}
@@ -87,6 +87,7 @@ class WPSEO_Admin {
 		WPSEO_Utils::register_cache_clear_option( 'wpseo', '' );
 	}
 
+
 	/**
 	 * Setting the hooks for importing data from other plugins
 	 */
@@ -100,12 +101,14 @@ class WPSEO_Admin {
 		}
 	}
 
+
 	/**
 	 * Schedules a rewrite flush to happen at shutdown
 	 */
 	function schedule_rewrite_flush() {
 		add_action( 'shutdown', 'flush_rewrite_rules' );
 	}
+
 
 	/**
 	 * Returns all the classes for the admin features
@@ -115,6 +118,7 @@ class WPSEO_Admin {
 	public function get_admin_features() {
 		return $this->admin_features;
 	}
+
 
 	/**
 	 * Register the menu item and its sub menu's.
@@ -230,6 +234,7 @@ class WPSEO_Admin {
 		}
 	}
 
+
 	/**
 	 * Returns the manage_options cap
 	 *
@@ -245,6 +250,7 @@ class WPSEO_Admin {
 
 		return $manage_options_cap;
 	}
+
 
 	/**
 	 * Adds contextual help to the titles & metas page.
@@ -283,6 +289,7 @@ class WPSEO_Admin {
 			)
 		);
 	}
+
 
 	/**
 	 * Register the settings page for the Network settings.
@@ -377,6 +384,7 @@ class WPSEO_Admin {
 		add_screen_option( $option, $args );
 	}
 
+
 	/**
 	 * Saves the posts per page limit for bulk edit pages.
 	 *
@@ -393,6 +401,7 @@ class WPSEO_Admin {
 
 		return $status;
 	}
+
 
 	/**
 	 * Display an error message when the blog is set to private.
@@ -423,6 +432,7 @@ class WPSEO_Admin {
 			__( 'I know, don\'t bug me.', 'wordpress-seo' )
 		);
 	}
+
 
 	/**
 	 * Display an error message when the theme contains a meta description tag.
@@ -459,6 +469,7 @@ class WPSEO_Admin {
 		);
 	}
 
+
 	/**
 	 * Add a link to the settings page to the plugins list
 	 *
@@ -493,6 +504,7 @@ class WPSEO_Admin {
 		return $links;
 	}
 
+
 	/**
 	 * Enqueues the (tiny) global JS needed for the plugin.
 	 */
@@ -502,6 +514,7 @@ class WPSEO_Admin {
 			wp_localize_script( 'wpseo-admin-global-script', 'wpseoAdminGlobalL10n', $this->localize_admin_global_script() );
 		}
 	}
+
 
 	/**
 	 * Filter the $contactmethods array and add Facebook, Google+ and Twitter.
@@ -523,6 +536,7 @@ class WPSEO_Admin {
 		return $contactmethods;
 	}
 
+
 	/**
 	 * Cleans stopwords out of the slug, if the slug hasn't been set yet.
 	 *
@@ -535,6 +549,7 @@ class WPSEO_Admin {
 	function remove_stopwords_from_slug( $slug ) {
 		return $this->filter_stopwords_from_slug( $slug, filter_input( INPUT_POST, 'post_title' ) );
 	}
+
 
 	/**
 	 * Filter the stopwords from the slug
@@ -567,6 +582,7 @@ class WPSEO_Admin {
 		$stop_words = new WPSEO_Admin_Stop_Words();
 		return $stop_words->remove_in( $new_slug );
 	}
+
 
 	/**
 	 * Returns the stopwords for the current language
@@ -614,6 +630,7 @@ class WPSEO_Admin {
 		return false;
 	}
 
+
 	/**
 	 * Log the updated timestamp for user profiles when theme is changed
 	 */
@@ -626,6 +643,7 @@ class WPSEO_Admin {
 		}
 	}
 
+
 	/**
 	 * Returns a base64 URL for the svg for use in the menu
 	 *
@@ -636,6 +654,7 @@ class WPSEO_Admin {
 
 		return $icon_svg;
 	}
+
 
 	/**
 	 * Localization for the dismiss urls.
@@ -649,6 +668,7 @@ class WPSEO_Admin {
 		);
 	}
 
+
 	/**
 	 * Extending the current page URL with two params to be able to ignore the tour.
 	 *
@@ -657,9 +677,9 @@ class WPSEO_Admin {
 	 * @return string
 	 */
 	private function get_dismiss_url( $dismiss_param ) {
-		$arr_params = array(
+		$arr_params    = array(
 			$dismiss_param => '1',
-			'nonce'        => wp_create_nonce( $dismiss_param ),
+			'nonce' => wp_create_nonce( $dismiss_param ),
 		);
 
 		return esc_url( add_query_arg( $arr_params ) );
@@ -683,6 +703,7 @@ class WPSEO_Admin {
 		return WPSEO_Utils::grant_access();
 	}
 
+
 	/**
 	 * Check whether the current user is allowed to access the configuration.
 	 *
@@ -694,6 +715,7 @@ class WPSEO_Admin {
 		_deprecated_function( __METHOD__, 'WPSEO 1.5.0', 'wpseo_do_upgrade' );
 		new WPSEO_Upgrade();
 	}
+
 
 	/**
 	 * Clears the cache
@@ -707,6 +729,7 @@ class WPSEO_Admin {
 		WPSEO_Utils::clear_cache();
 	}
 
+
 	/**
 	 * Clear rewrites
 	 *
@@ -719,6 +742,7 @@ class WPSEO_Admin {
 		WPSEO_Utils::clear_rewrites();
 	}
 
+
 	/**
 	 * Register all the options needed for the configuration pages.
 	 *
@@ -729,5 +753,6 @@ class WPSEO_Admin {
 	function options_init() {
 		_deprecated_function( __METHOD__, 'WPSEO 1.5.0', 'WPSEO_Option::register_setting()' );
 	}
+
 
 } /* End of class */

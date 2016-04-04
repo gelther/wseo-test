@@ -14,7 +14,6 @@ class WPSEO_Recalculate_Terms extends WPSEO_Recalculate {
 	 * @param array $scores The scores to save.
 	 */
 	public function save_scores( array $scores ) {
-
 		$tax_meta = get_option( 'wpseo_taxonomy_meta' );
 
 		foreach ( $scores as $score ) {
@@ -24,6 +23,7 @@ class WPSEO_Recalculate_Terms extends WPSEO_Recalculate {
 		update_option( 'wpseo_taxonomy_meta', $tax_meta );
 	}
 
+
 	/**
 	 * Save the score.
 	 *
@@ -32,6 +32,7 @@ class WPSEO_Recalculate_Terms extends WPSEO_Recalculate {
 	protected function save_score( array $score ) {
 		WPSEO_Meta::set_value( 'linkdex', $score['score'], $score['item_id'] );
 	}
+
 
 	/**
 	 * Get the terms from the database by doing a WP_Query.
@@ -52,6 +53,7 @@ class WPSEO_Recalculate_Terms extends WPSEO_Recalculate {
 			)
 		);
 	}
+
 
 	/**
 	 * Convert the given term into a analyzable object.
@@ -89,6 +91,7 @@ class WPSEO_Recalculate_Terms extends WPSEO_Recalculate {
 		);
 	}
 
+
 	/**
 	 * Gets the focus keyword for the term
 	 *
@@ -104,6 +107,7 @@ class WPSEO_Recalculate_Terms extends WPSEO_Recalculate {
 
 		return $term->name;
 	}
+
 
 	/**
 	 * Get the title for given term
@@ -126,6 +130,7 @@ class WPSEO_Recalculate_Terms extends WPSEO_Recalculate {
 		return '%%title%%';
 	}
 
+
 	/**
 	 * Get the meta description for given post
 	 *
@@ -146,5 +151,6 @@ class WPSEO_Recalculate_Terms extends WPSEO_Recalculate {
 
 		return '';
 	}
+
 
 }

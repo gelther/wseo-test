@@ -38,6 +38,7 @@ class WPSEO_JSON_LD {
 		add_action( 'wpseo_json_ld', array( $this, 'organization_or_person' ), 20 );
 	}
 
+
 	/**
 	 * JSON LD output function that the functions for specific code can hook into
 	 *
@@ -46,6 +47,7 @@ class WPSEO_JSON_LD {
 	public function json_ld() {
 		do_action( 'wpseo_json_ld' );
 	}
+
 
 	/**
 	 * Outputs code to allow Google to recognize social profiles for use in the Knowledge graph
@@ -71,6 +73,7 @@ class WPSEO_JSON_LD {
 		$this->output( $this->options['company_or_person'] );
 	}
 
+
 	/**
 	 * Outputs code to allow recognition of the internal search engine
 	 *
@@ -91,6 +94,7 @@ class WPSEO_JSON_LD {
 
 		$this->output( 'website' );
 	}
+
 
 	/**
 	 * Outputs the JSON LD code in a valid JSON+LD wrapper
@@ -119,6 +123,7 @@ class WPSEO_JSON_LD {
 		$this->data = array();
 	}
 
+
 	/**
 	 * Schema for Organization
 	 */
@@ -132,6 +137,7 @@ class WPSEO_JSON_LD {
 		$this->data = false;
 	}
 
+
 	/**
 	 * Schema for Person
 	 */
@@ -143,6 +149,7 @@ class WPSEO_JSON_LD {
 		}
 		$this->data = false;
 	}
+
 
 	/**
 	 * Prepares the organization or person markup
@@ -157,6 +164,7 @@ class WPSEO_JSON_LD {
 			'sameAs'   => $this->profiles,
 		);
 	}
+
 
 	/**
 	 * Retrieve the social profiles to display in the organization output.
@@ -186,6 +194,7 @@ class WPSEO_JSON_LD {
 		}
 	}
 
+
 	/**
 	 * Retrieves the home URL
 	 *
@@ -200,6 +209,7 @@ class WPSEO_JSON_LD {
 		return apply_filters( 'wpseo_json_home_url', trailingslashit( home_url() ) );
 	}
 
+
 	/**
 	 * Returns an alternate name if one was specified in the Yoast SEO settings
 	 */
@@ -208,6 +218,7 @@ class WPSEO_JSON_LD {
 			$this->data['alternateName'] = $this->options['alternate_website_name'];
 		}
 	}
+
 
 	/**
 	 * Adds the internal search JSON LD code if it's not disabled
@@ -236,6 +247,7 @@ class WPSEO_JSON_LD {
 		}
 	}
 
+
 	/**
 	 * Returns the website name either from Yoast SEO's options or from the site settings
 	 *
@@ -251,6 +263,7 @@ class WPSEO_JSON_LD {
 		return get_bloginfo( 'name' );
 	}
 
+
 	/**
 	 * Renders internal search schema markup
 	 *
@@ -262,4 +275,6 @@ class WPSEO_JSON_LD {
 
 		$this->website();
 	}
+
+
 }

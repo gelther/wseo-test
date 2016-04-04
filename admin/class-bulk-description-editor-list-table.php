@@ -47,6 +47,7 @@ class WPSEO_Bulk_Description_List_Table extends WPSEO_Bulk_List_Table {
 		return $this->merge_columns( $columns );
 	}
 
+
 	/**
 	 * Parse the metadescription
 	 *
@@ -72,4 +73,6 @@ class WPSEO_Bulk_Description_List_Table extends WPSEO_Bulk_List_Table {
 				break;
 		}
 	}
+
+
 } /* End of class */

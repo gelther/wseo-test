@@ -86,6 +86,7 @@ class WPSEO_Snippet_Preview {
 		_deprecated_constructor( 'WPSEO_Snippet_Preview', 'WPSEO 3.0' );
 	}
 
+
 	/**
 	 * Getter for $this->content
 	 *
@@ -98,6 +99,7 @@ class WPSEO_Snippet_Preview {
 		return $this->content;
 	}
 
+
 	/**
 	 * Sets date if available
 	 *
@@ -106,6 +108,7 @@ class WPSEO_Snippet_Preview {
 	protected function set_date() {
 		_deprecated_function( 'WPSEO_Snippet_Preview::set_date', 'WPSEO 3.0', 'javascript' );
 	}
+
 
 	/**
 	 * Retrieves a post date when post is published, or return current date when it's not.
@@ -119,6 +122,7 @@ class WPSEO_Snippet_Preview {
 		return '';
 	}
 
+
 	/**
 	 * Generates the url that is displayed in the snippet preview.
 	 *
@@ -127,6 +131,7 @@ class WPSEO_Snippet_Preview {
 	protected function set_url() {
 		_deprecated_function( 'WPSEO_Snippet_Preview::set_url', 'WPSEO 3.0', 'javascript' );
 	}
+
 
 	/**
 	 * Sets the slug and adds it to the url if the post has been published and the post name exists.
@@ -139,6 +144,7 @@ class WPSEO_Snippet_Preview {
 		_deprecated_function( 'WPSEO_Snippet_Preview::set_slug', 'WPSEO 3.0', 'javascript' );
 	}
 
+
 	/**
 	 * Generates the html for the snippet preview and assign it to $this->content.
 	 *
@@ -147,6 +153,7 @@ class WPSEO_Snippet_Preview {
 	protected function set_content() {
 		_deprecated_function( 'WPSEO_Snippet_Preview::set_content', 'WPSEO 3.0', 'javascript' );
 	}
+
 
 	/**
 	 * Sets the html for the snippet preview through a filter
@@ -158,4 +165,6 @@ class WPSEO_Snippet_Preview {
 	protected function set_content_through_filter( $content ) {
 		_deprecated_function( 'WPSEO_Snippet_Preview::set_content_through_filter', 'WPSEO 3.0', 'javascript' );
 	}
+
+
 }

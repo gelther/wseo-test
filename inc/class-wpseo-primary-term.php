@@ -26,8 +26,9 @@ class WPSEO_Primary_Term {
 	 */
 	public function __construct( $taxonomy_name, $post_ID ) {
 		$this->taxonomy_name = $taxonomy_name;
-		$this->post_ID = $post_ID;
+		$this->post_ID       = $post_ID;
 	}
+
 
 	/**
 	 * Returns the primary term ID
@@ -47,6 +48,7 @@ class WPSEO_Primary_Term {
 		return ( $primary_term ) ? ( $primary_term ) : false;
 	}
 
+
 	/**
 	 * Sets the new primary term ID
 	 *
@@ -55,6 +57,7 @@ class WPSEO_Primary_Term {
 	public function set_primary_term( $new_primary_term ) {
 		update_post_meta( $this->post_ID, WPSEO_Meta::$meta_prefix . 'primary_' . $this->taxonomy_name, $new_primary_term );
 	}
+
 
 	/**
 	 * Get the terms for the current post ID.
@@ -71,4 +74,6 @@ class WPSEO_Primary_Term {
 
 		return $terms;
 	}
+
+
 }

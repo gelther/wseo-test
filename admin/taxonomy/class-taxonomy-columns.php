@@ -12,7 +12,6 @@ class WPSEO_Taxonomy_Columns {
 	 * WPSEO_Taxonomy_Columns constructor.
 	 */
 	public function __construct() {
-
 		$this->taxonomy = $this->get_taxonomy();
 
 		if ( ! empty( $this->taxonomy ) ) {
@@ -20,6 +19,7 @@ class WPSEO_Taxonomy_Columns {
 			add_filter( 'manage_' . $this->taxonomy . '_custom_column', array( $this, 'parse_column' ), 10, 3 );
 		}
 	}
+
 
 	/**
 	 * Adds an SEO score column to the terms table, right after the description column.
@@ -29,7 +29,6 @@ class WPSEO_Taxonomy_Columns {
 	 * @return array
 	 */
 	public function add_columns( array $columns ) {
-
 		if ( $this->is_metabox_hidden() === true ) {
 			return $columns;
 		}
@@ -47,17 +46,17 @@ class WPSEO_Taxonomy_Columns {
 		return $new_columns;
 	}
 
+
 	/**
 	 * Parses the column.
 	 *
-	 * @param string  $content The current content of the column.
+	 * @param string  $content     The current content of the column.
 	 * @param string  $column_name The name of the column.
-	 * @param integer $term_id ID of requested taxonomy.
+	 * @param integer $term_id     ID of requested taxonomy.
 	 *
 	 * @return string
 	 */
 	public function parse_column( $content, $column_name, $term_id ) {
-
 		switch ( $column_name ) {
 			case 'wpseo_score':
 				return $this->get_score_value( $term_id );
@@ -81,6 +80,7 @@ class WPSEO_Taxonomy_Columns {
 
 		return FILTER_INPUT( INPUT_GET, 'taxonomy' );
 	}
+
 
 	/**
 	 * Parses the value for the score column.
@@ -115,10 +115,11 @@ class WPSEO_Taxonomy_Columns {
 		);
 	}
 
+
 	/**
 	 * Creates an icon by the given values.
 	 *
-	 * @param WPSEO_Rank $rank The ranking object.
+	 * @param WPSEO_Rank $rank  The ranking object.
 	 * @param string     $title The title to show.
 	 *
 	 * @return string
@@ -126,6 +127,7 @@ class WPSEO_Taxonomy_Columns {
 	private function create_score_icon( WPSEO_Rank $rank, $title ) {
 		return '<div title="' . esc_attr( $title ) . '" class="wpseo-score-icon ' . esc_attr( $rank->get_css_class() ) . '"></div>';
 	}
+
 
 	/**
 	 * Check if the taxonomy is indexable.
@@ -157,6 +159,7 @@ class WPSEO_Taxonomy_Columns {
 		return true;
 	}
 
+
 	/**
 	 * Returns the focus keyword if this is set, otherwise it will give the term name.
 	 *
@@ -171,6 +174,7 @@ class WPSEO_Taxonomy_Columns {
 
 		return $term->name;
 	}
+
 
 	/**
 	 * Checks if a taxonomy is being added via a POST method. If not, it defaults to a GET request.
@@ -187,14 +191,15 @@ class WPSEO_Taxonomy_Columns {
 		return INPUT_GET;
 	}
 
+
 	/**
 	 * Test whether the metabox should be hidden either by choice of the admin
 	 *
 	 * @since 3.1
 	 *
-	 * @param  string $taxonomy (optional) The post type to test, defaults to the current post post_type.
+	 * @param string $taxonomy (optional) The post type to test, defaults to the current post post_type.
 	 *
-	 * @return  bool        Whether or not the meta box (and associated columns etc) should be hidden
+	 * @return bool Whether or not the meta box (and associated columns etc) should be hidden
 	 */
 	private function is_metabox_hidden( $taxonomy = null ) {
 		$get_taxonomy_type = filter_input( $this->get_taxonomy_input_type(), 'taxonomy' );
@@ -213,5 +218,6 @@ class WPSEO_Taxonomy_Columns {
 
 		return false;
 	}
+
 
 }

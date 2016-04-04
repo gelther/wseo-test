@@ -17,6 +17,7 @@ class WPSEO_Shortcode_Filter {
 		add_action( 'wp_ajax_wpseo_filter_shortcodes', array( $this, 'do_filter' ) );
 	}
 
+
 	/**
 	 * Parse the shortcodes
 	 */
@@ -30,10 +31,12 @@ class WPSEO_Shortcode_Filter {
 		foreach ( $shortcodes as $shortcode ) {
 			$parsed_shortcodes[] = array(
 				'shortcode' => $shortcode,
-				'output' => do_shortcode( $shortcode ),
+				'output'    => do_shortcode( $shortcode ),
 			);
 		}
 
 		wp_die( wp_json_encode( $parsed_shortcodes ) );
 	}
+
+
 }

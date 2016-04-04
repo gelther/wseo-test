@@ -57,6 +57,7 @@ function wpseo_title_test() {
 	update_option( 'wpseo_titles', $options );
 }
 
+
 // Commented out? add_filter( 'switch_theme', 'wpseo_title_test', 0 ); R.
 /**
  * Test whether the active theme contains a <meta> description tag.
@@ -115,6 +116,7 @@ function wpseo_description_test() {
 
 add_filter( 'after_switch_theme', 'wpseo_description_test', 0 );
 
+
 if ( version_compare( $GLOBALS['wp_version'], '3.6.99', '>' ) ) {
 	// Use the new and *sigh* adjusted action hook WP 3.7+.
 	add_action( 'upgrader_process_complete', 'wpseo_upgrader_process_complete', 10, 2 );
@@ -140,7 +142,7 @@ else {
  * @param array       $context_array   Context data array.
  * @param mixed       $themes          Optional themes set.
  *
- * @return  void
+ * @return void
  */
 function wpseo_upgrader_process_complete( $upgrader_object, $context_array, $themes = null ) {
 	$options = get_option( 'wpseo' );
@@ -181,16 +183,17 @@ function wpseo_upgrader_process_complete( $upgrader_object, $context_array, $the
 	return;
 }
 
+
 /**
  * Abuse a filter to check if the current theme was updated and if so, test the updated theme
  * for the title and meta description tag
  *
  * @since 1.4.14
  *
- * @param   array           $update_actions Updated actions set.
- * @param   WP_Theme|string $updated_theme  Theme object instance or stylesheet name.
+ * @param array           $update_actions Updated actions set.
+ * @param WP_Theme|string $updated_theme  Theme object instance or stylesheet name.
  *
- * @return  array  $update_actions    Unchanged array
+ * @return array $update_actions Unchanged array
  */
 function wpseo_update_theme_complete_actions( $update_actions, $updated_theme ) {
 	$options = get_option( 'wpseo' );
@@ -202,18 +205,18 @@ function wpseo_update_theme_complete_actions( $update_actions, $updated_theme ) 
 
 	$theme = get_stylesheet();
 	if ( is_object( $updated_theme ) ) {
-		/*
+		/**
 		Bulk update and $updated_theme only contains info on which theme was last in the list
-		   of updated themes, so go & test
-		*/
+			of updated themes, so go & test
+		 */
 
 		// Commented out? wpseo_title_test(); R.
 		wpseo_description_test();
 	}
 	elseif ( $updated_theme === $theme ) {
-		/*
+		/**
 		Single theme update for the active theme
-		*/
+		 */
 
 		// Commented out? wpseo_title_test(); R.
 		wpseo_description_test();
@@ -385,7 +388,7 @@ function wpseo_admin_bar_menu() {
 	$admin_menu = current_user_can( 'manage_options' );
 
 	if ( ! $admin_menu && is_multisite() ) {
-		$options = get_site_option( 'wpseo_ms' );
+		$options    = get_site_option( 'wpseo_ms' );
 		$admin_menu = ( $options['access'] === 'superadmin' && is_super_admin() );
 	}
 
@@ -449,6 +452,7 @@ function wpseo_admin_bar_menu() {
 
 add_action( 'admin_bar_menu', 'wpseo_admin_bar_menu', 95 );
 
+
 /**
  * Enqueue a tiny bit of CSS to show so the adminbar shows right.
  */
@@ -459,6 +463,7 @@ function wpseo_admin_bar_css() {
 }
 
 add_action( 'wp_enqueue_scripts', 'wpseo_admin_bar_css' );
+
 
 /**
  * Allows editing of the meta fields through weblog editors like Marsedit.
@@ -502,6 +507,7 @@ function wpseo_defaults() {
 	_deprecated_function( __FUNCTION__, 'WPSEO 1.5.0', 'WPSEO_Options::initialize()' );
 	WPSEO_Options::initialize();
 }
+
 
 /**
  * Translates a decimal analysis score into a textual one.

@@ -50,10 +50,11 @@ class WPSEO_Metabox_Form_Tab implements WPSEO_Metabox_Tab {
 		$this->name         = $name;
 		$this->content      = $content;
 		$this->link_content = $link_content;
-		$this->link_class	= isset( $options['link_class'] ) ? $options['link_class'] : '';
+		$this->link_class   = isset( $options['link_class'] ) ? $options['link_class'] : '';
 		$this->link_alt     = isset( $options['link_alt'] ) ? $options['link_alt'] : '';
 		$this->link_title   = isset( $options['link_title'] ) ? $options['link_title'] : '';
 	}
+
 
 	/**
 	 * Returns the html for the tab link.
@@ -71,6 +72,7 @@ class WPSEO_Metabox_Form_Tab implements WPSEO_Metabox_Tab {
 		);
 	}
 
+
 	/**
 	 * Returns the html for the tab content.
 	 *
@@ -83,4 +85,6 @@ class WPSEO_Metabox_Form_Tab implements WPSEO_Metabox_Tab {
 			$this->content
 		);
 	}
+
+
 }

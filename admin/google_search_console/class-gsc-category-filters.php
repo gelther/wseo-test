@@ -50,6 +50,7 @@ class WPSEO_GSC_Category_Filters {
 		$this->category = $this->get_current_category();
 	}
 
+
 	/**
 	 * Returns the value of the current category
 	 *
@@ -58,6 +59,7 @@ class WPSEO_GSC_Category_Filters {
 	public function get_category() {
 		return $this->category;
 	}
+
 
 	/**
 	 * Returns the current filters as an array
@@ -75,6 +77,7 @@ class WPSEO_GSC_Category_Filters {
 
 		return $new_views;
 	}
+
 
 	/**
 	 * Getting the current view
@@ -97,6 +100,7 @@ class WPSEO_GSC_Category_Filters {
 		}
 	}
 
+
 	/**
 	 * Setting the view counts based on the saved data. The info will be used to display the category filters
 	 *
@@ -106,13 +110,14 @@ class WPSEO_GSC_Category_Filters {
 		$this->category_counts = $this->parse_counts( $platform_counts );
 	}
 
+
 	/**
 	 * Setting the values for the filter
 	 */
 	private function set_filter_values() {
 		$this->set_filter_value( 'access_denied', __( 'Access denied', 'wordpress-seo' ), __( 'Server requires authentication or is blocking Googlebot from accessing the site.', 'wordpress-seo' ) );
 		$this->set_filter_value( 'faulty_redirects', __( 'Faulty redirects', 'wordpress-seo' ) );
-		$this->set_filter_value( 'not_followed',__( 'Not followed', 'wordpress-seo' ) );
+		$this->set_filter_value( 'not_followed', __( 'Not followed', 'wordpress-seo' ) );
 		$this->set_filter_value( 'not_found', __( 'Not found', 'wordpress-seo' ), __( 'URL points to a non-existent page.', 'wordpress-seo' ) );
 		$this->set_filter_value( 'other', __( 'Other', 'wordpress-seo' ), __( 'Google was unable to crawl this URL due to an undetermined issue.', 'wordpress-seo' ) );
 		/* Translators: %1$s: expands to '<code>robots.txt</code>'. */
@@ -120,6 +125,7 @@ class WPSEO_GSC_Category_Filters {
 		$this->set_filter_value( 'server_error', __( 'Server Error', 'wordpress-seo' ), __( 'Request timed out or site is blocking Google.', 'wordpress-seo' ) );
 		$this->set_filter_value( 'soft_404', __( 'Soft 404', 'wordpress-seo' ), __( "The target URL doesn't exist, but your server is not returning a 404 (file not found) error.", 'wordpress-seo' ) );
 	}
+
 
 	/**
 	 * Add new filter value to the filter_values
@@ -135,6 +141,7 @@ class WPSEO_GSC_Category_Filters {
 		);
 	}
 
+
 	/**
 	 * Creates a filter link
 	 *
@@ -144,7 +151,7 @@ class WPSEO_GSC_Category_Filters {
 	 * @return string
 	 */
 	private function create_view_link( $category, $count ) {
-		$href  = add_query_arg( array( 'category' => $category, 'paged' => 1 ) );
+		$href = add_query_arg( array( 'category' => $category, 'paged' => 1 ) );
 
 		$class = 'gsc_category';
 
@@ -168,6 +175,7 @@ class WPSEO_GSC_Category_Filters {
 		);
 	}
 
+
 	/**
 	 * Parsing the category counts. When there are 0 issues for a specific category, just remove that one from the array
 	 *
@@ -184,4 +192,6 @@ class WPSEO_GSC_Category_Filters {
 
 		return $category_counts;
 	}
+
+
 }

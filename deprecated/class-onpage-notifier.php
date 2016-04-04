@@ -19,6 +19,7 @@ class WPSEO_OnPage_Notifier {
 		_deprecated_constructor( 'WPSEO_OnPage_Email_Presenter', 'WPSEO 3.0.7' );
 	}
 
+
 	/**
 	 * Forces the MIME type of emails to text/html
 	 *
@@ -30,6 +31,7 @@ class WPSEO_OnPage_Notifier {
 		return 'text/html';
 	}
 
+
 	/**
 	 * Let's start showing the notices to all admins by removing the hide-notice meta data for each admin resulting in
 	 * popping up the notice again
@@ -39,5 +41,6 @@ class WPSEO_OnPage_Notifier {
 	public function show_notices() {
 		_deprecated_function( 'WPSEO_OnPage_Notifier', 'WPSEO 3.0.7' );
 	}
+
 
 }

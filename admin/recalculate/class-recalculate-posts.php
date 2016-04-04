@@ -19,6 +19,7 @@ class WPSEO_Recalculate_Posts extends WPSEO_Recalculate {
 		}
 	}
 
+
 	/**
 	 * Save the score.
 	 *
@@ -27,6 +28,7 @@ class WPSEO_Recalculate_Posts extends WPSEO_Recalculate {
 	protected function save_score( array $score ) {
 		WPSEO_Meta::set_value( 'linkdex', $score['score'], $score['item_id'] );
 	}
+
 
 	/**
 	 * Get the posts from the database by doing a WP_Query.
@@ -37,7 +39,7 @@ class WPSEO_Recalculate_Posts extends WPSEO_Recalculate {
 	 */
 	protected function get_items( $paged ) {
 		$items_per_page = max( 1, $this->items_per_page );
-		$post_query = new WP_Query(
+		$post_query     = new WP_Query(
 			array(
 				'post_type'      => 'any',
 				'meta_key'       => '_yoast_wpseo_focuskw',
@@ -48,6 +50,7 @@ class WPSEO_Recalculate_Posts extends WPSEO_Recalculate {
 
 		return $post_query->get_posts();
 	}
+
 
 	/**
 	 * Map the posts to a response array
@@ -64,8 +67,8 @@ class WPSEO_Recalculate_Posts extends WPSEO_Recalculate {
 		/**
 		 * Filter the post content for use in the SEO score recalculation.
 		 *
-		 * @param string $content Content of the post. Modify to reflect front-end content.
-		 * @param WP_Post $item The Post object the content comes from.
+		 * @param string  $content Content of the post. Modify to reflect front-end content.
+		 * @param WP_Post $item    The Post object the content comes from.
 		 */
 		$content = apply_filters( 'wpseo_post_content_for_recalculation', $content, $item );
 
@@ -84,6 +87,7 @@ class WPSEO_Recalculate_Posts extends WPSEO_Recalculate {
 			),
 		);
 	}
+
 
 	/**
 	 * Get the title for given post
@@ -107,6 +111,7 @@ class WPSEO_Recalculate_Posts extends WPSEO_Recalculate {
 		return '%%title%%';
 	}
 
+
 	/**
 	 * Get the meta description for given post
 	 *
@@ -128,5 +133,6 @@ class WPSEO_Recalculate_Posts extends WPSEO_Recalculate {
 
 		return '';
 	}
+
 
 }

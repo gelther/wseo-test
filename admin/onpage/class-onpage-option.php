@@ -14,7 +14,7 @@ class WPSEO_OnPage_Option {
 	const CANNOT_FETCH     = -1;
 
 	/**
-	 *  The name of the option where data will be stored
+	 * The name of the option where data will be stored
 	 */
 	const OPTION_NAME = 'wpseo_onpage';
 
@@ -45,6 +45,7 @@ class WPSEO_OnPage_Option {
 		$this->onpage_option = $this->get_option();
 	}
 
+
 	/**
 	 * Getting the status from the option.
 	 *
@@ -58,6 +59,7 @@ class WPSEO_OnPage_Option {
 		return self::CANNOT_FETCH;
 	}
 
+
 	/**
 	 * Saving the status to the options.
 	 *
@@ -66,6 +68,7 @@ class WPSEO_OnPage_Option {
 	public function set_status( $status ) {
 		$this->onpage_option[ self::STATUS ] = $status;
 	}
+
 
 	/**
 	 * Saving the last fetch timestamp to the options.
@@ -76,6 +79,7 @@ class WPSEO_OnPage_Option {
 		$this->onpage_option[ self::LAST_FETCH ] = $timestamp;
 	}
 
+
 	/**
 	 * Check if the last fetch is within the time of 60 minutes
 	 *
@@ -85,12 +89,14 @@ class WPSEO_OnPage_Option {
 		return ( ( time() - $this->onpage_option[ self::LAST_FETCH ] ) > self::FETCH_LIMIT );
 	}
 
+
 	/**
 	 * Saving the option with the current data
 	 */
 	public function save_option() {
 		update_option( self::OPTION_NAME, $this->onpage_option );
 	}
+
 
 	/**
 	 * Returns the value of the onpage_enabled status
@@ -103,6 +109,7 @@ class WPSEO_OnPage_Option {
 		return ! empty( $options['onpage_indexability'] );
 	}
 
+
 	/**
 	 * Getting the option with the OnPage.org data
 	 *
@@ -111,6 +118,7 @@ class WPSEO_OnPage_Option {
 	private function get_option() {
 		return get_option( self::OPTION_NAME, array( self::STATUS => self::NOT_FETCHED, self::LAST_FETCH => 0 ) );
 	}
+
 
 	/**
 	 * @deprecated 3.0.2
@@ -124,5 +132,6 @@ class WPSEO_OnPage_Option {
 
 		return self::IS_INDEXABLE === $this->get_status();
 	}
+
 
 }

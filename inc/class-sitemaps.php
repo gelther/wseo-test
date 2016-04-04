@@ -101,22 +101,21 @@ class WPSEO_Sitemaps {
 		add_filter( 'wpseo_sitemap_exclude_author', array( $this, 'user_sitemap_remove_excluded_authors' ), 8 );
 
 		// Default stylesheet.
-		$this->stylesheet = '<?xml-stylesheet type="text/xsl" href="' . preg_replace( '/(^http[s]?:)/', '', esc_url( home_url( 'main-sitemap.xsl' ) ) ) . '"?>';
+		$this->stylesheet = '<?phpxml-stylesheet type="text/xsl" href="' . preg_replace( '/(^http[s]?:)/', '', esc_url( home_url( 'main-sitemap.xsl' ) ) ) . '";?>';
 
 		$this->options     = WPSEO_Options::get_options( array( 'wpseo_xml', 'wpseo_titles', 'wpseo_permalinks' ) );
 		$this->max_entries = $this->options['entries-per-page'];
 		$this->home_url    = home_url();
 		$this->charset     = get_bloginfo( 'charset' );
 
-		$this->timezone    = new WPSEO_Sitemap_Timezone();
-
+		$this->timezone = new WPSEO_Sitemap_Timezone();
 	}
+
 
 	/**
 	 * Check the current request URI, if we can determine it's probably an XML sitemap, kill loading the widgets
 	 */
 	public function reduce_query_load() {
-
 		if ( ! isset( $_SERVER['REQUEST_URI'] ) ) {
 			return;
 		}
@@ -128,6 +127,7 @@ class WPSEO_Sitemaps {
 			remove_all_actions( 'widgets_init' );
 		}
 	}
+
 
 	/**
 	 * This query invalidates the main query on purpose so it returns nice and quickly
@@ -141,7 +141,6 @@ class WPSEO_Sitemaps {
 	 * @return string
 	 */
 	function invalidate_main_query( $where ) {
-
 		return $where;
 	}
 
@@ -154,6 +153,7 @@ class WPSEO_Sitemaps {
 	private function http_protocol() {
 		return ( isset( $_SERVER['SERVER_PROTOCOL'] ) && $_SERVER['SERVER_PROTOCOL'] !== '' ) ? sanitize_text_field( $_SERVER['SERVER_PROTOCOL'] ) : 'HTTP/1.1';
 	}
+
 
 	/**
 	 * Register your own sitemap. Call this during 'init'.
@@ -169,6 +169,7 @@ class WPSEO_Sitemaps {
 		}
 	}
 
+
 	/**
 	 * Register your own XSL file. Call this during 'init'.
 	 *
@@ -183,6 +184,7 @@ class WPSEO_Sitemaps {
 		}
 	}
 
+
 	/**
 	 * Set the sitemap n to allow creating partial sitemaps with wp-cli
 	 * in an one-off process.
@@ -195,6 +197,7 @@ class WPSEO_Sitemaps {
 		}
 	}
 
+
 	/**
 	 * Set the sitemap content to display after you have generated it.
 	 *
@@ -203,6 +206,7 @@ class WPSEO_Sitemaps {
 	function set_sitemap( $sitemap ) {
 		$this->sitemap = $sitemap;
 	}
+
 
 	/**
 	 * Set a custom stylesheet for this sitemap. Set to empty to just remove
@@ -214,6 +218,7 @@ class WPSEO_Sitemaps {
 		$this->stylesheet = $stylesheet;
 	}
 
+
 	/**
 	 * Set as true to make the request 404. Used stop the display of empty sitemaps or
 	 * invalid requests.
@@ -223,6 +228,7 @@ class WPSEO_Sitemaps {
 	function set_bad_sitemap( $bool ) {
 		$this->bad_sitemap = (bool) $bool;
 	}
+
 
 	/**
 	 * Prevent stupid plugins from running shutdown scripts when we're obviously not outputting HTML.
@@ -234,13 +240,13 @@ class WPSEO_Sitemaps {
 		die();
 	}
 
+
 	/**
 	 * Hijack requests for potential sitemaps and XSL files.
 	 *
 	 * @param \WP_Query $query Main query instance.
 	 */
 	function redirect( $query ) {
-
 		if ( ! $query->is_main_query() ) {
 			return;
 		}
@@ -269,7 +275,7 @@ class WPSEO_Sitemaps {
 			do_action( 'wpseo_sitemap_stylesheet_cache_' . $type, $this );
 
 			$sitemap_cache_key = WPSEO_Utils::get_sitemap_cache_key( $type, $this->n );
-			$this->sitemap = get_transient( $sitemap_cache_key );
+			$this->sitemap     = get_transient( $sitemap_cache_key );
 		}
 
 		if ( ! $this->sitemap || '' == $this->sitemap ) {
@@ -303,6 +309,7 @@ class WPSEO_Sitemaps {
 		$this->sitemap_close();
 	}
 
+
 	/**
 	 * Attempt to build the requested sitemap. Sets $bad_sitemap if this isn't
 	 * for the root sitemap, a post type or taxonomy.
@@ -310,7 +317,6 @@ class WPSEO_Sitemaps {
 	 * @param string $type The requested sitemap's identifier.
 	 */
 	function build_sitemap( $type ) {
-
 		$type = apply_filters( 'wpseo_build_sitemap_post_type', $type );
 
 		if ( $type == 1 ) {
@@ -333,12 +339,12 @@ class WPSEO_Sitemaps {
 		}
 	}
 
+
 	/**
 	 * Build the root sitemap -- example.com/sitemap_index.xml -- which lists sub-sitemaps
 	 * for other content types.
 	 */
 	function build_root_map() {
-
 		global $wpdb;
 
 		$this->sitemap = '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
@@ -453,7 +459,7 @@ class WPSEO_Sitemaps {
 							continue;
 						}
 
-						$args  = array(
+						$args = array(
 							'post_type' => $tax->object_type,
 							'tax_query' => array(
 								array(
@@ -548,6 +554,7 @@ class WPSEO_Sitemaps {
 		$this->sitemap .= '</sitemapindex>';
 	}
 
+
 	/**
 	 * Function to dynamically filter the change frequency
 	 *
@@ -580,6 +587,7 @@ class WPSEO_Sitemaps {
 
 		return $change_freq;
 	}
+
 
 	/**
 	 * Build a sub-sitemap for a specific post type -- example.com/post_type-sitemap.xml
@@ -631,8 +639,8 @@ class WPSEO_Sitemaps {
 			elseif ( $front_id && $post_type == 'post' ) {
 				$page_for_posts = get_option( 'page_for_posts' );
 				if ( $page_for_posts ) {
-					$page_for_posts_url = get_permalink( $page_for_posts );
-					$output            .= $this->sitemap_url(
+					$page_for_posts_url  = get_permalink( $page_for_posts );
+					$output             .= $this->sitemap_url(
 						array(
 							'loc' => $page_for_posts_url,
 							'pri' => 1,
@@ -787,11 +795,11 @@ class WPSEO_Sitemaps {
 
 					$canonical = WPSEO_Meta::get_value( 'canonical', $p->ID );
 					if ( $canonical !== '' && $canonical !== $url['loc'] ) {
-						/*
+						/**
 						Let's assume that if a canonical is set for this page and it's different from
-						   the URL of this post, that page is either already in the XML sitemap OR is on
-						   an external site, either way, we shouldn't include it here.
-						*/
+							the URL of this post, that page is either already in the XML sitemap OR is on
+							an external site, either way, we shouldn't include it here.
+						 */
 						continue;
 					}
 					else {
@@ -826,8 +834,8 @@ class WPSEO_Sitemaps {
 						// Use this filter to adjust the entry before it gets added to the sitemap.
 						$url = apply_filters( 'wpseo_sitemap_entry', $url, 'post', $p );
 						if ( is_array( $url ) && $url !== array() ) {
-							$output       .= $this->sitemap_url( $url );
-							$stackedurls[] = $url['loc'];
+							$output        .= $this->sitemap_url( $url );
+							$stackedurls[]  = $url['loc'];
 						}
 					}
 
@@ -846,7 +854,7 @@ class WPSEO_Sitemaps {
 			return;
 		}
 
-		$this->sitemap = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" ';
+		$this->sitemap  = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" ';
 		$this->sitemap .= 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" ';
 		$this->sitemap .= 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 		$this->sitemap .= $output;
@@ -859,6 +867,7 @@ class WPSEO_Sitemaps {
 		$this->sitemap .= '</urlset>';
 	}
 
+
 	/**
 	 * Parsing the matched images
 	 *
@@ -870,7 +879,6 @@ class WPSEO_Sitemaps {
 	 * @return array
 	 */
 	private function parse_matched_images( $matches, $p, $scheme, $host ) {
-
 		$return = array();
 
 		foreach ( $matches[0] as $img ) {
@@ -925,6 +933,7 @@ class WPSEO_Sitemaps {
 
 		return $return;
 	}
+
 
 	/**
 	 * Build a sub-sitemap for a specific taxonomy -- example.com/tax-sitemap.xml
@@ -996,7 +1005,7 @@ class WPSEO_Sitemaps {
 				}
 
 				// Grab last modified date.
-				$sql        = $wpdb->prepare(
+				$sql = $wpdb->prepare(
 					"
 						SELECT MAX(p.post_modified_gmt) AS lastmod
 						FROM	$wpdb->posts AS p
@@ -1030,7 +1039,7 @@ class WPSEO_Sitemaps {
 			return;
 		}
 
-		$this->sitemap = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
+		$this->sitemap  = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ';
 		$this->sitemap .= 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" ';
 		$this->sitemap .= 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 		if ( is_string( $output ) && trim( $output ) !== '' ) {
@@ -1127,7 +1136,7 @@ class WPSEO_Sitemaps {
 			return;
 		}
 
-		$this->sitemap = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" ';
+		$this->sitemap  = '<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" ';
 		$this->sitemap .= 'xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" ';
 		$this->sitemap .= 'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
 		$this->sitemap .= $output;
@@ -1139,6 +1148,7 @@ class WPSEO_Sitemaps {
 
 		$this->sitemap .= '</urlset>';
 	}
+
 
 	/**
 	 * Spits out the XSL for the XML sitemap.
@@ -1167,6 +1177,7 @@ class WPSEO_Sitemaps {
 		}
 	}
 
+
 	/**
 	 * Spit out the generated sitemap and relevant headers and encoding information.
 	 */
@@ -1177,7 +1188,7 @@ class WPSEO_Sitemaps {
 			header( 'X-Robots-Tag: noindex, follow', true );
 			header( 'Content-Type: text/xml' );
 		}
-		echo '<?xml version="1.0" encoding="', esc_attr( $this->charset ), '"?>';
+		echo '<?phpxml version="1.0" encoding="', esc_attr( $this->charset ), '";?>';
 		if ( $this->stylesheet ) {
 			echo apply_filters( 'wpseo_stylesheet_url', $this->stylesheet ), "\n";
 		}
@@ -1201,6 +1212,7 @@ class WPSEO_Sitemaps {
 		}
 	}
 
+
 	/**
 	 * Build the <url> tag for a given URL.
 	 *
@@ -1209,7 +1221,6 @@ class WPSEO_Sitemaps {
 	 * @return string
 	 */
 	function sitemap_url( $url ) {
-
 		$date = null;
 
 		if ( ! empty( $url['mod'] ) ) {
@@ -1219,11 +1230,11 @@ class WPSEO_Sitemaps {
 
 		$url['loc'] = htmlspecialchars( $url['loc'] );
 
-		$output = "\t<url>\n";
-		$output .= "\t\t<loc>" . $url['loc'] . "</loc>\n";
-		$output .= empty( $date ) ? '' : "\t\t<lastmod>" . $date . "</lastmod>\n";
-		$output .= "\t\t<changefreq>" . $url['chf'] . "</changefreq>\n";
-		$output .= "\t\t<priority>" . str_replace( ',', '.', $url['pri'] ) . "</priority>\n";
+		$output  = "\t<url>\n";
+		$output .= '\t\t<loc>' . $url['loc'] . "</loc>\n";
+		$output .= empty( $date ) ? '' : '\t\t<lastmod>' . $date . "</lastmod>\n";
+		$output .= '\t\t<changefreq>' . $url['chf'] . "</changefreq>\n";
+		$output .= '\t\t<priority>' . str_replace( ',', '.', $url['pri'] ) . "</priority>\n";
 
 		if ( isset( $url['images'] ) && ( is_array( $url['images'] ) && $url['images'] !== array() ) ) {
 			foreach ( $url['images'] as $img ) {
@@ -1231,12 +1242,12 @@ class WPSEO_Sitemaps {
 					continue;
 				}
 				$output .= "\t\t<image:image>\n";
-				$output .= "\t\t\t<image:loc>" . esc_html( $img['src'] ) . "</image:loc>\n";
+				$output .= '\t\t\t<image:loc>' . esc_html( $img['src'] ) . "</image:loc>\n";
 				if ( isset( $img['title'] ) && ! empty( $img['title'] ) ) {
-					$output .= "\t\t\t<image:title><![CDATA[" . _wp_specialchars( html_entity_decode( $img['title'], ENT_QUOTES, $this->charset ) ) . "]]></image:title>\n";
+					$output .= '\t\t\t<image:title><![CDATA[' . _wp_specialchars( html_entity_decode( $img['title'], ENT_QUOTES, $this->charset ) ) . "]]></image:title>\n";
 				}
 				if ( isset( $img['alt'] ) && ! empty( $img['alt'] ) ) {
-					$output .= "\t\t\t<image:caption><![CDATA[" . _wp_specialchars( html_entity_decode( $img['alt'], ENT_QUOTES, $this->charset ) ) . "]]></image:caption>\n";
+					$output .= '\t\t\t<image:caption><![CDATA[' . _wp_specialchars( html_entity_decode( $img['alt'], ENT_QUOTES, $this->charset ) ) . "]]></image:caption>\n";
 				}
 				$output .= "\t\t</image:image>\n";
 			}
@@ -1247,6 +1258,7 @@ class WPSEO_Sitemaps {
 		return $output;
 	}
 
+
 	/**
 	 * Make a request for the sitemap index so as to cache it before the arrival of the search engines.
 	 */
@@ -1254,6 +1266,7 @@ class WPSEO_Sitemaps {
 		$url = wpseo_xml_sitemaps_base_url( 'sitemap_index.xml' );
 		wp_remote_get( $url );
 	}
+
 
 	/**
 	 * Hook into redirect_canonical to stop trailing slashes on sitemap.xml URLs
@@ -1275,6 +1288,7 @@ class WPSEO_Sitemaps {
 
 		return $redirect;
 	}
+
 
 	/**
 	 * Get the modification date for the last modified post in the post type:
@@ -1343,6 +1357,7 @@ class WPSEO_Sitemaps {
 		return ( ( $a->_yoast_wpseo_profile_updated > $b->_yoast_wpseo_profile_updated ) ? 1 : -1 );
 	}
 
+
 	/**
 	 * Filter users that should be excluded from the sitemap (by author metatag: wpseo_excludeauthorsitemap).
 	 *
@@ -1353,7 +1368,6 @@ class WPSEO_Sitemaps {
 	 * @return array all the user that aren't excluded from the sitemap
 	 */
 	public function user_sitemap_remove_excluded_authors( $users ) {
-
 		if ( is_array( $users ) && $users !== array() ) {
 			$options = get_option( 'wpseo_xml' );
 
@@ -1375,7 +1389,7 @@ class WPSEO_Sitemaps {
 				 */
 				if ( ! $exclude_user ) {
 					$is_exclude_on = get_the_author_meta( 'wpseo_excludeauthorsitemap', $user->ID );
-					$exclude_user = ( $is_exclude_on === 'on' );
+					$exclude_user  = ( $is_exclude_on === 'on' );
 				}
 
 				/**
@@ -1399,6 +1413,7 @@ class WPSEO_Sitemaps {
 		return $users;
 	}
 
+
 	/**
 	 * Get attached image URL - Adapted from core for speed
 	 *
@@ -1407,7 +1422,6 @@ class WPSEO_Sitemaps {
 	 * @return string
 	 */
 	private function image_url( $post_id ) {
-
 		static $uploads;
 
 		if ( empty( $uploads ) ) {
@@ -1454,6 +1468,7 @@ class WPSEO_Sitemaps {
 		return $attachments;
 	}
 
+
 	/**
 	 * Getting thumbnails
 	 *
@@ -1470,6 +1485,7 @@ class WPSEO_Sitemaps {
 
 		return $thumbnails;
 	}
+
 
 	/**
 	 * Parsing attachment_ids and do the caching
@@ -1490,6 +1506,7 @@ class WPSEO_Sitemaps {
 		update_meta_cache( 'post', $attachment_ids );
 	}
 
+
 	/**
 	 * Parses the given attachments
 	 *
@@ -1499,7 +1516,6 @@ class WPSEO_Sitemaps {
 	 * @return array
 	 */
 	private function parse_attachments( $attachments, $post ) {
-
 		$return = array();
 
 		foreach ( $attachments as $attachment ) {
@@ -1528,6 +1544,7 @@ class WPSEO_Sitemaps {
 		return $return;
 	}
 
+
 	/**
 	 * Calculate the priority of the post
 	 *
@@ -1536,7 +1553,6 @@ class WPSEO_Sitemaps {
 	 * @return float|mixed
 	 */
 	private function calculate_priority( $post ) {
-
 		$return = 0.6;
 		if ( $post->post_parent == 0 && $post->post_type == 'page' ) {
 			$return = 0.8;
@@ -1561,4 +1577,6 @@ class WPSEO_Sitemaps {
 
 		return $return;
 	}
+
+
 } /* End of class */

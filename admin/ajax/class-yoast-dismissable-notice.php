@@ -37,6 +37,7 @@ class Yoast_Dismissable_Notice_Ajax {
 		add_action( 'wp_ajax_wpseo_dismiss_' . $notice_name, array( $this, 'dismiss_notice' ) );
 	}
 
+
 	/**
 	 * Handles the dismiss notice request
 	 */
@@ -47,6 +48,7 @@ class Yoast_Dismissable_Notice_Ajax {
 
 		wp_die( 'true' );
 	}
+
 
 	/**
 	 * Storing the dismissed value in the database. The target location is based on the set notification type.
@@ -66,4 +68,6 @@ class Yoast_Dismissable_Notice_Ajax {
 
 		update_user_meta( get_current_user_id(), 'wpseo_dismiss_' . $this->notice_name, 1 );
 	}
+
+
 }

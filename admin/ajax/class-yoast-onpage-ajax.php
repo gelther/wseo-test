@@ -18,6 +18,7 @@ class Yoast_OnPage_Ajax {
 		add_action( 'wp_ajax_wpseo_dismiss_onpageorg', array( $this, 'dismiss_notice' ) );
 	}
 
+
 	/**
 	 * Handles the dismiss notice request
 	 */
@@ -29,11 +30,13 @@ class Yoast_OnPage_Ajax {
 		wp_die( 'true' );
 	}
 
+
 	/**
 	 * Storing the the dismissed value as an user option in the database
 	 */
 	private function save_dismissed() {
 		update_user_meta( get_current_user_id(), WPSEO_OnPage::USER_META_KEY, 1 );
 	}
+
 
 }

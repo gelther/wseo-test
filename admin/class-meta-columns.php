@@ -17,6 +17,7 @@ class WPSEO_Meta_Columns {
 		}
 	}
 
+
 	/**
 	 * Setting up the hooks
 	 */
@@ -26,6 +27,7 @@ class WPSEO_Meta_Columns {
 		add_action( 'restrict_manage_posts', array( $this, 'posts_filter_dropdown' ) );
 		add_filter( 'request', array( $this, 'column_sort_orderby' ) );
 	}
+
 
 	/**
 	 * Adds the column headings for the SEO plugin for edit posts / pages overview
@@ -46,6 +48,7 @@ class WPSEO_Meta_Columns {
 			'wpseo-focuskw'  => __( 'Focus KW', 'wordpress-seo' ),
 		) );
 	}
+
 
 	/**
 	 * Display the column content for the given column
@@ -75,6 +78,7 @@ class WPSEO_Meta_Columns {
 		}
 	}
 
+
 	/**
 	 * Indicate which of the SEO columns are sortable.
 	 *
@@ -94,12 +98,13 @@ class WPSEO_Meta_Columns {
 		return $columns;
 	}
 
+
 	/**
 	 * Hide the SEO Title, Meta Desc and Focus KW columns if the user hasn't chosen which columns to hide
 	 *
 	 * @param array|false $result The hidden columns.
 	 * @param string      $option The option name used to set which columns should be hidden.
-	 * @param WP_User     $user The User.
+	 * @param WP_User     $user   The User.
 	 *
 	 * @return array|false $result
 	 */
@@ -119,6 +124,7 @@ class WPSEO_Meta_Columns {
 		return $result;
 	}
 
+
 	/**
 	 * Adds a dropdown that allows filtering on the posts SEO Quality.
 	 *
@@ -129,7 +135,7 @@ class WPSEO_Meta_Columns {
 			return;
 		}
 
-		$ranks = WPSEO_Rank::get_all_ranks();
+		$ranks              = WPSEO_Rank::get_all_ranks();
 		$current_seo_filter = filter_input( INPUT_GET, 'seo_filter' );
 
 		echo '
@@ -138,19 +144,20 @@ class WPSEO_Meta_Columns {
 		foreach ( $ranks as $rank ) {
 			$sel = selected( $current_seo_filter, $rank->get_rank(), false );
 			echo '
-				<option ', $sel, 'value="', $rank->get_rank(), '">', $rank->get_drop_down_label(). '</option>';
+				<option ', $sel, 'value="', $rank->get_rank(), '">', $rank->get_drop_down_label() . '</option>';
 		}
 		echo '
 			</select>';
 	}
 
+
 	/**
 	 * Hacky way to get round the limitation that you can only have AND *or* OR relationship between
 	 * meta key clauses and not a combination - which is what we need.
 	 *
-	 * @param    string $where Where clause.
+	 * @param string $where Where clause.
 	 *
-	 * @return    string
+	 * @return string
 	 */
 	public function seo_score_posts_where( $where ) {
 		global $wpdb;
@@ -167,6 +174,7 @@ class WPSEO_Meta_Columns {
 		}
 		return $where;
 	}
+
 
 	/**
 	 * Modify the query based on the seo_filter variable in $_GET
@@ -200,16 +208,17 @@ class WPSEO_Meta_Columns {
 		}
 
 		if ( isset( $vars['orderby'] ) ) {
-			$vars = array_merge( $vars,  $this->filter_order_by( $vars['orderby'] ) );
+			$vars = array_merge( $vars, $this->filter_order_by( $vars['orderby'] ) );
 		}
 
 		return $vars;
 	}
 
+
 	/**
 	 * When there is a score just return this meta query array
 	 *
-	 * @param string $low The lowest number in the score range.
+	 * @param string $low  The lowest number in the score range.
 	 * @param string $high The highest number in the score range.
 	 *
 	 * @return array
@@ -241,10 +250,11 @@ class WPSEO_Meta_Columns {
 		);
 	}
 
+
 	/**
 	 * Get vars for noindex or na filters
 	 *
-	 * @param array  $vars The unmerged vars.
+	 * @param array  $vars       The unmerged vars.
 	 * @param string $seo_filter The SEO filter.
 	 *
 	 * @return array
@@ -285,6 +295,7 @@ class WPSEO_Meta_Columns {
 		return $vars;
 	}
 
+
 	/**
 	 * Returning filters when $order_by is matched in the if-statement
 	 *
@@ -317,6 +328,7 @@ class WPSEO_Meta_Columns {
 		return array();
 	}
 
+
 	/**
 	 * Parsing the score column
 	 *
@@ -341,8 +353,8 @@ class WPSEO_Meta_Columns {
 		}
 
 		return '<div title="' . esc_attr( $title ) . '" class="wpseo-score-icon ' . esc_attr( $rank->get_css_class() ) . '"></div>';
-
 	}
+
 
 	/**
 	 * Setting the hooks for the post_types
@@ -363,7 +375,7 @@ class WPSEO_Meta_Columns {
 						'column_sort',
 					), 10, 2 );
 
-					/*
+					/**
 					 * Use the `get_user_option_{$option}` filter to change the output of the get_user_option
 					 * function for the `manage{$screen}columnshidden` option, which is based on the current
 					 * admin screen. The admin screen we want to target is the `edit-{$post_type}` screen.
@@ -376,15 +388,16 @@ class WPSEO_Meta_Columns {
 		}
 	}
 
+
 	/**
 	 * Test whether the metabox should be hidden either by choice of the admin or because
 	 * the post type is not a public post type
 	 *
 	 * @since 1.5.0
 	 *
-	 * @param  string $post_type (optional) The post type to test, defaults to the current post post_type.
+	 * @param string $post_type (optional) The post type to test, defaults to the current post post_type.
 	 *
-	 * @return  bool        Whether or not the meta box (and associated columns etc) should be hidden
+	 * @return bool Whether or not the meta box (and associated columns etc) should be hidden
 	 */
 	private function is_metabox_hidden( $post_type = null ) {
 		if ( ! isset( $post_type ) &&  $get_post_type = filter_input( INPUT_GET, 'post_type' ) ) {
@@ -401,6 +414,7 @@ class WPSEO_Meta_Columns {
 
 		return false;
 	}
+
 
 	/**
 	 * Retrieve the page title.
@@ -426,5 +440,6 @@ class WPSEO_Meta_Columns {
 
 		return wpseo_replace_vars( '%%title%%', $post );
 	}
+
 
 }

@@ -22,6 +22,7 @@ class WPSEO_Taxonomy_Fields_Presenter {
 		$this->tax_meta = WPSEO_Taxonomy_Meta::get_term_meta( (int) $term->term_id, $term->taxonomy );
 	}
 
+
 	/**
 	 * Displaying the form fields
 	 *
@@ -35,6 +36,7 @@ class WPSEO_Taxonomy_Fields_Presenter {
 		return $content;
 	}
 
+
 	/**
 	 * Create a row in the form table.
 	 *
@@ -45,11 +47,12 @@ class WPSEO_Taxonomy_Fields_Presenter {
 		$esc_field_name = esc_attr( $field_name );
 
 		$label = $this->get_label( $field_options['label'], $esc_field_name );
-		$field = $this->get_field( $field_options['type'], $esc_field_name, $this->get_field_value( $field_name ) , (array) $field_options['options'] );
+		$field = $this->get_field( $field_options['type'], $esc_field_name, $this->get_field_value( $field_name ), (array) $field_options['options'] );
 		$help  = $this->get_help( $field, $field_options['description'], $esc_field_name );
 
 		return $this->parse_row( $label, $help, $field );
 	}
+
 
 	/**
 	 * Generates the html for the the given field config
@@ -61,8 +64,7 @@ class WPSEO_Taxonomy_Fields_Presenter {
 	 *
 	 * @return string
 	 */
-	private function get_field($field_type, $field_name, $field_value, array $options) {
-
+	private function get_field( $field_type, $field_name, $field_value, array $options ) {
 		$class = $this->get_class( $options );
 		$field = '';
 
@@ -94,8 +96,8 @@ class WPSEO_Taxonomy_Fields_Presenter {
 					$select_options = ( array_key_exists( 'options', $options ) ) ? $options['options'] : $options;
 
 					foreach ( $select_options as $option => $option_label ) {
-						$selected = selected( $option, $field_value, false );
-						$field .= '<option ' . $selected . ' value="' . esc_attr( $option ) . '">' . esc_html( $option_label ) . '</option>';
+						$selected  = selected( $option, $field_value, false );
+						$field    .= '<option ' . $selected . ' value="' . esc_attr( $option ) . '">' . esc_html( $option_label ) . '</option>';
 					}
 					unset( $option, $option_label, $selected );
 
@@ -114,6 +116,7 @@ class WPSEO_Taxonomy_Fields_Presenter {
 		return $field;
 	}
 
+
 	/**
 	 * Getting the value for given field_name
 	 *
@@ -128,6 +131,7 @@ class WPSEO_Taxonomy_Fields_Presenter {
 
 		return '';
 	}
+
 
 	/**
 	 * Getting the class attributes if $options contains a class key
@@ -144,10 +148,11 @@ class WPSEO_Taxonomy_Fields_Presenter {
 		return '';
 	}
 
+
 	/**
 	 * Getting the label HTML
 	 *
-	 * @param string $label	     The label value.
+	 * @param string $label      The label value.
 	 * @param string $field_name The target field.
 	 *
 	 * @return string
@@ -159,6 +164,7 @@ class WPSEO_Taxonomy_Fields_Presenter {
 
 		return '';
 	}
+
 
 	/**
 	 * Returns the help text
@@ -176,6 +182,7 @@ class WPSEO_Taxonomy_Fields_Presenter {
 
 		return '';
 	}
+
 
 	/**
 	 * Parsing question mark with the help-text
@@ -200,6 +207,7 @@ class WPSEO_Taxonomy_Fields_Presenter {
 		);
 	}
 
+
 	/**
 	 * Returns the HTML for the row which contains label, help and the field.
 	 *
@@ -216,4 +224,6 @@ class WPSEO_Taxonomy_Fields_Presenter {
 
 		return $field;
 	}
+
+
 }

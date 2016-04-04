@@ -29,6 +29,7 @@ class WPSEO_GSC_Service {
 		$this->set_client();
 	}
 
+
 	/**
 	 * Returns the client
 	 *
@@ -38,6 +39,7 @@ class WPSEO_GSC_Service {
 		return $this->client;
 	}
 
+
 	/**
 	 * Removes the option and calls the clients clear_data method to clear that one as well
 	 */
@@ -45,6 +47,7 @@ class WPSEO_GSC_Service {
 		// Clear client data.
 		$this->client->clear_data();
 	}
+
 
 	/**
 	 * Get all sites that are registered in the GSC panel
@@ -69,6 +72,7 @@ class WPSEO_GSC_Service {
 		return $sites;
 	}
 
+
 	/**
 	 * Get crawl issues
 	 *
@@ -91,6 +95,7 @@ class WPSEO_GSC_Service {
 		return $return;
 	}
 
+
 	/**
 	 * Sending request to mark issue as fixed
 	 *
@@ -101,9 +106,10 @@ class WPSEO_GSC_Service {
 	 * @return bool
 	 */
 	public function mark_as_fixed( $url, $platform, $category ) {
-		$response = $this->client->do_request( 'sites/' .  urlencode( $this->profile ) .  '/urlCrawlErrorsSamples/' . urlencode( ltrim( $url, '/' ) ) . '?category=' . WPSEO_GSC_Mapper::category_to_api( $category ) . '&platform=' . WPSEO_GSC_Mapper::platform_to_api( $platform ) . '', false, 'DELETE' );
+		$response = $this->client->do_request( 'sites/' . urlencode( $this->profile ) . '/urlCrawlErrorsSamples/' . urlencode( ltrim( $url, '/' ) ) . '?category=' . WPSEO_GSC_Mapper::category_to_api( $category ) . '&platform=' . WPSEO_GSC_Mapper::platform_to_api( $platform ) . '', false, 'DELETE' );
 		return ( $response->getResponseHttpCode() === 204 );
 	}
+
 
 	/**
 	 * Fetching the issues from the GSC API
@@ -123,6 +129,7 @@ class WPSEO_GSC_Service {
 			return $issues->urlCrawlErrorSample;
 		}
 	}
+
 
 	/**
 	 * Setting the GSC client
@@ -159,6 +166,7 @@ class WPSEO_GSC_Service {
 		$this->client = new Yoast_Api_Google_Client( WPSEO_GSC_Config::$gsc, 'wpseo-gsc', 'https://www.googleapis.com/webmasters/v3/' );
 	}
 
+
 	/**
 	 * Adding notice that the api libs has the wrong version
 	 *
@@ -169,6 +177,7 @@ class WPSEO_GSC_Service {
 			new Yoast_Notification( $notice, array( 'type' => 'error' ) )
 		);
 	}
+
 
 	/**
 	 * Getting the crawl error counts
@@ -189,4 +198,6 @@ class WPSEO_GSC_Service {
 
 		return false;
 	}
+
+
 }
