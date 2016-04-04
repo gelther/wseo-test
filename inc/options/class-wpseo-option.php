@@ -208,7 +208,7 @@ abstract class WPSEO_Option {
 	/**
 	 * Add filters to make sure that the option default is returned if the option is not set
 	 *
-	 * @return  void
+	 * @return void
 	 */
 	public function add_default_filters() {
 		// Don't change, needs to check for false as could return prio 0 which would evaluate to false.
@@ -224,13 +224,13 @@ abstract class WPSEO_Option {
 	 *
 	 * @see http://core.trac.wordpress.org/ticket/25705
 	 *
-	 * @param   mixed $new_value Pass through value in filter.
+	 * @param mixed $new_value Pass through value in filter.
 	 *
 	 * @deprecated 3.7 version no longer supported.
 	 *
 	 * @todo Drop this and logic adding it. R.
 	 *
-	 * @return  mixed   unchanged value
+	 * @return mixed unchanged value
 	 */
 	public function wp37_add_default_filters( $new_value ) {
 		$this->add_default_filters();
@@ -342,7 +342,7 @@ abstract class WPSEO_Option {
 	 * Remove the default filters.
 	 * Called from the validate() method to prevent failure to add new options
 	 *
-	 * @return  void
+	 * @return void
 	 */
 	public function remove_default_filters() {
 		remove_filter( 'default_option_' . $this->option_name, array( $this, 'get_defaults' ) );
@@ -357,7 +357,7 @@ abstract class WPSEO_Option {
 	 * @internal the enrich_defaults method is used to set defaults for variable array keys in an option,
 	 * such as array keys depending on post_types and/or taxonomies
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function get_defaults() {
 		if ( method_exists( $this, 'translate_defaults' ) ) {
@@ -375,7 +375,7 @@ abstract class WPSEO_Option {
 	/**
 	 * Add filters to make sure that the option is merged with its defaults before being returned
 	 *
-	 * @return  void
+	 * @return void
 	 */
 	public function add_option_filters() {
 		// Don't change, needs to check for false as could return prio 0 which would evaluate to false.
@@ -389,7 +389,7 @@ abstract class WPSEO_Option {
 	 * Remove the option filters.
 	 * Called from the clean_up methods to make sure we retrieve the original old option
 	 *
-	 * @return  void
+	 * @return void
 	 */
 	public function remove_option_filters() {
 		remove_filter( 'option_' . $this->option_name, array( $this, 'get_option' ) );
@@ -401,9 +401,9 @@ abstract class WPSEO_Option {
 	 *
 	 * This method should *not* be called directly!!! It is only meant to filter the get_option() results
 	 *
-	 * @param   mixed $options Option value.
+	 * @param  mixed $options Option value.
 	 *
-	 * @return  mixed        Option merged with the defaults for that option
+	 * @return mixed          Option merged with the defaults for that option
 	 */
 	public function get_option( $options = null ) {
 		$filtered = $this->array_filter_merge( $options );
@@ -443,7 +443,7 @@ abstract class WPSEO_Option {
 	 *
 	 * @param  mixed $option_value The unvalidated new value for the option.
 	 *
-	 * @return  array          Validated new value for the option
+	 * @return array               Validated new value for the option
 	 */
 	public function validate( $option_value ) {
 		$clean = $this->get_defaults();
@@ -478,9 +478,9 @@ abstract class WPSEO_Option {
 	 * All concrete classes must contain a validate_option() method which validates all
 	 * values within the option
 	 *
-	 * @param  array $dirty New value for the option.
-	 * @param  array $clean Clean value for the option, normally the defaults.
-	 * @param  array $old   Old value of the option.
+	 * @param array $dirty New value for the option.
+	 * @param array $clean Clean value for the option, normally the defaults.
+	 * @param array $old   Old value of the option.
 	 */
 	abstract protected function validate_option( $dirty, $clean, $old );
 
@@ -539,9 +539,9 @@ abstract class WPSEO_Option {
 	 * Aka: use the WPSEO_Options::update_site_option() method (which calls this method) for
 	 * safely adding/updating multisite options.
 	 *
-	 * @param mixed $value The new value for the option.
+	 * @param  mixed $value The new value for the option.
 	 *
-	 * @return bool whether the update was succesfull
+	 * @return bool         whether the update was succesfull
 	 */
 	public function update_site_option( $value ) {
 		if ( $this->multisite_only === true && is_multisite() ) {
@@ -630,7 +630,7 @@ abstract class WPSEO_Option {
 	 *
 	 * @param  array $options (Optional) Current options. If not set, the option defaults for the $option_key will be returned.
 	 *
-	 * @return  array  Combined and filtered options array.
+	 * @return array          Combined and filtered options array.
 	 */
 	protected function array_filter_merge( $options = null ) {
 
@@ -665,12 +665,12 @@ abstract class WPSEO_Option {
 	 * @internal The wpseo_titles concrete class overrules this method. Make sure that any changes
 	 * applied here, also get ported to that version.
 	 *
-	 * @param  array $dirty Original option as retrieved from the database.
-	 * @param  array $clean Filtered option where any options which shouldn't be in our option
+	 * @param array $dirty Original option as retrieved from the database.
+	 * @param array $clean Filtered option where any options which shouldn't be in our option
 	 *                      have already been removed and any options which weren't set
 	 *                      have been set to their defaults.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	protected function retain_variable_keys( $dirty, $clean ) {
 		if ( ( is_array( $this->variable_array_key_patterns ) && $this->variable_array_key_patterns !== array() ) && ( is_array( $dirty ) && $dirty !== array() ) ) {
@@ -731,7 +731,7 @@ abstract class WPSEO_Option {
 	 * @deprecated use WPSEO_Utils::sanitize_text_field()
 	 * @see        WPSEO_Utils::sanitize_text_field()
 	 *
-	 * @param string $value String value to sanitize.
+	 * @param  string $value String value to sanitize.
 	 *
 	 * @return string
 	 */
@@ -753,7 +753,7 @@ abstract class WPSEO_Option {
 	 * @param  string $value             URL string to sanitize.
 	 * @param  array  $allowed_protocols Set of allowed protocols.
 	 *
-	 * @return  string
+	 * @return string
 	 */
 	public static function sanitize_url( $value, $allowed_protocols = array( 'http', 'https' ) ) {
 		_deprecated_function( __FUNCTION__, 'WPSEO 1.5.6.1', 'WPSEO_Utils::sanitize_url()' );
@@ -770,9 +770,9 @@ abstract class WPSEO_Option {
 	 *
 	 * @static
 	 *
-	 * @param mixed $value Value to validate.
+	 * @param  mixed $value Value to validate.
 	 *
-	 * @return  bool
+	 * @return bool
 	 */
 	public static function validate_bool( $value ) {
 		_deprecated_function( __FUNCTION__, 'WPSEO 1.5.6.1', 'WPSEO_Utils::validate_bool()' );
@@ -789,9 +789,9 @@ abstract class WPSEO_Option {
 	 *
 	 * @static
 	 *
-	 * @param    mixed $value Value to cast.
+	 * @param  mixed $value Value to cast.
 	 *
-	 * @return    bool
+	 * @return bool
 	 */
 	public static function emulate_filter_bool( $value ) {
 		_deprecated_function( __FUNCTION__, 'WPSEO 1.5.6.1', 'WPSEO_Utils::emulate_filter_bool()' );
@@ -807,9 +807,9 @@ abstract class WPSEO_Option {
 	 * @deprecated use WPSEO_Utils::validate_int()
 	 * @see        WPSEO_Utils::validate_int()
 	 *
-	 * @param mixed $value Value to validate.
+	 * @param  mixed $value Value to validate.
 	 *
-	 * @return  mixed  int or false in case of failure to convert to int
+	 * @return mixed        int or false in case of failure to convert to int
 	 */
 	public static function validate_int( $value ) {
 		_deprecated_function( __FUNCTION__, 'WPSEO 1.5.6.1', 'WPSEO_Utils::validate_int()' );
@@ -826,9 +826,9 @@ abstract class WPSEO_Option {
 	 *
 	 * @static
 	 *
-	 * @param    mixed $value Value to cast.
+	 * @param  mixed    $value Value to cast.
 	 *
-	 * @return    int|bool
+	 * @return int|bool
 	 */
 	public static function emulate_filter_int( $value ) {
 		_deprecated_function( __FUNCTION__, 'WPSEO 1.5.6.1', 'WPSEO_Utils::emulate_filter_int()' );
@@ -847,9 +847,9 @@ abstract class WPSEO_Option {
 	 *
 	 * @static
 	 *
-	 * @param   mixed $value Value to trim or array of values to trim.
+	 * @param  mixed $value Value to trim or array of values to trim.
 	 *
-	 * @return  mixed      Trimmed value or array of trimmed values
+	 * @return mixed        Trimmed value or array of trimmed values
 	 */
 	public static function trim_recursive( $value ) {
 		_deprecated_function( __FUNCTION__, 'WPSEO 1.5.6.1', 'WPSEO_Utils::trim_recursive()' );
