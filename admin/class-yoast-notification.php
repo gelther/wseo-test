@@ -38,8 +38,8 @@ class Yoast_Notification {
 	 * @param array  $options Set of options.
 	 */
 	public function __construct( $message, $options = array() ) {
-		$this->options         = wp_parse_args( $options, $this->defaults );
-		$this->message         = $message;
+		$this->options = wp_parse_args( $options, $this->defaults );
+		$this->message = $message;
 	}
 
 	/**
