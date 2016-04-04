@@ -683,4 +683,3 @@ function wpseo_standardize_whitespace( $string ) {
 
 	return WPSEO_Utils::standardize_whitespace( $string );
 }
-
