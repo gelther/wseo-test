@@ -147,7 +147,7 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	 * @param  string $option_key Option name of the option we're doing the merge for.
 	 * @param  array  $options    (Optional) Current options. If not set, the option defaults for the $option_key will be returned.
 	 *
-	 * @return  array  Combined and filtered options array.
+	 * @return array              Combined and filtered options array.
 	 */
 
 	/*
@@ -201,7 +201,7 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	 * @param  array $clean Clean value for the option, normally the defaults.
 	 * @param  array $old   Old value of the option.
 	 *
-	 * @return  array      Validated clean value for the option to be saved to the database
+	 * @return array        Validated clean value for the option to be saved to the database
 	 */
 	protected function validate_option( $dirty, $clean, $old ) {
 		/*
@@ -257,7 +257,7 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	 * @param  array $meta_data New values.
 	 * @param  array $old_meta  The original values.
 	 *
-	 * @return  array        Validated and filtered value
+	 * @return array            Validated and filtered value
 	 */
 	public static function validate_term_meta_data( $meta_data, $old_meta ) {
 
@@ -333,14 +333,14 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	 * - Convert old option values to new
 	 * - Fixes strings which were escaped (should have been sanitized - escaping is for output)
 	 *
-	 * @param  array  $option_value          Old (not merged with defaults or filtered) option value to
+	 * @param array $option_value Old (not merged with defaults or filtered) option value to
 	 *                                       clean according to the rules for this option.
-	 * @param  string $current_version       (optional) Version from which to upgrade, if not set,
+	 * @param string $current_version (optional) Version from which to upgrade, if not set,
 	 *                                       version specific upgrades will be disregarded.
-	 * @param  array  $all_old_option_values (optional) Only used when importing old options to have
+	 * @param array $all_old_option_values (optional) Only used when importing old options to have
 	 *                                       access to the real old values, in contrast to the saved ones.
 	 *
-	 * @return  array            Cleaned option
+	 * @return array Cleaned option
 	 */
 	protected function clean_option( $option_value, $current_version = null, $all_old_option_values = null ) {
 
@@ -408,12 +408,12 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	 *
 	 * @static
 	 *
-	 * @param  mixed  $term     Term to get the meta value for
+	 * @param mixed $term Term to get the meta value for
 	 *                          either (string) term name, (int) term id or (object) term.
-	 * @param  string $taxonomy Name of the taxonomy to which the term is attached.
-	 * @param  string $meta     (optional) Meta value to get (without prefix).
+	 * @param  string     $taxonomy Name of the taxonomy to which the term is attached.
+	 * @param  string     $meta     (optional) Meta value to get (without prefix).
 	 *
-	 * @return  mixed|bool    Value for the $meta if one is given, might be the default.
+	 * @return mixed|bool           Value for the $meta if one is given, might be the default.
 	 *              If no meta is given, an array of all the meta data for the term.
 	 *              False if the term does not exist or the $meta provided is invalid.
 	 */
@@ -454,7 +454,7 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	/**
 	 * Get the current queried object and return the meta value
 	 *
-	 * @param string $meta The meta field that is needed.
+	 * @param  string     $meta The meta field that is needed.
 	 *
 	 * @return bool|mixed
 	 */
@@ -500,9 +500,9 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	/**
 	 * Find the keyword usages in the metas for the taxonomies/terms
 	 *
-	 * @param string $keyword		   The keyword to look for.
-	 * @param string $current_term_id  The current term id.
-	 * @param string $current_taxonomy The current taxonomy name.
+	 * @param  string $keyword          The keyword to look for.
+	 * @param  string $current_term_id  The current term id.
+	 * @param  string $current_taxonomy The current taxonomy name.
 	 *
 	 * @return array
 	 */
@@ -572,8 +572,8 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	/**
 	 * Getting the taxonomy meta for the given term_id and taxonomy
 	 *
-	 * @param int    $term_id  The id of the term.
-	 * @param string $taxonomy Name of the taxonomy to which the term is attached.
+	 * @param  int    $term_id  The id of the term.
+	 * @param  string $taxonomy Name of the taxonomy to which the term is attached.
 	 *
 	 * @return array
 	 */
