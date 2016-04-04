@@ -94,7 +94,7 @@ class WPSEO_Primary_Term_Admin {
 	/**
 	 * Returns all the taxonomies for which the primary term selection is enabled
 	 *
-	 * @param int $post_ID Default current post ID.
+	 * @param  int   $post_ID Default current post ID.
 	 * @return array
 	 */
 	protected function get_primary_term_taxonomies( $post_ID = null ) {

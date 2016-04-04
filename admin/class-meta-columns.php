@@ -99,7 +99,7 @@ class WPSEO_Meta_Columns {
 	 *
 	 * @param array|false $result The hidden columns.
 	 * @param string      $option The option name used to set which columns should be hidden.
-	 * @param WP_User     $user The User.
+	 * @param WP_User     $user   The User.
 	 *
 	 * @return array|false $result
 	 */
@@ -148,9 +148,9 @@ class WPSEO_Meta_Columns {
 	 * Hacky way to get round the limitation that you can only have AND *or* OR relationship between
 	 * meta key clauses and not a combination - which is what we need.
 	 *
-	 * @param    string $where Where clause.
+	 * @param string $where Where clause.
 	 *
-	 * @return    string
+	 * @return string
 	 */
 	public function seo_score_posts_where( $where ) {
 		global $wpdb;
@@ -209,7 +209,7 @@ class WPSEO_Meta_Columns {
 	/**
 	 * When there is a score just return this meta query array
 	 *
-	 * @param string $low The lowest number in the score range.
+	 * @param string $low  The lowest number in the score range.
 	 * @param string $high The highest number in the score range.
 	 *
 	 * @return array
@@ -244,7 +244,7 @@ class WPSEO_Meta_Columns {
 	/**
 	 * Get vars for noindex or na filters
 	 *
-	 * @param array  $vars The unmerged vars.
+	 * @param array  $vars       The unmerged vars.
 	 * @param string $seo_filter The SEO filter.
 	 *
 	 * @return array
@@ -382,9 +382,9 @@ class WPSEO_Meta_Columns {
 	 *
 	 * @since 1.5.0
 	 *
-	 * @param  string $post_type (optional) The post type to test, defaults to the current post post_type.
+	 * @param string $post_type (optional) The post type to test, defaults to the current post post_type.
 	 *
-	 * @return  bool        Whether or not the meta box (and associated columns etc) should be hidden
+	 * @return bool Whether or not the meta box (and associated columns etc) should be hidden
 	 */
 	private function is_metabox_hidden( $post_type = null ) {
 		if ( ! isset( $post_type ) &&  $get_post_type = filter_input( INPUT_GET, 'post_type' ) ) {

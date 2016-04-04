@@ -140,7 +140,7 @@ else {
  * @param array       $context_array   Context data array.
  * @param mixed       $themes          Optional themes set.
  *
- * @return  void
+ * @return void
  */
 function wpseo_upgrader_process_complete( $upgrader_object, $context_array, $themes = null ) {
 	$options = get_option( 'wpseo' );
@@ -187,10 +187,10 @@ function wpseo_upgrader_process_complete( $upgrader_object, $context_array, $the
  *
  * @since 1.4.14
  *
- * @param   array           $update_actions Updated actions set.
- * @param   WP_Theme|string $updated_theme  Theme object instance or stylesheet name.
+ * @param array           $update_actions Updated actions set.
+ * @param WP_Theme|string $updated_theme  Theme object instance or stylesheet name.
  *
- * @return  array  $update_actions    Unchanged array
+ * @return array $update_actions Unchanged array
  */
 function wpseo_update_theme_complete_actions( $update_actions, $updated_theme ) {
 	$options = get_option( 'wpseo' );

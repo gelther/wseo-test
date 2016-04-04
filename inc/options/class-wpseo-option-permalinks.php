@@ -67,11 +67,11 @@ class WPSEO_Option_Permalinks extends WPSEO_Option {
 	/**
 	 * Validate the option
 	 *
-	 * @param  array $dirty New value for the option.
-	 * @param  array $clean Clean value for the option, normally the defaults.
-	 * @param  array $old   Old value of the option (not used here as all fields will always be in the form).
+	 * @param array $dirty New value for the option.
+	 * @param array $clean Clean value for the option, normally the defaults.
+	 * @param array $old   Old value of the option (not used here as all fields will always be in the form).
 	 *
-	 * @return  array      Validated clean value for the option to be saved to the database
+	 * @return array Validated clean value for the option to be saved to the database
 	 */
 	protected function validate_option( $dirty, $clean, $old ) {
 
@@ -116,14 +116,14 @@ class WPSEO_Option_Permalinks extends WPSEO_Option {
 	/**
 	 * Clean a given option value
 	 *
-	 * @param  array  $option_value          Old (not merged with defaults or filtered) option value to
+	 * @param array $option_value Old (not merged with defaults or filtered) option value to
 	 *                                       clean according to the rules for this option.
-	 * @param  string $current_version       (optional) Version from which to upgrade, if not set,
+	 * @param string $current_version (optional) Version from which to upgrade, if not set,
 	 *                                       version specific upgrades will be disregarded.
-	 * @param  array  $all_old_option_values (optional) Only used when importing old options to have
+	 * @param array $all_old_option_values (optional) Only used when importing old options to have
 	 *                                       access to the real old values, in contrast to the saved ones.
 	 *
-	 * @return  array            Cleaned option
+	 * @return array Cleaned option
 	 */
 
 	/*
