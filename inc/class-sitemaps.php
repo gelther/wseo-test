@@ -573,7 +573,7 @@ class WPSEO_Sitemaps {
 			'monthly',
 			'yearly',
 			'never',
-		) )
+		) ) 
 		) {
 			$change_freq = $default;
 		}
@@ -589,10 +589,10 @@ class WPSEO_Sitemaps {
 	function build_post_type_map( $post_type ) {
 		global $wpdb;
 
-		if (
+		if ( 
 			( isset( $this->options[ 'post_types-' . $post_type . '-not_in_sitemap' ] ) && $this->options[ 'post_types-' . $post_type . '-not_in_sitemap' ] === true )
 			|| in_array( $post_type, array( 'revision', 'nav_menu_item' ) )
-			|| apply_filters( 'wpseo_sitemap_exclude_post_type', false, $post_type )
+			|| apply_filters( 'wpseo_sitemap_exclude_post_type', false, $post_type ) 
 		) {
 			$this->bad_sitemap = true;
 
@@ -932,10 +932,10 @@ class WPSEO_Sitemaps {
 	 * @param string $taxonomy Registered taxonomy's slug.
 	 */
 	function build_tax_map( $taxonomy ) {
-		if (
+		if ( 
 			( isset( $this->options[ 'taxonomies-' . $taxonomy->name . '-not_in_sitemap' ] ) && $this->options[ 'taxonomies-' . $taxonomy->name . '-not_in_sitemap' ] === true )
 			|| in_array( $taxonomy, array( 'link_category', 'nav_menu', 'post_format' ) )
-			|| apply_filters( 'wpseo_sitemap_exclude_taxonomy', false, $taxonomy->name )
+			|| apply_filters( 'wpseo_sitemap_exclude_taxonomy', false, $taxonomy->name ) 
 		) {
 			$this->bad_sitemap = true;
 

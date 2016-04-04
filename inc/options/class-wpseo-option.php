@@ -133,7 +133,7 @@ abstract class WPSEO_Option {
 				add_filter( 'pre_update_option_' . $this->option_name, array( $this, 'wp37_add_default_filters' ) );
 			}
 		}
-		else if ( is_multisite() ) {
+		elseif ( is_multisite() ) {
 			/*
 			The option validation routines remove the default filters to prevent failing
 			   to insert an option if it's new. Let's add them back afterwards.

@@ -83,9 +83,9 @@ class WPSEO_Taxonomy {
 		wp_enqueue_style( 'seo_score', plugins_url( 'css/yst_seo_score-' . '310' . WPSEO_CSSJS_SUFFIX . '.css', WPSEO_FILE ), array(), WPSEO_VERSION );
 
 		$tag_id = filter_input( INPUT_GET, 'tag_ID' );
-		if (
+		if ( 
 			self::is_term_edit( $pagenow ) &&
-			! empty( $tag_id )  // After we drop support for <4.5 this can be removed.
+			! empty( $tag_id )  // After we drop support for <4.5 this can be removed. 
 		) {
 			wp_enqueue_media(); // Enqueue files needed for upload functionality.
 

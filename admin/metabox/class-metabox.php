@@ -616,7 +616,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 					'pageanalysis',
 					'radio',
 					'checkbox',
-				), true ) === false
+				), true ) === false 
 			) {
 				$label = '<label for="' . $esc_form_key . '">' . $label . '</label>';
 			}
@@ -710,7 +710,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 					'post-new.php',
 					'post.php',
 					'edit.php',
-				), true ) && apply_filters( 'wpseo_always_register_metaboxes_on_admin', false ) === false ) || $this->is_metabox_hidden() === true
+				), true ) && apply_filters( 'wpseo_always_register_metaboxes_on_admin', false ) === false ) || $this->is_metabox_hidden() === true 
 		) {
 			return;
 		}

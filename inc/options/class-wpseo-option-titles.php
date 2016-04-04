@@ -384,7 +384,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		if ( ! isset( $original ) && has_action( 'wpseo_double_clean_titles', array(
 				$this,
 				'clean',
-			) ) === false
+			) ) === false 
 		) {
 			add_action( 'wpseo_double_clean_titles', array( $this, 'clean' ) );
 			$original = $option_value;
@@ -487,11 +487,11 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 			if ( $taxonomy_names !== array() ) {
 				foreach ( $taxonomy_names as $tax ) {
 					foreach ( $rename as $old_prefix => $new_prefix ) {
-						if (
+						if ( 
 							( isset( $original[ $old_prefix . $tax ] ) && ! isset( $original[ $new_prefix . $tax ] ) )
 							&& ( ! isset( $option_value[ $new_prefix . $tax ] )
 							     || ( isset( $option_value[ $new_prefix . $tax ] )
-							          && $option_value[ $new_prefix . $tax ] === $defaults[ $new_prefix . $tax ] ) )
+							          && $option_value[ $new_prefix . $tax ] === $defaults[ $new_prefix . $tax ] ) ) 
 						) {
 							$option_value[ $new_prefix . $tax ] = $original[ $old_prefix . $tax ];
 
