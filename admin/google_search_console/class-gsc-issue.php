@@ -62,8 +62,8 @@ class WPSEO_GSC_Issue {
 	/**
 	 * Converting the date to a date format
 	 *
-	 * @param DateTime $date_to_convert Date instance.
-	 * @param string   $format          Format string.
+	 * @param  DateTime $date_to_convert Date instance.
+	 * @param  string   $format          Format string.
 	 *
 	 * @return string
 	 */
@@ -79,7 +79,7 @@ class WPSEO_GSC_Issue {
 	/**
 	 * Converting the date to a timestamp
 	 *
-	 * @param DateTime $date_to_convert Date object instance.
+	 * @param  DateTime $date_to_convert Date object instance.
 	 *
 	 * @return string
 	 */

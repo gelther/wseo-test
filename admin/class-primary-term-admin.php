@@ -81,9 +81,9 @@ class WPSEO_Primary_Term_Admin {
 	 * /**
 	 * Get the id of the primary term
 	 *
-	 * @param string $taxonomy_name Taxonomy name for the term.
+	 * @param  string $taxonomy_name Taxonomy name for the term.
 	 *
-	 * @return int primary term id
+	 * @return int                   primary term id
 	 */
 	protected function get_primary_term( $taxonomy_name ) {
 		$primary_term = new WPSEO_Primary_Term( $taxonomy_name, get_the_ID() );
@@ -94,7 +94,7 @@ class WPSEO_Primary_Term_Admin {
 	/**
 	 * Returns all the taxonomies for which the primary term selection is enabled
 	 *
-	 * @param int $post_ID Default current post ID.
+	 * @param  int   $post_ID Default current post ID.
 	 * @return array
 	 */
 	protected function get_primary_term_taxonomies( $post_ID = null ) {
@@ -140,7 +140,7 @@ class WPSEO_Primary_Term_Admin {
 	/**
 	 * Generate the primary term taxonomies.
 	 *
-	 * @param int $post_ID ID of the post.
+	 * @param  int   $post_ID ID of the post.
 	 *
 	 * @return array
 	 */
@@ -167,7 +167,7 @@ class WPSEO_Primary_Term_Admin {
 	/**
 	 * Returns an array suitable for use in the javascript
 	 *
-	 * @param stdClass $taxonomy The taxonomy to map.
+	 * @param  stdClass $taxonomy The taxonomy to map.
 	 *
 	 * @return array
 	 */
@@ -189,7 +189,7 @@ class WPSEO_Primary_Term_Admin {
 	/**
 	 * Returns an array suitable for use in the javascript
 	 *
-	 * @param stdClass $term The term to map.
+	 * @param  stdClass $term The term to map.
 	 *
 	 * @return array
 	 */
@@ -203,7 +203,7 @@ class WPSEO_Primary_Term_Admin {
 	/**
 	 * Returns whether or not a taxonomy is hierarchical
 	 *
-	 * @param stdClass $taxonomy Taxonomy object.
+	 * @param  stdClass $taxonomy Taxonomy object.
 	 *
 	 * @return bool
 	 */
@@ -214,7 +214,7 @@ class WPSEO_Primary_Term_Admin {
 	/**
 	 * Returns whether or not the taxonomy is the category taxonomy
 	 *
-	 * @param stdClass $taxonomy Taxonomy object.
+	 * @param  stdClass $taxonomy Taxonomy object.
 	 *
 	 * @return bool
 	 */

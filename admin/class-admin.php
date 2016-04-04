@@ -380,9 +380,9 @@ class WPSEO_Admin {
 	/**
 	 * Saves the posts per page limit for bulk edit pages.
 	 *
-	 * @param int    $status Status value to pass through.
-	 * @param string $option Option name.
-	 * @param int    $value  Count value to check.
+	 * @param  int    $status Status value to pass through.
+	 * @param  string $option Option name.
+	 * @param  int    $value  Count value to check.
 	 *
 	 * @return int
 	 */
@@ -464,10 +464,10 @@ class WPSEO_Admin {
 	 *
 	 * @staticvar string $this_plugin holds the directory & filename for the plugin
 	 *
-	 * @param array  $links array of links for the plugins, adapted when the current plugin is found.
-	 * @param string $file  the filename for the current plugin, which the filter loops through.
+	 * @param  array  $links array of links for the plugins, adapted when the current plugin is found.
+	 * @param  string $file  the filename for the current plugin, which the filter loops through.
 	 *
-	 * @return array $links
+	 * @return array  $links
 	 */
 	function add_action_link( $links, $file ) {
 		if ( WPSEO_BASENAME === $file && WPSEO_Utils::grant_access() ) {
@@ -508,7 +508,7 @@ class WPSEO_Admin {
 	 *
 	 * These are used with the Facebook author, rel="author" and Twitter cards implementation.
 	 *
-	 * @param array $contactmethods currently set contactmethods.
+	 * @param  array $contactmethods currently set contactmethods.
 	 *
 	 * @return array $contactmethods with added contactmethods.
 	 */
@@ -528,7 +528,7 @@ class WPSEO_Admin {
 	 *
 	 * @since 1.1.7
 	 *
-	 * @param string $slug if this isn't empty, the function will return an unaltered slug.
+	 * @param  string $slug       if this isn't empty, the function will return an unaltered slug.
 	 *
 	 * @return string $clean_slug cleaned slug
 	 */
@@ -539,8 +539,8 @@ class WPSEO_Admin {
 	/**
 	 * Filter the stopwords from the slug
 	 *
-	 * @param string $slug       The current slug, if not empty there will be done nothing.
-	 * @param string $post_title The title which will be used in case of an empty slug.
+	 * @param  string $slug       The current slug, if not empty there will be done nothing.
+	 * @param  string $post_title The title which will be used in case of an empty slug.
 	 *
 	 * @return string
 	 */
@@ -587,8 +587,8 @@ class WPSEO_Admin {
 	 *
 	 * @deprecated 3.1
 	 *
-	 * @param string $haystack    The string to be checked for the stopword.
-	 * @param bool   $checkingUrl Whether or not we're checking a URL.
+	 * @param  string     $haystack    The string to be checked for the stopword.
+	 * @param  bool       $checkingUrl Whether or not we're checking a URL.
 	 *
 	 * @return bool|mixed
 	 */
@@ -652,7 +652,7 @@ class WPSEO_Admin {
 	/**
 	 * Extending the current page URL with two params to be able to ignore the tour.
 	 *
-	 * @param string $dismiss_param The param used to dismiss the notification.
+	 * @param  string $dismiss_param The param used to dismiss the notification.
 	 *
 	 * @return string
 	 */

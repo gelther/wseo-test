@@ -94,9 +94,9 @@ class WPSEO_GSC_Service {
 	/**
 	 * Sending request to mark issue as fixed
 	 *
-	 * @param string $url      Issue URL.
-	 * @param string $platform Platform (desktop, mobile, feature phone).
-	 * @param string $category Issue type.
+	 * @param  string $url      Issue URL.
+	 * @param  string $platform Platform (desktop, mobile, feature phone).
+	 * @param  string $category Issue type.
 	 *
 	 * @return bool
 	 */
@@ -108,8 +108,8 @@ class WPSEO_GSC_Service {
 	/**
 	 * Fetching the issues from the GSC API
 	 *
-	 * @param string $platform Platform (desktop, mobile, feature phone).
-	 * @param string $category Issue type.
+	 * @param  string $platform Platform (desktop, mobile, feature phone).
+	 * @param  string $category Issue type.
 	 *
 	 * @return mixed
 	 */
@@ -173,7 +173,7 @@ class WPSEO_GSC_Service {
 	/**
 	 * Getting the crawl error counts
 	 *
-	 * @param string $profile Profile name string.
+	 * @param  string      $profile Profile name string.
 	 *
 	 * @return object|bool
 	 */

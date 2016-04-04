@@ -131,8 +131,8 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 	/**
 	 * Generates the html for a social settings tab for one of the supported social media.
 	 *
-	 * @param string $medium can be 'opengraph', 'twitter' or 'googleplus'.
-	 * @param array  $meta_field_defs The social meta field definitions.
+	 * @param  string $medium          can be 'opengraph', 'twitter' or 'googleplus'.
+	 * @param  array  $meta_field_defs The social meta field definitions.
 	 *
 	 * @return string
 	 */
@@ -155,9 +155,9 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 	/**
 	 * Filter over the meta boxes to save, this function adds the Social meta boxes.
 	 *
-	 * @param   array $field_defs Array of metaboxes to save.
+	 * @param  array $field_defs Array of metaboxes to save.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function save_meta_boxes( $field_defs ) {
 		return array_merge( $field_defs, $this->get_meta_field_defs( 'social' ) );
@@ -215,9 +215,9 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 	 * @deprecated use WPSEO_Meta::get_meta_field_defs()
 	 * @see        WPSEO_Meta::get_meta_field_defs()
 	 *
-	 * @param string $post_type Optional post type string.
+	 * @param  string $post_type Optional post type string.
 	 *
-	 * @return    array    Array containing the meta boxes
+	 * @return array             Array containing the meta boxes
 	 */
 	public function get_meta_boxes( $post_type = 'post' ) {
 		_deprecated_function( __METHOD__, 'WPSEO 1.5.0', 'WPSEO_Meta::get_meta_field_defs()' );
