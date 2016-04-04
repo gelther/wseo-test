@@ -127,10 +127,12 @@ class WPSEO_Pointers {
 					?>
 				};
 
-				if ( wpseo_pointer_options.position && wpseo_pointer_options.position.defer_loading )
+				if ( wpseo_pointer_options.position && wpseo_pointer_options.position.defer_loading ) {
 					$(window).bind('load.wp-pointers', setup);
-				else
+				}
+				else {
 					$(document).ready(setup);
+				}
 			})(jQuery);
 			//]]>
 		</script>
