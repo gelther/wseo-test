@@ -622,8 +622,8 @@ class WPSEO_Utils {
 	 * When there are more 'extremely long' post types, changes are they have variations in either the start or ending.
 	 * Because of this, we cut out the excess in the middle which should result in less chance of collision.
 	 *
-	 * @param string $type The type of sitemap to be used.
-	 * @param string $prefix The part before the type in the cache key. Only the length is used.
+	 * @param string $type    The type of sitemap to be used.
+	 * @param string $prefix  The part before the type in the cache key. Only the length is used.
 	 * @param string $postfix The part after the type in the cache key. Only the length is used.
 	 *
 	 * @return string The type with a safe length to use
@@ -783,21 +783,21 @@ class WPSEO_Utils {
 	 *
 	 * @since 1.5.0
 	 *
-	 * @param mixed  $number1   Scalar (string/int/float/bool).
-	 * @param string $action    Calculation action to execute. Valid input:
+	 * @param mixed  $number1 Scalar (string/int/float/bool).
+	 * @param string $action  Calculation action to execute. Valid input:
 	 *                            '+' or 'add' or 'addition',
 	 *                            '-' or 'sub' or 'subtract',
 	 *                            '*' or 'mul' or 'multiply',
 	 *                            '/' or 'div' or 'divide',
 	 *                            '%' or 'mod' or 'modulus'
 	 *                            '=' or 'comp' or 'compare'.
-	 * @param mixed  $number2   Scalar (string/int/float/bool).
-	 * @param bool   $round     Whether or not to round the result. Defaults to false.
+	 * @param mixed $number2 Scalar (string/int/float/bool).
+	 * @param bool  $round   Whether or not to round the result. Defaults to false.
 	 *                          Will be disregarded for a compare operation.
-	 * @param int    $decimals  Decimals for rounding operation. Defaults to 0.
-	 * @param int    $precision Calculation precision. Defaults to 10.
+	 * @param int $decimals  Decimals for rounding operation. Defaults to 0.
+	 * @param int $precision Calculation precision. Defaults to 10.
 	 *
-	 * @return mixed            Calculation Result or false if either or the numbers isn't scalar or
+	 * @return mixed Calculation Result or false if either or the numbers isn't scalar or
 	 *                          an invalid operation was passed
 	 *                          - for compare the result will always be an integer
 	 *                          - for all other operations, the result will either be an integer (preferred)
@@ -1045,8 +1045,8 @@ class WPSEO_Utils {
 	 * Wrapper for encoding the array as a json string. Includes a fallback if wp_json_encode doesn't exists
 	 *
 	 * @param array $array_to_encode The array which will be encoded.
-	 * @param int   $options		 Optional. Array with options which will be passed in to the encoding methods.
-	 * @param int   $depth    		 Optional. Maximum depth to walk through $data. Must be greater than 0. Default 512.
+	 * @param int   $options         Optional. Array with options which will be passed in to the encoding methods.
+	 * @param int   $depth           Optional. Maximum depth to walk through $data. Must be greater than 0. Default 512.
 	 *
 	 * @return false|string
 	 */
