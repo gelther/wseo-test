@@ -98,7 +98,7 @@ class WPSEO_Admin_Pages {
 	/**
 	 * Pass some variables to js for upload module.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function localize_media_script() {
 		return array(
@@ -111,7 +111,7 @@ class WPSEO_Admin_Pages {
 	 *
 	 * %s is replaced with <code>%s</code> and replaced again in the javascript with the actual variable.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function localize_admin_script() {
 		return array(
