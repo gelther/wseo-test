@@ -301,10 +301,10 @@ class Yoast_Form {
 	/**
 	 * Create a light switch input field.
 	 *
-	 * @param string  $var        The variable within the option to create the checkbox for.
-	 * @param string  $label      The label to show for the variable.
-	 * @param array   $buttons    Array of two labels for the buttons (defaults Off/On).
-	 * @param boolean $reverse    Reverse order of buttons (default true).
+	 * @param string  $var     The variable within the option to create the checkbox for.
+	 * @param string  $label   The label to show for the variable.
+	 * @param array   $buttons Array of two labels for the buttons (defaults Off/On).
+	 * @param boolean $reverse Reverse order of buttons (default true).
 	 */
 	public function light_switch( $var, $label, $buttons = array(), $reverse = true ) {
 
