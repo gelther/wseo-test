@@ -551,9 +551,9 @@ class WPSEO_Sitemaps {
 	/**
 	 * Function to dynamically filter the change frequency
 	 *
-	 * @param string $filter  Expands to wpseo_sitemap_$filter_change_freq, allowing for a change of the frequency for numerous specific URLs.
-	 * @param string $default The default value for the frequency.
-	 * @param string $url     The URL of the current entry.
+	 * @param  string     $filter  Expands to wpseo_sitemap_$filter_change_freq, allowing for a change of the frequency for numerous specific URLs.
+	 * @param  string     $default The default value for the frequency.
+	 * @param  string     $url     The URL of the current entry.
 	 *
 	 * @return mixed|void
 	 */
@@ -862,10 +862,10 @@ class WPSEO_Sitemaps {
 	/**
 	 * Parsing the matched images
 	 *
-	 * @param array  $matches Set of matches.
-	 * @param object $p       Post object.
-	 * @param string $scheme  URL scheme.
-	 * @param string $host    URL host.
+	 * @param  array  $matches Set of matches.
+	 * @param  object $p       Post object.
+	 * @param  string $scheme  URL scheme.
+	 * @param  string $host    URL host.
 	 *
 	 * @return array
 	 */
@@ -1204,7 +1204,7 @@ class WPSEO_Sitemaps {
 	/**
 	 * Build the <url> tag for a given URL.
 	 *
-	 * @param array $url Array of parts that make up this entry.
+	 * @param  array  $url Array of parts that make up this entry.
 	 *
 	 * @return string
 	 */
@@ -1258,7 +1258,7 @@ class WPSEO_Sitemaps {
 	/**
 	 * Hook into redirect_canonical to stop trailing slashes on sitemap.xml URLs
 	 *
-	 * @param string $redirect The redirect URL currently determined.
+	 * @param  string      $redirect The redirect URL currently determined.
 	 *
 	 * @return bool|string $redirect
 	 */
@@ -1279,7 +1279,7 @@ class WPSEO_Sitemaps {
 	/**
 	 * Get the modification date for the last modified post in the post type:
 	 *
-	 * @param array $post_types Post types to get the last modification date for.
+	 * @param  array  $post_types Post types to get the last modification date for.
 	 *
 	 * @return string
 	 */
@@ -1323,10 +1323,10 @@ class WPSEO_Sitemaps {
 	 *
 	 * @since 1.6
 	 *
-	 * @param Wp_User $a The first WP user.
-	 * @param Wp_User $b The second WP user.
+	 * @param  Wp_User $a The first WP user.
+	 * @param  Wp_User $b The second WP user.
 	 *
-	 * @return int 0 if equal, 1 if $a is larger else or -1;
+	 * @return int        0 if equal, 1 if $a is larger else or -1;
 	 */
 	private function user_map_sorter( $a, $b ) {
 		if ( ! isset( $a->_yoast_wpseo_profile_updated ) ) {
@@ -1348,9 +1348,9 @@ class WPSEO_Sitemaps {
 	 *
 	 * Also filtering users that should be exclude by excluded role.
 	 *
-	 * @param array $users Set of users to filter.
+	 * @param  array $users Set of users to filter.
 	 *
-	 * @return array all the user that aren't excluded from the sitemap
+	 * @return array        all the user that aren't excluded from the sitemap
 	 */
 	public function user_sitemap_remove_excluded_authors( $users ) {
 
@@ -1402,7 +1402,7 @@ class WPSEO_Sitemaps {
 	/**
 	 * Get attached image URL - Adapted from core for speed
 	 *
-	 * @param int $post_id ID of the post.
+	 * @param  int    $post_id ID of the post.
 	 *
 	 * @return string
 	 */
@@ -1441,7 +1441,7 @@ class WPSEO_Sitemaps {
 	/**
 	 * Getting the attachments from database
 	 *
-	 * @param string $post_ids Set of post IDs.
+	 * @param  string $post_ids Set of post IDs.
 	 *
 	 * @return mixed
 	 */
@@ -1457,7 +1457,7 @@ class WPSEO_Sitemaps {
 	/**
 	 * Getting thumbnails
 	 *
-	 * @param array $post_ids Set of post IDs.
+	 * @param  array $post_ids Set of post IDs.
 	 *
 	 * @return mixed
 	 */
@@ -1493,8 +1493,8 @@ class WPSEO_Sitemaps {
 	/**
 	 * Parses the given attachments
 	 *
-	 * @param array   $attachments Set of attachments.
-	 * @param WP_Post $post        Post object.
+	 * @param  array   $attachments Set of attachments.
+	 * @param  WP_Post $post        Post object.
 	 *
 	 * @return array
 	 */
@@ -1531,7 +1531,7 @@ class WPSEO_Sitemaps {
 	/**
 	 * Calculate the priority of the post
 	 *
-	 * @param WP_Post $post Post object.
+	 * @param  WP_Post     $post Post object.
 	 *
 	 * @return float|mixed
 	 */
