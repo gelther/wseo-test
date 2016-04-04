@@ -69,9 +69,9 @@ class WPSEO_Sitemaps_Admin {
 		wp_cache_delete( 'lastpostmodified:gmt:' . $post->post_type, 'timeinfo' ); // #17455.
 
 		$options = WPSEO_Options::get_options( array( 'wpseo_xml', 'wpseo_titles' ) );
-		if (
+		if ( 
 			( isset( $options[ 'post_types-' . $post->post_type . '-not_in_sitemap' ] ) && $options[ 'post_types-' . $post->post_type . '-not_in_sitemap' ] === true )
-			|| ( $post->post_type === 'nav_menu_item' )
+			|| ( $post->post_type === 'nav_menu_item' ) 
 		) {
 			return;
 		}
