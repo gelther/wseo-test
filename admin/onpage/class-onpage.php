@@ -157,7 +157,7 @@ class WPSEO_OnPage {
 	 * Notify the admins
 	 */
 	protected function notify_admins() {
-		/*
+		/**
 		 * Let's start showing the notices to all admins by removing the hide-notice meta data for each admin resulting
 		 * in popping up the notice again.
 		 */
