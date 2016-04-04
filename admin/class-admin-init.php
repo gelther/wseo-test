@@ -67,7 +67,7 @@ class WPSEO_Admin_Init {
 		if ( $can_access && $this->has_ignored_tour() && ! $this->seen_about() ) {
 
 			if ( filter_input( INPUT_GET, 'intro' ) === '1' || $this->dismiss_notice( 'wpseo-dismiss-about' ) ) {
-				update_user_meta( get_current_user_id(), 'wpseo_seen_about_version' , WPSEO_VERSION );
+				update_user_meta( get_current_user_id(), 'wpseo_seen_about_version', WPSEO_VERSION );
 
 				return;
 			}
