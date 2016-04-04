@@ -152,7 +152,7 @@ class WPSEO_Rank {
 	/**
 	 * Returns a rank for a specific numeric score
 	 *
-	 * @param int $score The score to determine a rank for.
+	 * @param  int  $score The score to determine a rank for.
 	 *
 	 * @return self
 	 */
@@ -182,7 +182,7 @@ class WPSEO_Rank {
 	/**
 	 * Converts a numeric rank into a WPSEO_Rank object, for use in functional array_* functions
 	 *
-	 * @param string $rank SEO Rank.
+	 * @param  string     $rank SEO Rank.
 	 *
 	 * @return WPSEO_Rank
 	 */
