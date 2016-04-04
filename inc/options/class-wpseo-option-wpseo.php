@@ -82,9 +82,9 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 	 * @return \WPSEO_Option_Wpseo
 	 */
 	protected function __construct() {
-		/*
+		/**
 		Dirty fix for making certain defaults available during activation while still only
-			   defining them once
+				defining them once
 		*/
 		foreach ( self::$desc_defaults as $key => $value ) {
 			$this->defaults[ $key ] = $value;
@@ -194,9 +194,9 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 					break;
 
 
-				/*
+				/**
 				Boolean dismiss warnings - not fields - may not be in form
-					   (and don't need to be either as long as the default is false)
+						(and don't need to be either as long as the default is false)
 				 */
 				case 'ignore_blog_public_warning':
 				case 'ignore_meta_description_warning':
@@ -212,11 +212,11 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 					break;
 
 
-				/*
+				/**
 				Boolean (checkbox) fields
 				*/
 
-				/*
+				/**
 				Covers
 				 * 		'disableadvanced_meta'
 				 * 		'yoast_tracking'
