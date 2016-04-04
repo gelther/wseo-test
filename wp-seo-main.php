@@ -454,5 +454,3 @@ function yoast_wpseo_self_deactivate() {
 		}
 	}
 }
-
-
