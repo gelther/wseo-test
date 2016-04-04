@@ -103,9 +103,9 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	 *
 	 * @since 1.5.0
 	 *
-	 * @param  string $post_type (optional) The post type to test, defaults to the current post post_type.
+	 * @param string $post_type (optional) The post type to test, defaults to the current post post_type.
 	 *
-	 * @return  bool        Whether or not the meta box (and associated columns etc) should be hidden
+	 * @return bool Whether or not the meta box (and associated columns etc) should be hidden
 	 */
 	function is_metabox_hidden( $post_type = null ) {
 		if ( ! isset( $post_type ) && ( isset( $GLOBALS['post'] ) && ( is_object( $GLOBALS['post'] ) && isset( $GLOBALS['post']->post_type ) ) ) ) {
@@ -316,7 +316,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	/**
 	 * Pass some variables to js for the edit / post page overview, snippet preview, etc.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function localize_shortcode_plugin_script() {
 		return array(
@@ -486,10 +486,10 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	 *
 	 * @todo [JRF] check if $class is added appropriately everywhere
 	 *
-	 * @param   array  $meta_field_def Contains the vars based on which output is generated.
-	 * @param   string $key            Internal key (without prefix).
+	 * @param array  $meta_field_def Contains the vars based on which output is generated.
+	 * @param string $key            Internal key (without prefix).
 	 *
-	 * @return  string
+	 * @return string
 	 */
 	function do_meta_box( $meta_field_def, $key = '' ) {
 		$content      = '';
@@ -657,7 +657,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	 *
 	 * @param int $post_id Post ID.
 	 *
-	 * @return  bool|void   Boolean false if invalid save post request
+	 * @return bool|void Boolean false if invalid save post request
 	 */
 	function save_postdata( $post_id ) {
 		if ( $post_id === null ) {
@@ -766,7 +766,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	/**
 	 * Pass some variables to js for upload module.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function localize_media_script() {
 		return array(
@@ -795,7 +795,7 @@ class WPSEO_Metabox extends WPSEO_Meta {
 	/**
 	 * Returns post in metabox context
 	 *
-	 * @returns WP_Post|array
+	 * @return s WP_Post|array
 	 */
 	protected function get_metabox_post() {
 		if ( $post = filter_input( INPUT_GET, 'post' ) ) {
@@ -968,7 +968,7 @@ SVG;
 	/**
 	 * Returns whether or not showing the date in the snippet preview is enabled.
 	 *
-	 * @param WP_Post $post The post to retrieve this for.
+	 * @param  WP_Post $post The post to retrieve this for.
 	 * @return bool
 	 */
 	private function is_show_date_enabled( $post ) {
@@ -1001,9 +1001,9 @@ SVG;
 	 * @deprecated use WPSEO_Meta::get_meta_field_defs()
 	 * @see        WPSEO_Meta::get_meta_field_defs()
 	 *
-	 * @param  string $post_type The post type for which to get the meta fields.
+	 * @param string $post_type The post type for which to get the meta fields.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function get_meta_boxes( $post_type = 'post' ) {
 		_deprecated_function( __METHOD__, 'WPSEO 1.5.0', 'WPSEO_Meta::get_meta_field_defs()' );
@@ -1134,7 +1134,7 @@ SVG;
 	 *
 	 * @param array|false $result The hidden columns.
 	 * @param string      $option The option name used to set which columns should be hidden.
-	 * @param WP_User     $user The User.
+	 * @param WP_User     $user   The User.
 	 *
 	 * @return array|false $result
 	 */
@@ -1149,7 +1149,7 @@ SVG;
 	/**
 	 * @deprecated 3.0 Use WPSEO_Meta_Columns::seo_score_posts_where instead.
 	 *
-	 * @param string $where  Where clause.
+	 * @param string $where Where clause.
 	 *
 	 * @return string
 	 */
@@ -1202,9 +1202,9 @@ SVG;
 	/**
 	 * @deprecated 3.0
 	 *
-	 * @param  object $post Post to calculate the results for.
+	 * @param object $post Post to calculate the results for.
 	 *
-	 * @return  array|WP_Error
+	 * @return array|WP_Error
 	 */
 	public function calculate_results( $post ) {
 		_deprecated_function( 'WPSEO_Metabox::calculate_results', 'WPSEO 3.0' );
@@ -1218,7 +1218,7 @@ SVG;
 	 *
 	 * @param WP_Post $post Post object instance.
 	 *
-	 * @return    array
+	 * @return array
 	 */
 	public function get_sample_permalink( $post ) {
 		_deprecated_function( 'WPSEO_Metabox::get_sample_permalink', 'WPSEO 3.0' );
