@@ -138,9 +138,9 @@ class WPSEO_GSC {
 	/**
 	 * Set the screen options
 	 *
-	 * @param string $status Status string.
-	 * @param string $option Option key.
-	 * @param string $value  Value to return.
+	 * @param  string $status Status string.
+	 * @param  string $option Option key.
+	 * @param  string $value  Value to return.
 	 *
 	 * @return mixed
 	 */
