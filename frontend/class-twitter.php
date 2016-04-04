@@ -179,7 +179,7 @@ class WPSEO_Twitter {
 	/**
 	 * Returns the description for a singular page
 	 *
-	 * @param int $post_id Post ID.
+	 * @param  int    $post_id Post ID.
 	 *
 	 * @return string
 	 */
@@ -261,7 +261,7 @@ class WPSEO_Twitter {
 	/**
 	 * Returns the Twitter title for a single post
 	 *
-	 * @param int $post_id Post ID.
+	 * @param  int    $post_id Post ID.
 	 *
 	 * @return string
 	 */
@@ -321,9 +321,9 @@ class WPSEO_Twitter {
 	 * Solves issues with filters returning urls and theme's/other plugins also adding a user meta
 	 * twitter field which expects url rather than an id (which is what we expect).
 	 *
-	 * @param  string $id Twitter ID or url.
+	 * @param  string      $id Twitter ID or url.
 	 *
-	 * @return string|bool Twitter ID or false if it failed to get a valid Twitter ID.
+	 * @return string|bool     Twitter ID or false if it failed to get a valid Twitter ID.
 	 */
 	private function get_twitter_id( $id ) {
 		if ( preg_match( '`([A-Za-z0-9_]{1,25})$`', $id, $match ) ) {
@@ -421,8 +421,8 @@ class WPSEO_Twitter {
 	/**
 	 * Outputs a Twitter image tag for a given image
 	 *
-	 * @param string  $img The source URL to the image.
-	 * @param boolean $tag Deprecated argument, previously used for gallery images.
+	 * @param  string  $img The source URL to the image.
+	 * @param  boolean $tag Deprecated argument, previously used for gallery images.
 	 *
 	 * @return bool
 	 */
