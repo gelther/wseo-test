@@ -349,7 +349,7 @@ class WPSEO_Options {
 				self::reset_ms_blog( get_current_blog_id() );
 				self::initialize();
 			}
-			else if ( $force_init === true ) {
+			elseif ( $force_init === true ) {
 				self::initialize();
 			}
 		}
