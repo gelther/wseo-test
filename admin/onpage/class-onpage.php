@@ -48,7 +48,7 @@ class WPSEO_OnPage {
 	/**
 	 * Adding a weekly schedule to the schedules array
 	 *
-	 * @param array $schedules Array with schedules.
+	 * @param  array $schedules Array with schedules.
 	 *
 	 * @return array
 	 */
