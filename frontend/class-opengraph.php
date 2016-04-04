@@ -688,7 +688,7 @@ class WPSEO_OpenGraph {
 	 * Output the article category as an article:section tag.
 	 *
 	 * @link https://developers.facebook.com/docs/reference/opengraph/object-type/article/
-	 * @return boolean;
+	 * @return boolean ;
 	 */
 	public function category() {
 
@@ -713,7 +713,7 @@ class WPSEO_OpenGraph {
 	 * Output the article publish and last modification date
 	 *
 	 * @link https://developers.facebook.com/docs/reference/opengraph/object-type/article/
-	 * @return boolean;
+	 * @return boolean ;
 	 */
 	public function publish_date() {
 
