@@ -144,7 +144,7 @@ class WPSEO_GSC_Count {
 			$new_platform = WPSEO_GSC_Mapper::platform_from_api( $platform_name );
 
 			foreach ( $categories as $category_name => $category ) {
-				$new_category = WPSEO_GSC_Mapper::category_from_api( $category_name );
+				$new_category                             = WPSEO_GSC_Mapper::category_from_api( $category_name );
 				$counts[ $new_platform ][ $new_category ] = $category;
 			}
 		}
