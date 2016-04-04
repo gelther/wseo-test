@@ -183,11 +183,11 @@ class WPSEO_Option_XML extends WPSEO_Option {
 
 					break;
 
-				/*
+				/**
 				Boolean fields
 				*/
 
-				/*
+				/**
 				Covers:
 				 *		'disable_author_sitemap':
 				 * 		'disable_author_noposts':
@@ -222,9 +222,9 @@ class WPSEO_Option_XML extends WPSEO_Option {
 	 * @return array Cleaned option
 	 */
 	protected function clean_option( $option_value, $current_version = null, $all_old_option_values = null ) {
-		/*
+		/**
 		Make sure the values of the variable option key options are cleaned as they
-			   may be retained and would not be cleaned/validated then
+				may be retained and would not be cleaned/validated then
 		*/
 		if ( is_array( $option_value ) && $option_value !== array() ) {
 
