@@ -82,8 +82,8 @@ class WPSEO_Admin_Init {
 			);
 
 			$notification_options = array(
-				'type' => 'updated',
-				'id' => 'wpseo-dismiss-about',
+				'type'  => 'updated',
+				'id'    => 'wpseo-dismiss-about',
 				'nonce' => wp_create_nonce( 'wpseo-dismiss-about' ),
 			);
 
@@ -118,9 +118,9 @@ class WPSEO_Admin_Init {
 				return;
 			}
 
-			$current_url = ( is_ssl() ? 'https://' : 'http://' );
-			$current_url .= sanitize_text_field( $_SERVER['SERVER_NAME'] ) . sanitize_text_field( $_SERVER['REQUEST_URI'] );
-			$customize_url = add_query_arg( array(
+			$current_url    = ( is_ssl() ? 'https://' : 'http://' );
+			$current_url   .= sanitize_text_field( $_SERVER['SERVER_NAME'] ) . sanitize_text_field( $_SERVER['REQUEST_URI'] );
+			$customize_url  = add_query_arg( array(
 				'url' => urlencode( $current_url ),
 			), wp_customize_url() );
 
