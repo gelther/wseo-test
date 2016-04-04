@@ -33,7 +33,7 @@ if ( ! defined( 'WPSEO_CSSJS_SUFFIX' ) ) {
 /**
  * Auto load our class files
  *
- * @param string $class Class name.
+ * @param  string $class Class name.
  *
  * @return void
  */
