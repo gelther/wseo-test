@@ -69,10 +69,10 @@ $yform->light_switch( 'enablexmlsitemap', __( 'XML sitemap functionality', 'word
 
 		<div id="user-sitemap" class="wpseotab">
 			<?php
-			$yform->toggle_switch(
+			$yform->toggle_switch( 
 				'disable_author_sitemap',
 				array( 'off' => __( 'Enabled', 'wordpress-seo' ), 'on' => __( 'Disabled', 'wordpress-seo' ) ),
-				__( 'Author / user sitemap', 'wordpress-seo' )
+				__( 'Author / user sitemap', 'wordpress-seo' ) 
 			);
 			?>
 			<p class="expl"><?php _e( 'The user sitemap contains the author archive URLs for every user on your site. You can choose to not include users without posts.', 'wordpress-seo' ); ?></p>
@@ -97,10 +97,10 @@ $yform->light_switch( 'enablexmlsitemap', __( 'XML sitemap functionality', 'word
 			$post_types = apply_filters( 'wpseo_sitemaps_supported_post_types', get_post_types( array( 'public' => true ), 'objects' ) );
 			if ( is_array( $post_types ) && $post_types !== array() ) {
 				foreach ( $post_types as $pt ) {
-					$yform->toggle_switch(
+					$yform->toggle_switch( 
 						'post_types-' . $pt->name . '-not_in_sitemap',
 						$switch_values,
-						$pt->labels->name . ' (<code>' . $pt->name . '</code>)'
+						$pt->labels->name . ' (<code>' . $pt->name . '</code>)' 
 					);
 				}
 			}
@@ -128,10 +128,10 @@ $yform->light_switch( 'enablexmlsitemap', __( 'XML sitemap functionality', 'word
 						continue;
 					}
 					if ( isset( $tax->labels->name ) && trim( $tax->labels->name ) != '' ) {
-						$yform->toggle_switch(
+						$yform->toggle_switch( 
 							'taxonomies-' . $tax->name . '-not_in_sitemap',
 							$switch_values,
-							$tax->labels->name . ' (<code>' . $tax->name . '</code>)'
+							$tax->labels->name . ' (<code>' . $tax->name . '</code>)' 
 						);
 					}
 				}
