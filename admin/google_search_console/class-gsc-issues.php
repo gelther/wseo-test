@@ -54,7 +54,7 @@ class WPSEO_GSC_Issues {
 	/**
 	 * Deleting the issue from the issues
 	 *
-	 * @param string $url URL to delete issues for.
+	 * @param  string $url URL to delete issues for.
 	 *
 	 * @return bool
 	 */
@@ -113,7 +113,7 @@ class WPSEO_GSC_Issues {
 	 * The fetched issue from the API will be parsed as an WPSEO_Crawl_Issue object. After initializing the issue as an
 	 * object, the object will be returned
 	 *
-	 * @param stdClass $issue Issue data object.
+	 * @param  stdClass        $issue Issue data object.
 	 *
 	 * @return WPSEO_GSC_Issue
 	 */
@@ -129,7 +129,7 @@ class WPSEO_GSC_Issues {
 	/**
 	 * Returns the crawl issue as an array.
 	 *
-	 * @param WPSEO_GSC_Issue $crawl_issue Issue object instance.
+	 * @param  WPSEO_GSC_Issue $crawl_issue Issue object instance.
 	 *
 	 * @return array()
 	 */
@@ -159,7 +159,7 @@ class WPSEO_GSC_Issues {
 	/**
 	 * Search in the issues for the given $url
 	 *
-	 * @param string $url Issue URL to search for.
+	 * @param  string     $url Issue URL to search for.
 	 *
 	 * @return int|string
 	 */
