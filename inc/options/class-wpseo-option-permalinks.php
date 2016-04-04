@@ -84,11 +84,11 @@ class WPSEO_Option_Permalinks extends WPSEO_Option {
 					}
 					break;
 
-				/*
+				/**
 				Boolean (checkbox) fields
 				*/
 
-				/*
+				/**
 				Covers:
 				 * 		'cleanpermalinks'
 				 * 		'cleanpermalink-googlesitesearch'
