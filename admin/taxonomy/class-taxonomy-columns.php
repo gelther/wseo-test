@@ -12,7 +12,6 @@ class WPSEO_Taxonomy_Columns {
 	 * WPSEO_Taxonomy_Columns constructor.
 	 */
 	public function __construct() {
-
 		$this->taxonomy = $this->get_taxonomy();
 
 		if ( ! empty( $this->taxonomy ) ) {
@@ -29,7 +28,6 @@ class WPSEO_Taxonomy_Columns {
 	 * @return array
 	 */
 	public function add_columns( array $columns ) {
-
 		if ( $this->is_metabox_hidden() === true ) {
 			return $columns;
 		}
@@ -57,7 +55,6 @@ class WPSEO_Taxonomy_Columns {
 	 * @return string
 	 */
 	public function parse_column( $content, $column_name, $term_id ) {
-
 		switch ( $column_name ) {
 			case 'wpseo_score':
 				return $this->get_score_value( $term_id );
@@ -67,7 +64,6 @@ class WPSEO_Taxonomy_Columns {
 
 		return $content;
 	}
-
 
 	/**
 	 * Returns the posted/get taxonomy value if it is set.
