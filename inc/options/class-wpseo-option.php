@@ -150,7 +150,7 @@ abstract class WPSEO_Option {
 		/**
 		Make sure the option will always get validated, independently of register_setting()
 				(only available on back-end)
-		*/
+		 */
 		add_filter( 'sanitize_option_' . $this->option_name, array( $this, 'validate' ) );
 
 		/* Register our option for the admin pages */
@@ -407,7 +407,7 @@ abstract class WPSEO_Option {
 				- even if the defaults are not complete yet.
 				Unfortunately this means we also won't be removing the settings for post types or taxonomies
 				which are no longer in the WP install, but rather that than the other way around
-		*/
+		 */
 		if ( isset( $this->variable_array_key_patterns ) ) {
 			$filtered = $this->retain_variable_keys( $options, $filtered );
 		}
@@ -592,7 +592,7 @@ abstract class WPSEO_Option {
 		/**
 		Save the cleaned value - validation will take care of cleaning out array keys which
 				should no longer be there
-		*/
+		 */
 		if ( $this->multisite_only !== true ) {
 			update_option( $this->option_name, $option_value );
 		}
