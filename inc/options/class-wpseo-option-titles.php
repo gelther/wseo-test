@@ -125,7 +125,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		add_action( 'init', array( $this, 'end_of_init' ), 999 );
 	}
 
-
 	/**
 	 * Make sure we can recognize the right action for the double cleaning
 	 */
@@ -178,14 +177,12 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		$this->defaults['title-404-wpseo']    = __( 'Page not found', 'wordpress-seo' ) . ' %%sep%% %%sitename%%';
 	}
 
-
 	/**
 	 * Add dynamically created default options based on available post types and taxonomies
 	 *
 	 * @return void
 	 */
 	public function enrich_defaults() {
-
 		// Retrieve all the relevant post type and taxonomy arrays.
 		$post_type_names = get_post_types( array( 'public' => true ), 'names' );
 
@@ -241,7 +238,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		}
 	}
 
-
 	/**
 	 * Validate the option
 	 *
@@ -252,7 +248,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 	 * @return array        Validated clean value for the option to be saved to the database
 	 */
 	protected function validate_option( $dirty, $clean, $old ) {
-
 		foreach ( $clean as $key => $value ) {
 			$switch_key = $this->get_switch_key( $key );
 
@@ -352,7 +347,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 				 *		'showdate-'
 				 *		'showdate-'. $pt->name
 				 *		'hideeditbox-'
-				 *	 	'hideeditbox-'. $pt->name
+				 * 'hideeditbox-'. $pt->name
 				 *		'hideeditbox-tax-' . $tax->name
 				 */
 				default:
@@ -363,7 +358,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 
 		return $clean;
 	}
-
 
 	/**
 	 * Clean a given option value
@@ -564,7 +558,6 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		return $option_value;
 	}
 
-
 	/**
 	 * Make sure that any set option values relating to post_types and/or taxonomies are retained,
 	 * even when that post_type or taxonomy may not yet have been registered.
@@ -610,4 +603,5 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 
 		return $clean;
 	}
+
 }
