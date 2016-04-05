@@ -97,7 +97,6 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 		add_action( 'update_option_' . $this->option_name, array( 'WPSEO_Utils', 'clear_cache' ) );
 	}
 
-
 	/**
 	 * Get the singleton instance of this class
 	 *
@@ -121,7 +120,6 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 	 * @return array        Validated clean value for the option to be saved to the database
 	 */
 	protected function validate_option( $dirty, $clean, $old ) {
-
 		foreach ( $clean as $key => $value ) {
 			switch ( $key ) {
 				case 'version':
@@ -230,7 +228,6 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 		return $clean;
 	}
 
-
 	/**
 	 * Clean a given option value
 	 *
@@ -287,4 +284,5 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 
 		return $option_value;
 	}
+
 }
