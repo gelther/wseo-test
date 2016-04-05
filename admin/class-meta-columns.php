@@ -138,7 +138,7 @@ class WPSEO_Meta_Columns {
 		foreach ( $ranks as $rank ) {
 			$sel = selected( $current_seo_filter, $rank->get_rank(), false );
 			echo '
-				<option ', $sel, 'value="', $rank->get_rank(), '">', $rank->get_drop_down_label(). '</option>';
+				<option ', $sel, 'value="', $rank->get_rank(), '">', $rank->get_drop_down_label() . '</option>';
 		}
 		echo '
 			</select>';
