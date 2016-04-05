@@ -311,7 +311,6 @@ class WPSEO_Admin {
 		}
 	}
 
-
 	/**
 	 * Load the form for a WPSEO admin page
 	 */
@@ -354,14 +353,12 @@ class WPSEO_Admin {
 		}
 	}
 
-
 	/**
 	 * Loads the form for the network configuration page.
 	 */
 	function network_config_page() {
 		require_once( WPSEO_PATH . 'admin/pages/network.php' );
 	}
-
 
 	/**
 	 * Adds the ability to choose how many posts are displayed per page
@@ -581,7 +578,6 @@ class WPSEO_Admin {
 		return $stop_words->list_stop_words();
 	}
 
-
 	/**
 	 * Check whether the stopword appears in the string
 	 *
@@ -664,7 +660,6 @@ class WPSEO_Admin {
 
 		return esc_url( add_query_arg( $arr_params ) );
 	}
-
 
 	/********************** DEPRECATED METHODS **********************/
 
