@@ -279,7 +279,6 @@ class Yoast_Plugin_Conflict {
 				return $plugin_section;
 			}
 		}
-
 	}
 
 	/**
