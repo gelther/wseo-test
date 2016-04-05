@@ -184,4 +184,5 @@ class WPSEO_GSC_Category_Filters {
 
 		return $category_counts;
 	}
+
 }
