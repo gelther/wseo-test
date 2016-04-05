@@ -145,7 +145,6 @@ class WPSEO_Breadcrumbs {
 		return self::$before . $this->output . self::$after;
 	}
 
-
 	/**
 	 * Filter: 'wpseo_breadcrumb_single_link_wrapper' - Allows developer to change or wrap each breadcrumb element
 	 *
@@ -177,7 +176,6 @@ class WPSEO_Breadcrumbs {
 			$this->wrapper = $wrapper;
 		}
 	}
-
 
 	/**
 	 * Get a term's parents.
@@ -404,7 +402,6 @@ class WPSEO_Breadcrumbs {
 
 		$this->crumb_count = count( $this->crumbs );
 	}
-
 
 	/**
 	 * Add a single id based crumb to the crumbs property
@@ -638,7 +635,6 @@ class WPSEO_Breadcrumbs {
 		);
 	}
 
-
 	/**
 	 * Take the crumbs array and convert each crumb to a single breadcrumb string.
 	 *
@@ -751,7 +747,6 @@ class WPSEO_Breadcrumbs {
 		return $link;
 	}
 
-
 	/**
 	 * Create a breadcrumb element string
 	 *
@@ -815,7 +810,6 @@ class WPSEO_Breadcrumbs {
 		return apply_filters( 'wpseo_breadcrumb_single_link', $link_output, $link );
 	}
 
-
 	/**
 	 * Create a complete breadcrumb string from an array of breadcrumb element strings
 	 */
@@ -851,7 +845,6 @@ class WPSEO_Breadcrumbs {
 		}
 	}
 
-
 	/**
 	 * Filter: 'wpseo_breadcrumb_output_id' - Allow changing the HTML ID on the Yoast SEO breadcrumbs wrapper element
 	 *
@@ -880,7 +873,6 @@ class WPSEO_Breadcrumbs {
 		return $class;
 	}
 
-
 	/********************** DEPRECATED METHODS **********************/
 
 	/**
@@ -907,6 +899,5 @@ class WPSEO_Breadcrumbs {
 	public function create_breadcrumbs_string( $links, $wrapper = 'span', $element = 'span' ) {
 		_deprecated_function( __METHOD__, 'WPSEO 1.5.2.3', 'yoast_breadcrumbs' );
 	}
-
 
 } /* End of class */
