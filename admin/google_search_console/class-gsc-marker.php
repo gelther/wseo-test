@@ -139,4 +139,5 @@ class WPSEO_GSC_Marker {
 		// And update the count.
 		$counts->update_issue_count( $this->platform, $this->category, $total_issues );
 	}
+
 }
