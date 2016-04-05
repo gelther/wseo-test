@@ -109,4 +109,5 @@ class WPSEO_GSC_Mapper {
 
 		return $category;
 	}
+
 }
