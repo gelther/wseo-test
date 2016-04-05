@@ -34,7 +34,6 @@ class WPSEO_Taxonomy {
 		if ( self::is_term_overview( $GLOBALS['pagenow'] ) ) {
 			new WPSEO_Taxonomy_Columns();
 		}
-
 	}
 
 	/**
