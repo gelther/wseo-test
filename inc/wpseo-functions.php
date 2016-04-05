@@ -16,7 +16,6 @@ if ( ! function_exists( 'initialize_wpseo_front' ) ) {
 	function initialize_wpseo_front() {
 		WPSEO_Frontend::get_instance();
 	}
-
 }
 
 
@@ -41,7 +40,6 @@ if ( ! function_exists( 'yoast_breadcrumb' ) ) {
 			return WPSEO_Breadcrumbs::breadcrumb( $before, $after, $display );
 		}
 	}
-
 }
 
 /**
@@ -371,7 +369,6 @@ if ( ! extension_loaded( 'ctype' ) || ! function_exists( 'ctype_digit' ) ) {
 
 		return $return;
 	}
-
 }
 
 /**
