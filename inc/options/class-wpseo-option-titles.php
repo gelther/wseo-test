@@ -254,7 +254,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 			switch ( $switch_key ) {
 				/**
 				Text fields
-				*/
+				 */
 
 				/**
 				Covers:
@@ -263,7 +263,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 						'title-' . $pt->name
 						'title-ptarchive-' . $pt->name
 						'title-tax-' . $tax->name
-				*/
+				 */
 				case 'title-':
 					if ( isset( $dirty[ $key ] ) ) {
 						$clean[ $key ] = WPSEO_Utils::sanitize_text_field( $dirty[ $key ] );
@@ -276,7 +276,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 						'metadesc-' . $pt->name
 						'metadesc-ptarchive-' . $pt->name
 						'metadesc-tax-' . $tax->name
-				*/
+				 */
 				case 'metadesc-':
 					/**
 					Covers:
@@ -284,12 +284,12 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 							'metakey-' . $pt->name
 							'metakey-ptarchive-' . $pt->name
 							'metakey-tax-' . $tax->name
-					*/
+					 */
 				case 'metakey-':
 					/**
 					Covers:
 							''bctitle-ptarchive-' . $pt->name
-					*/
+					 */
 				case 'bctitle-ptarchive-':
 					if ( isset( $dirty[ $key ] ) && $dirty[ $key ] !== '' ) {
 						$clean[ $key ] = WPSEO_Utils::sanitize_text_field( $dirty[ $key ] );
@@ -329,7 +329,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 
 				/**
 				Boolean fields
-				*/
+				 */
 
 				/**
 				Covers:
@@ -389,7 +389,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 				@internal Don't rename to the 'current' names straight away as that would prevent
 				the rename/unset combi below from working
 				@todo [JRF] maybe figure out a smarter way to deal with this
-		*/
+		 */
 		$old_option = null;
 		if ( isset( $all_old_option_values ) ) {
 			// Ok, we have an import.
@@ -492,7 +492,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 							/**
 							Check if there is a cpt with the same name as the tax,
 									if so, we should make sure that the old setting hasn't been removed
-							*/
+							 */
 							if ( ! isset( $post_type_names[ $tax ] ) && isset( $option_value[ $old_prefix . $tax ] ) ) {
 								unset( $option_value[ $old_prefix . $tax ] );
 							}
@@ -516,7 +516,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 		/**
 		Make sure the values of the variable option key options are cleaned as they
 				may be retained and would not be cleaned/validated then
-		*/
+		 */
 		if ( is_array( $option_value ) && $option_value !== array() ) {
 			foreach ( $option_value as $key => $value ) {
 				$switch_key = $this->get_switch_key( $key );
@@ -539,7 +539,7 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 
 					/**
 					Boolean fields
-					*/
+					 */
 
 					/**
 					Covers:
