@@ -154,7 +154,6 @@ class WPSEO_OpenGraph {
 	 * @return boolean
 	 */
 	public function website_facebook() {
-
 		if ( 'article' === $this->type( false ) && ! empty( $this->options['facebook_site'] ) ) {
 			$this->og_tag( 'article:publisher', $this->options['facebook_site'] );
 
@@ -209,7 +208,6 @@ class WPSEO_OpenGraph {
 	 * @return string|boolean
 	 */
 	public function og_title( $echo = true ) {
-
 		$frontend      = WPSEO_Frontend::get_instance();
 		$is_posts_page = $frontend->is_posts_page();
 
@@ -501,7 +499,6 @@ class WPSEO_OpenGraph {
 	 * @return string $type
 	 */
 	public function type( $echo = true ) {
-
 		if ( is_front_page() || is_home() ) {
 			$type = 'website';
 		}
@@ -691,7 +688,6 @@ class WPSEO_OpenGraph {
 	 * @return boolean ;
 	 */
 	public function category() {
-
 		if ( ! is_singular() ) {
 			return false;
 		}
@@ -716,7 +712,6 @@ class WPSEO_OpenGraph {
 	 * @return boolean ;
 	 */
 	public function publish_date() {
-
 		if ( ! is_singular( 'post' ) ) {
 			/**
 			 * Filter: 'wpseo_opengraph_show_publish_date' - Allow showing publication date for other post types
@@ -741,6 +736,7 @@ class WPSEO_OpenGraph {
 
 		return true;
 	}
+
 } /* End of class */
 
 /**
@@ -881,7 +877,6 @@ class WPSEO_OpenGraph_Image {
 	 * @return bool
 	 */
 	private function get_featured_image( $post_id ) {
-
 		if ( has_post_thumbnail( $post_id ) ) {
 			/**
 			 * Filter: 'wpseo_opengraph_image_size' - Allow changing the image size used for OpenGraph sharing
@@ -929,7 +924,6 @@ class WPSEO_OpenGraph_Image {
 	 * @return bool
 	 */
 	private function check_featured_image_size( $img_data ) {
-
 		if ( ! is_array( $img_data ) ) {
 			return false;
 		}
@@ -988,4 +982,5 @@ class WPSEO_OpenGraph_Image {
 
 		return $img;
 	}
+
 }
