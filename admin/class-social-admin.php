@@ -171,7 +171,6 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 	 * @param WP_Post $post Post instance.
 	 */
 	public function og_data_compare( $post ) {
-
 		// Check if post data is available, if post_id is set and if original post_status is publish.
 		if (
 			! empty( $_POST ) && ! empty( $post->ID ) && $post->post_status == 'publish' &&
@@ -204,7 +203,6 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 			}
 		}
 	}
-
 
 	/********************** DEPRECATED METHODS **********************/
 
@@ -246,4 +244,5 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 
 		return '';
 	}
+
 } /* End of class */
