@@ -206,7 +206,7 @@ class WPSEO_Breadcrumbs {
 		/**
 		Let's find the deepest term in this array, by looping through and then
 			unsetting every term that is used as a parent by another one in the array.
-		*/
+		 */
 		$terms_by_id = array();
 		foreach ( $terms as $term ) {
 			$terms_by_id[ $term->term_id ] = $term;
@@ -219,7 +219,7 @@ class WPSEO_Breadcrumbs {
 		/**
 		As we could still have two subcategories, from different parent categories,
 			let's pick the one with the lowest ordered ancestor.
-		*/
+		 */
 		$parents_count = 0;
 		$term_order    = 9999; // Because ASC.
 		reset( $terms_by_id );
