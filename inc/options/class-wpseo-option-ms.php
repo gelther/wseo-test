@@ -205,7 +205,7 @@ class WPSEO_Option_MS extends WPSEO_Option {
 	 * @return array Cleaned option
 	 */
 
-	/*
+	/**
 	Protected function clean_option( $option_value, $current_version = null, $all_old_option_values = null ) {
 		return $option_value;
 	}
