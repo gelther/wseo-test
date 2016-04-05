@@ -90,7 +90,6 @@ class WPSEO_Option_Social extends WPSEO_Option {
 		return self::$instance;
 	}
 
-
 	/**
 	 * Translate/set strings used in the option defaults
 	 *
@@ -104,7 +103,6 @@ class WPSEO_Option_Social extends WPSEO_Option {
 		self::$twitter_card_types['summary_large_image'] = __( 'Summary with large image', 'wordpress-seo' );
 	}
 
-
 	/**
 	 * Get a Facebook connect key for the blog
 	 *
@@ -114,7 +112,6 @@ class WPSEO_Option_Social extends WPSEO_Option {
 	public static function get_fbconnectkey() {
 		return md5( get_bloginfo( 'url' ) . rand() );
 	}
-
 
 	/**
 	 * Validate the option
@@ -126,7 +123,6 @@ class WPSEO_Option_Social extends WPSEO_Option {
 	 * @return array        Validated clean value for the option to be saved to the database
 	 */
 	protected function validate_option( $dirty, $clean, $old ) {
-
 		foreach ( $clean as $key => $value ) {
 			switch ( $key ) {
 				/* Automagic Facebook connect key */
@@ -272,7 +268,6 @@ class WPSEO_Option_Social extends WPSEO_Option {
 		return $clean;
 	}
 
-
 	/**
 	 * Clean a given option value
 	 *
@@ -286,7 +281,6 @@ class WPSEO_Option_Social extends WPSEO_Option {
 	 * @return array Cleaned option
 	 */
 	protected function clean_option( $option_value, $current_version = null, $all_old_option_values = null ) {
-
 		/* Move options from very old option to this one */
 		$old_option = null;
 		if ( isset( $all_old_option_values ) ) {
@@ -317,4 +311,5 @@ class WPSEO_Option_Social extends WPSEO_Option {
 
 		return $option_value;
 	}
+
 }
