@@ -260,7 +260,6 @@ class WPSEO_Meta {
 	 * @return void
 	 */
 	public static function init() {
-
 		$options = WPSEO_Options::get_option( 'wpseo_social' );
 		foreach ( self::$social_networks as $option => $network ) {
 			if ( true === $options[ $option ] ) {
@@ -324,7 +323,6 @@ class WPSEO_Meta {
 		add_filter( 'update_post_metadata', array( __CLASS__, 'remove_meta_if_default' ), 10, 5 );
 		add_filter( 'add_post_metadata', array( __CLASS__, 'dont_save_meta_if_default' ), 10, 4 );
 	}
-
 
 	/**
 	 * Retrieve the meta box form field definitions for the given tab and post type.
@@ -437,7 +435,6 @@ class WPSEO_Meta {
 		return apply_filters( 'wpseo_metabox_entries_' . $tab, $field_defs, $post_type );
 	}
 
-
 	/**
 	 * Validate the post meta values
 	 *
@@ -528,7 +525,6 @@ class WPSEO_Meta {
 		return $clean;
 	}
 
-
 	/**
 	 * Validate a meta-robots-adv meta value
 	 *
@@ -578,7 +574,6 @@ class WPSEO_Meta {
 		return $clean;
 	}
 
-
 	/**
 	 * Prevent saving of default values and remove potential old value from the database if replaced by a default
 	 *
@@ -608,7 +603,6 @@ class WPSEO_Meta {
 		return null; // Go on with the normal execution (update) in meta.php.
 	}
 
-
 	/**
 	 * Prevent adding of default values to the database
 	 *
@@ -630,7 +624,6 @@ class WPSEO_Meta {
 		return null; // Go on with the normal execution (add) in meta.php.
 	}
 
-
 	/**
 	 * Is the given meta value the same as the default value ?
 	 *
@@ -644,7 +637,6 @@ class WPSEO_Meta {
 	public static function meta_value_is_default( $meta_key, $meta_value ) {
 		return ( isset( self::$defaults[ $meta_key ] ) && $meta_value === self::$defaults[ $meta_key ] );
 	}
-
 
 	/**
 	 * Get a custom post meta value
@@ -708,7 +700,6 @@ class WPSEO_Meta {
 		}
 	}
 
-
 	/**
 	 * Update a meta value for a post
 	 *
@@ -723,7 +714,6 @@ class WPSEO_Meta {
 	public static function set_value( $key, $meta_value, $post_id ) {
 		return update_post_meta( $post_id, self::$meta_prefix . $key, $meta_value );
 	}
-
 
 	/**
 	 * Used for imports, this functions imports the value of $old_metakey into $new_metakey for those post
@@ -777,7 +767,6 @@ class WPSEO_Meta {
 			delete_post_meta_by_key( $old_metakey );
 		}
 	}
-
 
 	/**
 	 * General clean-up of the saved meta values
@@ -950,7 +939,6 @@ class WPSEO_Meta {
 		do_action( 'wpseo_meta_clean_up' );
 	}
 
-
 	/**
 	 * Recursively merge a variable number of arrays, using the left array as base,
 	 * giving priority to the right array.
@@ -970,7 +958,6 @@ class WPSEO_Meta {
 	 * @return array
 	 */
 	public static function array_merge_recursive_distinct() {
-
 		$arrays = func_get_args();
 		if ( count( $arrays ) < 2 ) {
 			if ( $arrays === array() ) {
@@ -1042,4 +1029,5 @@ class WPSEO_Meta {
 
 		return $get_posts->posts;
 	}
+
 } /* End of class */
