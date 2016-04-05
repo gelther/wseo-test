@@ -214,7 +214,6 @@ class WPSEO_Twitter {
 		}
 
 		return trim( strip_tags( term_description() ) );
-
 	}
 
 	/**

@@ -221,6 +221,7 @@ class Yoast_Social_Facebook {
 	private function save_options() {
 		update_option( 'wpseo_social', $this->options );
 	}
+
 }
 
 /**
@@ -479,4 +480,5 @@ class Yoast_Social_Facebook_Form {
 	private function get_delete_nonce() {
 		return wp_create_nonce( 'delfbadmin' );
 	}
+
 }

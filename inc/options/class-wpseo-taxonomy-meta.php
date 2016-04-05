@@ -111,7 +111,6 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 		add_action( 'update_option_' . $this->option_name, array( 'WPSEO_Utils', 'flush_w3tc_cache' ) );
 	}
 
-
 	/**
 	 * Get the singleton instance of this class
 	 *
@@ -126,7 +125,6 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 		return self::$instance;
 	}
 
-
 	/**
 	 * Add extra default options received from a filter
 	 */
@@ -136,7 +134,6 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 			self::$defaults_per_term = array_merge( $extra_defaults_per_term, self::$defaults_per_term );
 		}
 	}
-
 
 	/**
 	 * Helper method - Combines a fixed array of default values with an options array
@@ -152,7 +149,6 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 
 	/*
 	Public function array_filter_merge( $option_key, $options = null ) {
-
 			$defaults = $this->get_defaults( $option_key );
 
 			if ( ! isset( $options ) || $options === false ) {
@@ -191,6 +187,7 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 
 			return (array) $options;
 		}
+
 	*/
 
 
@@ -207,7 +204,7 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 		/**
 		Prevent complete validation (which can be expensive when there are lots of terms)
 				if only one item has changed and has already been validated
-		*/
+		 */
 		if ( isset( $dirty['wpseo_already_validated'] ) && $dirty['wpseo_already_validated'] === true ) {
 			unset( $dirty['wpseo_already_validated'] );
 
@@ -248,7 +245,6 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 		return $clean;
 	}
 
-
 	/**
 	 * Validate the meta data for one individual term and removes default values (no need to save those)
 	 *
@@ -260,7 +256,6 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	 * @return array            Validated and filtered value
 	 */
 	public static function validate_term_meta_data( $meta_data, $old_meta ) {
-
 		$clean     = self::$defaults_per_term;
 		$meta_data = array_map( array( 'WPSEO_Utils', 'trim_recursive' ), $meta_data );
 
@@ -327,7 +322,6 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 		return array_diff_assoc( $clean, self::$defaults_per_term );
 	}
 
-
 	/**
 	 * Clean a given option value
 	 * - Convert old option values to new
@@ -343,7 +337,6 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	 * @return array Cleaned option
 	 */
 	protected function clean_option( $option_value, $current_version = null, $all_old_option_values = null ) {
-
 		/* Clean up old values and remove empty arrays */
 		if ( is_array( $option_value ) && $option_value !== array() ) {
 
@@ -402,7 +395,6 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 		return $option_value;
 	}
 
-
 	/**
 	 * Retrieve a taxonomy term's meta value(s).
 	 *
@@ -438,7 +430,7 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 		/**
 		Either return the complete array or a single value from it or false if the value does not exist
 				(shouldn't happen after merge with defaults, indicates typo in request)
-		*/
+		 */
 		if ( ! isset( $meta ) ) {
 			return $tax_meta;
 		}
@@ -462,7 +454,6 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 		$term = $GLOBALS['wp_query']->get_queried_object();
 
 		return self::get_term_meta( $term, $term->taxonomy, $meta );
-
 	}
 
 	/**
@@ -489,7 +480,6 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	 * @param string $meta_value The value of the target meta key.
 	 */
 	public static function set_value( $term_id, $taxonomy, $meta_key, $meta_value ) {
-
 		if ( substr( strtolower( $meta_key ), 0, 6 ) !== 'wpseo_' ) {
 			$meta_key = 'wpseo_' . $meta_key;
 		}
@@ -587,4 +577,5 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 
 		return self::$defaults_per_term;
 	}
+
 }

@@ -75,4 +75,5 @@ class WPSEO_GSC_Ajax {
 	private function valid_nonce() {
 		return wp_verify_nonce( filter_input( INPUT_POST, 'ajax_nonce' ), 'wpseo-gsc-ajax-security' );
 	}
+
 }

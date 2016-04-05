@@ -84,7 +84,6 @@ class WPSEO_Options {
 		return false;
 	}
 
-
 	/**
 	 * Get a specific default value for an option
 	 *
@@ -104,7 +103,6 @@ class WPSEO_Options {
 		return null;
 	}
 
-
 	/**
 	 * Update a site_option
 	 *
@@ -122,7 +120,6 @@ class WPSEO_Options {
 		}
 	}
 
-
 	/**
 	 * Get the instantiated option instance
 	 *
@@ -137,7 +134,6 @@ class WPSEO_Options {
 
 		return false;
 	}
-
 
 	/**
 	 * Retrieve an array of the options which should be included in get_all() and reset().
@@ -159,7 +155,6 @@ class WPSEO_Options {
 
 		return $option_names;
 	}
-
 
 	/**
 	 * Retrieve all the options for the SEO plugin in one go.
@@ -221,7 +216,6 @@ class WPSEO_Options {
 		return $option;
 	}
 
-
 	/**
 	 * Run the clean up routine for one or all options
 	 *
@@ -258,7 +252,6 @@ class WPSEO_Options {
 		}
 	}
 
-
 	/**
 	 * Check that all options exist in the database and add any which don't
 	 *
@@ -269,7 +262,6 @@ class WPSEO_Options {
 			$instance->maybe_add_option();
 		}
 	}
-
 
 	/**
 	 * Correct the inadvertent removal of the fallback to default values from the breadcrumbs
@@ -282,7 +274,6 @@ class WPSEO_Options {
 		}
 	}
 
-
 	/**
 	 * Initialize some options on first install/activate/reset
 	 *
@@ -293,7 +284,7 @@ class WPSEO_Options {
 		/**
 		Make sure title_test and description_test function are available even when called
 				from the isolated activation
-		*/
+		 */
 		require_once( WPSEO_PATH . 'inc/wpseo-non-ajax-functions.php' );
 
 		// Commented out? wpseo_title_test(); R.
@@ -304,7 +295,6 @@ class WPSEO_Options {
 			update_option( 'seo_woo_use_third_party_data', 'true' );
 		}
 	}
-
 
 	/**
 	 * Reset all options to their default values and rerun some tests
@@ -331,7 +321,6 @@ class WPSEO_Options {
 		self::initialize();
 	}
 
-
 	/**
 	 * Initialize default values for a new multisite blog
 	 *
@@ -354,7 +343,6 @@ class WPSEO_Options {
 			}
 		}
 	}
-
 
 	/**
 	 * Reset all options for a specific multisite blog to their default values based upon a
@@ -399,7 +387,6 @@ class WPSEO_Options {
 		}
 	}
 
-
 	/********************** DEPRECATED FUNCTIONS **********************/
 
 	/**
@@ -429,7 +416,6 @@ class WPSEO_Options {
 		WPSEO_Utils::clear_cache();
 	}
 
-
 	/**
 	 * Flush W3TC cache after succesfull update/add of taxonomy meta option
 	 *
@@ -442,7 +428,6 @@ class WPSEO_Options {
 		WPSEO_Utils::flush_w3tc_cache();
 	}
 
-
 	/**
 	 * Clear rewrite rules
 	 *
@@ -454,4 +439,5 @@ class WPSEO_Options {
 		_deprecated_function( __METHOD__, 'WPSEO 1.5.6.1', 'WPSEO_Utils::clear_rewrites()' );
 		WPSEO_Utils::clear_rewrites();
 	}
+
 }

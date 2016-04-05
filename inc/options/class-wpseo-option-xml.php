@@ -120,7 +120,6 @@ class WPSEO_Option_XML extends WPSEO_Option {
 			unset( $tax );
 		}
 		unset( $taxonomy_objects, $filtered_taxonomies );
-
 	}
 
 	/**
@@ -181,7 +180,7 @@ class WPSEO_Option_XML extends WPSEO_Option {
 
 				/**
 				Boolean fields
-				*/
+				 */
 
 				/**
 				Covers:
@@ -220,7 +219,7 @@ class WPSEO_Option_XML extends WPSEO_Option {
 		/**
 		Make sure the values of the variable option key options are cleaned as they
 				may be retained and would not be cleaned/validated then
-		*/
+		 */
 		if ( is_array( $option_value ) && $option_value !== array() ) {
 
 			foreach ( $option_value as $key => $value ) {

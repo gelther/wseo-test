@@ -109,7 +109,6 @@ class WPSEO_Sitemaps {
 		$this->charset     = get_bloginfo( 'charset' );
 
 		$this->timezone = new WPSEO_Sitemap_Timezone();
-
 	}
 
 	/**
@@ -785,7 +784,7 @@ class WPSEO_Sitemaps {
 						Let's assume that if a canonical is set for this page and it's different from
 							the URL of this post, that page is either already in the XML sitemap OR is on
 							an external site, either way, we shouldn't include it here.
-						*/
+						 */
 						continue;
 					}
 					else {

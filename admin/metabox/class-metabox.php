@@ -924,7 +924,6 @@ class WPSEO_Metabox extends WPSEO_Meta {
 </g>
 </svg>
 SVG;
-
 	}
 
 	/**
@@ -1182,7 +1181,6 @@ SVG;
 	 */
 	public function aasort( &$array, $key ) {
 		_deprecated_function( 'WPSEO_Metabox::aasort', 'WPSEO 3.0' );
-
 	}
 
 	/**
@@ -1196,7 +1194,6 @@ SVG;
 		_deprecated_function( 'WPSEO_Metabox::linkdex_output', 'WPSEO 3.0' );
 
 		return '';
-
 	}
 
 	/**
@@ -1210,7 +1207,6 @@ SVG;
 		_deprecated_function( 'WPSEO_Metabox::calculate_results', 'WPSEO 3.0' );
 
 		return array();
-
 	}
 
 	/**
@@ -1261,7 +1257,6 @@ SVG;
 	 */
 	public function check_double_focus_keyword( $job, &$results ) {
 		_deprecated_function( 'WPSEO_Metabox::check_double_focus_key', 'WPSEO 3.0' );
-
 	}
 
 	/**

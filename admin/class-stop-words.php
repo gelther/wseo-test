@@ -48,4 +48,5 @@ class WPSEO_Admin_Stop_Words {
 
 		return $stopwords;
 	}
+
 }
