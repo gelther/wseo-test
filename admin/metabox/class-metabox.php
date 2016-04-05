@@ -1431,4 +1431,5 @@ SVG;
 
 		return '';
 	}
+
 } /* End of class */
