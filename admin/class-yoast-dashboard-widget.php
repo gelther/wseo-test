@@ -173,4 +173,5 @@ class Yoast_Dashboard_Widget {
 	private function filter_items( $item ) {
 		return 0 !== $item['count'];
 	}
+
 }
