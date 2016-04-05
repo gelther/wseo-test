@@ -72,4 +72,5 @@ class WPSEO_Bulk_Description_List_Table extends WPSEO_Bulk_List_Table {
 				break;
 		}
 	}
+
 } /* End of class */
