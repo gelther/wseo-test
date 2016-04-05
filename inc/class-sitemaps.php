@@ -116,7 +116,6 @@ class WPSEO_Sitemaps {
 	 * Check the current request URI, if we can determine it's probably an XML sitemap, kill loading the widgets
 	 */
 	public function reduce_query_load() {
-
 		if ( ! isset( $_SERVER['REQUEST_URI'] ) ) {
 			return;
 		}
@@ -141,10 +140,8 @@ class WPSEO_Sitemaps {
 	 * @return string
 	 */
 	function invalidate_main_query( $where ) {
-
 		return $where;
 	}
-
 
 	/**
 	 * Returns the server HTTP protocol to use for output, if it's set.
@@ -240,7 +237,6 @@ class WPSEO_Sitemaps {
 	 * @param \WP_Query $query Main query instance.
 	 */
 	function redirect( $query ) {
-
 		if ( ! $query->is_main_query() ) {
 			return;
 		}
@@ -310,7 +306,6 @@ class WPSEO_Sitemaps {
 	 * @param string $type The requested sitemap's identifier.
 	 */
 	function build_sitemap( $type ) {
-
 		$type = apply_filters( 'wpseo_build_sitemap_post_type', $type );
 
 		if ( $type == 1 ) {
@@ -338,7 +333,6 @@ class WPSEO_Sitemaps {
 	 * for other content types.
 	 */
 	function build_root_map() {
-
 		global $wpdb;
 
 		$this->sitemap = '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
@@ -870,7 +864,6 @@ class WPSEO_Sitemaps {
 	 * @return array
 	 */
 	private function parse_matched_images( $matches, $p, $scheme, $host ) {
-
 		$return = array();
 
 		foreach ( $matches[0] as $img ) {
@@ -1043,7 +1036,6 @@ class WPSEO_Sitemaps {
 		$this->sitemap .= '</urlset>';
 	}
 
-
 	/**
 	 * Build the sub-sitemap for authors
 	 *
@@ -1209,7 +1201,6 @@ class WPSEO_Sitemaps {
 	 * @return string
 	 */
 	function sitemap_url( $url ) {
-
 		$date = null;
 
 		if ( ! empty( $url['mod'] ) ) {
@@ -1317,7 +1308,6 @@ class WPSEO_Sitemaps {
 		return $this->timezone->get_datetime_with_timezone( $result );
 	}
 
-
 	/**
 	 * Sorts an array of WP_User by the _yoast_wpseo_profile_updated meta field
 	 *
@@ -1353,7 +1343,6 @@ class WPSEO_Sitemaps {
 	 * @return array        all the user that aren't excluded from the sitemap
 	 */
 	public function user_sitemap_remove_excluded_authors( $users ) {
-
 		if ( is_array( $users ) && $users !== array() ) {
 			$options = get_option( 'wpseo_xml' );
 
@@ -1407,7 +1396,6 @@ class WPSEO_Sitemaps {
 	 * @return string
 	 */
 	private function image_url( $post_id ) {
-
 		static $uploads;
 
 		if ( empty( $uploads ) ) {
@@ -1436,7 +1424,6 @@ class WPSEO_Sitemaps {
 
 		return $url;
 	}
-
 
 	/**
 	 * Getting the attachments from database
@@ -1499,7 +1486,6 @@ class WPSEO_Sitemaps {
 	 * @return array
 	 */
 	private function parse_attachments( $attachments, $post ) {
-
 		$return = array();
 
 		foreach ( $attachments as $attachment ) {
@@ -1536,7 +1522,6 @@ class WPSEO_Sitemaps {
 	 * @return float|mixed
 	 */
 	private function calculate_priority( $post ) {
-
 		$return = 0.6;
 		if ( $post->post_parent == 0 && $post->post_type == 'page' ) {
 			$return = 0.8;
@@ -1561,4 +1546,5 @@ class WPSEO_Sitemaps {
 
 		return $return;
 	}
+
 } /* End of class */
