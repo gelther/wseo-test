@@ -182,7 +182,6 @@ function wpseo_save_what( $what ) {
  * @return string
  */
 function wpseo_upsert_meta( $post_id, $new_meta_value, $orig_meta_value, $meta_key, $return_key ) {
-
 	$post_id                  = intval( $post_id );
 	$sanitized_new_meta_value = wp_strip_all_tags( $new_meta_value );
 	$orig_meta_value          = wp_strip_all_tags( $orig_meta_value );
@@ -305,7 +304,6 @@ function wpseo_upsert_new( $what, $post_id, $new, $original ) {
  * Create an export and return the URL
  */
 function wpseo_get_export() {
-
 	$include_taxonomy = ( filter_input( INPUT_POST, 'include_taxonomy' ) === 'true' );
 	$export           = new WPSEO_Export( $include_taxonomy );
 
