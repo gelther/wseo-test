@@ -29,7 +29,6 @@ class WPSEO_Import_WPSEO extends WPSEO_Import_External {
 				'wordpress-seo'
 			)
 		);
-
 	}
 
 	/**
