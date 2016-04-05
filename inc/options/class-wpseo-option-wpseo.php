@@ -85,7 +85,7 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 		/**
 		Dirty fix for making certain defaults available during activation while still only
 				defining them once
-		*/
+		 */
 		foreach ( self::$desc_defaults as $key => $value ) {
 			$this->defaults[ $key ] = $value;
 		}
@@ -212,7 +212,7 @@ class WPSEO_Option_Wpseo extends WPSEO_Option {
 
 				/**
 				Boolean (checkbox) fields
-				*/
+				 */
 
 				/**
 				Covers
