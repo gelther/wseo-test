@@ -108,7 +108,7 @@ class WPSEO_Pointers {
 
 				wpseo_pointer_options = $.extend(wpseo_pointer_options, {
 					buttons: function (event, t) {
-						var button = jQuery('<a href="<?php echo $this->get_ignore_url(); ?>" id="pointer-close" style="margin:0 5px;" class="button-secondary">' + '<?php _e( 'Close', 'wordpress-seo' ) ?>' + '</a>');
+						var button = jQuery('<a href="<?php echo $this->get_ignore_url(); ?>" id="pointer-close" style="margin:0 5px;" class="button-secondary">' + '<?php _e( 'Close', 'wordpress-seo' ); ?>' + '</a>');
 						button.bind('click.pointer', function () {
 							t.element.pointer('close');
 						});

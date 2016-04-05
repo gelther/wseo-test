@@ -391,7 +391,6 @@ class WPSEO_Bulk_List_Table extends WP_List_Table {
 	}
 
 	/**
-	 *
 	 * @return array
 	 */
 	function get_sortable_columns() {
