@@ -685,10 +685,10 @@ class WPSEO_Utils {
 	 * Get the current cache validator
 	 *
 	 * Without the type the global validator is returned.
-	 *  This can invalidate -all- keys in cache at once
+	 * This can invalidate -all- keys in cache at once
 	 *
 	 * With the type parameter the validator for that specific
-	 *  type can be invalidated
+	 * type can be invalidated
 	 *
 	 * @param  string|null $type Provide a type for a specific type validator, null for global validator.
 	 *
@@ -987,7 +987,6 @@ class WPSEO_Utils {
 
 		return apply_filters( 'wpseo_format_admin_url', $formatted_url );
 	}
-
 
 	/**
 	 * Get plugin name from file

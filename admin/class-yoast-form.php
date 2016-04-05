@@ -147,7 +147,6 @@ class Yoast_Form {
 	 * Generates the sidebar for admin pages.
 	 */
 	public function admin_sidebar() {
-
 		// No banners in Premium.
 		if ( class_exists( 'WPSEO_Product_Premium' ) ) {
 			$license_manager = new Yoast_Plugin_License_Manager( new WPSEO_Product_Premium() );
@@ -307,7 +306,6 @@ class Yoast_Form {
 	 * @param boolean $reverse Reverse order of buttons (default true).
 	 */
 	public function light_switch( $var, $label, $buttons = array(), $reverse = true ) {
-
 		if ( ! isset( $this->options[ $var ] ) ) {
 			$this->options[ $var ] = false;
 		}
@@ -508,7 +506,6 @@ class Yoast_Form {
 		echo '</div><br/>';
 	}
 
-
 	/**
 	 * Create a toggle switch input field.
 	 *
@@ -545,4 +542,5 @@ class Yoast_Form {
 
 		echo '<a></a></div></fieldset><div class="clear"></div></div>' . "\n\n";
 	}
+
 }

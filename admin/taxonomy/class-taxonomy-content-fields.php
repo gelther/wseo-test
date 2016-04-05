@@ -51,4 +51,5 @@ class WPSEO_Taxonomy_Content_Fields extends WPSEO_Taxonomy_Fields {
 
 		return $this->filter_hidden_fields( $fields );
 	}
+
 }

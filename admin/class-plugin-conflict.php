@@ -114,7 +114,6 @@ class WPSEO_Plugin_Conflict extends Yoast_Plugin_Conflict {
 	 * @param string|bool $plugin Optional plugin basename to check.
 	 */
 	public static function hook_check_for_plugin_conflicts( $plugin = false ) {
-
 		// Just a return, because we want to temporary disable this notice (#3998).
 		return;
 
@@ -146,4 +145,5 @@ class WPSEO_Plugin_Conflict extends Yoast_Plugin_Conflict {
 
 		$instance->check_plugin_conflicts( $plugin_sections );
 	}
+
 }

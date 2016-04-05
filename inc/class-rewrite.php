@@ -158,4 +158,5 @@ class WPSEO_Rewrite {
 
 		return $category_rewrite;
 	}
+
 } /* End of class */

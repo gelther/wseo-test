@@ -37,7 +37,6 @@ class WPSEO_Option_RSS extends WPSEO_Option {
 		return self::$instance;
 	}
 
-
 	/**
 	 * Translate strings used in the option defaults
 	 *
@@ -46,7 +45,6 @@ class WPSEO_Option_RSS extends WPSEO_Option {
 	public function translate_defaults() {
 		$this->defaults['rssafter'] = sprintf( __( 'The post %s appeared first on %s.', 'wordpress-seo' ), '%%POSTLINK%%', '%%BLOGLINK%%' );
 	}
-
 
 	/**
 	 * Validate the option
@@ -66,4 +64,5 @@ class WPSEO_Option_RSS extends WPSEO_Option {
 
 		return $clean;
 	}
+
 }

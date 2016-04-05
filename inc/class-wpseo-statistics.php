@@ -135,4 +135,5 @@ class WPSEO_Statistics {
 
 		return $this->get_post_count( new WPSEO_Rank( WPSEO_Rank::NO_INDEX ) );
 	}
+
 }

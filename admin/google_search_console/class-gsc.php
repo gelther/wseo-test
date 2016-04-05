@@ -49,7 +49,6 @@ class WPSEO_GSC {
 	 * Run init logic.
 	 */
 	public function init() {
-
 		// Setting the screen option.
 		if ( filter_input( INPUT_GET, 'page' ) === 'wpseo_search_console' ) {
 
@@ -162,7 +161,6 @@ class WPSEO_GSC {
 	 * Handles the POST and GET requests
 	 */
 	private function request_handler() {
-
 		// List the table search post to a get.
 		$this->list_table_search_post_to_get();
 
@@ -284,4 +282,5 @@ class WPSEO_GSC {
 			)
 		);
 	}
+
 }

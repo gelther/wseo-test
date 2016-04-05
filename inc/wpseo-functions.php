@@ -16,6 +16,7 @@ if ( ! function_exists( 'initialize_wpseo_front' ) ) {
 	function initialize_wpseo_front() {
 		WPSEO_Frontend::get_instance();
 	}
+
 }
 
 
@@ -40,6 +41,7 @@ if ( ! function_exists( 'yoast_breadcrumb' ) ) {
 			return WPSEO_Breadcrumbs::breadcrumb( $before, $after, $display );
 		}
 	}
+
 }
 
 /**
@@ -60,7 +62,6 @@ function wpseo_add_capabilities() {
 		}
 	}
 }
-
 
 /**
  * Remove the bulk edit capability from the proper default roles.
@@ -84,7 +85,6 @@ function wpseo_remove_capabilities() {
 		}
 	}
 }
-
 
 /**
  * Replace `%%variable_placeholders%%` with their real value based on the current requested page/post/cpt
@@ -303,7 +303,6 @@ function wpseo_shortcode_yoast_breadcrumb() {
 
 add_shortcode( 'wpseo_breadcrumb', 'wpseo_shortcode_yoast_breadcrumb' );
 
-
 /**
  * This invalidates our XML Sitemaps cache.
  *
@@ -339,7 +338,6 @@ add_action( 'clean_object_term_cache', 'wpseo_invalidate_sitemap_cache_terms', 1
  * @param int $post_id Post ID to determine post type for invalidation.
  */
 function wpseo_invalidate_sitemap_cache_on_save_post( $post_id ) {
-
 	// If this is just a revision, don't invalidate the sitemap cache yet.
 	if ( wp_is_post_revision( $post_id ) ) {
 		return;
@@ -373,6 +371,7 @@ if ( ! extension_loaded( 'ctype' ) || ! function_exists( 'ctype_digit' ) ) {
 
 		return $return;
 	}
+
 }
 
 /**
@@ -397,7 +396,6 @@ function wpseo_split_shared_term( $old_term_id, $new_term_id, $term_taxonomy_id,
 
 add_action( 'split_shared_term', 'wpseo_split_shared_term', 10, 4 );
 
-
 /********************** DEPRECATED FUNCTIONS **********************/
 
 
@@ -419,7 +417,6 @@ function wpseo_get_value( $val, $postid = 0 ) {
 	return WPSEO_Meta::get_value( $val, $postid );
 }
 
-
 /**
  * Save a custom meta value
  *
@@ -439,7 +436,6 @@ function wpseo_set_value( $meta_key, $meta_value, $post_id ) {
 	return WPSEO_Meta::set_value( $meta_key, $meta_value, $post_id );
 }
 
-
 /**
  * Retrieve an array of all the options the plugin uses. It can't use only one due to limitations of the options API.
  *
@@ -454,7 +450,6 @@ function get_wpseo_options_arr() {
 
 	return WPSEO_Options::get_option_names();
 }
-
 
 /**
  * Retrieve all the options for the SEO plugin in one go.
@@ -487,7 +482,6 @@ function replace_meta( $old_metakey, $new_metakey, $replace = false ) {
 	_deprecated_function( __FUNCTION__, 'WPSEO 1.5.0', 'WPSEO_Meta::replace_meta()' );
 	WPSEO_Meta::replace_meta( $old_metakey, $new_metakey, $replace );
 }
-
 
 /**
  * Retrieve a taxonomy term's meta value.

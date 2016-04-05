@@ -62,7 +62,6 @@ class WPSEO_Option_XML extends WPSEO_Option {
 		add_action( 'update_option_' . $this->option_name, array( 'WPSEO_Utils', 'clear_sitemap_cache' ) );
 	}
 
-
 	/**
 	 * Get the singleton instance of this class
 	 *
@@ -82,7 +81,6 @@ class WPSEO_Option_XML extends WPSEO_Option {
 	 * @return void
 	 */
 	public function enrich_defaults() {
-
 		$user_roles          = WPSEO_Utils::get_roles();
 		$filtered_user_roles = apply_filters( 'wpseo_sitemaps_supported_user_roles', $user_roles );
 		if ( is_array( $filtered_user_roles ) && $filtered_user_roles !== array() ) {
@@ -125,7 +123,6 @@ class WPSEO_Option_XML extends WPSEO_Option {
 
 	}
 
-
 	/**
 	 * Validate the option
 	 *
@@ -136,7 +133,6 @@ class WPSEO_Option_XML extends WPSEO_Option {
 	 * @return array        Validated clean value for the option to be saved to the database
 	 */
 	protected function validate_option( $dirty, $clean, $old ) {
-
 		foreach ( $clean as $key => $value ) {
 			$switch_key = $this->get_switch_key( $key );
 
@@ -208,7 +204,6 @@ class WPSEO_Option_XML extends WPSEO_Option {
 		return $clean;
 	}
 
-
 	/**
 	 * Clean a given option value
 	 *
@@ -244,4 +239,5 @@ class WPSEO_Option_XML extends WPSEO_Option {
 
 		return $option_value;
 	}
+
 }

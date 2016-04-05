@@ -102,4 +102,5 @@ class Yoast_Notification {
 
 		return " data-json='" . WPSEO_Utils::json_encode( $this->options['data_json'] ) . "'";
 	}
+
 }

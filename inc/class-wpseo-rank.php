@@ -189,4 +189,5 @@ class WPSEO_Rank {
 	private static function create_rank( $rank ) {
 		return new self( $rank );
 	}
+
 }

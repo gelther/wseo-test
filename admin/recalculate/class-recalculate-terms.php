@@ -14,7 +14,6 @@ class WPSEO_Recalculate_Terms extends WPSEO_Recalculate {
 	 * @param array $scores The scores to save.
 	 */
 	public function save_scores( array $scores ) {
-
 		$tax_meta = get_option( 'wpseo_taxonomy_meta' );
 
 		foreach ( $scores as $score ) {

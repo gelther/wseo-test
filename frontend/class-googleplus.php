@@ -128,4 +128,5 @@ class WPSEO_GooglePlus {
 
 		return '';
 	}
+
 }

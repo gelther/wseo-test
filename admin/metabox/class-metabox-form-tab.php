@@ -83,4 +83,5 @@ class WPSEO_Metabox_Form_Tab implements WPSEO_Metabox_Tab {
 			$this->content
 		);
 	}
+
 }

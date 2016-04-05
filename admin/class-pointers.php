@@ -358,4 +358,5 @@ class WPSEO_Pointers {
 
 		return esc_url( add_query_arg( $arr_params ) );
 	}
+
 } /* End of class */

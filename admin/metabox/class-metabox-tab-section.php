@@ -123,4 +123,5 @@ class WPSEO_Metabox_Tab_Section implements WPSEO_Metabox_Section {
 		}
 		return $content;
 	}
+
 }

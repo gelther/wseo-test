@@ -222,7 +222,6 @@ function wpseo_update_theme_complete_actions( $update_actions, $updated_theme ) 
 	return $update_actions;
 }
 
-
 /**
  * Adds an SEO admin bar menu with several options. If the current user is an admin he can also go straight to several settings menu's from here.
  */
@@ -488,7 +487,6 @@ function allow_custom_field_edits( $allcaps, $cap, $args ) {
 
 add_filter( 'user_has_cap', 'allow_custom_field_edits', 0, 3 );
 
-
 /********************** DEPRECATED FUNCTIONS **********************/
 
 /**
@@ -520,7 +518,6 @@ function wpseo_translate_score( $val, $css_value = true ) {
 
 	return WPSEO_Utils::translate_score();
 }
-
 
 /**
  * Check whether file editing is allowed for the .htaccess and robots.txt files

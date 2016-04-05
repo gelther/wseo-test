@@ -99,4 +99,5 @@ class WPSEO_GSC_Settings {
 	private static function remove_gsc_option() {
 		delete_option( WPSEO_GSC::OPTION_WPSEO_GSC );
 	}
+
 }

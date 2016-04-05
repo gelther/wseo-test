@@ -77,7 +77,6 @@ class WPSEO_Frontend {
 	 * Adds and removes a lot of filters.
 	 */
 	protected function __construct() {
-
 		$this->options = WPSEO_Options::get_options( $this->required_options );
 
 		add_action( 'wp_head', array( $this, 'front_page_specific_init' ), 0 );
@@ -433,7 +432,6 @@ class WPSEO_Frontend {
 	 * @return string
 	 */
 	private function generate_title( $title, $separator_location ) {
-
 		if ( is_feed() ) {
 			return $title;
 		}
@@ -715,7 +713,6 @@ class WPSEO_Frontend {
 
 		return;
 	}
-
 
 	/**
 	 * Output the meta robots value.
@@ -1160,7 +1157,6 @@ class WPSEO_Frontend {
 	 * @return boolean Boolean indicating whether the publisher link was printed
 	 */
 	public function publisher() {
-
 		if ( $this->options['plus-publisher'] !== '' ) {
 			echo '<link rel="publisher" href="', esc_url( $this->options['plus-publisher'] ), '"/>', "\n";
 
@@ -1418,7 +1414,6 @@ class WPSEO_Frontend {
 	 * @return boolean Boolean indicating whether the noindex header was sent
 	 */
 	public function noindex_feed() {
-
 		if ( ( is_feed() || is_robots() ) && headers_sent() === false ) {
 			header( 'X-Robots-Tag: noindex, follow', true );
 
@@ -1514,7 +1509,6 @@ class WPSEO_Frontend {
 	 * @return boolean
 	 */
 	function replytocom_redirect() {
-
 		if ( isset( $_GET['replytocom'] ) && is_singular() ) {
 			$url          = get_permalink( $GLOBALS['post']->ID );
 			$hash         = sanitize_text_field( $_GET['replytocom'] );
@@ -1761,7 +1755,6 @@ class WPSEO_Frontend {
 	 * @return string
 	 */
 	function embed_rss( $content, $context = 'full' ) {
-
 		/**
 		 * Filter: 'wpseo_include_rss_footer' - Allow the the RSS footer to be dynamically shown/hidden
 		 *
@@ -1794,13 +1787,11 @@ class WPSEO_Frontend {
 		return $content;
 	}
 
-
 	/**
 	 * Used in the force rewrite functionality this retrieves the output, replaces the title with the proper SEO
 	 * title and then flushes the output.
 	 */
 	function flush_cache() {
-
 		global $wp_query;
 
 		if ( $this->ob_started !== true ) {
@@ -1925,4 +1916,5 @@ class WPSEO_Frontend {
 
 		return $keywords;
 	}
+
 } /* End of class */

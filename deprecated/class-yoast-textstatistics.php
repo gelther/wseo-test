@@ -166,6 +166,7 @@ class Yoast_TextStatistics {
 
 		return 0;
 	}
+
 	/**
 	 * @deprecated 3.0 Removed, use javascript instead.
 	 *
@@ -178,6 +179,7 @@ class Yoast_TextStatistics {
 
 		return 0;
 	}
+
 	/**
 	 * @deprecated 3.0 Removed, use javascript instead.
 	 *
@@ -193,4 +195,5 @@ class Yoast_TextStatistics {
 
 		return 0;
 	}
+
 }
