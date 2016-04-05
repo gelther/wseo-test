@@ -341,7 +341,6 @@ class WPSEO_Meta_Columns {
 		}
 
 		return '<div title="' . esc_attr( $title ) . '" class="wpseo-score-icon ' . esc_attr( $rank->get_css_class() ) . '"></div>';
-
 	}
 
 	/**
