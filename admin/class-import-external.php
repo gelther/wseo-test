@@ -190,4 +190,5 @@ class WPSEO_Import_External {
 			$this->set_msg( __( 'Yoast Breadcrumbs options could not be found', 'wordpress-seo' ) );
 		}
 	}
+
 }
