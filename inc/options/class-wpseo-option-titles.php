@@ -362,14 +362,14 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 	/**
 	 * Clean a given option value
 	 *
-	 * @param array $option_value Old (not merged with defaults or filtered) option value to
+	 * @param  array  $option_value          Old (not merged with defaults or filtered) option value to
 	 *                                       clean according to the rules for this option.
-	 * @param string $current_version (optional) Version from which to upgrade, if not set,
+	 * @param  string $current_version       (optional) Version from which to upgrade, if not set,
 	 *                                       version specific upgrades will be disregarded.
-	 * @param array $all_old_option_values (optional) Only used when importing old options to have
+	 * @param  array  $all_old_option_values (optional) Only used when importing old options to have
 	 *                                       access to the real old values, in contrast to the saved ones.
 	 *
-	 * @return array Cleaned option
+	 * @return array                         Cleaned option
 	 */
 	protected function clean_option( $option_value, $current_version = null, $all_old_option_values = null ) {
 		static $original = null;
@@ -565,8 +565,8 @@ class WPSEO_Option_Titles extends WPSEO_Option {
 	 * @internal Overrule the abstract class version of this to make sure one extra renamed variable key
 	 * does not get removed. IMPORTANT: keep this method in line with the parent on which it is based!
 	 *
-	 * @param array $dirty Original option as retrieved from the database.
-	 * @param array $clean Filtered option where any options which shouldn't be in our option
+	 * @param  array $dirty Original option as retrieved from the database.
+	 * @param  array $clean Filtered option where any options which shouldn't be in our option
 	 *                      have already been removed and any options which weren't set
 	 *                      have been set to their defaults.
 	 *

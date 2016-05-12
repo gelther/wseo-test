@@ -753,13 +753,13 @@ class WPSEO_Breadcrumbs {
 	 * @todo The `$paged` variable only works for archives, not for paged articles, so this does not work
 	 * for paged article at this moment.
 	 *
-	 * @param array $link Link info array containing the keys:
+	 * @param  array  $link Link info array containing the keys:
 	 *                     'text'    => (string) link text
 	 *                     'url'    => (string) link url
 	 *                     (optional) 'allow_html'    => (bool) whether to (not) escape html in the link text
 	 *                     This prevents html stripping from the text strings set in the
 	 *                     WPSEO -> Internal Links options page.
-	 * @param  int    $i Index for the current breadcrumb.
+	 * @param  int    $i    Index for the current breadcrumb.
 	 *
 	 * @return string
 	 */

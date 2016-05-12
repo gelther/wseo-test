@@ -327,14 +327,14 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	 * - Convert old option values to new
 	 * - Fixes strings which were escaped (should have been sanitized - escaping is for output)
 	 *
-	 * @param array $option_value Old (not merged with defaults or filtered) option value to
+	 * @param  array  $option_value          Old (not merged with defaults or filtered) option value to
 	 *                                       clean according to the rules for this option.
-	 * @param string $current_version (optional) Version from which to upgrade, if not set,
+	 * @param  string $current_version       (optional) Version from which to upgrade, if not set,
 	 *                                       version specific upgrades will be disregarded.
-	 * @param array $all_old_option_values (optional) Only used when importing old options to have
+	 * @param  array  $all_old_option_values (optional) Only used when importing old options to have
 	 *                                       access to the real old values, in contrast to the saved ones.
 	 *
-	 * @return array Cleaned option
+	 * @return array                         Cleaned option
 	 */
 	protected function clean_option( $option_value, $current_version = null, $all_old_option_values = null ) {
 		/* Clean up old values and remove empty arrays */
@@ -400,7 +400,7 @@ class WPSEO_Taxonomy_Meta extends WPSEO_Option {
 	 *
 	 * @static
 	 *
-	 * @param mixed $term Term to get the meta value for
+	 * @param  mixed      $term     Term to get the meta value for
 	 *                          either (string) term name, (int) term id or (object) term.
 	 * @param  string     $taxonomy Name of the taxonomy to which the term is attached.
 	 * @param  string     $meta     (optional) Meta value to get (without prefix).

@@ -219,10 +219,10 @@ class WPSEO_Options {
 	/**
 	 * Run the clean up routine for one or all options
 	 *
-	 * @param array|string $option_name (optional) the option you want to clean or an array of
+	 * @param  array|string $option_name     (optional) the option you want to clean or an array of
 	 *                                       option names for the options you want to clean.
 	 *                                       If not set, all options will be cleaned.
-	 * @param string $current_version (optional) Version from which to upgrade, if not set,
+	 * @param  string       $current_version (optional) Version from which to upgrade, if not set,
 	 *                                       version specific upgrades will be disregarded.
 	 *
 	 * @return void
