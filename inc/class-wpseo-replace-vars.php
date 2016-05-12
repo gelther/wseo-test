@@ -84,15 +84,15 @@ class WPSEO_Replace_Vars {
 	 *
 	 * @see wpseo_register_var_replacement() for a usage example
 	 *
-	 * @param string $var The name of the variable to replace, i.e. '%%var%%'
+	 * @param  string $var              The name of the variable to replace, i.e. '%%var%%'
 	 *                                  - the surrounding %% are optional.
-	 * @param mixed $replace_function Function or method to call to retrieve the replacement value for the variable
+	 * @param  mixed  $replace_function Function or method to call to retrieve the replacement value for the variable
 	 *                                  Uses the same format as add_filter/add_action function parameter and
 	 *                                  should *return* the replacement value. DON'T echo it.
-	 * @param  string $type      Type of variable: 'basic' or 'advanced', defaults to 'advanced'.
-	 * @param  string $help_text Help text to be added to the help tab for this variable.
+	 * @param  string $type             Type of variable: 'basic' or 'advanced', defaults to 'advanced'.
+	 * @param  string $help_text        Help text to be added to the help tab for this variable.
 	 *
-	 * @return bool              Whether the replacement function was succesfully registered
+	 * @return bool                     Whether the replacement function was succesfully registered
 	 */
 	public static function register_replacement( $var, $replace_function, $type = 'advanced', $help_text = '' ) {
 		$success = false;
@@ -127,10 +127,10 @@ class WPSEO_Replace_Vars {
 	/**
 	 * Replace `%%variable_placeholders%%` with their real value based on the current requested page/post/cpt/etc
 	 *
-	 * @param string $string the string to replace the variables in.
-	 * @param array  $args   the object some of the replacement values might come from,
+	 * @param  string $string the string to replace the variables in.
+	 * @param  array  $args   the object some of the replacement values might come from,
 	 *                       could be a post, taxonomy or term.
-	 * @param  array  $omit variables that should not be replaced by this function.
+	 * @param  array  $omit   variables that should not be replaced by this function.
 	 *
 	 * @return string
 	 */
@@ -617,7 +617,7 @@ class WPSEO_Replace_Vars {
 	/**
 	 * Retrieve a post/page/cpt's custom field value for use as replacement string
 	 *
-	 * @param string $var The complete variable to replace which includes the name of
+	 * @param  string      $var The complete variable to replace which includes the name of
 	 *                    the custom field which value is to be retrieved.
 	 *
 	 * @return string|null
@@ -642,7 +642,7 @@ class WPSEO_Replace_Vars {
 	/**
 	 * Retrieve a post/page/cpt's custom taxonomies for use as replacement string
 	 *
-	 * @param string $var The complete variable to replace which includes the name of
+	 * @param  string      $var    The complete variable to replace which includes the name of
 	 *                       the custom taxonomy which value(s) is to be retrieved.
 	 * @param  bool        $single Whether to retrieve only the first or all values for the taxonomy.
 	 *
@@ -665,7 +665,7 @@ class WPSEO_Replace_Vars {
 	/**
 	 * Retrieve a post/page/cpt's custom taxonomies description for use as replacement string
 	 *
-	 * @param string $var The complete variable to replace which includes the name of
+	 * @param  string      $var The complete variable to replace which includes the name of
 	 *                    the custom taxonomy which description is to be retrieved.
 	 *
 	 * @return string|null
