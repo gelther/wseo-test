@@ -650,8 +650,8 @@ abstract class WPSEO_Option {
 	 * @internal The wpseo_titles concrete class overrules this method. Make sure that any changes
 	 * applied here, also get ported to that version.
 	 *
-	 * @param array $dirty Original option as retrieved from the database.
-	 * @param array $clean Filtered option where any options which shouldn't be in our option
+	 * @param  array $dirty Original option as retrieved from the database.
+	 * @param  array $clean Filtered option where any options which shouldn't be in our option
 	 *                      have already been removed and any options which weren't set
 	 *                      have been set to their defaults.
 	 *
